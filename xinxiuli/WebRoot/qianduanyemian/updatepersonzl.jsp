@@ -13,6 +13,7 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="stylesheet" href="/xinxiuli/css/ljy-index-showpro.css" />
 	<link rel="stylesheet" href="/xinxiuli/css/updatepersonzl.css" />
   </head>
   
