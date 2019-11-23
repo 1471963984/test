@@ -127,14 +127,14 @@
 	      if(event.target.checked == true){
 	        //选中所有的
 	        $('.checkbox').each(function(){
-	           $(this).attr('checked', true);
+	           $(this).prop('checked', true);
 	          //给当前元素加个标识(自定义的属性)
 	          $(this).attr('data-price', 'active');        
 	        });
 	      }else{
 	        //选中所有的
 	        $('.checkbox').each(function(){
-	          $(this).attr('checked', false);
+	          $(this).prop('checked', false);
 	          //拿掉标识(自定义的属性)
 	          $(this).attr('data-price', '');
 	        });
