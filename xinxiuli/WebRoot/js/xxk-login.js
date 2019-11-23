@@ -34,7 +34,6 @@ function getUrlVal(property){
   $('#phone2').blur(function(){
   	 var str = $(this).val();
   	 var sm =/^1[3456789][0-9]{9}/g;
-//	  console.log(str);
   	  var strflag=false;
   	  strflag = str.length==11?true:false;
   	 if(sm.test(str)&&(strflag)){
@@ -50,20 +49,19 @@ function getUrlVal(property){
  });
  
   // 密码
- $('#pwd1').blur(function(){
-   var str=$(this).val(); 
-   var sm=/[0-9]+/g;
-   var  st=/[A-z]+/g;
-      
-   if(sm.test(str)&&st.test(str)&&(str.length>5&&str.length<9)){    
-//  console.log(str);  
-    pwdvalue=str;
-  　 $(this).siblings('h6').html('　'); 
-  　 $(this).siblings('span').children('img').removeClass('show').addClass('hidden'); 
-   }else{
-    $(this).siblings('h6').html('*密码不正确,请重新输入');
-  	$(this).siblings('span').children('img').removeClass('hidden').addClass('show'); 
-   }
+	 $('#pwd1').blur(function(){
+	   var str=$(this).val(); 
+	   var sm=/[0-9]+/g;
+	   var  st=/[A-z]+/g;
+	      
+	   if(sm.test(str)&&st.test(str)&&(str.length>5&&str.length<9)){    
+	    pwdvalue=str;
+	  　 $(this).siblings('h6').html('　'); 
+	  　 $(this).siblings('span').children('img').removeClass('show').addClass('hidden'); 
+	   }else{
+	    $(this).siblings('h6').html('*密码不正确,请重新输入');
+     	$(this).siblings('span').children('img').removeClass('hidden').addClass('show'); 
+	   }
  });
  
    //登录选择
@@ -74,13 +72,11 @@ function getUrlVal(property){
   	 var pacode =$('#password-code').css('display')=='none'?'block':'none';
   	 $('#password-code').css('display',pacode);
       flag = flag==false?true:false;
-     console.log(flag); 
   });
  
   
     //登陆
   $('#loginbtn').click(function(){
-  	console.log(flag);
   	 //验证码登陆
   	if(!flag){
 //	  phonevalue1	

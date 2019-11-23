@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+<Resource name="mysql" auth="Container" type="com.mchange.v2.c3p0.ComboPooledDataSource"
+      factory="org.apache.naming.factory.BeanFactory"
+      initialPoolSize="20" maxPoolSize="100" checkoutTimeout="5000"
+      user="root" password="root" driverClass="com.mysql.jdbc.Driver"
+      jdbcUrl="jdbc:mysql://localhost:3306/xinxiuli?characterEncoding=utf8&amp;useUnicode=true"/>
+</Context>

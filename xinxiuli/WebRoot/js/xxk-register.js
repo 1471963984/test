@@ -16,8 +16,7 @@ function getUrlVal(property){
   	 var str = $(this).val();
   	 var sm =/^1[3456789][0-9]{9}/g;
   	  var strflag=false;
-  	
-//	  console.log(sm.test(str));
+ 
   	    strflag = str.length==11?true:false;
   	   console.log(strflag);
   	 if(sm.test(str)&&(strflag)){ 
@@ -38,14 +37,12 @@ function getUrlVal(property){
    var st=/[a-zA-Z]+/g;
     
    if((st.test(str))&&(sm.test(str))&&(str.length>5&&str.length<9)){    
-    console.log(str);  
-  　 $(this).siblings('h6').html('　'); 
-  　 $(this).siblings('span').children('img').removeClass('show').addClass('hidden'); 
-  
+	  　 $(this).siblings('h6').html('　'); 
+	  　 $(this).siblings('span').children('img').removeClass('show').addClass('hidden'); 
    }else{
     $(this).siblings('h6').html('*密码不符合条件');
   	$(this).siblings('span').children('img').removeClass('hidden').addClass('show'); 
-  	
+ 	
    }
  });
  　
@@ -68,8 +65,6 @@ function getUrlVal(property){
   //接收
   $('#check').click(function(){
   	  var bool=$(this).prop('checked')==true?true:false;
-//	    console.log($(this).prop('checked'));
-   
      if(bool){
      $(this).siblings('h6').html('　'); 
   
@@ -81,13 +76,10 @@ function getUrlVal(property){
   
   //点击注册 
  $('#submit').click(function(){
-    console.log($('#check').prop('checked'));
-     console.log(phonevalue,pwd2value);
  	if(!($('#check').prop('checked'))){
  		return;
  	}
  
-  
     if(!(phonevalue&&pwd2value)){
       return;	
     }
