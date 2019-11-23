@@ -9,7 +9,7 @@ public class Goods_color implements Serializable{
 	private int goods_id;
 	private int color_num;
 	private String color_name;
-	private byte[] goods_delpicture;
+	private String goods_delpicture;
 	public int getPid() {
 		return pid;
 	}
@@ -34,10 +34,10 @@ public class Goods_color implements Serializable{
 	public void setColor_name(String color_name) {
 		this.color_name = color_name;
 	}
-	public byte[] getGoods_delpicture() {
+	public String getGoods_delpicture() {
 		return goods_delpicture;
 	}
-	public void setGoods_delpicture(byte[] goods_delpicture) {
+	public void setGoods_delpicture(String goods_delpicture) {
 		this.goods_delpicture = goods_delpicture;
 	}
     

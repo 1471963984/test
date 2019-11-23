@@ -9,7 +9,7 @@ public class Order implements Serializable {
 	private int order_status;
 	private String account_num;
 	private int users_id;
-	private String oder_time;
+	private String order_time;
 	public String getOrder_num() {
 		return order_num;
 	}
@@ -37,14 +37,14 @@ public class Order implements Serializable {
 	public int getUsers_id() {
 		return users_id;
 	}
-	public void setUser_id(int users_id) {
+	public void setUsers_id(int users_id) {
 		this.users_id = users_id;
 	}
-	public String getOder_time() {
-		return oder_time;
+	public String getOrder_time() {
+		return order_time;
 	}
-	public void setOder_time(String oder_time) {
-		this.oder_time = oder_time;
+	public void setOrder_time(String order_time) {
+		this.order_time = order_time;
 	}
-
+	
 }
