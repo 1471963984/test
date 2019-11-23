@@ -170,16 +170,17 @@
 	      //$(event.target).html('哈另一个')
 	      //调用总价
 	      sumAll();
-	    }; 
+	    };
+	    var allinput = $('.goods-list-js');
 	    //删除选中
 	    if(event.target.className == 'card-left-top-title'){
-//	       for(var i=0;i<aa.length;i++){	
-//	       if($('.goods-message').children('input').getClass=='active'){
-//	       	console.log('a');
-//	       }
-//	      }
-//	      //调用总价
-//	      sumAll();
+	       for(var i=0;i<allinput.length;i++){	
+	       if($('.goods-message').children('input').getAttribute("data-price")=='active'){
+	       		console.log('a');
+	       }
+	      }
+	      //调用总价
+	      sumAll();
 	    };
 
 
