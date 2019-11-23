@@ -17,11 +17,10 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<link rel="stylesheet" href="/xinxiuli/css/bootstrap.css" />
 	<link rel="stylesheet" href="/xinxiuli/css/ljy-index-showpro.css" />
-	<link rel="stylesheet" href="/xinxiuli/css/info.css" />
+	<link rel="stylesheet" href="/xinxiuli/css/personzl.css" />
   </head>
   
   <body>
-		
 		<!--头部信息展示-->
 		<div id="info">
 				<!--中间部分-->
@@ -32,33 +31,73 @@
 						<li class="icon">></li>
 						<li>我的账户</li>
 						<li class="icon">></li>
-						<li class="active">我的订单</li>
+						<li class="active">个人资料</li>
 				    </ul>
 				</div>
 				
 				<div class="info-l">
 					<ul>
 						<li>账户首页</li>
-						<li>个人资料</li>
+						<li class="active">个人资料</li>
 						<li>地址簿</li>
-						<li class="active">我的订单</li>
+						<li>我的订单</li>
 						<li>我的收藏</li>
 						<li>客户服务</li>
 					</ul>
 				</div>
 				<div class="info_r">
-					<h3>我的订单</h3>
-					<ul class="info_r-list">
-						<li class="active">全部<span>0</span></li>
-						<li>待付款</li>
-						<li>待发货</li>
-						<li>已发货</li>
-						<li>已取消</li>
-						<li>已退货</li>		
-					</ul>
+					<ul>
+						<li>
+							<div class="title-about">个人资料</div>
+							<div class="updatePass">修改密码</div>
+						</li>
+						<li>
+							<label class="list-lable">姓名</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						<li>
+							<label class="list-lable">称谓</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						<li>
+							<label class="list-lable">生日</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						<li>
+							<label class="list-lable">手机号</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						<li>
+							<label class="list-lable">电子邮箱</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						<li>
+							<label class="list-lable">常住地址</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						<li>
+							<label class="list-lable">学历</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						<li>
+							<label class="list-lable">职业</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						<li>
+							<label class="list-lable">薪酬</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						<li>
+							<label class="list-lable">兴趣爱好</label>
+							<p class="list-about">17769336339</p>
+						</li>
+					<button class="">修改资料</button>
+				</ul>
 		            <!--在这里获取请求的数据-->
+		  
 				</div>
 			</div>
+
 		</div>
   </body>
 </html>
