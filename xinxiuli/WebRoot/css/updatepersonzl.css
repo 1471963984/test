@@ -1,0 +1,123 @@
+@CHARSET "UTF-8";
+#info{
+	width: 100%;
+	height: 830px;
+	background-color: #E6E6E6;
+	padding-top:30px;
+	margin-bottom: 120px;
+}
+body{
+	background-color: #E6E6E6;
+}
+#info>.info-bg{
+	width: 1200px;
+	margin:0px auto;
+}
+.info-t>ul{
+	height: 20px;
+	margin-bottom:20px;
+}
+.info-t>ul>li{
+	width: 80px;
+	float: left;
+	font-size: 17px;
+}
+
+.info-t>ul .icon{
+	width: 30px;
+}
+.info-t>ul .index{
+	width:55px;
+}
+
+/*左边导航部分*/
+#info .info-l{
+	height: 350px;
+	width: 250px;
+	padding-top: 30px;
+	background-color: white;
+}
+#info .info-l ul{
+	width: 250px;
+}
+#info .info-l li{
+	width: 250px;
+	text-align:center;
+	height:50px;
+	float: none;
+	font-size: 17px;
+	line-height: 50px;
+}
+#info .info-l .active{
+	border-left: 2px solid #000000;
+	background-color: #E3E3E3;
+}
+
+/*右边展示部分*/
+.info_r{
+	
+	width: 900px;
+	height: 400px;
+	background-color: white;
+	margin-left:30px;
+	float: right;
+	padding:40px 70px 60px;
+}
+.info_r .info_r-list{
+	margin-top: 30px;
+	height: 35px;
+	width:840px;
+	/*border-bottom: 2px solid #E3E3E3;*/	
+}
+/*个人信息修改css*/
+.info_r ul li{
+	width: 800px;
+	height: 40px;
+	margin-bottom: 20px;
+}
+
+.list-lable{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 14px;
+	line-height: 40px;
+	font-weight: 400;
+	margin-bottom: 0;
+	width: 80px;height: 40px;
+}
+
+.info_r ul li input{
+	width: 400px;
+	height: 40px;
+	padding: 6px 12px;
+}
+
+p{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 14px;
+	line-height: 40px;
+	font-weight: 400;
+	margin-bottom: 0;
+	height: 40px;
+}
+.title-about{
+	width: 80px;height: 40px;
+	font-size: 20px;
+	font-weight: bold;
+	float: left;
+}
+.updatePass{
+	float: right;
+	cursor: pointer;
+	border-bottom: 1px solid black;
+}
+button{
+	width: 230px;height: 40px;
+	color: #FFFFFF;
+	background: #222;
+	padding: 0px 12px;
+	font-size: 14px;
+	position: absolute;
+	left: 610px;
+}
