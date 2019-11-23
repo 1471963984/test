@@ -12,8 +12,7 @@ public class Goods implements Serializable{
 	private int goods_star;
 	private int goods_color_num;
 	private int goods_size_num;
-	private int goods_remain;
-	private byte[] goods_picture;
+	private String goods_picture;
 	public int getGoods_id() {
 		return goods_id;
 	}
@@ -62,16 +61,10 @@ public class Goods implements Serializable{
 	public void setGoods_size_num(int goods_size_num) {
 		this.goods_size_num = goods_size_num;
 	}
-	public int getGoods_remain() {
-		return goods_remain;
-	}
-	public void setGoods_remain(int goods_remain) {
-		this.goods_remain = goods_remain;
-	}
-	public byte[] getGoods_picture() {
+	public String getGoods_picture() {
 		return goods_picture;
 	}
-	public void setGoods_picture(byte[] goods_picture) {
+	public void setGoods_picture(String goods_picture) {
 		this.goods_picture = goods_picture;
 	}	
 }
