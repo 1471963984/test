@@ -7,7 +7,7 @@ public class Goods implements Serializable{
 	private int goods_id;
 	private int divied_num;
 	private String goods_desc;
-	private int goods_price;
+	private double goods_price;
 	private String goods_name;
 	private int goods_star;
 	private int goods_color_num;
@@ -31,10 +31,10 @@ public class Goods implements Serializable{
 	public void setGoods_desc(String goods_desc) {
 		this.goods_desc = goods_desc;
 	}
-	public int getGoods_price() {
+	public double getGoods_price() {
 		return goods_price;
 	}
-	public void setGoods_price(int goods_price) {
+	public void setGoods_price(double goods_price) {
 		this.goods_price = goods_price;
 	}
 	public String getGoods_name() {

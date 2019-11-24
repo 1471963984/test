@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import dao.UsersDao;
+import db.DbHelp;
 import pojo.Users;
 
 public class UsersDaoImpl implements UsersDao{
@@ -25,11 +26,19 @@ public class UsersDaoImpl implements UsersDao{
 			ps.setString(6, users.getUsers_phone());
 			if(ps.executeUpdate()>0) {
 				flag = true;
-				return flag;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		return flag;
@@ -50,11 +59,19 @@ public class UsersDaoImpl implements UsersDao{
 			ps.setInt(7, users.getUsers_id());
 			if(ps.executeUpdate()>0) {
 				flag = true;
-				return flag;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 				
 		return flag;
@@ -69,11 +86,19 @@ public class UsersDaoImpl implements UsersDao{
 			ps.setInt(1, users_id);
 			if(ps.executeUpdate()>0) {
 				flag = true;
-				return flag;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return flag;
 	}
@@ -95,11 +120,19 @@ public class UsersDaoImpl implements UsersDao{
 				u.setUsers_addr(rs.getString("users_addr"));
 				u.setUsers_email(rs.getString("users_email"));
 				u.setUsers_phone(rs.getString("users_phone"));
-				return u;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return u;
 	}
@@ -126,6 +159,15 @@ public class UsersDaoImpl implements UsersDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return list;
 	}
