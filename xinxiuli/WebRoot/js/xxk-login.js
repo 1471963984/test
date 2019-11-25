@@ -143,7 +143,7 @@ function getUrlVal(property){
    // 隐藏 登陆    注册
    //显示登陆等账号
    	}else{
-   console.log('无');		
+    console.log('无');		
     //显示 登陆    注册	
     //隐藏  登陆等账号     
    	};

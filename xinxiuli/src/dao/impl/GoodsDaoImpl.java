@@ -16,17 +16,18 @@ public class GoodsDaoImpl implements GoodsDao{
 	@Override
 	public boolean insertGoods(Goods goods, Connection conn) {
 		boolean flag = false;
-		String sql = "insert into goods(goods_id,divied_num,goods_desc,goods_price,goods_name,goods_star,goods_color_num,goods_size_num,goods_picture) values(null,?,?,?,?,?,?,?,?)";
+		String sql = "insert into goods(goods_num,goods_id,divied_num,goods_desc,goods_price,goods_name,goods_star,goods_color_num,goods_size_num,goods_picture) values(null,?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, goods.getDivied_num());
-			ps.setString(2, goods.getGoods_desc());
-			ps.setDouble(3, goods.getGoods_price());
-			ps.setString(4, goods.getGoods_name());
-			ps.setInt(5, goods.getGoods_star());
-			ps.setInt(6, goods.getGoods_color_num());
-			ps.setInt(7, goods.getGoods_size_num());
-			ps.setString(8, goods.getGoods_picture());
+			ps.setInt(1, goods.getGoods_id());
+			ps.setInt(2, goods.getDivied_num());
+			ps.setString(3, goods.getGoods_desc());
+			ps.setDouble(4, goods.getGoods_price());
+			ps.setString(5, goods.getGoods_name());
+			ps.setInt(6, goods.getGoods_star());
+			ps.setInt(7, goods.getGoods_color_num());
+			ps.setInt(8, goods.getGoods_size_num());
+			ps.setString(9, goods.getGoods_picture());
 			if(ps.executeUpdate()>0) {
 				flag = true;
 			}
@@ -49,18 +50,19 @@ public class GoodsDaoImpl implements GoodsDao{
 	@Override
 	public boolean updateGoods(Goods goods, Connection conn) {
 		boolean flag = false;
-		String sql = "update goods set divied_num=?,goods_desc=?,goods_price=?,goods_name=?,goods_star=?,goods_color_num=?,goods_size_num=?,goods_picture=? where goods_id=?";
+		String sql = "update goods set goods_id=?,divied_num=?,goods_desc=?,goods_price=?,goods_name=?,goods_star=?,goods_color_num=?,goods_size_num=?,goods_picture=? where goods_num=?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, goods.getDivied_num());
-			ps.setString(2, goods.getGoods_desc());
-			ps.setDouble(3, goods.getGoods_price());
-			ps.setString(4, goods.getGoods_name());
-			ps.setInt(5, goods.getGoods_star());
-			ps.setInt(6, goods.getGoods_color_num());
-			ps.setInt(7, goods.getGoods_size_num());
-			ps.setString(8, goods.getGoods_picture());
-			ps.setInt(9, goods.getGoods_id());
+			ps.setInt(1, goods.getGoods_id());
+			ps.setInt(2, goods.getDivied_num());
+			ps.setString(3, goods.getGoods_desc());
+			ps.setDouble(4, goods.getGoods_price());
+			ps.setString(5, goods.getGoods_name());
+			ps.setInt(6, goods.getGoods_star());
+			ps.setInt(7, goods.getGoods_color_num());
+			ps.setInt(8, goods.getGoods_size_num());
+			ps.setString(9, goods.getGoods_picture());
+			ps.setInt(10, goods.getGoods_num());
 			if(ps.executeUpdate()>0) {
 				flag = true;
 			}
@@ -81,12 +83,12 @@ public class GoodsDaoImpl implements GoodsDao{
 	}
 
 	@Override
-	public boolean deleteGoods(int goods_id, Connection conn) {
+	public boolean deleteGoods(int goods_num, Connection conn) {
 		boolean flag = false;
-		String sql = "delete from goods where goods_id=?";
+		String sql = "delete from goods where goods_num=?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, goods_id);
+			ps.setInt(1, goods_num);
 			if(ps.executeUpdate()>0) {
 				flag = true;
 			}
@@ -107,12 +109,13 @@ public class GoodsDaoImpl implements GoodsDao{
 	}
 
 	@Override
-	public Goods selectGoods(int goods_id, Connection conn) {
+	//根据主键查询唯一一件商品
+	public Goods selectGoods(int goods_num, Connection conn) {
 		Goods g = null;
-		String sql = "select * from goods where goods_id=?";
+		String sql = "select * from goods where goods_num=?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, goods_id);
+			ps.setInt(1, goods_num);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
 				g = new Goods();
@@ -144,11 +147,13 @@ public class GoodsDaoImpl implements GoodsDao{
 	}
 
 	@Override
-	public List<Goods> selectAllGoods(Connection conn) {
+	//根据商品编号查询出该商品所有颜色，尺寸数据
+	public List<Goods> selectAllGoods(int goods_id,Connection conn) {
 		List<Goods> list = new ArrayList<Goods>();
-		String sql = "select * from goods";
+		String sql = "select * from goods where goods_id=?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, goods_id);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				Goods g = new Goods();

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Goods implements Serializable{
 	private static final long serialVersionUID = -730905264841229265L;
+	private int goods_num;
 	private int goods_id;
 	private int divied_num;
 	private String goods_desc;
@@ -13,6 +14,14 @@ public class Goods implements Serializable{
 	private int goods_color_num;
 	private int goods_size_num;
 	private String goods_picture;
+	
+	
+	public int getGoods_num() {
+		return goods_num;
+	}
+	public void setGoods_num(int goods_num) {
+		this.goods_num = goods_num;
+	}
 	public int getGoods_id() {
 		return goods_id;
 	}
