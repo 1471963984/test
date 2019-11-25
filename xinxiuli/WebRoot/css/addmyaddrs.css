@@ -1,12 +1,8 @@
+			
 #info{
 	width: 100%;
-	height: 830px;
 	background-color: #E6E6E6;
 	padding-top:30px;
-	margin-bottom: 120px;
-}
-body{
-	background-color: #E6E6E6;
 }
 #info>.info-bg{
 	width: 1200px;
@@ -19,7 +15,7 @@ body{
 .info-t>ul>li{
 	width: 80px;
 	float: left;
-	font-size: 17px;
+	font-size: 14px;
 }
 
 .info-t>ul .icon{
@@ -30,12 +26,12 @@ body{
 }
 
 /*左边导航部分*/
-#info .info-l{
+#info>.info-coll-content>.info-l{
 	height: 350px;
 	width: 250px;
 	padding-top: 30px;
-	float: left;
 	background-color: white;
+	float:left;
 }
 #info .info-l ul{
 	width: 250px;
@@ -61,7 +57,7 @@ body{
 
 /*右边展示部分*/
 .info_r{
-	height: 800px;
+	/*height: 800px;*/
 	width: 900px;
 	background-color: white;
 	margin-left:30px;
@@ -76,10 +72,21 @@ body{
 }
 /*个人信息修改css*/
 .info_r ul li{
-	width: 800px;
+	width: 760px;
 	height: 40px;
 	margin-bottom: 20px;
 	position: relative;
+}
+.btn{
+	width: 140px;
+	height: 40px;
+	margin: 0px;
+	position: absolute;
+	right: 60px;
+	font-size: 16px;
+}
+.btn span{
+	font-size: 20px;
 }
 .info_r .info_r-list .active{
 	font-weight: 700;
@@ -96,7 +103,7 @@ body{
 }
 
 .info_r ul li input{
-	width: 400px;
+	width: 470px;
 	height: 40px;
 	padding: 6px 12px;
 	display: inline-block;
@@ -122,16 +129,22 @@ p{
 	cursor: pointer;
 	border-bottom: 1px solid black;
 }
-button{
+.buttoncun{
 	border:none;
-	margin-top:20px;
 	width: 230px;height: 40px;
 	color: #FFFFFF;
 	background: #222;
 	padding: 0px 12px;
 	font-size: 14px;
-	position: absolute;
-	left: 610px;
+	border-radius: 5px;
+}
+.buttonqu{
+	border:1px #333 solid;
+	width: 230px;height: 40px;
+	color: #222;
+	background: #fff;
+	padding: 0px 12px;
+	font-size: 14px;
 }
 /*选择称谓*/
 .help-block{
@@ -158,4 +171,35 @@ button{
 }
 .dropdown ul li:hover{
 	background: #999;
+}
+
+.addrs-check{
+	margin-left: 80px;
+	height: 40px;
+	position: relative;
+}
+input[type=checkbox] {
+    /*opacity: 0;*/
+   color: inherit;
+    font: inherit;
+    z-index: 1;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 6px;
+}
+.check-about{
+	width: 112px;
+	height: 20px;
+	display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #727272;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+form{
+	margin-bottom: 60px;
 }

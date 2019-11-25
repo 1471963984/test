@@ -1,9 +1,15 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>我的订单</title>
+    <base href="<%=basePath%>">
+    
+    <title>我的地址簿</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -13,16 +19,15 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<link rel="stylesheet" href="/xinxiuli/css/bootstrap.css" />
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageHeader.css"/>
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageFooter.css"/>
-	<link rel="stylesheet" href="/xinxiuli/css/myorders.css" />
+	<link rel="stylesheet" href="/xinxiuli/css/myaddrs.css" />
   </head>
   
-  <body data-spy="scroll">
-		<!--首页头部-->
+	<body>
+	
+				<!--首页头部-->
 		<header>
 			<nav>
 				<!--普通导航栏-->
@@ -144,6 +149,8 @@
 				</div>
 			</nav>
 		</header>
+		
+		
 		<!--头部信息展示-->
 		<div id="info">
 				<!--中间部分-->
@@ -162,28 +169,41 @@
 					<ul>
 						<li>账户首页</li>
 						<li><a href="/xinxiuli/qianduanyemian/personzl.jsp">个人资料</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/myaddrs.jsp">地址簿</a></li>
-						<li class="active"><a href="/xinxiuli/qianduanyemian/myorders.jsp">我的订单</a></li>
+						<li class="active"><a href="/xinxiuli/qianduanyemian/myaddrs.jsp">地址簿</a></li>
+						<li><a href="/xinxiuli/qianduanyemian/myorders.jsp">我的订单</a></li>
 						<li><a href="/xinxiuli/qianduanyemian/mycolls.jsp">我的收藏</a></li>
 						<li>客户服务</li>
 					</ul>
 				</div>
 				<div class="info_r">
-					<h3>我的订单</h3>
-					<ul class="info_r-list">
-						<li class="active">全部<span>0</span></li>
-						<li>待付款</li>
-						<li>待发货</li>
-						<li>已发货</li>
-						<li>已取消</li>
-						<li>已退货</li>		
-					</ul>
-		            <!--在这里获取请求的数据-->
+					<form action="" id="addmyaddrs">
+						<ul>
+							<li>
+								<div class="title-about">地址簿</div>
+								<button class="btn btn-block btn-default">
+									<a href="/xinxiuli/qianduanyemian/addmyaddrs.jsp"><span class="btn-add">+</span>
+									&nbsp;&nbsp;添加收货地址</a>
+								</button>
+							</li>
+						</ul>
+						<div class="addrs-list">
+					    	<div class="name ch-left">陈广平</div>
+					    	<div class="phone mbtel">手机号：17769336339</div>
+					    	<div class="chengwei ch-left">先生</div>
+					    	<div class="phone gdtel">固定电话：17769336339</div>
+					    	<div class="addrs-message">湖南省-长沙市-岳麓区&nbsp;&nbsp;延农六期三栋四单元</div>
+					    	<button class="addrs-default">默认</button>
+					    	<div class="caozuo">
+					    		<img class="addrs-edit" src="/xinxiuli/shop-imgs/address-edit.png"/>
+					    		<img class="goods-delete" title="删除商品" src="/xinxiuli/shop-imgs/delete.png"></img>
+					    	</div>
+				   		</div>
+					</form>
 				</div>
 			</div>
 		</div>
-
-	    <!--首页尾部-->
+		
+			    <!--首页尾部-->
 	    <section>
     		<div class="footer">
     			<div class="container">
@@ -385,18 +405,26 @@
 		   </div> 
 		</div>
   
-		
-  </body>
+	
+	</body>
 </html>
-<script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>
-<script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
-<script type="text/javascript" src="/xinxiuli/js/ljy-index.js">
-<!--
-
-//-->
-</script>
+<script src="/xinxiuli/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="/xinxiuli/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+<script src="/xinxiuli/js/ljy-index.js"></script>
+<script src="/xinxiuli/js/xxk-login.js"></script>
 <script>
-	$('.info_r ul li').mouseenter(function(){
-		$(this).addClass("active").siblings().removeClass("active");
-	});
+	
+	$('.dropdown-menu li').click(function(){
+		var a = $(this).html();
+		$('.chengwei').val($(this).html());
+	})
+	$("#submitbut").click(function(){
+		console.log($('.name').val());
+		console.log($('.sex').val());
+		console.log($('.addrs').val());
+		console.log($('.xiangxiaddrs').val());
+		console.log($('.phone').val());
+		console.log($('.tel').val());
+        //$("#addmyaddrs").submit();
+    });
 </script>

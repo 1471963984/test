@@ -13,6 +13,8 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="stylesheet" href="/xinxiuli/css/bootstrap.css" />
+	
 	<link rel="stylesheet" href="/xinxiuli/css/ljy-index-showpro.css" />
 	<link rel="stylesheet" href="/xinxiuli/css/updatepersonzl.css" />
   </head>
@@ -35,33 +37,86 @@
 				<div class="info-l">
 					<ul>
 						<li>账户首页</li>
-						<li class="active">个人资料</li>
-						<li>地址簿</li>
-						<li >我的订单</li>
-						<li>我的收藏</li>
+						<li class="active"><a href="/xinxiuli/qianduanyemian/personzl.jsp">个人资料</a></li>
+						<li><a href="/xinxiuli/qianduanyemian/myaddrs.jsp">地址簿</a></li>
+						<li><a href="/xinxiuli/qianduanyemian/myorders.jsp">我的订单</a></li>
+						<li><a href="/xinxiuli/qianduanyemian/mycolls.jsp">我的收藏</a></li>
 						<li>客户服务</li>
 					</ul>
 				</div>
 				<div class="info_r">
-					<h3>修改密码</h3>
-					<ul class="info_r-list">
+				<form action="">
+					<ul>
 						<li>
-							<label class="list-lable" >旧密码</label>
-							<input type="password" placeholder="输入旧密码" />
+							<div class="title-about">个人资料</div>
 						</li>
 						<li>
-							<label class="list-lable">新密码</label>
-							<input type="password" placeholder="请输入旧密码，至少6位" />
+							<label class="list-lable">姓名*</label>
+							<input type="text" placeholder="17769336339" />
 						</li>
 						<li>
-							<label class="list-lable">确认新密码</label>
-							<input type="password" placeholder="请在次输入密码" />
+							<label class="list-lable">称谓*</label>
+                            <div class="dropdown">
+					            <!--按钮-->
+					            <input type="text" class="sex chengwei" data-toggle="dropdown" placeholder="选择称谓" >
+					            </input>
+					            <!--项-->
+					            <ul class="dropdown-menu">
+					            	<li>先生</li>
+                                	<li>女士</li>
+					            </ul>
+					        </div>
+                            <!--<span class="help-block"></span>-->
 						</li>
-						<button class="">确定</button>
+						<li>
+							<label class="list-lable">生日*</label>
+							<input type="text" placeholder="17769336339" />
+						</li>
+						<li>
+							<label class="list-lable">手机号*</label>
+							<input  type="text" placeholder="17769336339" />
+						</li>
+						<li>
+							<label class="list-lable">电子邮箱*</label>
+							<input  type="text" placeholder="17769336339" />
+						</li>
+						<li>
+							<label class="list-lable">常住地址</label>
+							<input  type="text" placeholder="17769336339" />
+						</li>
+						<li>
+							<label class="list-lable">学历</label>
+							<input  type="text" placeholder="17769336339" />
+						</li>
+						<li>
+							<label class="list-lable">职业</label>
+							<input  type="text" placeholder="17769336339" />
+						</li>
+						<li>
+							<label class="list-lable">薪酬</label>
+							<input  type="text" placeholder="17769336339" />
+						</li>
+						<li>
+							<label class="list-lable">兴趣爱好</label>
+							<input  type="text" placeholder="17769336339" />
+						</li>
+						<button class="" type="button">保存修改</button>
 					</ul>
-		            <!--在这里获取请求的数据-->
+				</form>
 				</div>
 			</div>
 		</div>
 	</body>
 </html>
+<script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>
+<script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
+<script>
+	$('.info-l li').mouseenter(function(){
+		$(this).addClass("active").siblings().removeClass("active");
+	});
+		//先生女士选择框
+	$('.dropdown-menu li').click(function(){
+			var a = $(this).html();
+			$('.chengwei').val($(this).html());
+	})
+</script>

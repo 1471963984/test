@@ -1,12 +1,9 @@
+			
 #info{
+	height: 500px;
 	width: 100%;
-	height: 830px;
 	background-color: #E6E6E6;
 	padding-top:30px;
-	margin-bottom: 120px;
-}
-body{
-	background-color: #E6E6E6;
 }
 #info>.info-bg{
 	width: 1200px;
@@ -19,7 +16,7 @@ body{
 .info-t>ul>li{
 	width: 80px;
 	float: left;
-	font-size: 17px;
+	font-size: 14px;
 }
 
 .info-t>ul .icon{
@@ -34,8 +31,8 @@ body{
 	height: 350px;
 	width: 250px;
 	padding-top: 30px;
-	float: left;
 	background-color: white;
+	float:left;
 }
 #info .info-l ul{
 	width: 250px;
@@ -58,10 +55,9 @@ body{
 	border-left: 2px solid #000000;
 	background-color: #E3E3E3;
 }
-
 /*右边展示部分*/
 .info_r{
-	height: 800px;
+	/*height: 800px;*/
 	width: 900px;
 	background-color: white;
 	margin-left:30px;
@@ -81,6 +77,17 @@ body{
 	margin-bottom: 20px;
 	position: relative;
 }
+.btn{
+	width: 140px;
+	height: 40px;
+	margin: 0px;
+	position: absolute;
+	right: 0px;
+	font-size: 16px;
+}
+.btn span{
+	font-size: 20px;
+}
 .info_r .info_r-list .active{
 	font-weight: 700;
 	border-bottom:2px solid black;
@@ -96,21 +103,13 @@ body{
 }
 
 .info_r ul li input{
-	width: 400px;
+	width: 470px;
 	height: 40px;
 	padding: 6px 12px;
 	display: inline-block;
 }
 
-p{
-	display: inline-block;
-	vertical-align: middle;
-	font-size: 14px;
-	line-height: 40px;
-	font-weight: 400;
-	margin-bottom: 0;
-	height: 40px;
-}
+
 .title-about{
 	width: 80px;height: 40px;
 	font-size: 20px;
@@ -122,7 +121,7 @@ p{
 	cursor: pointer;
 	border-bottom: 1px solid black;
 }
-button{
+.buttoncun{
 	border:none;
 	margin-top:20px;
 	width: 230px;height: 40px;
@@ -132,6 +131,18 @@ button{
 	font-size: 14px;
 	position: absolute;
 	left: 610px;
+	border-radius: 5px;
+}
+.buttonqu{
+	border:1px #333 solid;
+	margin-top:20px;
+	width: 230px;height: 40px;
+	color: #222;
+	background: #fff;
+	padding: 0px 12px;
+	font-size: 14px;
+	position: absolute;
+	left: 850px;
 }
 /*选择称谓*/
 .help-block{
@@ -158,4 +169,119 @@ button{
 }
 .dropdown ul li:hover{
 	background: #999;
+}
+
+.addrs-check{
+	margin-left: 80px;
+	height: 40px;
+	position: relative;
+}
+input[type=checkbox] {
+    /*opacity: 0;*/
+   color: inherit;
+    font: inherit;
+    z-index: 1;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 6px;
+}
+.check-about{
+	width: 112px;
+	height: 20px;
+	display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #727272;
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+form{
+	margin-bottom: 60px;
+}
+.addrs-list{
+	width: 800px;
+	height: 80px;
+	border: 1px solid black;
+	position: relative;
+}
+/*称呼*/
+.ch-left{
+	width: 100px;
+	height: 20px;
+	text-align: center;
+	color: black;
+}
+.name{
+	position: absolute;
+	top: 20px;
+}
+.chengwei{
+	position: absolute;
+	top: 40px;
+}
+/*电话*/
+.phone{
+	width: 214px;
+	height: 20px;
+	color: #686868;
+}
+.mbtel{
+	position: absolute;
+	left: 100px;
+	top: 20px;
+}
+.gdtel{
+	position: absolute;
+	left: 100px;
+	top: 40px;
+}
+.addrs-message{
+	width: 290px;
+	height: 40px;
+	color: #a3a3a3;
+	font-size: 12px;
+	padding: 10px;
+	position: absolute;
+	left: 314px;
+	top: 20px;
+}
+.addrs-default{
+	width: 40px;
+	height: 20px;
+	background: #222222;
+	color: white;
+	border: none;
+	font-size: 12px;
+	position: absolute;
+	left: 604px;
+	top: 30px;
+}
+.caozuo{
+	position: absolute;
+	width: 140px;
+	height: 40px;
+	left: 644px;
+	top: 20px;
+	padding: 10px 0px;
+}
+.addrs-edit{
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+	position: absolute;
+	left: 50px;
+}
+.goods-delete{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	position: absolute;
+	left: 100px;
+}
+.btn-block a{
+	text-decoration: none;
 }

@@ -62,8 +62,8 @@
 								</div>
 								<!-- 登录后样式 -->
 								<div class="top-list text-center loginafter">
-									<img alt="" src="/xinxiuli/img/tools/people.png">
-									<a href="/xinxiuli/qianduanyemian/personzl.jsp"></a>
+									
+									<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"></a>
 								</div>
 								<div class="top-list">
 									<a href="#">

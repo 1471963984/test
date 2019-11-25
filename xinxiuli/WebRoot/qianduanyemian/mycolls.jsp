@@ -3,7 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <title>我的订单</title>
+    <title>我的收藏</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -18,11 +18,12 @@
 	<link rel="stylesheet" href="/xinxiuli/css/bootstrap.css" />
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageHeader.css"/>
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageFooter.css"/>
-	<link rel="stylesheet" href="/xinxiuli/css/myorders.css" />
+	<link rel="stylesheet" href="/xinxiuli/css/mycolls.css" />
   </head>
   
-  <body data-spy="scroll">
-		<!--首页头部-->
+   <body>
+   
+   		<!--首页头部-->
 		<header>
 			<nav>
 				<!--普通导航栏-->
@@ -144,6 +145,8 @@
 				</div>
 			</nav>
 		</header>
+   		
+   		
 		<!--头部信息展示-->
 		<div id="info">
 				<!--中间部分-->
@@ -154,35 +157,43 @@
 						<li class="icon">></li>
 						<li>我的账户</li>
 						<li class="icon">></li>
-						<li class="active">我的订单</li>
+						<li class="active">我的收藏</li>
 				    </ul>
 				</div>
-				
+			</div>
+			<div class="info-coll-content">	
 				<div class="info-l">
 					<ul>
 						<li>账户首页</li>
 						<li><a href="/xinxiuli/qianduanyemian/personzl.jsp">个人资料</a></li>
 						<li><a href="/xinxiuli/qianduanyemian/myaddrs.jsp">地址簿</a></li>
-						<li class="active"><a href="/xinxiuli/qianduanyemian/myorders.jsp">我的订单</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/mycolls.jsp">我的收藏</a></li>
+						<li><a href="/xinxiuli/qianduanyemian/myorders.jsp">我的订单</a></li>
+						<li class="active"><a href="/xinxiuli/qianduanyemian/mycolls.jsp">我的收藏</a></li>
 						<li>客户服务</li>
 					</ul>
 				</div>
 				<div class="info_r">
-					<h3>我的订单</h3>
-					<ul class="info_r-list">
-						<li class="active">全部<span>0</span></li>
-						<li>待付款</li>
-						<li>待发货</li>
-						<li>已发货</li>
-						<li>已取消</li>
-						<li>已退货</li>		
+					<ul>
+						<div class="title-about">我的收藏</div>
+						
+		  				<li>
+		  					<div class="mycolls">
+		  						<img src="../img/0.jpg" />
+		  						<div class="goods-name">
+		  							Samsonite/新秀丽全球新品科技智能拉杆箱时尚前卫登机行李箱20英寸减震滚轮旅行箱男女 GS1
+		  						</div>
+		  						<div class="goods-desc">SUITCASE</div>
+		  						<div class="goods-price">¥ 599.00</div>
+		  						<div class="goods-delete" title="删除商品"></div>
+		  					</div>
+		  				</li>
 					</ul>
-		            <!--在这里获取请求的数据-->
 				</div>
+			
+
 			</div>
 		</div>
-
+		
 	    <!--首页尾部-->
 	    <section>
     		<div class="footer">
@@ -386,17 +397,11 @@
 		</div>
   
 		
+		
   </body>
 </html>
 <script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/ljy-index.js">
-<!--
-
-//-->
-</script>
 <script>
-	$('.info_r ul li').mouseenter(function(){
-		$(this).addClass("active").siblings().removeClass("active");
-	});
 </script>
