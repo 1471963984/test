@@ -14,10 +14,10 @@ import pojo.Goods;
 public class GoodsDaoImpl implements GoodsDao{
 
 	@Override
-	public boolean insertGoods(Goods goods, Connection conn) {
+	public boolean insertGoods(Goods goods, Connection conn) throws Exception{
 		boolean flag = false;
 		String sql = "insert into goods(goods_num,goods_id,divied_num,goods_desc,goods_price,goods_name,goods_star,goods_color_num,goods_size_num,goods_picture) values(null,?,?,?,?,?,?,?,?,?)";
-		try {
+		
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, goods.getGoods_id());
 			ps.setInt(2, goods.getDivied_num());
@@ -31,27 +31,13 @@ public class GoodsDaoImpl implements GoodsDao{
 			if(ps.executeUpdate()>0) {
 				flag = true;
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null&&!conn.isClosed()) {
-					DbHelp.closeConnection(conn);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		return flag;
 	}
 
 	@Override
-	public boolean updateGoods(Goods goods, Connection conn) {
+	public boolean updateGoods(Goods goods, Connection conn) throws Exception{
 		boolean flag = false;
 		String sql = "update goods set goods_id=?,divied_num=?,goods_desc=?,goods_price=?,goods_name=?,goods_star=?,goods_color_num=?,goods_size_num=?,goods_picture=? where goods_num=?";
-		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, goods.getGoods_id());
 			ps.setInt(2, goods.getDivied_num());
@@ -66,54 +52,25 @@ public class GoodsDaoImpl implements GoodsDao{
 			if(ps.executeUpdate()>0) {
 				flag = true;
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null&&!conn.isClosed()) {
-					DbHelp.closeConnection(conn);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		return flag;
 	}
 
 	@Override
-	public boolean deleteGoods(int goods_num, Connection conn) {
+	public boolean deleteGoods(int goods_num, Connection conn) throws Exception{
 		boolean flag = false;
 		String sql = "delete from goods where goods_num=?";
-		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, goods_num);
 			if(ps.executeUpdate()>0) {
 				flag = true;
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null&&!conn.isClosed()) {
-					DbHelp.closeConnection(conn);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		return flag;
 	}
 
 	@Override
-	//根据主键查询唯一一件商品
-	public Goods selectGoods(int goods_num, Connection conn) {
+	public Goods selectGoods(int goods_num, Connection conn) throws Exception{
 		Goods g = null;
 		String sql = "select * from goods where goods_num=?";
-		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, goods_num);
 			ResultSet rs = ps.executeQuery();
@@ -129,29 +86,14 @@ public class GoodsDaoImpl implements GoodsDao{
 				g.setGoods_size_num(rs.getInt("goods_size_num"));
 				g.setGoods_picture(rs.getString("goods_picture"));
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null&&!conn.isClosed()) {
-					DbHelp.closeConnection(conn);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
 		return g;
 	}
 
 	@Override
-	//根据商品编号查询出该商品所有颜色，尺寸数据
-	public List<Goods> selectAllGoods(int goods_id,Connection conn) {
+	public List<Goods> selectAllGoods(int goods_id,Connection conn) throws Exception{
 		List<Goods> list = new ArrayList<Goods>();
 		String sql = "select * from goods where goods_id=?";
-		try {
+	
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, goods_id);
 			ResultSet rs = ps.executeQuery();
@@ -168,19 +110,6 @@ public class GoodsDaoImpl implements GoodsDao{
 				g.setGoods_picture(rs.getString("goods_picture"));
 				list.add(g);
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null&&!conn.isClosed()) {
-					DbHelp.closeConnection(conn);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
 		return list;
 	}
 
