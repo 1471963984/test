@@ -13,144 +13,75 @@ import pojo.Cart;
 public class CartDaoImpl implements CartDao{
 
 	@Override
-	public boolean insertCart(Cart cart, Connection conn) {
+	public boolean insertCart(Cart cart, Connection conn) throws Exception {
 		boolean flag = false;
 		String sql = "insert into cart(cart_num,goods_id,goods_count) values (?,?,?)";
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, cart.getCart_num());
-			ps.setInt(2, cart.getGoods_id());
-			ps.setInt(3, cart.getGoods_count());
-			if(ps.executeUpdate()>0) {
-				flag = true;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null&&!conn.isClosed()) {
-					DbHelp.closeConnection(conn);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, cart.getCart_num());
+		ps.setInt(2, cart.getGoods_id());
+		ps.setInt(3, cart.getGoods_count());
+		if(ps.executeUpdate()>0) {
+			flag = true;
 		}
 		
 		return flag;
 	}
 
 	@Override
-	public boolean updateCart(Cart cart, Connection conn) {
+	public boolean updateCart(Cart cart, Connection conn) throws Exception {
 		boolean flag = false;
 		String sql = "update cart set goods_id=?,goods_count=? where cart_num=?";
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, cart.getGoods_id());
-			ps.setInt(2, cart.getGoods_count());
-			ps.setString(3, cart.getCart_num());
-			if(ps.executeUpdate()>0) {
-				flag = true;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null&&!conn.isClosed()) {
-					DbHelp.closeConnection(conn);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, cart.getGoods_id());
+		ps.setInt(2, cart.getGoods_count());
+		ps.setString(3, cart.getCart_num());
+		if(ps.executeUpdate()>0) {
+			flag = true;
 		}
 		return flag;
 	}
 
 	@Override
-	public boolean deleteCart(String cart_num, Connection conn) {
+	public boolean deleteCart(String cart_num, Connection conn) throws Exception {
 		boolean flag = false;
 		String sql = "delete from cart where cart_num=?";
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, cart_num);
-			if(ps.executeUpdate()>0) {
-				flag = true;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null&&!conn.isClosed()) {
-					DbHelp.closeConnection(conn);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, cart_num);
+		if(ps.executeUpdate()>0) {
+			flag = true;
 		}
+		
 		return flag;
 	}
 
 	@Override
-	public Cart selectCart(String cart_num, Connection conn) {
+	public Cart selectCart(String cart_num, Connection conn) throws Exception {
 		String sql = "select * from cart where cart_num=?";
 		Cart c = null;
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, cart_num);
-			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
-				c = new Cart();
-				c.setCart_num(rs.getString("cart_num"));
-				c.setGoods_id(rs.getInt("goods_id"));
-				c.setGoods_count(rs.getInt("goods_count"));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null&&!conn.isClosed()) {
-					DbHelp.closeConnection(conn);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, cart_num);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			c = new Cart();
+			c.setCart_num(rs.getString("cart_num"));
+			c.setGoods_id(rs.getInt("goods_id"));
+			c.setGoods_count(rs.getInt("goods_count"));
 		}
 		return c;
 	}
 
 	@Override
-	public List<Cart> selectAllCart(Connection conn) {
+	public List<Cart> selectAllCart(Connection conn) throws Exception {
 		List<Cart> list = new ArrayList<Cart>();
 		String sql = "select * from cart";
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				Cart c = new Cart();
-				c.setCart_num(rs.getString("cart_num"));
-				c.setGoods_id(rs.getInt("goods_id"));
-				c.setGoods_count(rs.getInt("goods_count"));
-				list.add(c);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if(conn!=null&&!conn.isClosed()) {
-					DbHelp.closeConnection(conn);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			Cart c = new Cart();
+			c.setCart_num(rs.getString("cart_num"));
+			c.setGoods_id(rs.getInt("goods_id"));
+			c.setGoods_count(rs.getInt("goods_count"));
+			list.add(c);
 		}
 		return list;
 	}

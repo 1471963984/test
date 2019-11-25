@@ -56,16 +56,21 @@
 						</div>
 						<div class="content-right">
 							<div class="right-top">
-								<div class="top-list text-center">
+								<div class="top-list text-center loginbefore">
 									<a href="#" data-toggle="modal" data-target="#login">登录</a>|
 									<a href="/xinxiuli/qianduanyemian/register.jsp" target="_blank">注册</a>
+								</div>
+								<!-- 登录后样式 -->
+								<div class="top-list text-center loginafter">
+									<img alt="" src="/xinxiuli/img/tools/people.png">
+									<a href="/xinxiuli/qianduanyemian/personzl.jsp"></a>
 								</div>
 								<div class="top-list">
 									<a href="#">
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 									</a>
 								</div>
-								<div class="top-list top-right">
+								<div class="top-list top-right mycart">
 									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
 									<div class="cart-number">0</div>
 								</div>

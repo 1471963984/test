@@ -27,7 +27,6 @@
 <body>
 <% 
 	Connection conn = DbHelp.getConnection();
-	
  %>
  <%=DbHelp.getConnection() %>
  <p>${flag}</p>

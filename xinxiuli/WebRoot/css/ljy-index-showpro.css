@@ -164,12 +164,22 @@
 				height: 100px;
 			}
 			.normal-index-header .content-right .right-top{
-				width: 220px;
+				width: 280px;
 				line-height: 100px;
 				text-align: right;
 			}
 			.normal-index-header .content-right .top-list{
 				display: inline-block;
+				height: 100px;
+				margin-right: 35px;
+				line-height: 100px;
+				font-size: 15px;
+			}
+			.normal-index-header .content-right .loginbefore{
+				display: inline-block;
+			}
+			.normal-index-header .content-right .loginafter{
+				display: none;
 				height: 100px;
 				margin-right: 35px;
 				line-height: 100px;
