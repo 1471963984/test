@@ -11,5 +11,7 @@ public interface Goods_sizeDao {
 	public boolean updateGoods_size(Goods_size goods_size,Connection conn) throws Exception;
 	public boolean deleteGoods_size(int sid,Connection conn) throws Exception;
 	public Goods_size selectGoods_size(int sid,Connection conn) throws Exception;
+//	
+	public Goods_size selectGoods_sizeOne(int goodsid,int colornum,int sizenum,Connection conn) throws Exception;
 	public List<Goods_size> selectAllGoods_size(Connection conn) throws Exception;
 }

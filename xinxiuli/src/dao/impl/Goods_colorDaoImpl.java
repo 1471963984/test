@@ -73,8 +73,7 @@ public class Goods_colorDaoImpl implements Goods_colorDao{
 			g.setColor_num(rs.getInt("color_num"));
 			g.setColor_name(rs.getString("color_name"));
 			g.setGoods_delpicture(rs.getString("goods_delpicture"));
-		}
-		
+		}	
 		return g;
 	}
 
@@ -92,9 +91,25 @@ public class Goods_colorDaoImpl implements Goods_colorDao{
 			g.setColor_name(rs.getString("color_name"));
 			g.setGoods_delpicture(rs.getString("goods_delpicture"));
 			list.add(g);
-		}
-		
+		}	
 		return list;
+	}
+	public Goods_color selectGoods_colorOne(int goodid,int colornum,Connection conn) throws Exception{
+		Goods_color g = null;
+		String sql = "select * from goods_color where goods_id=? and color_num=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, goodid);
+		ps.setInt(2, colornum);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			g = new Goods_color();
+			g.setPid(rs.getInt("pid"));
+			g.setGoods_id(rs.getInt("goods_id"));
+			g.setColor_num(rs.getInt("color_num"));
+			g.setColor_name(rs.getString("color_name"));
+			g.setGoods_delpicture(rs.getString("goods_delpicture"));
+		}	
+		return g;
 	}
 
 }

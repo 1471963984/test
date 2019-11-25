@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -131,6 +132,52 @@
 		
 		<!--头部信息展示-->
 		<div class="container" id="info">
+		<div class="info-l">
+	            <div class="big"><img src="${goods.goods_picture}"/>
+					<div class="subinfo">					
+					</div>
+					<div class="subinfo-show">				
+					</div>
+				</div>						
+				<ul>
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<li><img src="${goods.size_picture }"/></li>
+					<li><img src="/xinxiuli/img/productdel/1.jpg"/></li>
+					<li><img src="/xinxiuli/img/productdel/2.jpg"/></li>
+					<li><img src="/xinxiuli/img/productdel/4.jpg"/></li>
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</ul>
+			</div>
+			<div class="info-r">
+				<h2>${goods.goods_name}</h2>
+				<p>RAYDIEN <span class="glyphicon glyphicon-star-empty"></span>
+					 <span class="glyphicon glyphicon-star-empty"></span> 
+					 <span class="glyphicon glyphicon-star-empty"></span>
+					 <span class="glyphicon glyphicon-star-empty"></span>
+				</p>
+				<h5>${goods.goods_desc}</h5>
+				<p>${goods.goods_price}<span>手机购买</span><span class="glyphicon glyphicon-th-large"></span></p>
+				<hr/>
+				<p>颜色</p>
+				<ul>
+					<a href="#"><li></li></a>
+					<a href="#" ><li></li></a>
+					<a href="#" class="active"><li></li></a>
+				</ul>
+				<p>尺寸 <button class="btn btn-group-sm btn-primary">${goods.size_name}</button><button class="btn btn-group-sm">23英寸</button></p>
+				<h6>数量<span class="reduce">-</span><span class="count">1</span><span class="add">+</span></h6>
+				<hr />
+				<a href="javascript:"><button class="btn btn-default">加入购物车</button></a>
+				<a href="javascript:"><button class="btn btn-default">立即选购</button></a>
+				<h4>需要帮助？您可以 <a href="javascript:">联系在线客服</a> 或 致电：4008-870-566</h4>
+				<hr />
+				<h3><span class="glyphicon glyphicon-heart"></span>添加至收藏
+				    <p>分享：
+				    	<a href="javascript:"><img src="/xinxiuli/img/productdel/icon-01.png"/></a>
+				    	<a href="javascript:"><img src="/xinxiuli/img/productdel/icon-02.png"/></a>
+				    </p>
+				</h3>
+			</div>
 		</div>
 		
 		<!--中间部分-->

@@ -29,6 +29,7 @@
 	Connection conn = DbHelp.getConnection();
  %>
  <%=DbHelp.getConnection() %>
+ <a href="Show">点我去详情</a>
  <p>${flag}</p>
 </body>
 </html>

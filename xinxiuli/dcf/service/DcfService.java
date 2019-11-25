@@ -1,5 +1,7 @@
 package service;
 
+import dto.ShowOneGoods;
+
 public interface DcfService {
-    public void show(int goodsid,int colorid,int sizeid);
+    public ShowOneGoods show(int goodnum);
 }

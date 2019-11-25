@@ -17,7 +17,7 @@ import service.DcfService;
 
 public class DcfServiceImpl implements DcfService{
 	@Override
-	public void show(int goodsid,int colorid,int sizeid) {
+	public ShowOneGoods show(int goodsnum) {
 		 Connection conn=DbHelp.getConnection();
 		 Goods goods=new Goods();
 		 Goods_color color=new Goods_color();
@@ -28,9 +28,9 @@ public class DcfServiceImpl implements DcfService{
 		 Goods_sizeDao gsd=new Goods_sizeDaoImpl();
 		 try {
 			conn.setAutoCommit(false);
-			goods=gd.selectGoods(goodsid, conn);
-			color=gcd.selectGoods_color(goods.getGoods_color_num(), conn);
-		//	size=gsd.selectGoods_sizeOne(goodsid, colorid, sizeid, conn);
+			goods=gd.selectGoods(goodsnum, conn);
+			color=gcd.selectGoods_colorOne(goods.getGoods_id(),goods.getGoods_color_num(), conn);
+			size=gsd.selectGoods_sizeOne(goods.getGoods_id(),goods.getGoods_color_num(), goods.getGoods_size_num(), conn);
 //			查询所有表封装需要的数据
 			sog.setGoods_id(goods.getGoods_id());
 			sog.setDivied_num(goods.getDivied_num());
@@ -48,11 +48,14 @@ public class DcfServiceImpl implements DcfService{
 			sog.setSize_name(size.getSize_name());
 			sog.setSize_picture(size.getSize_picture());
 			sog.setGoods_remain(size.getGoods_remain());
-			
+			conn.commit();
+			return sog;
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+		}finally {
+			DbHelp.closeConnection(conn);
 		}
-		
+	   return sog;
 	}
 
 }

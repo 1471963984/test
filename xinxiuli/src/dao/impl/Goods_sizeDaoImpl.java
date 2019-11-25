@@ -100,5 +100,25 @@ public class Goods_sizeDaoImpl implements Goods_sizeDao{
 			}
 		return list;
 	}
+	public Goods_size selectGoods_sizeOne(int goodsid,int colornum,int sizenum,Connection conn) throws Exception{
+		String sql = "select * from goods_size where goods_id=? and color_num=? and size_num=?";
+		Goods_size g = null;
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, goodsid);
+			ps.setInt(2, colornum);
+			ps.setInt(3,sizenum);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				g = new Goods_size();
+				g.setSid(rs.getInt("sid"));
+				g.setGoods_id(rs.getInt("goods_id"));
+				g.setColor_num(rs.getInt("color_num"));
+				g.setSize_num(rs.getInt("size_num"));
+				g.setSize_name(rs.getString("size_name"));
+				g.setSize_picture(rs.getString("size_picture"));
+				g.setGoods_remain(rs.getInt("goods_remain"));
+			}
+		return g;
+	}
 
 }

@@ -11,5 +11,7 @@ public interface Goods_colorDao {
 	public boolean updateGoods_color(Goods_color goods_color,Connection conn) throws Exception;
 	public boolean deleteGoods_color(int pid,Connection conn) throws Exception;
 	public Goods_color selectGoods_color(int pid,Connection conn) throws Exception;
+	//
+	public Goods_color selectGoods_colorOne(int goodid,int colornum,Connection conn) throws Exception;
 	public List<Goods_color> selectAllGoods_color(Connection conn) throws Exception;
 }

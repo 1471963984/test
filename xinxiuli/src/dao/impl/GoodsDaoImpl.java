@@ -17,7 +17,6 @@ public class GoodsDaoImpl implements GoodsDao{
 	public boolean insertGoods(Goods goods, Connection conn) throws Exception{
 		boolean flag = false;
 		String sql = "insert into goods(goods_num,goods_id,divied_num,goods_desc,goods_price,goods_name,goods_star,goods_color_num,goods_size_num,goods_picture) values(null,?,?,?,?,?,?,?,?,?)";
-		
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, goods.getGoods_id());
 			ps.setInt(2, goods.getDivied_num());
