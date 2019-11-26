@@ -3,12 +3,10 @@ package dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import dao.Goods_sizeDao;
-import db.DbHelp;
 import pojo.Goods_size;
 
 public class Goods_sizeDaoImpl implements Goods_sizeDao{
@@ -119,6 +117,45 @@ public class Goods_sizeDaoImpl implements Goods_sizeDao{
 				g.setGoods_remain(rs.getInt("goods_remain"));
 			}
 		return g;
+	}
+	public List<Goods_size> queryGoods_size(int goodsid,int colornum,Connection conn) throws Exception{
+		List<Goods_size> list= new ArrayList<Goods_size>();
+		String sql = "select * from goods_size where good_is=? and color_num=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, goodsid);
+			ps.setInt(2, colornum);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Goods_size g= new Goods_size();
+				g.setSid(rs.getInt("sid"));
+				g.setGoods_id(rs.getInt("goods_id"));
+				g.setColor_num(rs.getInt("color_num"));
+				g.setSize_num(rs.getInt("size_num"));
+				g.setSize_name(rs.getString("size_name"));
+				g.setSize_picture(rs.getString("size_picture"));
+				g.setGoods_remain(rs.getInt("goods_remain"));
+				list.add(g);
+			}
+		return list;
+	}
+	public List<Goods_size> querysGoods_size(int goodsid,Connection conn) throws Exception{
+		List<Goods_size> list= new ArrayList<Goods_size>();
+		String sql = "select * from goods_size where goods_id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, goodsid);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Goods_size g= new Goods_size();
+				g.setSid(rs.getInt("sid"));
+				g.setGoods_id(rs.getInt("goods_id"));
+				g.setColor_num(rs.getInt("color_num"));
+				g.setSize_num(rs.getInt("size_num"));
+				g.setSize_name(rs.getString("size_name"));
+				g.setSize_picture(rs.getString("size_picture"));
+				g.setGoods_remain(rs.getInt("goods_remain"));
+				list.add(g);
+			}
+		return list;
 	}
 
 }

@@ -1,6 +1,8 @@
 package service.Impl;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.GoodsDao;
 import dao.Goods_colorDao;
@@ -20,8 +22,11 @@ public class DcfServiceImpl implements DcfService{
 	public ShowOneGoods show(int goodsnum) {
 		 Connection conn=DbHelp.getConnection();
 		 Goods goods=new Goods();
-		 Goods_color color=new Goods_color();
-		 Goods_size size=new Goods_size();
+		 
+		 List<Goods_color> listcolor=new ArrayList<Goods_color>();
+		 
+		 List<Goods_size> lsize=new ArrayList<>();
+		 
 		 ShowOneGoods sog=new ShowOneGoods();
 		 GoodsDao gd=new GoodsDaoImpl();
 		 Goods_colorDao gcd=new Goods_colorDaoImpl();
@@ -29,9 +34,8 @@ public class DcfServiceImpl implements DcfService{
 		 try {
 			conn.setAutoCommit(false);
 			goods=gd.selectGoods(goodsnum, conn);
-			color=gcd.selectGoods_colorOne(goods.getGoods_id(),goods.getGoods_color_num(), conn);
-			size=gsd.selectGoods_sizeOne(goods.getGoods_id(),goods.getGoods_color_num(), goods.getGoods_size_num(), conn);
-//			查询所有表封装需要的数据
+			listcolor=gcd.queryGoods_color(goods.getGoods_id(), conn);
+			lsize=gsd.querysGoods_size(goods.getGoods_id(), conn);
 			sog.setGoods_id(goods.getGoods_id());
 			sog.setDivied_num(goods.getDivied_num());
 			sog.setGoods_desc(goods.getGoods_desc());
@@ -41,15 +45,11 @@ public class DcfServiceImpl implements DcfService{
 			sog.setGoods_color_num(goods.getGoods_color_num());
 			sog.setGoods_size_num(goods.getGoods_size_num());
 			sog.setGoods_picture(goods.getGoods_picture());
-			
-			sog.setColor_name(color.getColor_name());
-			sog.setGoods_delpicture(color.getGoods_delpicture());
-			
-			sog.setSize_name(size.getSize_name());
-			sog.setSize_picture(size.getSize_picture());
-			sog.setGoods_remain(size.getGoods_remain());
+//			
+			sog.setL(listcolor);
+			sog.setLsize(lsize);
+	
 			conn.commit();
-			return sog;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

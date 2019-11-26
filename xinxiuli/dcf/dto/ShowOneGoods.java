@@ -1,6 +1,10 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.List;
+
+import pojo.Goods_color;
+import pojo.Goods_size;
 
 public class ShowOneGoods implements Serializable {
 	private static final long serialVersionUID = 8925084883877392572L;
@@ -15,12 +19,12 @@ public class ShowOneGoods implements Serializable {
 	private int goods_size_num;
 	private String goods_picture;
 	//商品颜色
-	private String color_name;
-	private String goods_delpicture;
+	private List<Goods_color> l;
 	//商品尺寸和库存
-	 private String size_name;
-    private String size_picture;
-    private int goods_remain;
+	private	List<Goods_size> lsize;
+//	绑上颜色id
+	private String cid;
+	
 	public int getGoods_id() {
 		return goods_id;
 	}
@@ -57,17 +61,20 @@ public class ShowOneGoods implements Serializable {
 	public void setGoods_star(int goods_star) {
 		this.goods_star = goods_star;
 	}
-	public int getGoods_color_num() {
-		return goods_color_num;
-	}
-	public void setGoods_color_num(int goods_color_num) {
-		this.goods_color_num = goods_color_num;
-	}
 	public int getGoods_size_num() {
 		return goods_size_num;
 	}
 	public void setGoods_size_num(int goods_size_num) {
 		this.goods_size_num = goods_size_num;
+	}
+
+	
+	
+	public int getGoods_color_num() {
+		return goods_color_num;
+	}
+	public void setGoods_color_num(int goods_color_num) {
+		this.goods_color_num = goods_color_num;
 	}
 	public String getGoods_picture() {
 		return goods_picture;
@@ -75,35 +82,25 @@ public class ShowOneGoods implements Serializable {
 	public void setGoods_picture(String goods_picture) {
 		this.goods_picture = goods_picture;
 	}
-	public String getColor_name() {
-		return color_name;
+	public List<Goods_color> getL() {
+		return l;
 	}
-	public void setColor_name(String color_name) {
-		this.color_name = color_name;
+	public void setL(List<Goods_color> l) {
+		this.l = l;
 	}
-	public String getGoods_delpicture() {
-		return goods_delpicture;
+	
+	
+	public List<Goods_size> getLsize() {
+		return lsize;
 	}
-	public void setGoods_delpicture(String goods_delpicture) {
-		this.goods_delpicture = goods_delpicture;
+	public void setLsize(List<Goods_size> lsize) {
+		this.lsize = lsize;
 	}
-	public String getSize_name() {
-		return size_name;
+	public String getCid() {
+		return cid;
 	}
-	public void setSize_name(String size_name) {
-		this.size_name = size_name;
-	}
-	public String getSize_picture() {
-		return size_picture;
-	}
-	public void setSize_picture(String size_picture) {
-		this.size_picture = size_picture;
-	}
-	public int getGoods_remain() {
-		return goods_remain;
-	}
-	public void setGoods_remain(int goods_remain) {
-		this.goods_remain = goods_remain;
+	public void setCid(String cid) {
+		this.cid = cid;
 	}	
-  
+	
 }

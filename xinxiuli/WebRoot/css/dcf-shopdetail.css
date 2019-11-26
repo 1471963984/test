@@ -492,7 +492,7 @@
 	display: block;
 	clear: both;
 }
-/*放大镜*/
+/*鏀惧ぇ闀�*/
 	.subinfo{
 		height: 100px;
 		width: 100px;
@@ -555,28 +555,22 @@
 	color: #999999;
 }
 .info-r>ul{
-	height: 20px;
+	height:40px;
 }
 .info-r>ul a{
 	display: block;
-	height: 20px;
-	width: 20px;
+	height: 40px;
+	width: 40px;
 	float: left;
-	border-radius: 50%;
-	margin-left:10px;
+	margin-right:40px;
 }
-.info-r>ul a:nth-child(1){
-	background-color: black;
+.info-r>ul a button{
+	color:while;
+	width:70px;
+	height:35px;
 }
-
-.info-r>ul a:nth-child(2){
-	background-color: blue;
-}
-.info-r>ul>a:nth-child(3){
-	background-color:#999;
-}
-.info-r>ul .active{
-	border: 2px solid red;
+.info-r>p{
+	text-align:left;
 }
 .info-r>p>button{
 	margin-left: 20px;
@@ -617,7 +611,7 @@
 .info-r>h3>span{
 	cursor: pointer;
 }
-/*模特块*/
+/*妯＄壒鍧�*/
 #model{
 	width: 1200px;
 	margin:auto auto;	
@@ -626,7 +620,7 @@
 	display:block;
 	width: 1200px;	
 }
-/*产品模块*/
+/*浜у搧妯″潡*/
 #produ{
 	padding-top: 80px;
 }
@@ -656,7 +650,7 @@
 .produ-list ul li{
 	width: 100px;
 }
-/*尺寸模块*/
+/*灏哄妯″潡*/
 #size>img{
 	width: 100%;
 }
@@ -676,7 +670,7 @@
 	position:relative;
 }
 
-/*子模块*/
+/*瀛愭ā鍧�*/
 .subsize-bot{
 	width:90%;
 	height: 400px;
@@ -708,7 +702,7 @@
 	width: 200px;
 	font-size: 15px;
 }
-/*为您推荐模块*/
+/*涓烘偍鎺ㄨ崘妯″潡*/
 #remcommend{
 	width: 1200px;
 	height: 450px;
@@ -723,7 +717,7 @@
 	/*height:50px;*/
 	border-top: 1px solid #999999;
 }
-/*子模块*/
+/*瀛愭ā鍧�*/
 #remcommend .subremo{
 	height: 50px;
 	width: 100px;
@@ -741,7 +735,7 @@
 #remcommend ul>a>li>img{
 	height: 300px;
 }
-/*子模块描述*/
+/*瀛愭ā鍧楁弿杩�*/
 #remcommend ul a li>.subremcom-list{
 	font-size:10px;
 	color:#080808;
@@ -758,7 +752,7 @@
 #remcommend ul a li:hover .subremcom-list{
 	display: block
 }
-/*猜您喜欢模块*/
+/*鐚滄偍鍠滄妯″潡*/
 #like{
 	width:100%;
 	background-color: #E6E6E6;
@@ -777,7 +771,7 @@
 	margin:30px auto;
 	border-top: 1px solid #999999;
 }
-/*子模块*/
+/*瀛愭ā鍧�*/
 #like .sublike{
 	height: 50px;
 	width: 100px;
@@ -829,7 +823,7 @@
 .like-bg ul li a:hover .sublike-list{
 	display: block
 }
- /*小圆圈*/
+ /*灏忓渾鍦�*/
 .like-bg>span{
 	display: inline-block;
 	height: 12px;

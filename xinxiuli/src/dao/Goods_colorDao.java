@@ -13,5 +13,7 @@ public interface Goods_colorDao {
 	public Goods_color selectGoods_color(int pid,Connection conn) throws Exception;
 	//
 	public Goods_color selectGoods_colorOne(int goodid,int colornum,Connection conn) throws Exception;
+	//查询一个商品的多个颜色
+	public List<Goods_color> queryGoods_color(int goodsid, Connection conn) throws Exception;
 	public List<Goods_color> selectAllGoods_color(Connection conn) throws Exception;
 }

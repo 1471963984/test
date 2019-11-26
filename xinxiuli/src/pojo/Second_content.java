@@ -6,6 +6,7 @@ public class Second_content implements Serializable{
 	private static final long serialVersionUID = 5604997108716620606L;
     private int first_num;
     private int second_num;
+    private int divied_num;
     private String second_name;
 	public int getFirst_num() {
 		return first_num;
@@ -25,4 +26,11 @@ public class Second_content implements Serializable{
 	public void setSecond_name(String second_name) {
 		this.second_name = second_name;
 	}
+	public int getDivied_num() {
+		return divied_num;
+	}
+	public void setDivied_num(int divied_num) {
+		this.divied_num = divied_num;
+	}
+	
 }

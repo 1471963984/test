@@ -16,10 +16,11 @@ public class Second_contentDaoImpl implements Second_contentDao{
 	@Override
 	public boolean insertSecond_content(Second_content second_content, Connection conn) throws Exception {
 		boolean flag = false;
-		String sql = "insert into second_content(second_num,first_num,second_name) values(null,?,?)";
+		String sql = "insert into second_content(second_num,first_num,second_name,divied_num) values(null,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, second_content.getFirst_num());
 		ps.setString(2, second_content.getSecond_name());
+		ps.setInt(3, second_content.getDivied_num());
 		if(ps.executeUpdate()>0) {
 			flag = true;
 		}
@@ -30,11 +31,12 @@ public class Second_contentDaoImpl implements Second_contentDao{
 	@Override
 	public boolean updateSecond_content(Second_content second_content, Connection conn) throws Exception {
 		boolean flag = true;
-		String sql = "update second_content set first_num=?,second_name=? where second_num=?";
+		String sql = "update second_content set first_num=?,second_name=?,divied_num=? where second_num=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, second_content.getFirst_num());
 		ps.setString(2, second_content.getSecond_name());
-		ps.setInt(3, second_content.getSecond_num());
+		ps.setInt(3, second_content.getDivied_num());
+		ps.setInt(4, second_content.getSecond_num());
 		if(ps.executeUpdate()>0) {
 			flag = true;
 		}
@@ -67,6 +69,7 @@ public class Second_contentDaoImpl implements Second_contentDao{
 			s.setSecond_num(rs.getInt("second_num"));
 			s.setFirst_num(rs.getInt("first_num"));
 			s.setSecond_name(rs.getString("second_name"));
+			s.setDivied_num(rs.getInt("divied_num"));
 		}
 		
 		return s;
@@ -84,6 +87,7 @@ public class Second_contentDaoImpl implements Second_contentDao{
 			s.setSecond_num(rs.getInt("second_num"));
 			s.setFirst_num(rs.getInt("first_num"));
 			s.setSecond_name(rs.getString("second_name"));
+			s.setDivied_num(rs.getInt("divied_num"));
 			list.add(s);
 		}
 		

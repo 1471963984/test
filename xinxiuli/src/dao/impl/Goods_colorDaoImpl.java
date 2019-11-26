@@ -111,5 +111,23 @@ public class Goods_colorDaoImpl implements Goods_colorDao{
 		}	
 		return g;
 	}
+//	查询一件商品多个颜色
+	public List<Goods_color> queryGoods_color(int goodsid, Connection conn) throws Exception {
+		List<Goods_color> l=new ArrayList<Goods_color>();
+		String sql = "select * from goods_color where goods_id=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1,goodsid);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			Goods_color g = new Goods_color();
+			g.setPid(rs.getInt("pid"));
+			g.setGoods_id(rs.getInt("goods_id"));
+			g.setColor_num(rs.getInt("color_num"));
+			g.setColor_name(rs.getString("color_name"));
+			g.setGoods_delpicture(rs.getString("goods_delpicture"));
+			l.add(g);
+		}	
+		return l;
+	}
 
 }
