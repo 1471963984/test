@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -39,7 +39,7 @@
 		</style>
 	</head>
 	<body data-spy="scroll">
-		<!--首页头部-->
+				<!--首页头部-->
 		<header>
 			<nav>
 				<!--普通导航栏-->
@@ -58,7 +58,7 @@
 						</div>
 						<div class="content-center">
 							<div class="middle-top text-center">
-								<a href="/xinxiuli/qianduanyemian/index.jsp" target="_blank" class="middle-logo">
+								<a target="_self" href="/xinxiuli/index.jsp" class="middle-logo">
 									<img src="/xinxiuli/img/logo/logo-black.png" />
 								</a>
 							</div>
@@ -84,16 +84,24 @@
 						</div>
 						<div class="content-right">
 							<div class="right-top">
-								<div class="top-list text-center">
-									<a href="#" data-toggle="modal" data-target="#login">登录</a>|
-									<a href="/xinxiuli/qianduanyemian/register.jsp">注册</a>
-								</div>
+								<c:if test="${account ne null}">
+									<div class="top-list text-center loginafter">
+										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><span class="out">　 退出</span>
+									</div>
+								</c:if>
+								<c:if test="${account eq null}">
+									<div class="top-list text-center loginbefore">
+										<a href="#" data-toggle="modal" data-target="#login">登录</a>|
+										<a href="/xinxiuli/qianduanyemian/register.jsp" target="_blank">注册</a>
+									</div>
+								</c:if>
+								<!-- 登录后样式 -->
 								<div class="top-list">
 									<a href="#">
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 									</a>
 								</div>
-								<div class="top-list top-right">
+								<div class="top-list top-right mycart">
 									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
 									<div class="cart-number">0</div>
 								</div>
@@ -113,11 +121,11 @@
 				</div>
 				
 				<!--滚动导航栏-->
-				<div class="scrolled-index-header" data-spy="affix" data-offset-top="140">
+				<div class="scrolled-index-header" data-spy="affix" data-offset-top="146">
 					<div class="container">
 						<div class="scrolled-warp">
 							<div class="scrolled-logo">
-								<a href="/xinxiuli/qianduanyemian/index.jsp" target="_blank">
+								<a href="/xinxiuli/index.jsp">
 									<img src="/xinxiuli/img/logo/logo-white.png" />
 								</a>
 							</div>
@@ -135,17 +143,24 @@
 							</div>
 							<div class="scrolled-right">
 								<div class="right-warp">
-									<div class="right-list text-center">
-										<a href="#" data-toggle="modal" data-target="#login">登录</a>
-										<span>|</span>
-										<a href="/xinxiuli/qianduanyemian/register.jsp">注册</a>
-									</div>
-									<div class="right-list">
+									<c:if test="${account ne null}">
+										<div class="right-list text-center loginafter">
+											<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><span class="out">　 退出</span>
+										</div>
+									</c:if>
+									<c:if test="${account eq null}">
+										<div class="right-list text-center loginbefore">
+											<a href="#" data-toggle="modal" data-target="#login">登录</a>
+											<span>|</span>
+											<a href="/xinxiuli/qianduanyemian/register.jsp" target="_blank">注册</a>
+										</div>
+									</c:if>
+									<div class="right-list coll">
 										<a href="#">
 											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 										</a>
 									</div>
-									<div class="right-list">
+									<div class="right-list cart">
 										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
 										<div class="cart-number">0</div>
 									</div>

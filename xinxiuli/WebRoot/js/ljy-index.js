@@ -16,6 +16,7 @@ $(window).scroll(function(){
 		}
 	});
 	
+    //返回顶部
 	$('.box').click(function(){
 		$('html').animate({'scrollTop':0},500);
 	});

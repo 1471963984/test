@@ -8,6 +8,17 @@
 	width: 1200px;
 	margin:0px auto;
 }
+#info>.info-coll-content{
+	width: 1200px;
+	margin:0px auto;
+}
+
+#info>.info-coll-content:after{
+	display:block;
+	content:'';
+	clear:both;
+}
+
 .info-t>ul{
 	height: 20px;
 	margin-bottom:20px;
@@ -54,7 +65,6 @@
 	border-left: 2px solid #000000;
 	background-color: #E3E3E3;
 }
-
 /*右边展示部分*/
 .info_r{
 	/*height: 800px;*/
@@ -129,6 +139,9 @@ p{
 	cursor: pointer;
 	border-bottom: 1px solid black;
 }
+.buttongroup{
+	position:relative;
+}
 .buttoncun{
 	border:none;
 	width: 230px;height: 40px;
@@ -137,6 +150,7 @@ p{
 	padding: 0px 12px;
 	font-size: 14px;
 	border-radius: 5px;
+	margin-left: 80px;
 }
 .buttonqu{
 	border:1px #333 solid;
@@ -145,6 +159,9 @@ p{
 	background: #fff;
 	padding: 0px 12px;
 	font-size: 14px;
+	position: absolute;
+	left:320px;
+	top:0px;
 }
 /*选择称谓*/
 .help-block{

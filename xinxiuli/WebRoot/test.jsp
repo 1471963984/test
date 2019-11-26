@@ -27,6 +27,8 @@
 <body>
 <% 
 	Connection conn = DbHelp.getConnection();
+	String flag = GenericPrimaryKey.getPrimaryKey();
+	pageContext.setAttribute("flag", flag);
  %>
  <%=DbHelp.getConnection() %>
  <a href="Show">点我去详情</a>

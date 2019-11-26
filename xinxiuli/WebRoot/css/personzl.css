@@ -8,6 +8,17 @@
 	width: 1200px;
 	margin:0px auto;
 }
+#info>.info-coll-content{
+	width: 1200px;
+	margin:0px auto;
+}
+
+#info>.info-coll-content:after{
+	display:block;
+	content:'';
+	clear:both;
+}
+
 .info-t>ul{
 	height: 20px;
 	margin-bottom:20px;

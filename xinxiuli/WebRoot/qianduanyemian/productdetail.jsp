@@ -13,122 +13,137 @@
 	</head>
 	<body>
 		<!--首页头部-->
-		<header>
-				<nav>
-					<!--普通导航栏-->
-					<div class="normal-index-header">
-						<div class="container">
-							<div class="content-left">
-								<div class="icon-box js-header-location">
-									<a href="#" class="content">
-										<img src="/xinxiuli/img/tools/location.png" alt="附近门店"/> 附近门店
-									</a>
-								</div>
-								<div class="icon-box js-header-customer" id="divde">|</div>
-								<div class="icon-box js-header-customer">
-									<a href="#" class="content">服务顾客</a>
-								</div>
+		<header class="mypage-header">
+			<nav>
+				<!--普通导航栏-->
+				<div class="normal-index-header">
+					<div class="container">
+						<div class="content-left">
+							<div class="icon-box js-header-location">
+								<a href="#" class="content">
+									<img src="/xinxiuli/img/tools/location.png" alt="附近门店"/> 附近门店
+								</a>
 							</div>
-							<div class="content-center">
-								<div class="middle-top text-center">
-									<a target="_self" href="#" class="middle-logo">
-										<img src="/xinxiuli/img/logo/logo-black.png" />
-									</a>
-								</div>
-								<div class="middle-bottom text-center">
-							    </div>
-								<form>
-									<div class="active-input">
-										<div class="input-group">
-											<span class="icon text-center">
-												<img src="/xinxiuli/img/tools/icon-header-search.png" />
-											</span>
-											<input type="text" placeholder="热门商品" class="rm-search-input"/>
-											<span class="close-icon icon text-center">
-												<img src="/xinxiuli/img/tools/close.png"/>
-											</span>
-										</div>
+							<div class="icon-box js-header-customer" id="divde">|</div>
+							<div class="icon-box js-header-customer">
+								<a href="#" class="content">服务顾客</a>
+							</div>
+						</div>
+						<div class="content-center">
+							<div class="middle-top text-center">
+								<a target="_self" href="/xinxiuli/index.jsp" class="middle-logo">
+									<img src="/xinxiuli/img/logo/logo-black.png" />
+								</a>
+							</div>
+							<div class="middle-bottom text-center">
+						    </div>
+							<form>
+								<div class="active-input">
+									<div class="input-group">
+										<span class="icon text-center">
+											<img src="/xinxiuli/img/tools/icon-header-search.png" />
+										</span>
+										<input type="text" placeholder="热门商品" class="rm-search-input"/>
+										<span class="close-icon icon text-center">
+											<img src="/xinxiuli/img/tools/close.png"/>
+										</span>
 									</div>
-								</form>
-							    <div class="rm-show">
-							    	<p>衣服</p>
-							    	<p>帽子</p>
-							    </div>
-							</div>
-							<div class="content-right">
-								<div class="right-top">
-									<div class="top-list text-center">
+								</div>
+							</form>
+						    <div class="rm-show">
+						    	<p>衣服</p>
+						    	<p>帽子</p>
+						    </div>
+						</div>
+						<div class="content-right">
+							<div class="right-top">
+								<c:if test="${account ne null}">
+									<div class="top-list text-center loginafter">
+										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><span class="out">　 退出</span>
+									</div>
+								</c:if>
+								<c:if test="${account eq null}">
+									<div class="top-list text-center loginbefore">
 										<a href="#" data-toggle="modal" data-target="#login">登录</a>|
 										<a href="/xinxiuli/qianduanyemian/register.jsp" target="_blank">注册</a>
 									</div>
-									<div class="top-list">
-										<a href="#">
-											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
-										</a>
-									</div>
-									<div class="top-list top-right">
-										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
-										<div class="cart-number">0</div>
-									</div>
+								</c:if>
+								<!-- 登录后样式 -->
+								<div class="top-list">
+									<a href="#">
+										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
+									</a>
 								</div>
-								<div class="right-bottom">
-									<div class="bottom-box">
-										<div class="bottom-img">
-											<img src="/xinxiuli/img/tools/icon-header-search.png" alt="搜索"/>
-										</div>
-										<div class="bottom-input">
-											<input type="text" placeholder="热门搜索" class="input-right"/>
-										</div>
+								<div class="top-list top-right mycart">
+									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
+									<div class="cart-number">0</div>
+								</div>
+							</div>
+							<div class="right-bottom">
+								<div class="bottom-box">
+									<div class="bottom-img">
+										<img src="/xinxiuli/img/tools/icon-header-search.png" alt="搜索"/>
+									</div>
+									<div class="bottom-input">
+										<input type="text" placeholder="热门搜索" class="input-right"/>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					
-					<!--滚动导航栏-->
-					<div class="scrolled-index-header" data-spy="affix" data-offset-top="146">
-						<div class="container">
-							<div class="scrolled-warp">
-								<div class="scrolled-logo">
-									<a href="#">
-										<img src="/xinxiuli/img/logo/logo-white.png" />
-									</a>
+				</div>
+				
+				<!--滚动导航栏-->
+				<div class="scrolled-index-header" data-spy="affix" data-offset-top="146">
+					<div class="container">
+						<div class="scrolled-warp">
+							<div class="scrolled-logo">
+								<a href="/xinxiuli/index.jsp">
+									<img src="/xinxiuli/img/logo/logo-white.png" />
+								</a>
+							</div>
+							<div class="warp-search">
+								<div class="input-warp">
+									<form style="height: 100%;">
+										<input type="text" placeholder="热门搜索" class="search-input"/>
+										<img src="/xinxiuli/img/tools/icon-header-search.png" class="input-logo"/>
+									</form>
 								</div>
-								<div class="warp-search">
-									<div class="input-warp">
-										<form style="height: 100%;">
-											<input type="text" placeholder="热门搜索" class="search-input"/>
-											<img src="/xinxiuli/img/tools/icon-header-search.png" class="input-logo"/>
-										</form>
-									</div>
-								</div>
-					            <!--热门搜索展示面板-->
-								<div class="warp-rm-show">
-									<p>外套</p>
-								</div>
-								<div class="scrolled-right">
-									<div class="right-warp">
-										<div class="right-list text-center">
+							</div>
+							<!--热门搜索展示面板-->
+							<div class="warp-rm-show">
+								<p>外套</p>
+							</div>
+							<div class="scrolled-right">
+								<div class="right-warp">
+									<c:if test="${account ne null}">
+										<div class="right-list text-center loginafter">
+											<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><span class="out">　 退出</span>
+										</div>
+									</c:if>
+									<c:if test="${account eq null}">
+										<div class="right-list text-center loginbefore">
 											<a href="#" data-toggle="modal" data-target="#login">登录</a>
 											<span>|</span>
 											<a href="/xinxiuli/qianduanyemian/register.jsp" target="_blank">注册</a>
 										</div>
-										<div class="right-list">
-											<a href="#">
-												<img src="/xinxiuli/img/tools/icon-header-collection.png" />
-											</a>
-										</div>
-										<div class="right-list">
-											<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
-											<div class="cart-number">0</div>
-										</div>
+									</c:if>
+									<div class="right-list coll">
+										<a href="#">
+											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
+										</a>
+									</div>
+									<div class="right-list cart">
+										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
+										<div class="cart-number">0</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</nav>
-			</header>
+				</div>
+			</nav>
+		</header>
 		
 		<!--头部信息展示-->
 		<div class="container" id="info">

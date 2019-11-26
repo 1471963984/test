@@ -1,2 +1,8 @@
+<%@page import="pojo.Account"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<jsp:forward page="/qianduanyemian/index.jsp"></jsp:forward>
+<%
+	Account account = new Account();
+	account.setAccount_num("15197845670");
+	session.setAttribute("account", account);
+	request.getRequestDispatcher("/qianduanyemian/index.jsp").forward(request, response);
+ %>

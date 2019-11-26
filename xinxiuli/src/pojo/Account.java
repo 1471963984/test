@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Account implements Serializable{
 	private static final long serialVersionUID = 873962505215991395L;
-	private String account_id;
+	private int account_id;
 	private String account_num;
 	private String account_pass;
 	private String users_ip;
@@ -12,10 +12,10 @@ public class Account implements Serializable{
 	private String order_num;
 	private int coll_goods;
 	
-	public String getAccount_id() {
+	public int getAccount_id() {
 		return account_id;
 	}
-	public void setAccount_id(String account_id) {
+	public void setAccount_id(int account_id) {
 		this.account_id = account_id;
 	}
 	public String getAccount_num() {

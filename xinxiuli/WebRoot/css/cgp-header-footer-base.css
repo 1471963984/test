@@ -152,10 +152,11 @@
 				height: 100px;
 			}
 			.normal-index-header .content-right .right-top{
-				width: 240px;
+				width: 350px;
 				line-height: 100px;
 				text-align: right;
 			}
+			
 			.normal-index-header .content-right .top-list{
 				display: inline-block;
 				height: 100px;
@@ -178,6 +179,8 @@
 			}
 			.normal-index-header .content-right .right-bottom{
 				width: 240px;
+				position: absolute;
+				right: 0px;
 			}
 			.normal-index-header .content-right .right-bottom .bottom-box{
 				width: 240px;
@@ -262,7 +265,7 @@
 				position: absolute;
 				top: 0px;right: 0px;
 				height: 80px;
-				width: 258px;height: 80px;
+				width: 300px;height: 80px;
 			}
 			.scrolled-index-header .scrolled-warp .right-warp .right-list{
 				display: inline-block;
@@ -271,7 +274,32 @@
 				margin: 0px 4px;
 				line-height: 80px;
 				font-size: 15px;
-				width: 78px;
+			}
+			.scrolled-index-header .scrolled-warp .right-warp .loginbefore{
+				position: absolute;
+				right: 110px;
+			}
+			.scrolled-index-header .scrolled-warp .right-warp .loginafte{
+				position: absolute;
+				right: 300px;
+			}
+			.scrolled-index-header .scrolled-warp .right-warp .loginafter a{
+				font-size: 14px;
+				text-decoration: none;
+			}
+			.scrolled-index-header .scrolled-warp .right-warp .loginafter .out{
+				font-size: 12px;
+			}
+			.scrolled-index-header .scrolled-warp .right-warp .coll{
+				position: absolute;
+				right: 35px;
+				width: 30px;
+			}
+			.scrolled-index-header .scrolled-warp .right-warp .cart{
+				margin-right: 10px;
+				width: 30px; 
+				position: absolute;
+				right: 0px;
 			}
 			.scrolled-index-header .scrolled-warp .right-warp .right-list .cart-number{
 				margin-left: 2px;
