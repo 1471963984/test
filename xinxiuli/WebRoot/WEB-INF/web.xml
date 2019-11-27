@@ -30,6 +30,13 @@
     <servlet-name>AccountOut</servlet-name>
     <servlet-class>web.servlet.AccountOut</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>FirstContent</servlet-name>
+    <servlet-class>web.servlet.FirstContent</servlet-class>
+  </servlet>
+
 
 	<servlet-mapping>
 	   <servlet-name>goodsShow</servlet-name>
@@ -38,5 +45,9 @@
   <servlet-mapping>
     <servlet-name>AccountOut</servlet-name>
     <url-pattern>/tuichu</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FirstContent</servlet-name>
+    <url-pattern>/first</url-pattern>
   </servlet-mapping>
 </web-app>

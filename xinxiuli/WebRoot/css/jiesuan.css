@@ -1,0 +1,362 @@
+.main-container{
+	width: 1000px;
+	padding: 140px 0px 150px;
+	margin: 0 auto;
+	background: white;
+	font-family: PingFangSC-Regular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.steper-title{
+	width: 140px;
+	height: 28px;
+	font-size: 20px;
+	margin-bottom: 50px;
+}
+.balance-lable{
+	width: 100%;
+	height: 20px;
+	font-size: 14px;
+	margin-bottom: 20px;
+}
+.method-delivery{
+	width: 220px;
+	height: 50px;
+	border: 2px solid black;
+	background-image: url(../img/checked.png);
+	background-repeat: no-repeat;
+	background-position:198px 28px;
+	position: relative;
+	margin-bottom: 30px;
+}
+.method-delivery img{
+	width: 19px;
+	height: 15px;
+	position: absolute;
+	left: 60px;
+	top: 16px;
+}
+.method-name{
+	width: 64px;
+	height: 46px;
+	text-align: center;
+	line-height: 46px;
+	position: absolute;
+	left: 88px;
+	font-size: 16px;
+}
+
+/*左边导航部分*/
+
+/*右边展示部分*/
+.info_r{
+	width: 100%;
+	background-color: white;
+	margin: 0px auto;
+	/*padding:40px 50px 60px;*/
+}
+
+/*个人信息修改css*/
+.info_r ul li{
+	width: 1000px;
+	height: 40px;
+	margin-bottom: 20px;
+	position: relative;
+}
+.btn{
+	width: 94px;
+	height: 40px;
+	margin: 0px;
+	position: absolute;
+	right: 0px;
+	font-size: 14px;
+}
+#addmyaddrs{
+	border-bottom: 1px solid #888;
+	margin-bottom: 20px;
+}
+.title-about{
+	width: 80px;height: 40px;
+	font-size: 14px;
+	float: left;
+}
+
+.addrs-list{
+	width: 1000px;
+	height: 44px;
+	/*border: 1px solid black;*/
+	position: relative;
+	border-bottom: 1px solid #888;
+}
+#choose-addrs{
+	width: 20px;
+	height: 20px;
+	margin-top: 10px;
+	position: absolute;
+	left: 10px;
+}
+/*称呼*/
+.ch-left{
+	width: 100px;
+	height: 20px;
+	font-size: 12px;
+	text-align: center;
+	color: black;
+}
+.name{
+	position: absolute;
+	top: 14px;
+	left: 44px;
+}
+/*.chengwei{
+	position: absolute;
+	top: 40px;
+}*/
+/*电话*/
+.phone{
+	width: 140px;
+	height: 16px;
+	color: #686868;
+}
+.mbtel{
+	position: absolute;
+	left: 160px;
+	top: 13px;
+}
+.addrs-message{
+	width: 290px;
+	height: 20px;
+	color: #a3a3a3;
+	font-size: 12px;
+	padding: 0px 10px;
+	position: absolute;
+	left: 314px;
+	top: 12px;
+}
+.addrs-default{
+	width: 50px;
+	height: 40px;
+	/*background: #222222;*/
+	color: black;
+	border: none;
+	font-size: 12px;
+	position: absolute;
+	left: 704px;
+	top: 2px;
+}
+.caozuo{
+	position: absolute;
+	width: 110px;
+	height: 40px;
+	right: 0px;
+	top: 2px;
+	padding:11px 0px ;
+}
+.addrs-edit{
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+	position: absolute;
+	left: 30px;
+}
+.goods-delete{
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	position: absolute;
+	left: 80px;
+}
+
+.dingdan-shops{
+	width: 100%;
+}
+.dingdan-shops li{
+	width: 100%;
+	height: 150px;
+	border-bottom: 1px solid #888;
+	position: relative;
+}
+.goods-img{
+	width: 120px;
+	height: 120px;
+	background-image: url(/xinxiuli/shop-imgs/0.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	border: none;
+	margin-right: 20px;
+}
+
+
+/*复制来的*/
+	.goods-about{
+		width: 450px;
+		height: 74px;
+		position: absolute;
+		left: 160px;
+		top: 0px;
+	}
+	.goods-about a{
+		width: 426px;
+		height: 14px;
+		color: #222;
+		font-size: 12px;
+		text-decoration: none;
+	}
+	.goods-about a:hover{
+		color: #222;
+	}
+	.goods-about .goods-brand{
+		width: 240px;height: 20px;
+		margin: 5px 0px;
+		font-size: 12px;
+		color: #969696;
+	}
+	
+	.goods-spec{
+		width: 240px;height: 20px;
+	}
+	.goods-spec label{
+		font-weight: bold;
+		font-size: 12px;
+		float: left;
+	}
+	.goods-spec p{
+		font-size: 12px;
+		margin: 0;
+		margin-right: 15px;
+		float: left;
+	}
+	.goods-operation{
+		width: 240px;height: 20px;
+		margin: 15px 0px 0px;
+	}
+	.goods-operation img{
+		width: 15px;height: 15px;
+		float: left;
+	}
+	.goods-middle{
+		width: 1px;
+		height: 18px;
+		margin: 0px 20px;
+		float: left;
+	}
+	.sell-srice{
+		position: absolute;
+		top: 0px;
+		right: 0px;
+	}
+.payment{
+	width: 202px;
+	height: 50px;
+	border: 1px solid #999;
+	background-image: url(../img/checked.png);
+	background-repeat: no-repeat;
+	background-position:198px 28px;
+	position: relative;
+	margin-bottom: 30px;
+	float: left;
+	margin-right: 30px;
+	z-index: 9;
+}
+[data-dianji='active']{
+	border: 2px solid black;
+}
+/*支付方式图片*/
+.zhifufanghsi{
+	width: 198px;
+	height: 46px;
+	z-index: 8;
+	background-image: url(../img/checked.png);
+	background-repeat: no-repeat;
+	background-position:198px 28px;
+	/*position: absolute;
+	left: 60px;
+	top: 16px;*/
+}
+/*勾选的支付方式*/
+.gougou{
+	/*display: none;*/
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
+
+.goods-card{
+		width: 1000px;
+		height: 246px;
+		margin-top: 80px;
+	}
+	.card-left{
+		width: 386px;height: 198px;
+		margin-left: 6px;
+		position: relative;
+		float: left;
+	}
+	.card-left-top-title{
+		font-size: 14px;
+	}
+	.tip-desc{
+		width: 386px;
+		height: 18px;
+		margin-top: 12px;
+		font-size: 12px;
+	}	
+	.card-right{
+		width: 250px;
+		height: 300px;
+		float: right;
+		position: relative;
+	}
+	.card-right div{
+		width: 250px;
+		height: 20px;
+		color: #666;
+	}
+	
+	.card-right div label{
+		font-size: 12px;
+		float: left;
+		margin: 0px;
+	}
+	.card-right div p{
+		float: right;
+		margin: 0px;
+	}
+	.message-list-youhui{
+		margin: 20px 0px;
+	}
+	.message-list-discount{
+		margin: 20px 0px;
+	}
+	.message-list-total{
+		height: 26px;
+	}
+	
+	.message-list-total p{
+		font-weight: bold;
+		font-size: 18px;
+	}
+	/*按钮边框未取消*/
+	.card-right button{
+		width: 250px;height: 40px;
+		color: #fff;
+		margin-top: 40px;
+		padding: 0px 12px;
+	}
+	/*复制来的*/
+	.right-list-bottom{
+		width: 100%;
+	}
+	.title-aboutzhifu{
+		margin-top: 30px;
+	}
+	#zhifu{
+		margin: 10px 0px 30px;
+	}
+	#zhifu img{
+		margin-top: 10px;
+		padding-right: 15px;
+	}
+	.back-to-cart{
+		border-bottom: 1px solid;
+	}

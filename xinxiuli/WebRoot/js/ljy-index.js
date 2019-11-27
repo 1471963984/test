@@ -99,7 +99,20 @@ $(window).scroll(function(){
 //商品分类
 (function(){
   //发起请求
-  $.get('http://www.wjian.top/shop/api_cat.php',{}, function(result){
+	
+	
+//	 $.ajax({
+//         type: "POST",                            //传数据的方式
+//         url: "first",                             //servlet地址
+//
+//         data: $('#form').serialize(),            //传的数据  form表单 里面的数据
+//         success: function(result){               //传数据成功之后的操作   result是servlet传过来的数据  这个函数对result进行处理，让它显示在 输入框中
+//             $("#results").val(result);           //找到输入框 并且将result的值 传进去
+//         }
+//     });
+	
+	
+  $.get(first,{}, function(result){
     var obj = JSON.parse(result);
     console.log(obj);
     //验证
