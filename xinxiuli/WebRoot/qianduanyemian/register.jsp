@@ -1,9 +1,16 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%--
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+--%>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8" />
-		<title>新秀丽-新用户注册</title>
+	
+	<!--<base href=""> -->
+	
+	<meta charset="utf-8" />
+	<title>新秀丽-新用户注册</title>
 	    <meta name="viewport" content="width=device-width,initial-scale=1"/>	
 		<link rel="stylesheet" href="/xinxiuli/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/xinxiuli/css/xxk-registr.css" /> 
@@ -69,13 +76,14 @@
 		        </div> 
 		        
 		      <!--验证码-->
-		     <div class="input-group">
+		  <!--
+		    <div class="input-group">
 		     <input   type="text" class="form-control"/>
 		      <span class="input-group-btn">
 		      <button class="btn btn-default" style="background: #101010;color: white;border-left:#101010 ;">发送验证码</button>
 		     </span>
 		     </div>
-		   
+		       -->
 		   </div>	
 		  </div>
 		  
@@ -96,12 +104,21 @@
 		     <h6 style="text-align: left; color: #398439;">　</h6>
 		     </div>
 		     
+		     
+		    <!-- 验证码 -->
+		    <h4>填写验证码</h4>
+		    <div class="input-group">
+	           <input type="text" class="form-control"  id="checkcode"  placeholder="验证码不分大小写" />
+	              <span class="input-group-btn" style="padding-left: 10px;">
+	           <img src="imgCode"  alt="验证码" id="imgCode"   onclick="flushcode(this)" style="cursor: pointer;width: 142px;height: 34px;" />
+	          </span>
+	        </div>
+		     
 		   </div>	
 		  </div>
 		   <!--接收-->
 		  <div  class="row" style="margin-top:10px;">
 		      <div class="col-md-6 col-md-offset-3 " >
-		      
 		        <div class="form-inline">
 		   	    <input id="check" class="form-control"  type="checkbox" style="width: 20px;height: 20px;" />
 		        <label  style="display:inline-block ;padding-top: 3px;">

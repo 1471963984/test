@@ -181,14 +181,39 @@
 				<div class="info_r">
 					<h3>我的订单</h3>
 					<ul class="info_r-list">
-						<li class="active">全部<span>0</span></li>
-						<li>待付款</li>
-						<li>待发货</li>
-						<li>已发货</li>
-						<li>已取消</li>
-						<li>已退货</li>		
+						<li class="active" data-status="0">全部<span>0</span></li>
+						<li data-status="1">待付款</li>
+						<li data-status="2">待发货</li>
+						<li data-status="3">已发货</li>
+						<li data-status="4">已取消</li>
+						<li data-status="5">已退货</li>		
 					</ul>
 		            <!--在这里获取请求的数据-->
+		          <c:forEach items="${list}" var="l" varStatus="i">
+		            <ul class="myorders">
+		                <li class="myorders-head">
+		                  <span>订单编号："${list.order_num}"</span>
+		                  <c:if test="${list.order_status eq 1}">		                  
+		                    <span>订单状态：待发货</span>
+		                  </c:if>
+		                   <c:if test="${list.order_status eq 1}">
+		                    <span>订单状态：已发货</span>
+		                  </c:if>
+		                   <c:if test="${list.order_status eq 1}">
+		                    <span>订单状态：已取消</span>
+		                  </c:if>
+		                   <c:if test="${list.order_status eq 1}">
+		                    <span>订单状态：已退货</span>
+		                  </c:if>                 
+		                  <span>快递方式：普通快递</span>
+		                  <span>下单时间："${list.order_time}"</span>
+		                <li>
+		                <li class="myorders">
+		                   
+		                
+		                </li>   
+		            </ul>
+		           </c:forEach>
 				</div>
 			</div>
 		</div>
@@ -278,7 +303,7 @@
     			</div>
     		</div>
 	    </section>
-        
+                          
         <!--公司详情-->
  		<section>
  			<div class="footer-bottom">
@@ -384,18 +409,12 @@
 			         
 		       	  </div>
 			     </div>
-		       
-		         
+       
 		       </div>
-		    
-		    
-		    
-		    
+    
 		   </div>		
 		   </div> 
-		</div>
-  
-		
+		</div>	
   </body>
 </html>
 <script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>
@@ -406,8 +425,34 @@
 //-->
 </script>
 <script>
-	$('.info_r ul li').mouseenter(function(){
+	$('.info_r>.info_r-list>li').click(function(){
 		$(this).addClass("active").siblings().removeClass("active");
+		var sta=$(this).attr("data-status");
+		$.ajax({
+			type:"POST",
+			url:"../MyOrder?status="+sta,
+			success:function(result){
+				//$(this).parent().siblings().remove();
+				if(result!=null){
+					var obj=JSON.parse(result);
+					$(".info_r>.myorders").remove();
+				  for(var i=0;i<obj.length;i++){
+					str=`
+						<ul class="myorders">
+			                <li class="myorders-head">
+			                    <span>aaaa</span>
+			                    <span>bbb</span>
+			                    <span>ccc</span>
+			                <li>
+			               <li class="myorders">			                        
+			              </li>   
+			          </ul>		
+					`;  
+				  $(".info_r").append(str);
+				  }	
+				}
+			}
+		});	
 	});
 	$('.box').click(function(){
 		$('html').animate({'scrollTop':0},500);

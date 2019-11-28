@@ -1,6 +1,7 @@
-package service.FirstContentImpl;
+package service.Impl;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import dao.Second_contentDao;
@@ -20,6 +21,15 @@ public class FindSecondContent implements service.FindSecondContent{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return list;
 	}

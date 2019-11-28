@@ -75,6 +75,7 @@ public class GoodsDaoImpl implements GoodsDao{
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
 				g = new Goods();
+				g.setGoods_num(rs.getInt("goods_num"));
 				g.setGoods_id(rs.getInt("goods_id"));
 				g.setDivied_num(rs.getInt("divied_num"));
 				g.setGoods_desc(rs.getString("goods_desc"));
@@ -98,6 +99,7 @@ public class GoodsDaoImpl implements GoodsDao{
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				Goods g = new Goods();
+				g.setGoods_num(rs.getInt("goods_num"));
 				g.setGoods_id(rs.getInt("goods_id"));
 				g.setDivied_num(rs.getInt("divied_num"));
 				g.setGoods_desc(rs.getString("goods_desc"));
@@ -110,6 +112,29 @@ public class GoodsDaoImpl implements GoodsDao{
 				list.add(g);
 			}
 		return list;
+	}
+
+	@Override
+	public Goods selectGoodsById(int goods_id, Connection conn) throws Exception {
+		Goods g = null;
+		String sql = "select * from (select * from goods group by goods_desc) as a where a.goods_id=?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, goods_id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				g = new Goods();
+				g.setGoods_num(rs.getInt("goods_num"));
+				g.setGoods_id(rs.getInt("goods_id"));
+				g.setDivied_num(rs.getInt("divied_num"));
+				g.setGoods_desc(rs.getString("goods_desc"));
+				g.setGoods_price(rs.getDouble("goods_price"));
+				g.setGoods_name(rs.getString("goods_name"));
+				g.setGoods_star(rs.getInt("goods_star"));
+				g.setGoods_color_num(rs.getInt("goods_color_num"));
+				g.setGoods_size_num(rs.getInt("goods_size_num"));
+				g.setGoods_picture(rs.getString("goods_picture"));
+			}
+		return g;
 	}
 
 }

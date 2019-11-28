@@ -146,7 +146,7 @@
 		</header>
 		
 				<!--头部信息展示-->
-	<div class="container" id="info">
+	<div class="container" id="info" data-goodsnum="${goods.goods_num}">
 	<div class="info-l" data-goodsid="${goods.goods_id}">
             <div class="big"><img src="${goods.colorphoto[1]}"/>
 				<div class="subinfo">					

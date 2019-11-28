@@ -56,6 +56,15 @@ function getUrlVal(property){
   
 })();
 
+(function(){
+	
+	var msg = $(".acceptmsg").val();
+	if(msg!=null){
+		alert(msg);
+	}
+	
+})();
+
 
 
 

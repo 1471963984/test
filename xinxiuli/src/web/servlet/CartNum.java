@@ -58,7 +58,7 @@ public class CartNum extends HttpServlet {
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String accountnum = request.getParameter("account_num");
-		SercherCartInfo service = new service.FirstContentImpl.SercherCartInfo();
+		SercherCartInfo service = new service.Impl.SercherCartInfo();
 		List<Goods> list = service.sercherCartInfo(accountnum);
 		response.setCharacterEncoding("UTF-8");
 		response.setHeader("Content-Type", "application/json;charset=utf-8");

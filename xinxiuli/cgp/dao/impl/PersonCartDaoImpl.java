@@ -65,4 +65,11 @@ public class PersonCartDaoImpl implements PersonCartDao{
 		return null;
 	}
 
+
+	@Override
+	public boolean updateAccount(String account_num, String coll_goods, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

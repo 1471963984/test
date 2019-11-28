@@ -4,18 +4,25 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.AccountDao;
+import dao.DcfAddCard;
 import dao.DcfGoodsDao;
 import dao.DcfGoods_detailDao;
 import dao.GoodsDao;
 import dao.Goods_colorDao;
 import dao.Goods_sizeDao;
+import dao.PersonCartDao;
+import dao.impl.AccountDaoImpl;
+import dao.impl.DcfAddCardDaoImpl;
 import dao.impl.DcfGoodsDaoImpl;
 import dao.impl.DcfGoods_detailDaoImpl;
 import dao.impl.GoodsDaoImpl;
 import dao.impl.Goods_colorDaoImpl;
 import dao.impl.Goods_sizeDaoImpl;
+import dao.impl.PersonCartDaoImpl;
 import db.DbHelp;
 import dto.ShowOneGoods;
+import pojo.Account;
 import pojo.Goods;
 import pojo.Goods_color;
 import pojo.Goods_detail;
@@ -41,7 +48,6 @@ public class DcfServiceImpl implements DcfService{
 		 try {
 			conn.setAutoCommit(false);
 			goods=gd.selectGoods(goodsnum, conn);
-		
 			listcolor=gcd.queryGoods_color(goods.getGoods_id(), conn);
 			lsize=gsd.querysGoods_size(goods.getGoods_id(), conn);
 			detail=ddd.queryPhoto(goods.getGoods_id(),conn);
@@ -70,13 +76,21 @@ public class DcfServiceImpl implements DcfService{
 	   return sog;
 	}
 //根据3个字段查询出goods主键
-	public int selectNumber(int gid, int cid, int sid) {
+	public int selectNumber(int gid, int cid, int sid,String account_num) {
 		 Connection conn=DbHelp.getConnection();
 		 DcfGoodsDao dgd=new DcfGoodsDaoImpl();
+		 PersonCartDao pcd=new PersonCartDaoImpl();
+		 AccountDao ad=new AccountDaoImpl();
+		 DcfAddCard dac=new DcfAddCardDaoImpl();
 		 int mid=0;
+		 boolean bb=false;
 		 try {
 			conn.setAutoCommit(false);
             mid=dgd.selectNumber(gid, cid, sid, conn);
+            String str=pcd.selectAllMyGoods(account_num, conn);
+            String st=str+String.valueOf(mid)+",";
+            Account accou=ad.selectAccount(account_num, conn);             
+            dac.addGoodsMyCard(accou.getCart_num(), st, conn);
 			conn.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

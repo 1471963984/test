@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.DcfGoodsDao;
+import pojo.Account;
 import service.DcfService;
 import service.Impl.DcfServiceImpl;
 
@@ -25,8 +26,10 @@ public class SelectNum extends HttpServlet{
     	int colorid=subNumber(cid);
     	String sid=request.getParameter("sid");
     	int sizeid=subNumber(sid);
-    	DcfService ds=new DcfServiceImpl();
-    	int goodsnum=ds.selectNumber(goodsid, colorid, sizeid);
+    	Account acc=(Account)request.getSession().getAttribute("account");
+    	
+    	 DcfService ds=new DcfServiceImpl();
+    	 int goodsnum=ds.selectNumber(goodsid, colorid, sizeid,acc.getAccount_num());
     	 PrintWriter out=response.getWriter();
     	 out.print(goodsnum);
     	

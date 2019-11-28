@@ -59,17 +59,40 @@
 	   <url-pattern>/SelectNum</url-pattern>
 	</servlet-mapping>
   
+   <servlet>
+	   <servlet-name>UsersOrder</servlet-name>
+	   <servlet-class>web.servlet.MyOrder</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>UsersOrder</servlet-name>
+	   <url-pattern>/MyOrder</url-pattern>
+	</servlet-mapping>
+  
+  
   <servlet>
 	   <servlet-name>personcart</servlet-name>
 	   <servlet-class>web.servlet.MyCartServlet</servlet-class>
 	</servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CollGoods</servlet-name>
+    <servlet-class>web.servlet.CollGoods</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UpdateColls</servlet-name>
+    <servlet-class>web.servlet.UpdateColls</servlet-class>
+  </servlet>
+
+
 	<servlet-mapping>
 	   <servlet-name>personcart</servlet-name>
 	   <url-pattern>/mycart</url-pattern>
 	</servlet-mapping>
 
-
-
+		
 	<servlet-mapping>
 	   <servlet-name>goodsShow</servlet-name>
 	   <url-pattern>/Show</url-pattern>
@@ -90,4 +113,54 @@
     <servlet-name>SercherCartNum</servlet-name>
     <url-pattern>/cartnum</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CollGoods</servlet-name>
+    <url-pattern>/collgoods</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateColls</servlet-name>
+    <url-pattern>/uppdatecolls</url-pattern>
+  </servlet-mapping>
+  <filter>
+  	<filter-name>CharacterEncoding</filter-name>
+  	<filter-class>web.filter.CharacterEncoding</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>CharacterEncoding</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  <!--验证码-->	
+ 	<servlet>
+ 		<servlet-name>imgCode</servlet-name>
+ 		<servlet-class>web.xxk.servlet.Imgservlet</servlet-class>
+ 	</servlet>
+ 	<servlet-mapping>
+ 		<servlet-name>imgCode</servlet-name>
+ 		<url-pattern>/qianduanyemian/imgCode</url-pattern>
+ 	</servlet-mapping>
+	 
+	 <!--注册-->
+	 <servlet>
+	  <servlet-name>register</servlet-name>
+	  <servlet-class>web.xxk.servlet.Registerservlet</servlet-class>
+	  </servlet>
+      <servlet-mapping>
+      <servlet-name>register</servlet-name>
+      <url-pattern>/qianduanyemian/register</url-pattern>
+     </servlet-mapping> 
+     
+    <!--登录-->
+    <servlet>
+     <servlet-name>Login</servlet-name>
+     <servlet-class>web.xxk.servlet.Loginservlet</servlet-class>
+    </servlet>
+     <servlet-mapping>
+      <servlet-name>Login</servlet-name>
+      <url-pattern>/qianduanyemian/login</url-pattern> 
+    </servlet-mapping>
+    <listener>
+       <listener-class>web.xxk.listener.SingletonSessionlistener</listener-class>
+    </listener> 
 </web-app>

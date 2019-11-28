@@ -57,6 +57,7 @@
 						</div>
 						<div class="content-right">
 							<div class="right-top">
+								<input type="hidden" value="${accountmsg}" class="acceptmsg"></input>
 								<c:if test="${account ne null}">
 									<div class="top-list text-center loginafter">
 										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="tuichu">　 退出</a>
@@ -70,7 +71,7 @@
 								</c:if>
 								<!-- 登录后样式 -->
 								<div class="top-list">
-									<a href="#">
+									<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 									</a>
 								</div>
@@ -129,7 +130,7 @@
 										</div>
 									</c:if>
 									<div class="right-list coll">
-										<a href="#">
+										<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
 											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 										</a>
 									</div>

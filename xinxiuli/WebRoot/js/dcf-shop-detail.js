@@ -1,5 +1,5 @@
 $('.info-r>ul a').click(function(){
-	location.href="../Show?cid="+$(this).attr("data-id");
+	location.href="../Show?cid="+$(this).attr("data-id")+"&gid="+$("#info").attr("data-goodsnum");
 });
 
 $('.info-r>p button').click(function(){

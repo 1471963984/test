@@ -8,6 +8,12 @@ function getUrlVal(property){
   return result[2];
 };
 
+//验证码
+function flushcode(obj){
+	// console.log(obj);
+obj.src="imgCode?id="+new Date().getTime(); 
+
+	 }
 (function(){
 //手机号
     var phonevalue='';
@@ -30,22 +36,26 @@ function getUrlVal(property){
   	 
  });
  
+ 
  // 密码
  $('#pwd1').blur(function(){
    var str=$(this).val(); 
    var sm=/[0-9]+/g;
    var st=/[a-zA-Z]+/g;
-    
-   if((st.test(str))&&(sm.test(str))&&(str.length>5&&str.length<9)){    
-	  　 $(this).siblings('h6').html('　'); 
-	  　 $(this).siblings('span').children('img').removeClass('show').addClass('hidden'); 
+   
+  // var pwdlenth;
+   
+   if((st.test(str))&&(sm.test(str))&&(str.length>5&&str.length<9)){
+	   $(this).siblings('h6').html('　');
+	   $(this).siblings('span').children('img').removeClass('show').addClass('hidden'); 
    }else{
+	   
     $(this).siblings('h6').html('*密码不符合条件');
-  	$(this).siblings('span').children('img').removeClass('hidden').addClass('show'); 
- 	
-   }
+  	$(this).siblings('span').children('img').removeClass('hidden').addClass('show');
+  	}
  });
- 　
+ 
+ 
  //确认密码
  $('#pwd2').blur(function(){
  	var str1 = $('#pwd1').val();
@@ -74,28 +84,71 @@ function getUrlVal(property){
      }
   });
   
+ 
+  
   //点击注册 
  $('#submit').click(function(){
  	if(!($('#check').prop('checked'))){
+ 		alert("请接受协议");
  		return;
  	}
  
     if(!(phonevalue&&pwd2value)){
-      return;	
+    	alert("密码或手机号为空");
+       return;	
     }
-   $.post('http://www.wjian.top/shop/api_user.php',{
-   	status:'register',
-   	username:phonevalue,
-   	password:pwd2value,
-   },function(re){
-   var obj=JSON.parse(re);
-   if(obj.code!=0){
-    $('#phone').siblings('h6').html('用户名不可用，已注册');
-    return;
-   };
-   alert('注册成功，点击跳转首页登录页面');
+    
+   var checkcode = $('#checkcode').val(); 
+     console.log(checkcode);
+   if(!(checkcode)){
+     alert("验证码不为空"); 
+	 return;
+   } 
+   
+   checkcode,phonevalue,pwd2value;
+
+ var data={"checkcode":checkcode,"phonevalue":phonevalue,"pwd2value":pwd2value};
+      console.log(data);
+  $.post('register',
+    {"rmsg":JSON.stringify(data)}	
+     ,function(re){	 
+
+    	 
+      if(re.code==2){
+    	alert(re.msg);
+    	$(function(){
+       	 $('#imgCode').click();
+       	});
+    	return;
+      };
+      
+      
+      if(re.code==1){
+      	alert(re.msg);
+       
+        $(function(){
+        $('#imgCode').click();
+    	});
+        
+      	return;
+        };  
+        
+     if(re.code==0){
+      alert(re.msg); 
+     window.location.href='/xinxiuli/qianduanyemian/index.jsp';
+     } 
+   
+     
+  //   var obj=JSON.parse(re);  
+  //    if(obj.code!=0){
+  //    $('#phone').siblings('h6').html('用户名不可用，已注册');
+  //     alert('手机号已存在');
+  //    return;
+  //     };
+   // alert('注册成功，点击跳转首页登录页面');
    //首页
-   window.location.href='/xinxiuli/qianduanyemian/index.jsp';
+   // window.location.href='/xinxiuli/qianduanyemian/index.jsp';
    });
  }); 
+
  })();

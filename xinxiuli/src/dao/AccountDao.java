@@ -12,4 +12,5 @@ public interface AccountDao {
 	public Account selectAccount(String account_num,Connection conn) throws Exception;
 	public List<Account> selectAllAccount(Connection conn) throws Exception;
 	public String selectCartGoods(String account_num,Connection conn) throws Exception;
+	public boolean updateAccount(String account_num,String coll_goods,Connection conn) throws Exception;
 }

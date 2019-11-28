@@ -10,6 +10,7 @@ import pojo.Goods_size;
 public class ShowOneGoods implements Serializable {
 	private static final long serialVersionUID = 8925084883877392572L;
 	//��Ʒ����
+	private int goods_num;
 	private int goods_id;
 	private int divied_num;
 	private String goods_desc;
@@ -32,6 +33,12 @@ public class ShowOneGoods implements Serializable {
 	//保存颜色组图
 	private String[] colorphoto;
 	
+	public int getGoods_num() {
+		return goods_num;
+	}
+	public void setGoods_num(int goods_num) {
+		this.goods_num = goods_num;
+	}
 	public int getGoods_id() {
 		return goods_id;
 	}

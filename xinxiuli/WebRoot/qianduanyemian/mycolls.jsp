@@ -85,7 +85,7 @@
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 									</a>
 								</div>
-								<div class="top-list top-right mycart">
+								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
 									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
 									<div class="cart-number">0</div>
 								</div>
@@ -144,7 +144,7 @@
 											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 										</a>
 									</div>
-									<div class="right-list cart">
+									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
 										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
 										<div class="cart-number">0</div>
 									</div>
@@ -185,17 +185,6 @@
 					<ul>
 						<div class="title-about">我的收藏</div>
 						
-		  				<li>
-		  					<div class="mycolls">
-		  						<img src="../img/0.jpg" />
-		  						<div class="goods-name">
-		  							Samsonite/新秀丽全球新品科技智能拉杆箱时尚前卫登机行李箱20英寸减震滚轮旅行箱男女 GS1
-		  						</div>
-		  						<div class="goods-desc">SUITCASE</div>
-		  						<div class="goods-price">¥ 599.00</div>
-		  						<div class="goods-delete" title="删除商品"></div>
-		  					</div>
-		  				</li>
 					</ul>
 				</div>
 			
@@ -411,6 +400,5 @@
 </html>
 <script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
-<script type="text/javascript" src="/xinxiuli/js/ljy-index.js">
-<script>
-</script>
+<script type="text/javascript" src="/xinxiuli/js/ljy-index.js"></script>
+<script type="text/javascript" src="/xinxiuli/js/mycolls.js"></script>

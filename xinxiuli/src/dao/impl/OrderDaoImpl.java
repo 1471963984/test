@@ -16,7 +16,7 @@ public class OrderDaoImpl implements OrderDao{
 	@Override
 	public boolean insertOrder(Order order, Connection conn) throws Exception {
 		boolean flag = false;
-		String sql = "insert into order(order_num,order_time,goods_id,order_status,account_num,) values(?,?,?,?,?,?)";
+		String sql = "insert into orders(order_num,order_time,goods_id,order_status,account_num,) values(?,?,?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, order.getOrder_num());
 		ps.setString(2, order.getOrder_time());
@@ -34,7 +34,7 @@ public class OrderDaoImpl implements OrderDao{
 	@Override
 	public boolean updateOrder(Order order, Connection conn) throws Exception {
 		boolean flag = false;
-		String sql = "update order set order_time=?,goods_id=?,order_status=?,account_num=?,users_id=? where order_num=?";
+		String sql = "update orders set order_time=?,goods_id=?,order_status=?,account_num=?,users_id=? where order_num=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, order.getOrder_time());
 		ps.setInt(2, order.getGoods_id());
@@ -52,7 +52,7 @@ public class OrderDaoImpl implements OrderDao{
 	@Override
 	public boolean deleteOrder(String order_num, Connection conn) throws Exception {
 		boolean flag = false;
-		String sql = "delete from order where order_num=?";
+		String sql = "delete from orders where order_num=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, order_num);
 		if(ps.executeUpdate()>0) {
@@ -64,7 +64,7 @@ public class OrderDaoImpl implements OrderDao{
 
 	@Override
 	public Order selectOrder(String order_num, Connection conn) throws Exception {
-		String sql = "select * from order where order_num=?";
+		String sql = "select * from orders where order_num=?";
 		Order o = null;
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, order_num);
@@ -86,7 +86,7 @@ public class OrderDaoImpl implements OrderDao{
 	public List<Order> selectAllOrder(Connection conn) throws Exception {
 		List<Order> list = new ArrayList<Order>();
 		Order o = null;
-		String sql = "select * from order";
+		String sql = "select * from orders";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {

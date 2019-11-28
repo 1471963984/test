@@ -114,4 +114,17 @@ public class AccountDaoImpl implements AccountDao{
 		}
 		return goods_id;
 	}
+
+	@Override
+	public boolean updateAccount(String account_num, String coll_goods, Connection conn) throws Exception {
+		boolean flag = false;
+		String sql = "update account set coll_goods=? where account_num=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, coll_goods);
+		ps.setString(2, account_num);
+		if(ps.executeUpdate()>0) {
+			flag = true;
+		}
+		return flag;
+	}
 }

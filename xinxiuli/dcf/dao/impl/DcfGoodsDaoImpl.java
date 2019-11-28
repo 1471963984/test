@@ -51,4 +51,10 @@ public class DcfGoodsDaoImpl implements DcfGoodsDao{
 		return mgoodsid;
 	}
 
+	@Override
+	public Goods selectGoodsById(int goods_id, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

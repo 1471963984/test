@@ -66,7 +66,7 @@ public class SecondContent extends HttpServlet {
 		PrintWriter out = new PrintWriter(new OutputStreamWriter(response.getOutputStream(),"utf-8"),true);
 		if(first!=null) {
 			int firstnum = Integer.parseInt(first);
-			FindSecondContent service = new service.FirstContentImpl.FindSecondContent();
+			FindSecondContent service = new service.Impl.FindSecondContent();
 			list = service.findSecondContent(firstnum);
 			//response.setCharacterEncoding("UTF-8");
 			//response.setHeader("Content-Type", "application/json;charset=utf-8");
