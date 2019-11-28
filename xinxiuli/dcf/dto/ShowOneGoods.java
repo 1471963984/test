@@ -4,11 +4,12 @@ import java.io.Serializable;
 import java.util.List;
 
 import pojo.Goods_color;
+import pojo.Goods_detail;
 import pojo.Goods_size;
 
 public class ShowOneGoods implements Serializable {
 	private static final long serialVersionUID = 8925084883877392572L;
-	//ÉÌÆ·ÏêÇé
+	//ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 	private int goods_id;
 	private int divied_num;
 	private String goods_desc;
@@ -18,12 +19,18 @@ public class ShowOneGoods implements Serializable {
 	private int goods_color_num;
 	private int goods_size_num;
 	private String goods_picture;
-	//ÉÌÆ·ÑÕÉ«
+
 	private List<Goods_color> l;
-	//ÉÌÆ·³ß´çºÍ¿â´æ
+
 	private	List<Goods_size> lsize;
-//	°óÉÏÑÕÉ«id
+//	ç»†èŠ‚å›¾ç‰‡å¯¹è±¡
+	private Goods_detail detail;
+//   ç»†èŠ‚å›¾ç‰‡
+	private String[] detailphoto;
+
 	private String cid;
+	//ä¿å­˜é¢œè‰²ç»„å›¾
+	private String[] colorphoto;
 	
 	public int getGoods_id() {
 		return goods_id;
@@ -101,6 +108,24 @@ public class ShowOneGoods implements Serializable {
 	}
 	public void setCid(String cid) {
 		this.cid = cid;
-	}	
-	
+	}
+	public String[] getColorphoto() {
+		return colorphoto;
+	}
+	public void setColorphoto(String[] colorphoto) {
+		this.colorphoto = colorphoto;
+	}
+	public Goods_detail getDetail() {
+		return detail;
+	}
+	public void setDetail(Goods_detail detail) {
+		this.detail = detail;
+	}
+	public String[] getDetailphoto() {
+		return detailphoto;
+	}
+	public void setDetailphoto(String[] detailphoto) {
+		this.detailphoto = detailphoto;
+	}
+		
 }

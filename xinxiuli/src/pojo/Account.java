@@ -10,7 +10,7 @@ public class Account implements Serializable{
 	private String users_ip;
 	private String cart_num;
 	private String order_num;
-	private int coll_goods;
+	private String coll_goods;
 	
 	public int getAccount_id() {
 		return account_id;
@@ -48,10 +48,10 @@ public class Account implements Serializable{
 	public void setOrder_num(String order_num) {
 		this.order_num = order_num;
 	}
-	public int getColl_goods() {
+	public String getColl_goods() {
 		return coll_goods;
 	}
-	public void setColl_goods(int coll_goods) {
+	public void setColl_goods(String coll_goods) {
 		this.coll_goods = coll_goods;
 	}
 	

@@ -17,64 +17,65 @@
 	})
 	
 	  //请求用户的购物车数据
-	  function goodsList(page, callback){
-	    var page = page ? page : 1;
-	    //页面打开就可以看到商品
-	    $.get('http://www.wjian.top/shop/api_goods.php',{
-	      'pagesize':4,
-	      'page':6,
-	    }, function(result){
-	      var result = JSON.parse(result);
-	      //验证
-	      if(result.code != 0){
-	        console.log('数据请求失败');
-	        return;
-	      };
-	      //调用
-	      callback(result);
-	    }); 
-	  };
-	  goodsList(3, function(result){
-	    var goodsList = result.data;
-//	    console.log(goodsList)
-	    //得到数据了之后，在这里操作数据
-	    //组装DOM结构
-	    for(var i = 0; i < goodsList.length; i++){
-	      //拿到每一项  goodsList[i].goodsName
-	      var str = `
-	        <div class="goods-list-js">
-            	<div class="list-box">
-            		<div class="goods-message">
-            			<input type="checkbox" class="checkbox" />
-            			<span class="lazyload"><img data-toggle="modal" data-target="#myModal"src="${goodsList[i].goods_thumb}"/></span>
-            			<div class="goods-about">
-            				<a href="javascript:;" data-toggle="modal" data-target="#myModal">${goodsList[i].goods_desc}</a>
-            				<div class="goods-brand">ACTAEON</div>
-            				<div class="goods-spec">
-                				<label>颜色：</label>
-                				<p>月光白</p>
-                				<label>尺寸：</label>
-                				<p>均码</p>
-                			</div>
-                			<div class="goods-operation">
-                				<img src="/xinxiuli/shop-imgs/collection-no.png" alt="移入收藏夹" />
-                				<div class="goods-middle">|</div>
-                				<img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品" data-toggle="modal" data-target="#myModal" />
-                			</div>
-            			</div>
-            		</div>
-            		<div class="sell-srice">${goodsList[i].price}</div>
-            		<div class="goods-delete" title="删除商品"></div>
-        		</div>
-        	</div>
-	      `;
-	      //把每次组装好的添加进table
-	      $('.goods-list-box').append(str);
-	    };
-	    //所有的业务逻辑都在这之后
-	    clickAll();
-	  });
-	  
+//	  function goodsList(page, callback){
+//	    var page = page ? page : 1;
+//	    //页面打开就可以看到商品
+//	    $.get('http://www.wjian.top/shop/api_goods.php',{
+//	      'pagesize':4,
+//	      'page':6,
+//	    }, function(result){
+//	      var result = JSON.parse(result);
+//	      //验证
+//	      if(result.code != 0){
+//	        console.log('数据请求失败');
+//	        return;
+//	      };
+//	      //调用
+//	      callback(result);
+//	    }); 
+//	  };
+//	  goodsList(3, function(result){
+//	    var goodsList = result.data;
+////	    console.log(goodsList)
+//	    //得到数据了之后，在这里操作数据
+//	    //组装DOM结构
+//	    for(var i = 0; i < goodsList.length; i++){
+//	      //拿到每一项  goodsList[i].goodsName
+//	      var str = `
+//	        <div class="goods-list-js">
+//            	<div class="list-box">
+//            		<div class="goods-message">
+//            			<input type="checkbox" class="checkbox" />
+//            			<span class="lazyload"><img data-toggle="modal" data-target="#myModal"src="${goodsList[i].goods_thumb}"/></span>
+//            			<div class="goods-about">
+//            				<a href="javascript:;" data-toggle="modal" data-target="#myModal">${goodsList[i].goods_desc}</a>
+//            				<div class="goods-brand">ACTAEON</div>
+//            				<div class="goods-spec">
+//                				<label>颜色：</label>
+//                				<p>月光白</p>
+//                				<label>尺寸：</label>
+//                				<p>均码</p>
+//                			</div>
+//                			<div class="goods-operation">
+//                				<img src="/xinxiuli/shop-imgs/collection-no.png" alt="移入收藏夹" />
+//                				<div class="goods-middle">|</div>
+//                				<img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品" data-toggle="modal" data-target="#myModal" />
+//                			</div>
+//            			</div>
+//            		</div>
+//            		<div class="sell-srice">${goodsList[i].price}</div>
+//            		<div class="goods-delete" title="删除商品"></div>
+//        		</div>
+//        	</div>
+//	      `;
+//	      //把每次组装好的添加进table
+//	      $('.goods-list-box').append(str);
+//	    };
+//	    //所有的业务逻辑都在这之后
+//	    clickAll();
+//	  });
+	clickAll();
+	  //轮播图
 	  function lunboList(page, callback){
 	    var page = page ? page : 1;
 	    //页面打开就可以看到商品
@@ -95,14 +96,13 @@
 	  
 	  lunboList(1, function(result){
 	    var lunboList = result.data;
-//	    console.log(lunboList);
 		for(var i = 0; i < lunboList.length; i++){
 	      var str2 = `
 	      	<div class="tuijian-item">
-				<img src="${lunboList[i].goods_thumb}" data-toggle="modal" data-target="#myModal" />
+				<img src="${lunboList[i].goods_thumb}" />
 				<div class="goods-name text-left ">
-					<a href="javascript:;" data-toggle="modal" data-target="#myModal">${lunboList[i].goods_desc}</a>
-					<input class="btn btn-info" value="查看详情" data-toggle="modal" data-target="#myModal" />
+					<a href="javascript:;">${lunboList[i].goods_desc}</a>
+					<input class="btn btn-info" value="查看详情" />
 				</div>
 			</div>
 	      `;
@@ -122,8 +122,8 @@
 	    //验证，判断点击的是哪一个元素
 	    //点击全选
 	    if(event.target.className == 'cartcheckbox'){
+	    	console.log("点击了全选");
 	      //要做商品减的业务
-	      //console.log(event.target.checked)
 	      if(event.target.checked == true){
 	        //选中所有的
 	        $('.checkbox').each(function(){
@@ -145,6 +145,7 @@
 	    
 	    //点击单选
 	    if(event.target.className == 'checkbox'){
+	    	console.log("点击了单选");
 	      //要做商品减的业务
 	      //console.log('点击了单选');
 	      if(event.target.checked == true){

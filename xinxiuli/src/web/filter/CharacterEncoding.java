@@ -26,6 +26,8 @@ public class CharacterEncoding implements Filter{
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse)resp;
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		String method = request.getMethod();
 		if("post".equalsIgnoreCase(method)) {
 			request.setCharacterEncoding("UTF-8");
@@ -40,7 +42,9 @@ public class CharacterEncoding implements Filter{
 			}
 		}
 		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		chain.doFilter(request, response);
+
 	}
 
 	@Override

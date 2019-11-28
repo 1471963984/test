@@ -74,8 +74,8 @@
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 									</a>
 								</div>
-								<div class="top-list top-right mycart">
-									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
+								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
+									<a href="/xinxiuli/mycart" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
 									<div class="cart-number">0</div>
 								</div>
 							</div>
@@ -133,7 +133,7 @@
 											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 										</a>
 									</div>
-									<div class="right-list cart">
+									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
 										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
 										<div class="cart-number">0</div>
 									</div>

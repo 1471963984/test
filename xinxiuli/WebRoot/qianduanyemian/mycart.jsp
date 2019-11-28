@@ -176,8 +176,7 @@
 		<div class="main-container">
 			<div class="main-left">
 				<div class="cart-name">
-                    <div class="title">我的购物车
-                    </div>
+                    <div class="title">我的购物车</div>
                 	<div class="desc">
                     	    全场满500包邮
                     </div>
@@ -187,7 +186,33 @@
 	                	商品信息
 	                </div>
 	                <div class="goods-list-box">
-	                	
+            	<c:forEach items="${goodslist }" var="goodsList" varStatus="i" >
+	                	<div class="goods-list-js">
+            		<div class="list-box">
+	            		<div class="goods-message">
+	            			<input type="checkbox" class="checkbox" />
+	            			<span class="lazyload"><img src="${goodsList.goods_img}"/></span>
+	            			<div class="goods-about">
+	            				<a href="javascript:;" >${goodsList.goods_desc}</a>
+	            				<div class="goods-brand">${goodsList.goods_name}</div>
+	            				<div class="goods-spec">
+	                				<label>颜色：</label>
+	                				<p>${goodsList.goods_color}</p>
+	                				<label>尺寸：</label>
+	                				<p>${goodsList.goods_size}</p>
+	                			</div>
+	                			<div class="goods-operation">
+	                				<img src="/xinxiuli/shop-imgs/collection-no.png" alt="移入收藏夹" />
+	                				<div class="goods-middle">|</div>
+	                				<img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品" data-toggle="modal" data-target="#myModal" />
+	                			</div>
+	            			</div>
+	            		</div>
+	            		<div class="sell-srice">${goodsList.goods_price}0</div>
+	            		<div class="goods-delete" title="删除商品"></div>
+        			</div>
+        	</div>
+            	</c:forEach>
 	                </div>
                 	<div class="goods-card">
                 		<div class="card-left">
@@ -208,7 +233,7 @@
                 				<label>总计</label>
                 				<p>¥ 0.00</p>
                 			</div>
-                			<button class="btn btn-block btn-primary">立即结算</button>
+                			<button class="btn btn-block btn-primary" onclick="window.location.href = '/xinxiuli/qianduanyemian/Jiesuan.jsp'">立即结算</button>
                 		</div>
                 	</div>
                 </div>
@@ -273,6 +298,7 @@
 				</div>
 			</div>
 		</div>
+		
 		
 		<!--购物车底部商品推荐-->
 		<div class="main-bottom">
@@ -548,9 +574,9 @@
 </html>
 <script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
-<script src="/xinxiuli/js/cgp-cart.js"></script>
 <script type="text/javascript" src="/xinxiuli/js/xxk-login.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/ljy-index.js" ></script>
+<script src="/xinxiuli/js/cgp-cart.js"></script>
 <script>
 	$('.info-l>ul>li').mouseenter(function(){
 	var url=$(this).children('img').attr("src");

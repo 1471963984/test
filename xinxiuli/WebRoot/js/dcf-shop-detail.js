@@ -5,6 +5,31 @@ $('.info-r>ul a').click(function(){
 $('.info-r>p button').click(function(){
 	$(this).addClass('btn-primary').siblings().removeClass('btn-primary');
 });
+//加入购物车模块
+$(".info-r .tellusers").click(function(){
+	alert("您好，请先登录再加入购物车");
+});
+$(".info-r .addcart").click(function(){
+	var gid=$(".info-l").attr("data-goodsid");
+	var cid=$(".info-r>ul>a>li>.btn-success").parent().parent().attr("data-id");
+	var sid=$(".info-r>p>.btn-primary").attr("data-sizeid");
+	$.ajax({
+		type:"POST",
+		url:"../SelectNum",
+		data:{"gid":JSON.stringify(gid),"cid":JSON.stringify(cid),"sid":JSON.stringify(sid)},
+		success:function(result){
+			if(result!=null){
+				var a=$(".cart-number").html();
+				a++;
+				$(".cart-number").html(a);
+			}
+		}
+	});	
+});
+//立即选购
+$(".info-r .buygoods").click(function(){
+	location.href="";
+});
 
 //数量加减模块
 function addshop(){
@@ -26,12 +51,16 @@ addshop();
 //尺寸模块逻辑
 $('#size>.one').click(function(){
    $(this).addClass('btn-info').siblings("img").attr("src",'/xinxiuli/img/productdel/6.jpg');
-    $(this).siblings('.two').removeClass('btn-info');
+    $(this).siblings().removeClass('btn-info');
 });
 $('#size>.two').click(function(){
-   $(this).addClass('btn-info').siblings("img").attr("src",'/xinxiuli/img/productdel/7.jpg');
-    $(this).siblings('.one').removeClass('btn-info');
+   $(this).addClass('btn-info').siblings("img").attr("src",'/xinxiuli/img/productdel/8.jpg');
+    $(this).siblings().removeClass('btn-info');
 });
+$('#size>.three').click(function(){
+	   $(this).addClass('btn-info').siblings("img").attr("src",'/xinxiuli/img/productdel/7.jpg');
+	    $(this).siblings().removeClass('btn-info');
+	});
 //放大镜业务逻辑
 (function(){
   //事件:鼠标移入到up再移动，再移出

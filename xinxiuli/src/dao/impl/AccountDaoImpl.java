@@ -23,7 +23,7 @@ public class AccountDaoImpl implements AccountDao{
 		ps.setString(4, account.getUsers_ip());
 		ps.setString(5, account.getCart_num());
 		ps.setString(6, account.getOrder_num());
-		ps.setInt(7, account.getColl_goods());
+		ps.setString(7, account.getColl_goods());
 		if(ps.executeUpdate()>0) {
 			flag = true;
 		}
@@ -40,7 +40,7 @@ public class AccountDaoImpl implements AccountDao{
 		ps.setString(3, account.getUsers_ip());
 		ps.setString(4, account.getCart_num());
 		ps.setString(5, account.getOrder_num());
-		ps.setInt(6, account.getColl_goods());
+		ps.setString(6, account.getColl_goods());
 		ps.setString(7, account.getAccount_num());
 		if(ps.executeUpdate()>0) {
 			flag = true;
@@ -75,7 +75,7 @@ public class AccountDaoImpl implements AccountDao{
 			a.setUsers_ip(rs.getString("users_ip"));
 			a.setCart_num(rs.getString("cart_num"));
 			a.setOrder_num(rs.getString("order_num"));
-			a.setColl_goods(rs.getInt("coll_goods"));
+			a.setColl_goods(rs.getString("coll_goods"));
 		}
 		return a;
 	}
@@ -95,10 +95,23 @@ public class AccountDaoImpl implements AccountDao{
 			a.setUsers_ip(rs.getString("users_ip"));
 			a.setCart_num(rs.getString("cart_num"));
 			a.setOrder_num(rs.getString("order_num"));
-			a.setColl_goods(rs.getInt("coll_goods"));
+			a.setColl_goods(rs.getString("coll_goods"));
 			list.add(a);
 		}
 		
 		return list;
+	}
+
+	@Override
+	public String selectCartGoods(String account_num, Connection conn) throws Exception {
+		String sql = "select cart.goods_id from cart inner join account on cart.cart_num = account.cart_num where account.account_num = ?";
+		String goods_id = null;
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, account_num);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			goods_id = rs.getString(1);
+		}
+		return goods_id;
 	}
 }

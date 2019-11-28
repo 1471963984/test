@@ -18,7 +18,7 @@ public class CartDaoImpl implements CartDao{
 		String sql = "insert into cart(cart_num,goods_id,goods_count) values (?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, cart.getCart_num());
-		ps.setInt(2, cart.getGoods_id());
+		ps.setString(2, cart.getGoods_id());
 		ps.setInt(3, cart.getGoods_count());
 		if(ps.executeUpdate()>0) {
 			flag = true;
@@ -32,7 +32,7 @@ public class CartDaoImpl implements CartDao{
 		boolean flag = false;
 		String sql = "update cart set goods_id=?,goods_count=? where cart_num=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setInt(1, cart.getGoods_id());
+		ps.setString(1, cart.getGoods_id());
 		ps.setInt(2, cart.getGoods_count());
 		ps.setString(3, cart.getCart_num());
 		if(ps.executeUpdate()>0) {
@@ -64,7 +64,7 @@ public class CartDaoImpl implements CartDao{
 		if(rs.next()) {
 			c = new Cart();
 			c.setCart_num(rs.getString("cart_num"));
-			c.setGoods_id(rs.getInt("goods_id"));
+			c.setGoods_id(rs.getString("goods_id"));
 			c.setGoods_count(rs.getInt("goods_count"));
 		}
 		return c;
@@ -79,7 +79,7 @@ public class CartDaoImpl implements CartDao{
 		while(rs.next()) {
 			Cart c = new Cart();
 			c.setCart_num(rs.getString("cart_num"));
-			c.setGoods_id(rs.getInt("goods_id"));
+			c.setGoods_id(rs.getString("goods_id"));
 			c.setGoods_count(rs.getInt("goods_count"));
 			list.add(c);
 		}

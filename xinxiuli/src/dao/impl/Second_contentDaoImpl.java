@@ -94,4 +94,24 @@ public class Second_contentDaoImpl implements Second_contentDao{
 		return list;
 	}
 
+	@Override
+	public List<Second_content> selectAllSecond_content(int first_num, Connection conn) throws Exception {
+		List<Second_content> list = new ArrayList<Second_content>();
+		String sql = "select * from second_content where first_num=?";
+		Second_content s = null;
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, first_num);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			s = new Second_content();
+			s.setSecond_num(rs.getInt("second_num"));
+			s.setFirst_num(rs.getInt("first_num"));
+			s.setSecond_name(rs.getString("second_name"));
+			s.setDivied_num(rs.getInt("divied_num"));
+			list.add(s);
+		}
+		
+		return list;
+	}
+
 }

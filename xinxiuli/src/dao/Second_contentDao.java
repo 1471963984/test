@@ -12,4 +12,5 @@ public interface Second_contentDao {
 	public boolean deleteSecond_content(int second_num,Connection conn) throws Exception;
 	public Second_content selectSecond_content(int second_num,Connection conn) throws Exception;
 	public List<Second_content> selectAllSecond_content(Connection conn) throws Exception;
+	public List<Second_content> selectAllSecond_content(int first_num,Connection conn) throws Exception;
 }

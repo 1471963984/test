@@ -471,8 +471,6 @@
 				cursor: pointer;
 				z-index: 1000;
 			}
-			/**/
-/*商品详情模块*/
 #info{
 	position: relative;
 	height: 650px;
@@ -492,7 +490,6 @@
 	display: block;
 	clear: both;
 }
-/*鏀惧ぇ闀�*/
 	.subinfo{
 		height: 100px;
 		width: 100px;
@@ -517,7 +514,7 @@
 
 /**/
 .info-l{
-	width: 400px;
+	width: 420px;
 	height: 600px;
 	float: left;
 }
@@ -525,8 +522,8 @@
 	height: 500px;	
 }
 .info-l>ul li{
-	height: 90px;
-	width: 90px;
+	height: 85px;
+	width: 75px;
 	float: left;
 }
 .info-l>ul span{
@@ -535,8 +532,8 @@
 	margin-top:40px;
 }
 .info-l>ul li>img{
-	height: 90px;
-	width: 90px;
+	height: 85px;
+	width: 75px;
 }
 .info-r{
 	width: 500px;
@@ -611,16 +608,15 @@
 .info-r>h3>span{
 	cursor: pointer;
 }
-/*妯＄壒鍧�*/
 #model{
 	width: 1200px;
 	margin:auto auto;	
 }
 #model>img{
 	display:block;
-	width: 1200px;	
+	width: 1200px;
+	margin-bottom:10px;
 }
-/*浜у搧妯″潡*/
 #produ{
 	padding-top: 80px;
 }
@@ -650,7 +646,6 @@
 .produ-list ul li{
 	width: 100px;
 }
-/*灏哄妯″潡*/
 #size>img{
 	width: 100%;
 }
@@ -669,8 +664,11 @@
 	float: left;
 	position:relative;
 }
+/*修改.size-bot>span下的图片*/;
+.size-bot>span>.deta{
+	height:400px;
+}
 
-/*瀛愭ā鍧�*/
 .subsize-bot{
 	width:90%;
 	height: 400px;
@@ -702,7 +700,6 @@
 	width: 200px;
 	font-size: 15px;
 }
-/*涓烘偍鎺ㄨ崘妯″潡*/
 #remcommend{
 	width: 1200px;
 	height: 450px;
@@ -717,7 +714,6 @@
 	/*height:50px;*/
 	border-top: 1px solid #999999;
 }
-/*瀛愭ā鍧�*/
 #remcommend .subremo{
 	height: 50px;
 	width: 100px;
@@ -735,7 +731,6 @@
 #remcommend ul>a>li>img{
 	height: 300px;
 }
-/*瀛愭ā鍧楁弿杩�*/
 #remcommend ul a li>.subremcom-list{
 	font-size:10px;
 	color:#080808;
@@ -752,7 +747,6 @@
 #remcommend ul a li:hover .subremcom-list{
 	display: block
 }
-/*鐚滄偍鍠滄妯″潡*/
 #like{
 	width:100%;
 	background-color: #E6E6E6;
@@ -771,7 +765,6 @@
 	margin:30px auto;
 	border-top: 1px solid #999999;
 }
-/*瀛愭ā鍧�*/
 #like .sublike{
 	height: 50px;
 	width: 100px;
@@ -823,7 +816,6 @@
 .like-bg ul li a:hover .sublike-list{
 	display: block
 }
- /*灏忓渾鍦�*/
 .like-bg>span{
 	display: inline-block;
 	height: 12px;

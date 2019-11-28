@@ -36,7 +36,8 @@ public class Show extends HttpServlet{
 				 if(sog.getGoods_id()==sog.getLsize().get(i).getGoods_id()&&
 					sog.getL().get(1).getColor_num()==sog.getLsize().get(i).getColor_num()	 
 						 ) {
-					 list.add(sog.getLsize().get(i));			
+					 list.add(sog.getLsize().get(i));
+					 sog.setColorphoto(sog.getL().get(1).getGoods_delpicture().split(";"));
 				 }
 			 }
 			  sog.setLsize(list);
@@ -48,12 +49,13 @@ public class Show extends HttpServlet{
 						Integer.parseInt(cid)==sog.getLsize().get(i).getColor_num()	 
 							 ) {
 						 list.add(sog.getLsize().get(i));
+						 sog.setColorphoto(sog.getL().get((Integer.parseInt(cid)-1)).getGoods_delpicture().split(";"));
 					 }
 				 }
 			  sog.setLsize(list);
 		  }  
 		  request.getSession().setAttribute("goods",sog);
 		  request.getSession().setAttribute("cid", cid);
-	     response.sendRedirect("qianduanyemian/productdetail.jsp"); 
+	      response.sendRedirect("/xinxiuli/qianduanyemian/productdetail.jsp"); 
 	}
 }

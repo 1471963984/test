@@ -96,69 +96,73 @@ $(window).scroll(function(){
 		$('.banner-play span').eq(x).css('background','deeppink').siblings('span').css('background','#666');
 	});
 
-//商品分类
+//商品一级菜单渲染
 (function(){
   //发起请求
-	
-	
-//	 $.ajax({
-//         type: "POST",                            //传数据的方式
-//         url: "first",                             //servlet地址
-//
-//         data: $('#form').serialize(),            //传的数据  form表单 里面的数据
-//         success: function(result){               //传数据成功之后的操作   result是servlet传过来的数据  这个函数对result进行处理，让它显示在 输入框中
-//             $("#results").val(result);           //找到输入框 并且将result的值 传进去
-//         }
-//     });
-	
-	
-  $.get(first,{}, function(result){
-    var obj = JSON.parse(result);
-    console.log(obj);
-    //验证
-    if(obj.code != 0){
-      console.log(obj.message);
-      return;
-    };
-    //遍历数据
-    var str = '';
-    for(var i = 0; i < obj.data.length; i++){
-      str += `
-		<div class="tab-name">
-			<a>${obj.data[i].cat_name}</a>
-			<!--二级菜单-->
-			<div class="second-tab">
-				<div class="tab-first">
-					<div class="title">类目</div>
-					<div class="column">
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">登机箱（18英寸-22英寸）</a></div>
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">中号箱（23英寸-26英寸）</a></div>
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">大号箱（27英寸-31英寸）</a></div>
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">机长箱</a></div>
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">儿童箱</a></div>
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">硬箱</a></div>
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">软箱</a></div>
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">所有拉杆箱</a></div>
-					</div>
-				</div>
-				<div class="tab-second">
-					<div class="title">特别推荐</div>
-					<div class="column">
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">新品上市</a></div>
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">畅销系列</a></div>
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">CURV材质</a></div>
-						<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?cat_id=${obj.data[i].cat_id}">缓震科技</a></div>
-					</div>
-				</div>
-				<div class="tab-last">
-					<div class="last-img">
-						<img src="/xinxiuli/img/lasttab/-.jpg" />
-					</div>
-				</div>
-			</div>
-		</div>
-     `;
-    };
-    $('.middle-bottom').append(str);
-  });
+	 $.ajax({
+         type: "POST",                            //传数据的方式
+         url: "/xinxiuli/first",                             //servlet地址
+         success: function(result){               //传数据成功之后的操作   result是servlet传过来的数据  这个函数对result进行处理，让它显示在 输入框中
+             var str = '';
+             for(var i = 0;i<result.length;i++){
+            	 str+=`
+            		 <div class="tab-name" id="${result[i].first_num}">
+            		 	<a>${result[i].first_name}</a>
+            		 	<div class="second-tab">
+	    					<div class="tab-first">
+	    						<div class="title">类目</div>
+	    						<div class="column first-column"></div>
+	    				    </div>
+	    				    <div class="tab-last">
+	    					    <div class="last-img">
+	    					      <img src="/xinxiuli/img/lasttab/-.jpg" />
+	    						</div>
+    					    </div>
+	    				</div>
+            		 </div>
+            	 `;
+             }
+             $('.middle-bottom').append(str);
+             enterFirst();
+         }
+     });
 })();
+
+//二级菜单渲染
+function enterFirst(){
+$('.tab-name').mouseenter(function(){
+	 var firstnum = $(this).prop("id");
+	 $.ajax({
+         type: "POST",                            //传数据的方式
+         url: "/xinxiuli/second",                             //servlet地址
+         data:"firstnum="+firstnum,
+         success: function(result){               //传数据成功之后的操作   result是servlet传过来的数据  这个函数对result进行处理，让它显示在 输入框中
+        	 result=JSON.parse(result);
+        	 var str = '';
+        	 $('.first-column>div').remove();
+             for(var i = 0;i<result.length;i++){
+            	 str+=`
+					<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=${result[i].divied_num}">${result[i].second_name}</a></div>					
+            	 `;
+            	
+             }
+             $('.first-column').append(str);
+         }
+     });
+});
+};
+
+(function(){
+	var account_num = $(".mycart-sercher").attr("cart-number");
+	$.ajax({
+		 type: "POST",                            //传数据的方式
+         url: "/xinxiuli/cartnum",                //servlet地址
+         data: "account_num="+account_num,
+         success: function(result){               //传数据成功之后的操作   result是servlet传过来的数据  这个函数对result进行处理，让它显示在 输入框中
+        	 $(".cart-number").html(result.length);
+         }
+	});
+
+})();
+
+

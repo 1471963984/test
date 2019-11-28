@@ -36,6 +36,38 @@
     <servlet-name>FirstContent</servlet-name>
     <servlet-class>web.servlet.FirstContent</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SecondContent</servlet-name>
+    <servlet-class>web.servlet.SecondContent</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SercherCartNum</servlet-name>
+    <servlet-class>web.servlet.CartNum</servlet-class>
+    
+  </servlet>
+  
+  	<servlet>
+	   <servlet-name>addCard</servlet-name>
+	   <servlet-class>web.servlet.SelectNum</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>addCard</servlet-name>
+	   <url-pattern>/SelectNum</url-pattern>
+	</servlet-mapping>
+  
+  <servlet>
+	   <servlet-name>personcart</servlet-name>
+	   <servlet-class>web.servlet.MyCartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>personcart</servlet-name>
+	   <url-pattern>/mycart</url-pattern>
+	</servlet-mapping>
+
 
 
 	<servlet-mapping>
@@ -49,5 +81,13 @@
   <servlet-mapping>
     <servlet-name>FirstContent</servlet-name>
     <url-pattern>/first</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SecondContent</servlet-name>
+    <url-pattern>/second</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SercherCartNum</servlet-name>
+    <url-pattern>/cartnum</url-pattern>
   </servlet-mapping>
 </web-app>

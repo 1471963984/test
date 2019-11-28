@@ -145,10 +145,10 @@
 			</nav>
 		</header>
 		
-		<!--头部信息展示-->
+				<!--头部信息展示-->
 	<div class="container" id="info">
-	<div class="info-l">
-            <div class="big"><img src="${goods.goods_picture}"/>
+	<div class="info-l" data-goodsid="${goods.goods_id}">
+            <div class="big"><img src="${goods.colorphoto[1]}"/>
 				<div class="subinfo">					
 				</div>
 				<div class="subinfo-show">				
@@ -156,10 +156,9 @@
 			</div>						
 			<ul>
 				<span class="glyphicon glyphicon-chevron-left"></span>
-				<li><img src=""/></li>
-				<li><img src="/xinxiuli/img/productdel/1.jpg"/></li>
-				<li><img src="/xinxiuli/img/productdel/2.jpg"/></li>
-				<li><img src="/xinxiuli/img/productdel/4.jpg"/></li>
+				<c:forEach  items="${goods.colorphoto}" var="photo" varStatus="i">
+							<li><img src="${photo}"/></li>	
+				</c:forEach>		
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</ul>
 		</div>
@@ -175,7 +174,6 @@
 			<hr/>
 			<p>颜色</p>
 			<ul>
-			
 			  <c:forEach items="${goods.getL()}" var="color" varStatus="i">      
 			      <c:if test="${i.count eq cid}">
 			         <a href="javascript:" data-id="${color.color_num}"><li><button class="btn btn-success">${color.color_name}</button></li></a>
@@ -188,17 +186,24 @@
 			<p>尺寸
 			   <c:forEach items="${goods.getLsize()}" var="size" varStatus="i">
 			      <c:if test="${i.count eq 1}">
-			          <button class="btn btn-group-sm btn-primary">${size.size_name}</button>
+			          <button class="btn btn-group-sm btn-primary" data-sizeid="${size.size_num}">${size.size_name}</button>
 			      </c:if>
 			      <c:if test="${i.count ne 1}">			      
-			       <button class="btn btn-group-sm">${size.size_name}</button>
+			       <button class="btn btn-group-sm" data-sizeid="${size.size_num}">${size.size_name}</button>
 			      </c:if>
 			   </c:forEach>			       
 	        </p>
 			<h6>数量<span class="reduce">-</span><span class="count">1</span><span class="add">+</span></h6>
 			<hr />
-			<a href="javascript:"><button class="btn btn-default">加入购物车</button></a>
-			<a href="javascript:"><button class="btn btn-default">立即选购</button></a>
+			<c:if test="${account eq null}">
+			  <a href="javascript:"><button class="btn btn-default tellusers">加入购物车</button></a>
+			  <a href="javascript:"><button class="btn btn-default tellusers">立即选购</button></a>
+			</c:if>
+			<c:if test="${account ne null}">
+			  <a href="javascript:"><button class="btn btn-default addcart">加入购物车</button></a>
+			  <a href="javascript:"><button class="btn btn-default buygoods">立即选购</button></a>
+			</c:if>
+			
 			<h4>需要帮助？您可以 <a href="javascript:">联系在线客服</a> 或 致电：4008-870-566</h4>
 			<hr />
 			<h3><span class="glyphicon glyphicon-heart"></span>添加至收藏
@@ -209,187 +214,178 @@
 			</h3>
 		</div>
 	</div>
-	
-	<!--中间部分-->
-	<div id="model">
-		<img src="/xinxiuli/img/productdel/model.jpg"/>	
-	</div>
-	<div class="container" id="produ">
-		<div class="produ-l">
-			<img src="/xinxiuli/img/productdel/5.jpg"/>
+		
+		<!--中间部分-->
+		<div id="model">
+		  <c:if test="${goods.detail.first_picture ne null}">
+			<img src="${goods.detail.first_picture}"/>
+		  </c:if>
+		  <c:if test="${goods.detail.thried_picture ne null}">
+			<img src="${goods.detail.thried_picture}"/>
+		  </c:if>
 		</div>
-		<div class="produ-r">
-			<h6>时尚潮人之选</h6>
-			<h3>优雅而独特的回形纹路，简约时尚现代，箱体采用镁铝合金材质，结实坚韧质感十足，轻量化设计</h3>
-			<hr />
-			<p>产品信息</p>
-			<div class="produ-list">
-				<ul>
-					<li>便捷式地址牌</li>
-					<li>TSA固定密码锁</li>
-					<li>顺滑滚轮网状隔层</li>
-					<li>蝶形打包带</li>
-					<li>拆卸打包隔板</li>
-				</ul>
-				<ul>
-					<li>精选铝镁合金材质</li>
-					<li>赠送搭配箱套</li>
-					<li>轻量化设计</li>
-					<li>结实坚韧耐压</li>
-					<li>加固铆钉，耐磨侧珠</li>
-					<li>轻质牢固拉杆</li>
-				</ul>
-				<ul>
-					<li>精致品牌LOGO</li>
-					<li>425*630*270（MM）</li>
-					<li>全球联保：10年质保</li>
-				</ul>
+		<div class="container" id="produ">
+			<div class="produ-l">
+			  
+				<img src="${goods.detail.second_picture}"/>
+			</div>
+			<div class="produ-r">
+				<h6>时尚潮人之选</h6>
+				<h3>优雅而独特的回形纹路，简约时尚现代，箱体采用镁铝合金材质，结实坚韧质感十足，轻量化设计</h3>
+				<hr />
+				<p>产品信息</p>
+				<div class="produ-list">
+					<ul>
+						<li>便捷式地址牌</li>
+						<li>TSA固定密码锁</li>
+						<li>顺滑滚轮网状隔层</li>
+						<li>蝶形打包带</li>
+						<li>拆卸打包隔板</li>
+					</ul>
+					<ul>
+						<li>精选铝镁合金材质</li>
+						<li>赠送搭配箱套</li>
+						<li>轻量化设计</li>
+						<li>结实坚韧耐压</li>
+						<li>加固铆钉，耐磨侧珠</li>
+						<li>轻质牢固拉杆</li>
+					</ul>
+					<ul>
+						<li>精致品牌LOGO</li>
+						<li>425*630*270（MM）</li>
+						<li>全球联保：10年质保</li>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container" id="size">
-		<img src="/xinxiuli/img/productdel/6.jpg"/>
-		<button class="btn  btn-lg two">23英寸</button>
-		<button class="btn btn-info btn-lg one">20英寸</button>	
-	</div>
-	<div class="size-bot">
-		<span><img src="/xinxiuli/img/productdel/13.jpg"/>
-		     <div class="subsize-bot">
-		     	 <span><img src="/xinxiuli/img/productdel/icon-03.png"/>
-		     	       <p>顺滑滚轮</p>
-		     	       <h6>360°静音滑轮，轻推省力探索更多</h6>
-		     	       <h6><a href="">探索更多</a></h6>
-		     	 </span>
-		     </div>
-		</span>
-		<span><img src="/xinxiuli/img/productdel/13.jpg"/>
-		     <div class="subsize-bot">
-		     	  <span><img src="/xinxiuli/img/productdel/icon-03.png"/>
-		     	       <p>顺滑滚轮</p>
-		     	       <h6>360°静音滑轮，轻推省力探索更多</h6>
-		     	       <h6><a href="">探索更多</a></h6>
-		     	 </span>
-		     </div>
-		</span>
-		<span><img src="/xinxiuli/img/productdel/13.jpg"/>
-		     <div class="subsize-bot">
-		     	  <span><img src="/xinxiuli/img/productdel/icon-03.png"/>
-		     	       <p>顺滑滚轮</p>
-		     	       <h6>360°静音滑轮，轻推省力探索更多</h6>
-		     	       <h6><a href="">探索更多</a></h6>
-		     	 </span>
-		     </div>
-		</span>
-		<span><img src="/xinxiuli/img/productdel/13.jpg"/>
-		     <div class="subsize-bot">
-		     	  <span><img src="/xinxiuli/img/productdel/icon-03.png"/>
-		     	       <p>顺滑滚轮</p>
-		     	       <h6>360°静音滑轮，轻推省力探索更多</h6>
-		     	       <h6><a href="">探索更多</a></h6>
-		     	 </span>
-		     </div>
-		</span>
-	</div>
-	<div id="remcommend">
-		<h2>我们为您推荐  
-		    <div class="subremo">
-		    	<h4>为您推荐</h4>
-		    </div>
-		</h2>
-		<hr />
-		<ul>
-			<a href="#"><li><img src="/xinxiuli/img/productdel/9.jpg"/>
-			   <div class="subremcom-list animated fadeIn">
-			   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
-			   	 <button class="btn btn-info btn-sm">查看详情</button>
-			   </div>
-			</li></a>
-			<a href="#"><li><img src="/xinxiuli/img/productdel/10.jpg"/>
-				<div class="subremcom-list animated fadeIn">
-			   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
-			   	 <button class="btn btn-info btn-sm">查看详情</button>
-			   </div>
-			</li></a>
-			<a href="#"><li><img src="/xinxiuli/img/productdel/11.jpg"/>
-				<div class="subremcom-list animated fadeIn">
-			   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
-			   	 <button class="btn btn-info btn-sm">查看详情</button>
-			   </div>
-			</li></a>
-			<a href="#"><li><img src="/xinxiuli/img/productdel/12.jpg" />
-				<div class="subremcom-list animated fadeIn">
-			   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
-			   	 <button class="btn btn-info btn-sm">查看详情</button>
-			   </div>
-			</li></a>
-		</ul>
-	</div>
-	<div id="like">
-		<div class="like-bg">
-		<h2>您可能喜欢  
-		    <div class="sublike">
-		    	<h4>猜您喜欢</h4>
-		    </div>
-		</h2>
-		<hr />
-		<ul>
-			<li class="currnt">
-				<a href="#"><img src="/xinxiuli/img/productdel/13.jpg"/>
-			   	   <div class="sublike-list animated fadeIn">
-			   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
-			   	 	<button class="btn btn-info btn-sm">查看详情</button>
-			   	   </div>
-				</a>
-				<a href="#"><img src="/xinxiuli/img/productdel/14.jpg"/>
-			   	   <div class="sublike-list animated fadeIn">
-			   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
-			   	 	<button class="btn btn-info btn-sm">查看详情</button>
-			   	   </div>
-				</a>
-				<a href="#"><img src="/xinxiuli/img/productdel/15.jpg"/>
-			   	   <div class="sublike-list animated fadeIn">
-			   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
-			   	 	<button class="btn btn-info btn-sm">查看详情</button>
-			   	   </div>
-				</a>
-				<a href="#"><img src="/xinxiuli/img/productdel/16.jpg"/>
-			   	   <div class="sublike-list animated fadeIn">
-			   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
-			   	 	<button class="btn btn-info btn-sm">查看详情</button>
-			   	   </div>
-				</a>
-			</li>
-			<li>
-				<a href="#"><img src="/xinxiuli/img/productdel/17.jpg"/>
-			   	   <div class="sublike-list animated fadeIn">
-			   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
-			   	 	<button class="btn btn-info btn-sm">查看详情</button>
-			   	   </div>
-				</a>
-				<a href="#"><img src="/xinxiuli/img/productdel/16.jpg"/>
-			   	   <div class="sublike-list animated fadeIn">
-			   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
-			   	 	<button class="btn btn-info btn-sm">查看详情</button>
-			   	   </div>
-				</a>
-				<a href="#"><img src="/xinxiuli/img/productdel/15.jpg"/>
-			   	   <div class="sublike-list animated fadeIn">
-			   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
-			   	 	<button class="btn btn-info btn-sm">查看详情</button>
-			   	   </div>
-				</a>
-				<a href="#"><img src="/xinxiuli/img/productdel/14.jpg"/>
-			   	   <div class="sublike-list animated fadeIn">
-			   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
-			   	 	<button class="btn btn-info btn-sm">查看详情</button>
-			   	   </div>
-				</a>
-			</li>
-		  </ul>
-		  
-		  <span class="active"></span> <span></span>
+		<div class="container" id="size">
+			<img src="/xinxiuli/img/productdel/6.jpg"/>
+			 <c:forEach items="${goods.getLsize()}" var="size" varStatus="i">
+			      <c:if test="${i.count eq 1}">
+			          <button class="btn btn-group-sm one">${size.size_name}</button>
+			      </c:if>
+			      <c:if test="${i.count eq 2}">			      
+			       <button class="btn btn-group-sm two">${size.size_name}</button>
+			      </c:if>
+			       <c:if test="${i.count eq 3}">			      
+			       <button class="btn btn-group-sm three">${size.size_name}</button>
+			      </c:if>
+			   </c:forEach>	
 		</div>
-	</div>
+		<div class="size-bot">
+		 <c:forEach items="${goods.detailphoto}" var="details" varStatus="i" >
+			<span><img src="${details}" class="deta" style="height:400px; width:90%; margin-left:20px;"/>
+				     <div class="subsize-bot">
+				     	 <span><img src="/xinxiuli/img/productdel/icon-03.png"/>
+				     	       <p>顺滑滚轮</p>
+				     	       <h6>360°静音滑轮，轻推省力探索更多</h6>
+				     	       <h6><a href="">探索更多</a></h6>
+				     	 </span>
+				     </div>
+			</span>
+		 </c:forEach>
+		</div>
+		<div id="remcommend">
+			<h2>我们为您推荐  
+			    <div class="subremo">
+			    	<h4>为您推荐</h4>
+			    </div>
+			</h2>
+			<hr />
+			<ul>
+				<a href="#"><li><img src="/xinxiuli/img/productdel/9.jpg"/>
+				   <div class="subremcom-list animated fadeIn">
+				   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
+				   	 <button class="btn btn-info btn-sm">查看详情</button>
+				   </div>
+				</li></a>
+				<a href="#"><li><img src="/xinxiuli/img/productdel/10.jpg"/>
+					<div class="subremcom-list animated fadeIn">
+				   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
+				   	 <button class="btn btn-info btn-sm">查看详情</button>
+				   </div>
+				</li></a>
+				<a href="#"><li><img src="/xinxiuli/img/productdel/11.jpg"/>
+					<div class="subremcom-list animated fadeIn">
+				   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
+				   	 <button class="btn btn-info btn-sm">查看详情</button>
+				   </div>
+				</li></a>
+				<a href="#"><li><img src="/xinxiuli/img/productdel/12.jpg" />
+					<div class="subremcom-list animated fadeIn">
+				   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
+				   	 <button class="btn btn-info btn-sm">查看详情</button>
+				   </div>
+				</li></a>
+			</ul>
+		</div>
+		<div id="like">
+			<div class="like-bg">
+			<h2>您可能喜欢  
+			    <div class="sublike">
+			    	<h4>猜您喜欢</h4>
+			    </div>
+			</h2>
+			<hr />
+			<ul>
+				<li class="currnt">
+					<a href="#"><img src="/xinxiuli/img/productdel/13.jpg"/>
+				   	   <div class="sublike-list animated fadeIn">
+				   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
+				   	 	<button class="btn btn-info btn-sm">查看详情</button>
+				   	   </div>
+					</a>
+					<a href="#"><img src="/xinxiuli/img/productdel/14.jpg"/>
+				   	   <div class="sublike-list animated fadeIn">
+				   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
+				   	 	<button class="btn btn-info btn-sm">查看详情</button>
+				   	   </div>
+					</a>
+					<a href="#"><img src="/xinxiuli/img/productdel/15.jpg"/>
+				   	   <div class="sublike-list animated fadeIn">
+				   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
+				   	 	<button class="btn btn-info btn-sm">查看详情</button>
+				   	   </div>
+					</a>
+					<a href="#"><img src="/xinxiuli/img/productdel/16.jpg"/>
+				   	   <div class="sublike-list animated fadeIn">
+				   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
+				   	 	<button class="btn btn-info btn-sm">查看详情</button>
+				   	   </div>
+					</a>
+				</li>
+				<li>
+					<a href="#"><img src="/xinxiuli/img/productdel/17.jpg"/>
+				   	   <div class="sublike-list animated fadeIn">
+				   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
+				   	 	<button class="btn btn-info btn-sm">查看详情</button>
+				   	   </div>
+					</a>
+					<a href="#"><img src="/xinxiuli/img/productdel/16.jpg"/>
+				   	   <div class="sublike-list animated fadeIn">
+				   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
+				   	 	<button class="btn btn-info btn-sm">查看详情</button>
+				   	   </div>
+					</a>
+					<a href="#"><img src="/xinxiuli/img/productdel/15.jpg"/>
+				   	   <div class="sublike-list animated fadeIn">
+				   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
+				   	 	<button class="btn btn-info btn-sm">查看详情</button>
+				   	   </div>
+					</a>
+					<a href="#"><img src="/xinxiuli/img/productdel/14.jpg"/>
+				   	   <div class="sublike-list animated fadeIn">
+				   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
+				   	 	<button class="btn btn-info btn-sm">查看详情</button>
+				   	   </div>
+					</a>
+				</li>
+			  </ul>
+			  
+			  <span class="active"></span> <span></span>
+			</div>
+		</div>
+		
 		
 		<!--尾部样式-->
 		<section>
