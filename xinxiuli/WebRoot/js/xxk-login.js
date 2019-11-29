@@ -92,7 +92,7 @@ function getUrlVal(property){
      }
     var data={username:phonevalue2,password:pwdvalue}
     console.log(data);
-    $.post('login',
+    $.post('/xinxiuli/login',
     {rmsg:JSON.stringify(data)},
       function(re){
       if(re.code==1){
@@ -106,6 +106,7 @@ function getUrlVal(property){
        }	
       if(re.code==0){
     	$('#login').modal('hide');  
+    	location.href="/xinxiuli/index.jsp";
       }
       
       })

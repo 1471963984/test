@@ -1,12 +1,10 @@
 (function(){
 	var account_num = $(".mycart-sercher").attr("cart-number");
-	console.log(account_num);
 	$.ajax({
 		type: "POST",
 		url:"/xinxiuli/collgoods",
 		data:"account_num="+account_num,
 		success:function(result){
-			console.log(result);
 			var str = ``;
 			for(var i = 0;i < result.length;i++){
 				str+=`
@@ -17,7 +15,7 @@
 								<div class="goods-name">${result[i].goods_desc}</div>
 								<div class="goods-desc">${result[i].goods_name}</div>
 								<div class="goods-price">${result[i].goods_price}.00</div>
-								<div class="goods-delete" title="删除商品" goodsid="${result[i].goods_id}" goodsnum="${result[i].goods_num}" onclick="deleteColls(this)"></div>
+								<div class="goods-delete" title="删除商品" goodsid="${result[i].goods_id}" onclick="deleteColls(this)"></div>
 							
 						</div>
 					</li>
@@ -29,16 +27,32 @@
 })();
 					
 function deleteColls(obj){
-	alert("123");
 	var goods_id = obj.getAttribute("goodsid");
-	var account_num = obj.getAttribute("goodsnum");
+	var account_num = $(".mycart-sercher").attr("cart-number");
 	var s = "{'goods_id':"+goods_id+",'account_num':"+account_num+"}";
 	$.ajax({
 		type:"POST",
-		url:"/xinxiuli/collgoods",
+		url:"/xinxiuli/updatecolls",
 		data:"s="+s,
 		success:function(result){
-			alert("111");
+			$(".info_r>ul").empty();
+			var str=``;
+			for(var i = 0;i < result.length;i++){
+				str+=`
+					<li>
+						<div class="mycolls">
+							<a href="/xinxiuli/Show?gid=${result[i].goods_num}">
+								<img src="${result[i].goods_picture}" /></a>
+								<div class="goods-name">${result[i].goods_desc}</div>
+								<div class="goods-desc">${result[i].goods_name}</div>
+								<div class="goods-price">${result[i].goods_price}.00</div>
+								<div class="goods-delete" title="删除商品" goodsid="${result[i].goods_id}" onclick="deleteColls(this)"></div>
+							
+						</div>
+					</li>
+				`;
+			}
+			$(".info_r>ul").append(str);
 		},
 	});
 };

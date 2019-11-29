@@ -48,8 +48,7 @@ public class Loginservlet extends HttpServlet {
 					 if(flag){
 					 Boolean flag1=dao.selectaccountinfo(username, password, conn);   
 					 if(flag1){
-						     account =dao.selectAccountwhole(username,conn);
-						     System.out.println(account); 
+						     account =dao.selectAccountwhole(username,conn); 
 						    if(account!=null){
 						     req.getSession().setAttribute("account",account); 
 						     Returnmsg   msg0   =  new Returnmsg(0,"您登录成功");
@@ -79,11 +78,6 @@ public class Loginservlet extends HttpServlet {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
 								}
-						}    
-		                    
-		          
-		          
-		          System.out.println(rmsg);
-		          System.out.println("ok");     
+						}      
 	}  
 }

@@ -2,29 +2,18 @@ package web.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.User;
-
-import net.sf.json.JSON;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import pojo.Goods;
-import service.UpdateCollsId;
-
-public class UpdateColls extends HttpServlet {
+public class DiviedGoods extends HttpServlet {
 
 	/**
 		 * Constructor of the object.
 		 */
-	public UpdateColls() {
+	public DiviedGoods() {
 		super();
 	}
 
@@ -62,22 +51,9 @@ public class UpdateColls extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String s = request.getParameter("s");
-		JSONObject jo = JSONObject.fromObject(s);
-		String goods_id = jo.getString("goods_id");
-		String account_num = jo.getString("account_num");
-		List<Goods> list = new ArrayList<Goods>();
-		if(goods_id!=null&&account_num!=null) {
-			UpdateCollsId service = new service.Impl.UpdateCollsId();
-			list = service.updateCollsId(account_num,Integer.parseInt(goods_id));
-			PrintWriter out = response.getWriter();
-			response.setCharacterEncoding("utf-8");
-			response.setHeader("Content-Type", "application/json;charset=utf-8");
-			JSONArray ja = JSONArray.fromObject(list);
-			out.print(URLDecoder.decode(ja.toString()));
-			out.flush();
-			out.close();
-		}
+
+		String divied_id = request.getParameter("divied_id");
+		
 	}
 
 	/**
@@ -86,7 +62,7 @@ public class UpdateColls extends HttpServlet {
 		 * @throws ServletException if an error occurs
 		 */
 	public void init() throws ServletException {
-		
+		// Put your code here
 	}
 
 }

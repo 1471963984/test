@@ -144,7 +144,6 @@ $('.tab-name').mouseenter(function(){
             	 str+=`
 					<div><a target="_self" href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=${result[i].divied_num}">${result[i].second_name}</a></div>					
             	 `;
-            	
              }
              $('.first-column').append(str);
          }
@@ -165,4 +164,18 @@ $('.tab-name').mouseenter(function(){
 
 })();
 
+(function(){
+	
+	var msg = $(".acceptmsg").val();
+	console.log(msg);
+	if(msg!=""){
+		alert(msg);
+		$.ajax({
+			type:"POST",
+			url:"/xinxiuli/removemsg",
+			success:function(){
+			},
+		});
+	}
+})();
 

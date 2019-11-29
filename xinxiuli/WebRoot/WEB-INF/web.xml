@@ -119,7 +119,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>UpdateColls</servlet-name>
-    <url-pattern>/uppdatecolls</url-pattern>
+    <url-pattern>/updatecolls</url-pattern>
   </servlet-mapping>
   <filter>
   	<filter-name>CharacterEncoding</filter-name>
@@ -156,10 +156,32 @@
      <servlet-name>Login</servlet-name>
      <servlet-class>web.xxk.servlet.Loginservlet</servlet-class>
     </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>RemoveMsg</servlet-name>
+    <servlet-class>web.xxk.servlet.RemoveMsg</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DiviedGoods</servlet-name>
+    <servlet-class>web.servlet.DiviedGoods</servlet-class>
+  </servlet>
+
+
      <servlet-mapping>
       <servlet-name>Login</servlet-name>
-      <url-pattern>/qianduanyemian/login</url-pattern> 
+      <url-pattern>/login</url-pattern> 
     </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RemoveMsg</servlet-name>
+    <url-pattern>/removemsg</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DiviedGoods</servlet-name>
+    <url-pattern>/diviedgoods</url-pattern>
+  </servlet-mapping>
     <listener>
        <listener-class>web.xxk.listener.SingletonSessionlistener</listener-class>
     </listener> 

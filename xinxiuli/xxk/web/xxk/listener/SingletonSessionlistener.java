@@ -30,7 +30,7 @@ public class SingletonSessionlistener implements HttpSessionAttributeListener{
 	    	   oldsession.setAttribute("accountmsg","您的帐号已经在其他机器上登录");                                      
 	        }
 	       map.put(anew.getAccount_num(),event.getSession());
-	       System.out.println("你的账号上限"+"attributeAdd");         
+	       System.out.println("你的账号上线"+"attributeAdd");         
 	     } 
 		
 	}
@@ -40,8 +40,7 @@ public class SingletonSessionlistener implements HttpSessionAttributeListener{
 		 String  name =event.getName();
 		 if("account".equals(name)){
 		 Account  a  =(Account)event.getValue();            	         
-		     map.remove(a.getAccount_num());
-		     System.out.println("注销"+"remove");  
+		     map.remove(a.getAccount_num());  
 		 }
 	}
 
@@ -68,6 +67,5 @@ public class SingletonSessionlistener implements HttpSessionAttributeListener{
               
             map.put(anew.getAccount_num(), event.getSession());
 	    }
-        System.out.println("replaceed");
    }
 }
