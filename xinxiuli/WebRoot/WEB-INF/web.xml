@@ -20,36 +20,59 @@
    			 Container
   		</res-auth>
 	</resource-ref>
+
 	<servlet>
 	   <servlet-name>goodsShow</servlet-name>
 	   <servlet-class>web.servlet.Show</servlet-class>
 	</servlet>
+	<servlet-mapping>
+	   <servlet-name>goodsShow</servlet-name>
+	   <url-pattern>/Show</url-pattern>
+	</servlet-mapping>
+	
+	
+
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>AccountOut</servlet-name>
     <servlet-class>web.servlet.AccountOut</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>AccountOut</servlet-name>
+    <url-pattern>/tuichu</url-pattern>
+  </servlet-mapping>
+	
+
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>FirstContent</servlet-name>
     <servlet-class>web.servlet.FirstContent</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>FirstContent</servlet-name>
+    <url-pattern>/first</url-pattern>
+  </servlet-mapping>
+  
+  
+
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>SecondContent</servlet-name>
     <servlet-class>web.servlet.SecondContent</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>SecondContent</servlet-name>
+    <url-pattern>/second</url-pattern>
+  </servlet-mapping>
+  
+
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>SercherCartNum</servlet-name>
     <servlet-class>web.servlet.CartNum</servlet-class>
-    
   </servlet>
+  <servlet-mapping>
+    <servlet-name>SercherCartNum</servlet-name>
+    <url-pattern>/cartnum</url-pattern>
+  </servlet-mapping>
   
+
   	<servlet>
 	   <servlet-name>addCard</servlet-name>
 	   <servlet-class>web.servlet.SelectNum</servlet-class>
@@ -58,7 +81,8 @@
 	   <servlet-name>addCard</servlet-name>
 	   <url-pattern>/SelectNum</url-pattern>
 	</servlet-mapping>
-  
+	
+
    <servlet>
 	   <servlet-name>UsersOrder</servlet-name>
 	   <servlet-class>web.servlet.MyOrder</servlet-class>
@@ -68,20 +92,27 @@
 	   <url-pattern>/MyOrder</url-pattern>
 	</servlet-mapping>
   
-  
+
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>CollGoods</servlet-name>
     <servlet-class>web.servlet.CollGoods</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>CollGoods</servlet-name>
+    <url-pattern>/collgoods</url-pattern>
+  </servlet-mapping>
+  
+
   <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>UpdateColls</servlet-name>
     <servlet-class>web.servlet.UpdateColls</servlet-class>
   </servlet>
-<!--购物车-->	
+  <servlet-mapping>
+    <servlet-name>UpdateColls</servlet-name>
+    <url-pattern>/updatecolls</url-pattern>
+  </servlet-mapping>
+  
+<!--购物车-->
   	<servlet>
 	   <servlet-name>personcart</servlet-name>
 	   <servlet-class>web.servlet.MyCartServlet</servlet-class>
@@ -109,44 +140,8 @@
 	   <servlet-name>myaddrs</servlet-name>
 	   <url-pattern>/showmyaddrs</url-pattern>
 	</servlet-mapping>		
-	<servlet-mapping>
-	   <servlet-name>goodsShow</servlet-name>
-	   <url-pattern>/Show</url-pattern>
-	</servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AccountOut</servlet-name>
-    <url-pattern>/tuichu</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>FirstContent</servlet-name>
-    <url-pattern>/first</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>SecondContent</servlet-name>
-    <url-pattern>/second</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>SercherCartNum</servlet-name>
-    <url-pattern>/cartnum</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>CollGoods</servlet-name>
-    <url-pattern>/collgoods</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>UpdateColls</servlet-name>
-    <url-pattern>/updatecolls</url-pattern>
-  </servlet-mapping>
-  <filter>
-  	<filter-name>CharacterEncoding</filter-name>
-  	<filter-class>web.filter.CharacterEncoding</filter-class>
-  </filter>
-  <filter-mapping>
-  	<filter-name>CharacterEncoding</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping>
-  
-  
+	
+
   <!--验证码-->	
  	<servlet>
  		<servlet-name>imgCode</servlet-name>
@@ -156,8 +151,9 @@
  		<servlet-name>imgCode</servlet-name>
  		<url-pattern>/qianduanyemian/imgCode</url-pattern>
  	</servlet-mapping>
-	 
-	 <!--注册-->
+ 	
+
+   <!--注册-->
 	 <servlet>
 	  <servlet-name>register</servlet-name>
 	  <servlet-class>web.xxk.servlet.Registerservlet</servlet-class>
@@ -167,38 +163,46 @@
       <url-pattern>/qianduanyemian/register</url-pattern>
      </servlet-mapping> 
      
-    <!--登录-->
+
+   <!--登录-->
     <servlet>
      <servlet-name>Login</servlet-name>
      <servlet-class>web.xxk.servlet.Loginservlet</servlet-class>
     </servlet>
-  <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>RemoveMsg</servlet-name>
-    <servlet-class>web.xxk.servlet.RemoveMsg</servlet-class>
-  </servlet>
-  <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>DiviedGoods</servlet-name>
-    <servlet-class>web.servlet.DiviedGoods</servlet-class>
-  </servlet>
-
-
-     <servlet-mapping>
+    <servlet-mapping>
       <servlet-name>Login</servlet-name>
       <url-pattern>/login</url-pattern> 
     </servlet-mapping>
+    
+
+    <servlet>
+    <servlet-name>RemoveMsg</servlet-name>
+    <servlet-class>web.xxk.servlet.RemoveMsg</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>RemoveMsg</servlet-name>
     <url-pattern>/removemsg</url-pattern>
   </servlet-mapping>
+  
+
+  <servlet>
+	  <servlet-name>DiviedGoods</servlet-name>
+	  <servlet-class>web.servlet.DiviedGoods</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>DiviedGoods</servlet-name>
     <url-pattern>/diviedgoods</url-pattern>
   </servlet-mapping>
-    <listener>
-       <listener-class>web.xxk.listener.SingletonSessionlistener</listener-class>
-    </listener> 
+
+  <filter>
+  	<filter-name>CharacterEncoding</filter-name>
+  	<filter-class>web.filter.CharacterEncoding</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>CharacterEncoding</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <listener>
+     <listener-class>web.xxk.listener.SingletonSessionlistener</listener-class>
+  </listener> 
 </web-app>

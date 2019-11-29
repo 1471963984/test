@@ -35,7 +35,7 @@ function getUrlVal(property){
 							 <caption>
 								 <p class="goods-name">${result[i].goods_name}</p>
 								 <p class="goods-desc">${result[i].goods_desc}</p>
-								 <p>${result[i].price}</p>
+								 <p>${result[i].goods_price}.00</p>
 								 <p><span class="glyphicon  glyphicon-star"></span>${result[i].goods_star}</p>
 							</caption>
 						 </div>

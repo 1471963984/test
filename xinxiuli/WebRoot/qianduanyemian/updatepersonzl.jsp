@@ -65,9 +65,10 @@
 						</div>
 						<div class="content-right">
 							<div class="right-top">
+								<input type="hidden" value="${accountmsg}" class="acceptmsg"></input>
 								<c:if test="${account ne null}">
 									<div class="top-list text-center loginafter">
-										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><span class="out">　 退出</span>
+										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 									</div>
 								</c:if>
 								<c:if test="${account eq null}">
@@ -78,12 +79,12 @@
 								</c:if>
 								<!-- 登录后样式 -->
 								<div class="top-list">
-									<a href="#">
+									<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 									</a>
 								</div>
-								<div class="top-list top-right mycart">
-									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
+								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
+									<a href="/xinxiuli/mycart" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
 									<div class="cart-number">0</div>
 								</div>
 							</div>
@@ -126,7 +127,7 @@
 								<div class="right-warp">
 									<c:if test="${account ne null}">
 										<div class="right-list text-center loginafter">
-											<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><span class="out">　 退出</span>
+											<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 										</div>
 									</c:if>
 									<c:if test="${account eq null}">
@@ -137,11 +138,11 @@
 										</div>
 									</c:if>
 									<div class="right-list coll">
-										<a href="#">
+										<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
 											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 										</a>
 									</div>
-									<div class="right-list cart">
+									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
 										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
 										<div class="cart-number">0</div>
 									</div>
@@ -447,6 +448,7 @@
 </html>
 <script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
+<script type="text/javascript" src="/xinxiuli/js/ljy-index.js"></script>
 <script>
 	$('.info-l li').mouseenter(function(){
 		$(this).addClass("active").siblings().removeClass("active");

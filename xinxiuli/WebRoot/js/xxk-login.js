@@ -84,7 +84,8 @@ function getUrlVal(property){
   	
   	//密码账号等陆
     if(flag){
-//   phonevalue2      		
+//   phonevalue2 
+    console.log("12345");
     console.log(phonevalue2,pwdvalue);   
     if(phonevalue2==''||pwdvalue==''){
       alert('密码或账号有误');
