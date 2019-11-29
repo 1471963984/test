@@ -205,7 +205,7 @@
 							</li>
 							<li>
 								<label class="list-lable">*所在地区</label>
-								<input class="addrs" type="text" placeholder="17769336339" />
+								<input class="addrs" type="text" placeholder="省份/直辖市-市-区/县" />
 							</li>
 							<li>
 								<label class="list-lable">*详细地址</label>
@@ -216,12 +216,12 @@
 								<input class="phone" type="text" placeholder="请输入手机号" />
 							</li>
 							<li>
-								<label class="list-lable">固定电话</label>
-								<input class="tel" type="text" placeholder="请输入固定电话" />
+								<label class="list-lable">E-mail</label>
+								<input class="e-mail" type="text" placeholder="请输入您的邮箱" />
 							</li>
 							<div class="addrs-check">
 								<input type="checkbox" name="defaultAddress"/>
-								<div class="check-about">设为默认地址</div>
+								<div class="check-about">设为默认配送地址</div>
 							</div>
 							<li class="buttongroup">
 								<button class="buttoncun" type="button" id="submitbut">保存该地址</button>
@@ -421,21 +421,12 @@
 			           <span style="cursor: pointer;"> <img src="/xinxiuli/img/xxk/weibo.png" /> </span>
 			           </div>
 			         </div>
-			         
 		       	  </div>
 			     </div>
-		       
-		         
 		       </div>
-		    
-		    
-		    
-		    
 		   </div>		
 		   </div> 
 		</div>
-  
-	
 	</body>
 </html>
 <script src="/xinxiuli/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
@@ -450,12 +441,23 @@
 	})
 	//点击按钮提交
     $("#submitbut").click(function(){
-		console.log($('.name').val());
-		console.log($('.sex').val());
-		console.log($('.addrs').val());
-		console.log($('.xiangxiaddrs').val());
-		console.log($('.phone').val());
-		console.log($('.tel').val());
-        //$("#addmyaddrs").submit();
+    	var u = new Object();
+    	u.users_name = $('.name').val();
+    	u.users_nickname = $('.sex').val();
+    	u.users_addr = $('.addrs').val()+$('.xiangxiaddrs').val();
+    	u.users_phone = $('.phone').val();
+    	u.users_email = $('.e-mail').val();
+    	var json = JSON.stringify(u);
+        $.ajax({
+			type:"post",
+			url:"/xinxiuli/jiaaddrs",
+			data:"user="+json,
+			success:function(result){
+				
+			}
+		});
+        
     });
+    
+    
 </script>

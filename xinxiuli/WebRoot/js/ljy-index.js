@@ -167,8 +167,7 @@ $('.tab-name').mouseenter(function(){
 (function(){
 	
 	var msg = $(".acceptmsg").val();
-	console.log(msg);
-	if(msg!=""){
+	if(msg!=""&&msg!="undefined"){
 		alert(msg);
 		$.ajax({
 			type:"POST",

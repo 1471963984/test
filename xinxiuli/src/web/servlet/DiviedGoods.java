@@ -2,11 +2,18 @@ package web.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONArray;
+import pojo.Goods;
+import service.FindDiviedGoods;
 
 public class DiviedGoods extends HttpServlet {
 
@@ -53,7 +60,16 @@ public class DiviedGoods extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String divied_id = request.getParameter("divied_id");
-		
+		FindDiviedGoods service = new service.Impl.FindDiviedGoods();
+		List<Goods> list = new ArrayList<Goods>();
+		list = service.findDiviedGoods(Integer.valueOf(divied_id));
+		JSONArray ja = JSONArray.fromObject(list);
+		response.setCharacterEncoding("utf-8");
+		response.setHeader("Content-Type", "application/json;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.print(URLDecoder.decode(ja.toString()));
+		out.flush();
+		out.close();
 	}
 
 	/**

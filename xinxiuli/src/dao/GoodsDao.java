@@ -13,4 +13,5 @@ public interface GoodsDao {
 	public Goods selectGoods(int goods_num,Connection conn) throws Exception;
 	public Goods selectGoodsById(int goods_id,Connection conn) throws Exception;
 	public List<Goods> selectAllGoods(int goods_id,Connection conn) throws Exception;
+	public List<Goods> selectAllDiviedGoods(int divied_num,Connection conn) throws Exception;
 }

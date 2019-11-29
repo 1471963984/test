@@ -619,7 +619,8 @@
 				display: block;
 				clear: both;
 			}
-			.thumbnail-div{
-				height: 480px;
-				overflow: hidden;
+			.thumbnail-div:after{
+				content: '';
+				display: block;
+				clear: both;
 			}

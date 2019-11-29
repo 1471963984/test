@@ -18,34 +18,36 @@ function getUrlVal(property){
 	type:"POST",
 	url:"/xinxiuli/diviedgoods",
 	data:"divied_id="+divied_id,
-	success:function(){
-		 var str1 = `
-	          <div class="col-md-12 blank content-center">
-	          	<h1>商家正在努力上架中……</h1>
-	          </div>
-	        `;
-	        $('#goodsList').append(str1); 
+	success:function(result){
+		 if(result.length==0){
+			 var str1 = `
+				 <div class="col-md-12 blank content-center">
+				 <h1>商家正在努力上架中……</h1>
+				 </div>
+				 `;
+			 $('#goodsList').append(str1); 
+		 }else{
+			 for(var i = 0; i < result.length; i++){
+				 var str = `
+					 <div class="col-md-3 thumbnail-div">
+						 <div class="thumbnail">
+							 <a href="/xinxiuli/Show?gid=${result[i].goods_num}" target="_blank"><img src="${result[i].goods_picture}"/></a>
+							 <caption>
+								 <p class="goods-name">${result[i].goods_name}</p>
+								 <p class="goods-desc">${result[i].goods_desc}</p>
+								 <p>${result[i].price}</p>
+								 <p><span class="glyphicon  glyphicon-star"></span>${result[i].goods_star}</p>
+							</caption>
+						 </div>
+					 </div>
+				 `;
+				 //每遍历一次就要去添加一次
+				 $('#goodsList').append(str); 
+				 };
+		 }
 	        
 	        
 	        
-	        for(var i = 0; i < result.length; i++){
-	            var str = `
-	            <div class="col-md-3 thumbnail-div">
-	              <div class="thumbnail">
-	                <a href="/xinxiuli/qianduanyemian/productdetail.jsp?goods_id=${obj.data[i].goods_id}" target="_blank"><img src="${obj.data[i].goods_thumb}"/></a>
-	                <caption>
-	                  <p class="goods-name">${obj.data[i].goods_name}</p>
-	                  <p class="goods-desc">${obj.data[i].goods_desc}</p>
-	                  <p>${obj.data[i].price}</p>
-	                  <p><span class="glyphicon  glyphicon-star"></span>${obj.data[i].star_number}</p>
-	                  <button class="btn btn-info">加入购物车</button>
-	                </caption>
-	              </div>
-	            </div>
-	            `;
-	            //每遍历一次就要去添加一次
-	            $('#goodsList').append(str); 
-	          };
 	    
 	},
   

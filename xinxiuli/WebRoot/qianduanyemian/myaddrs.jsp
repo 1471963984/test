@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageHeader.css"/>
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageFooter.css"/>
 	<link rel="stylesheet" href="/xinxiuli/css/myaddrs.css" />
+	
   </head>
   
 	<body>
@@ -169,7 +170,8 @@
 						<li class="active">我的订单</li>
 				    </ul>
 				</div>
-				
+			</div>
+			<div class="info-addr-content">
 				<div class="info-l">
 					<ul>
 						<li>账户首页</li>
@@ -186,8 +188,10 @@
 							<li>
 								<div class="title-about">地址簿</div>
 								<button class="btn btn-block btn-default">
-									<a href="/xinxiuli/qianduanyemian/addmyaddrs.jsp"><span class="btn-add">+</span>
-									&nbsp;&nbsp;添加收货地址</a>
+									<a href="/xinxiuli/qianduanyemian/addmyaddrs.jsp" onclick="tianjiadizhi()" />
+										<span class="btn-add">+</span>
+										&nbsp;&nbsp;添加收货地址
+									</a>
 								</button>
 							</li>
 						</ul>
@@ -203,9 +207,21 @@
 					    		<img class="goods-delete" title="删除商品" src="/xinxiuli/shop-imgs/delete.png"></img>
 					    	</div>
 				   		</div>
+				   		<div class="addrs-list">
+					    	<div class="name ch-left">陈广平</div>
+					    	<div class="phone mbtel">手机号：17769336339</div>
+					    	<div class="chengwei ch-left">先生</div>
+					    	<div class="phone gdtel">固定电话：17769336339</div>
+					    	<div class="addrs-message">湖南省-长沙市-岳麓区&nbsp;&nbsp;延农六期三栋四单元</div>
+					    	<div class="addrs-setdefault">设为默认</div>
+					    	<div class="caozuo">
+					    		<img class="addrs-edit" src="/xinxiuli/shop-imgs/address-edit.png"/>
+					    		<img class="goods-delete" title="删除商品" src="/xinxiuli/shop-imgs/delete.png"></img>
+					    	</div>
+				   		</div>
 					</form>
 				</div>
-			</div>
+			</div>	
 		</div>
 		
 			    <!--首页尾部-->
@@ -396,21 +412,12 @@
 			           <span style="cursor: pointer;"> <img src="/xinxiuli/img/xxk/weibo.png" /> </span>
 			           </div>
 			         </div>
-			         
 		       	  </div>
 			     </div>
-		       
-		         
 		       </div>
-		    
-		    
-		    
-		    
 		   </div>		
 		   </div> 
 		</div>
-  
-	
 	</body>
 </html>
 <script src="/xinxiuli/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
@@ -418,18 +425,42 @@
 <script src="/xinxiuli/js/ljy-index.js"></script>
 <script src="/xinxiuli/js/xxk-login.js"></script>
 <script>
-	
+	//称谓下拉菜单
 	$('.dropdown-menu li').click(function(){
 		var a = $(this).html();
 		$('.chengwei').val($(this).html());
 	})
-	$("#submitbut").click(function(){
-		console.log($('.name').val());
-		console.log($('.sex').val());
-		console.log($('.addrs').val());
-		console.log($('.xiangxiaddrs').val());
-		console.log($('.phone').val());
-		console.log($('.tel').val());
-        //$("#addmyaddrs").submit();
-    });
+	function tianjiadizhi(){
+		
+	}
+	
+	(function(){
+		$.ajax({
+			type:"POST",
+			url:"/xinxiuli/showmyaddrs",
+			data:"",
+			success:function(result){
+				var str = ``;
+				console.log(result);
+				for (var i = 0; i < result.length; i++) {
+					console.log(result[i].users_name);
+	             	str+=`
+						<div class="addrs-list">
+						    	<div class="name ch-left">${result[i].account_num}</div>
+						    	<div class="phone mbtel">手机号：${result[i].users_phone}</div>
+						    	<div class="chengwei ch-left">${result[i].users_nickname}</div>
+						    	<div class="addrs-message">${result[i].users_adrr}</div>
+						    	<div class="addrs-setdefault">设为默认</div>
+						    	<div class="caozuo">
+						    		<img class="addrs-edit" src="/xinxiuli/shop-imgs/address-edit.png"/>
+						    		<img class="goods-delete" title="删除商品" src="/xinxiuli/shop-imgs/delete.png"></img>
+						    	</div>
+					   		</div>
+				    `;
+				}
+				$('#addmyaddrs').append(str);
+			}
+		});
+	})();
+	
 </script>

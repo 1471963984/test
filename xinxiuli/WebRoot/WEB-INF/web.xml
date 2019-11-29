@@ -70,10 +70,6 @@
   
   
   <servlet>
-	   <servlet-name>personcart</servlet-name>
-	   <servlet-class>web.servlet.MyCartServlet</servlet-class>
-	</servlet>
-  <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>CollGoods</servlet-name>
@@ -85,14 +81,34 @@
     <servlet-name>UpdateColls</servlet-name>
     <servlet-class>web.servlet.UpdateColls</servlet-class>
   </servlet>
-
-
+<!--购物车-->	
+  	<servlet>
+	   <servlet-name>personcart</servlet-name>
+	   <servlet-class>web.servlet.MyCartServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 	   <servlet-name>personcart</servlet-name>
 	   <url-pattern>/mycart</url-pattern>
 	</servlet-mapping>
-
-		
+	<!--添加收货地址-->
+	<servlet>
+	   <servlet-name>jiaaddrs</servlet-name>
+	   <servlet-class>web.servlet.JiaAddrsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>jiaaddrs</servlet-name>
+	   <url-pattern>/jiaaddrs</url-pattern>
+	</servlet-mapping>
+	
+	<!--展示收货地址-->
+	<servlet>
+	   <servlet-name>myaddrs</servlet-name>
+	   <servlet-class>web.servlet.ShowMyAddrsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>myaddrs</servlet-name>
+	   <url-pattern>/showmyaddrs</url-pattern>
+	</servlet-mapping>		
 	<servlet-mapping>
 	   <servlet-name>goodsShow</servlet-name>
 	   <url-pattern>/Show</url-pattern>
