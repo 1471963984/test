@@ -46,9 +46,7 @@ function getUrlVal(property){
 	            //每遍历一次就要去添加一次
 	            $('#goodsList').append(str); 
 	          };
-	          
-	          
-	          
+	    
 	},
   
   });
