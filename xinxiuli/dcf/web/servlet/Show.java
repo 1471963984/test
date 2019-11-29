@@ -24,8 +24,8 @@ public class Show extends HttpServlet{
 	}
    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		  String gid=request.getParameter("gid");
-	      String gid="1";
+		  String gid=request.getParameter("gid");
+    //   String gid="1";
 		  String cid=request.getParameter("cid");
 		  DcfService ds=new DcfServiceImpl();
 		  ShowOneGoods sog=new ShowOneGoods();
@@ -34,10 +34,10 @@ public class Show extends HttpServlet{
 			 sog=ds.show(Integer.parseInt(gid));		 
 			 for(int i=0;i<sog.getLsize().size();i++) {
 				 if(sog.getGoods_id()==sog.getLsize().get(i).getGoods_id()&&
-					sog.getL().get(1).getColor_num()==sog.getLsize().get(i).getColor_num()	 
+					sog.getL().get(0).getColor_num()==sog.getLsize().get(i).getColor_num()	 
 						 ) {
 					 list.add(sog.getLsize().get(i));
-					 sog.setColorphoto(sog.getL().get(1).getGoods_delpicture().split(";"));
+					 sog.setColorphoto(sog.getL().get(0).getGoods_delpicture().split(";"));
 				 }
 			 }
 			  sog.setLsize(list);

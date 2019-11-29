@@ -51,6 +51,7 @@ public class DcfServiceImpl implements DcfService{
 			listcolor=gcd.queryGoods_color(goods.getGoods_id(), conn);
 			lsize=gsd.querysGoods_size(goods.getGoods_id(), conn);
 			detail=ddd.queryPhoto(goods.getGoods_id(),conn);
+			sog.setGoods_num(goods.getGoods_num());
 			sog.setGoods_id(goods.getGoods_id());
 			sog.setDivied_num(goods.getDivied_num());
 			sog.setGoods_desc(goods.getGoods_desc());
