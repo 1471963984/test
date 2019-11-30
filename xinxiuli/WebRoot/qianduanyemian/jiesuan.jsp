@@ -21,7 +21,7 @@
 <body>
 	<!--导航-->
 		<nav>
-         <div class="scrolled-index-header">
+         <div class="index-header">
 					<div class="container">
 						<div class="scrolled-warp">
 							<div class="scrolled-logo">
@@ -69,7 +69,7 @@
 			    	<div class="addrs-message">湖南省-长沙市-岳麓区&nbsp;&nbsp;延农六期三栋四单元</div>
 			    	<input type="text" class="addrs-default" value="默认地址"/>
 			    	<div class="caozuo">
-			    		<img class="addrs-edit" src="/xinxiuli/img/address-edit.png"/>
+			    		<img class="addrs-edit" src="/xinxiuli/shop-imgs/address-edit.png"/>
 			    		<img class="goods-delete" title="删除商品" src="/xinxiuli/shop-imgs/delete.png"></img>
 			    	</div>
 		   		</div>
@@ -95,16 +95,16 @@
 		<div class="balance-lable">支付方式</div>
 		<div class="payment" data-dianji="active">
 			<img class="zhifufanghsi" src="/xinxiuli/shop-imgs/payment-alipay.png"/>
-			<img class="gougou" src="/xinxiuli/img/checked.png" />
+			<img class="gougou" src="/xinxiuli/shop-imgs/checked.png" />
 		</div>
 		
 		<div class="payment" data-dianji="">
 			<img class="zhifufanghsi" src="/xinxiuli/shop-imgs/payment-wechatpay.png"/>
-			<img class="gougou" src="/xinxiuli/img/checked.png" />
+			<img class="gougou" src="/xinxiuli/shop-imgs/checked.png" />
 		</div>
 		<div class="payment" data-dianji="">
 			<img class="zhifufanghsi" src="/xinxiuli/shop-imgs/payment-unionpay.png"/>
-			<img class="gougou" src="/xinxiuli/img/checked.png" />
+			<img class="gougou" src="/xinxiuli/shop-imgs/checked.png" />
 		</div>
 		<div class="payment" data-dianji="">
 			<img class="zhifufanghsi" src="/xinxiuli/shop-imgs/payment-creditpay.png"/>
@@ -126,7 +126,7 @@
 			                        <img src="/xinxiuli/shop-imgs/weChat1.png" />
 			                        <img src="/xinxiuli/shop-imgs/bank.png" />
 			                    </div>
-			                    <a class="back-to-cart" href="mycart.html">返回购物车</a>
+			                    <a class="back-to-cart" href="/xinxiuli/qianduanyemian/mycart.jsp">返回购物车</a>
 			                </div>
                 		</div>
                 		<div class="card-right">
@@ -360,7 +360,6 @@
 </html>
 <script src="/xinxiuli/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
 <script src="/xinxiuli/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
-<script src="/xinxiuli/js/ljy-index.js"></script>
 <script src="/xinxiuli/js/xxk-login.js"></script>
 <script>
 	//选择支付方式

@@ -172,7 +172,7 @@
 					<div class="goods-operation">
 					<img src="/xinxiuli/shop-imgs/collection-no.png" alt="移入收藏夹" />
 					<div class="goods-middle">|</div>
-					<img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品" data-toggle="modal" data-target="#myModal" />
+					<a href="/xinxiuli/Show?gid=${result[i].goods_num}"><img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品"/></a>
 					</div>
 					</div>
 					</div>
@@ -224,7 +224,7 @@ function deleteGoods(obj){
 					</div>
 					</div>
 					</div>
-					<div class="sell-srice">${result[i].goods_price}.00</div>
+					<div class="sell-srice">¥　${result[i].goods_price}.00</div>
 					<div class="goods-delete" title="删除商品" onclick="deleteGoods(this)" goodsid="${result[i].goods_num}"></div>
 					</div>
 					</div>

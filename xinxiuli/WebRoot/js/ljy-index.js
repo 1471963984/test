@@ -165,7 +165,6 @@ $('.tab-name').mouseenter(function(){
 })();
 
 (function(){
-	
 	var msg = $(".acceptmsg").val();
 	if(msg!=""&&msg!="undefined"){
 		alert(msg);
