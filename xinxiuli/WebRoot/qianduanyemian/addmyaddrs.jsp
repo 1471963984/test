@@ -208,8 +208,14 @@
 							</li>
 							<li>
 								<label class="list-lable">*所在地区</label>
-								<input class="addrs" type="text" placeholder="省份/直辖市-市-区/县" />
+								<!-- <input class="addrs" type="text" placeholder="省份/直辖市-市-区/县" /> -->
+								<div id="city_4" class="addrs">
+									<select class="prov xuanxiang"></select> 
+									<select class="city xuanxiang" disabled="disabled"></select>
+									<select class="dist xuanxiang" disabled="disabled"></select>
+								</div>
 							</li>
+
 							<li>
 								<label class="list-lable">*详细地址</label>
 								<input class="xiangxiaddrs" type="text" placeholder="请输入详细地址" />
@@ -351,11 +357,10 @@
 	    	<div class="box">TOP</div>
 	    </section>
 	    
-	    <!--登录模态框-->
+	    	    <!--登录模态框-->
     	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
 		   <div class="modal-dialog  ">
 		   	<div class="modal-content">
-		   	  
 		   	   <div class="modal-header"> 
 		   	   	 <p><span class="close" data-dismiss="modal">&times;</span></p>
 		   	     <h3 class="text-center">登录新秀丽账号</h3>
@@ -366,7 +371,7 @@
 		           <div class="col-md-10 col-lg-offset-1 ">
 		           
 		            <!--验证码登录-->
-		           	 <div  id="security-code"  style="display: block;">
+		           	 <div  id="security-code"  style="display: none;">
 		       	     <!--手机号-->
 		       	     <div class="pictruecheck" >
 			         <input id="phone1" type="text" autofocus="autofocus" class="form-control" placeholder="请输入手机号" />
@@ -379,13 +384,12 @@
 			             <span class="input-group-btn">
 			             <button class="btn btn-default"  style="color: #666;" >发送验证码</button>
 			             </span>
-			           
 			         </div>
 			          <h6>　</h6>
 			         </div>
 			         
 			        <!--账号密码登录-->
-			         <div id="password-code" style="display: none;" >
+			         <div id="password-code" style="display: block;" >
 			          <!--手机号-->
 		       	     <div class="pictruecheck" >
 			         <input id="phone2" type="text" autofocus="autofocus"  class="form-control" placeholder="请输入手机号" />
@@ -430,12 +434,14 @@
 		   </div>		
 		   </div> 
 		</div>
+	    
 	</body>
 </html>
 <script src="/xinxiuli/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
 <script src="/xinxiuli/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 <script src="/xinxiuli/js/ljy-index.js"></script>
 <script src="/xinxiuli/js/xxk-login.js"></script>
+<script src="/xinxiuli/js/jquery.cityselect.js"></script>
 <script>
 	//先生女士选择框
 	$('.dropdown-menu li').click(function(){
@@ -447,8 +453,8 @@
     	var u = new Object();
     	u.users_name = $('.name').val();
     	u.users_nickname = $('.sex').val();
-    	u.users_addr = $('.addrs').val()+$('.xiangxiaddrs').val();
-    	u.users_phone = $('.phone').val();
+    	u.users_addr = $('.prov').val()+"-"+$('.city').val()+"-"+$('.dist').val()+"  "+$('.xiangxiaddrs').val();
+		u.users_phone = $('.phone').val();
     	u.users_email = $('.e-mail').val();
     	var json = JSON.stringify(u);
         $.ajax({
@@ -462,5 +468,11 @@
         
     });
     
+    $("#city_4").citySelect({
+		prov:"湖南", 
+		city:"长沙",
+		dist:"岳麓区",
+		nodata:"none"
+	});
     
 </script>

@@ -87,6 +87,21 @@
 	margin-bottom: 20px;
 	position: relative;
 }
+#city_4{
+	width: 470px;
+	height: 40px;
+	display: inline-block;
+}
+#city_4	select{
+	width: 154px;
+	height: 100%;
+	font-size:16px;
+	margin:0px;
+	color:#666;
+	padding:0px 40px;
+	text-align:center;
+}
+
 .btn{
 	width: 140px;
 	height: 40px;

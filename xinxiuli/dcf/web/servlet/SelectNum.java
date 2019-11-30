@@ -25,7 +25,7 @@ public class SelectNum extends HttpServlet{
     	String cid=request.getParameter("cid");
     	
     	String sid=request.getParameter("sid");
-    	System.out.println(gid+"======="+cid+"======="+sid);
+    
     	int goodsid=subNumber(gid);
     	int colorid=subNumber(cid);
     	int sizeid=subNumber(sid);

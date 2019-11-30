@@ -558,13 +558,11 @@
 .info-r>ul a{
 	display: block;
 	height: 40px;
-	width: 40px;
 	float: left;
-	margin-right:40px;
+	margin-right:20px;
 }
 .info-r>ul a button{
 	color:while;
-	width:70px;
 	height:35px;
 }
 .info-r>p{

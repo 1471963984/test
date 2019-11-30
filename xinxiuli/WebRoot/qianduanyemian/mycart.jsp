@@ -420,18 +420,21 @@
 	    </section>
 	
 		<!--登录模态框-->
-		<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
+			    <!--登录模态框-->
+    	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
 		   <div class="modal-dialog  ">
 		   	<div class="modal-content">
 		   	   <div class="modal-header"> 
 		   	   	 <p><span class="close" data-dismiss="modal">&times;</span></p>
 		   	     <h3 class="text-center">登录新秀丽账号</h3>
 		       </div>
+		       
 		       <div class="modal-body">
 		       	 <div class="row" style="height: 320px;">
 		           <div class="col-md-10 col-lg-offset-1 ">
+		           
 		            <!--验证码登录-->
-		           	 <div  id="security-code"  style="display: block;">
+		           	 <div  id="security-code"  style="display: none;">
 		       	     <!--手机号-->
 		       	     <div class="pictruecheck" >
 			         <input id="phone1" type="text" autofocus="autofocus" class="form-control" placeholder="请输入手机号" />
@@ -447,8 +450,9 @@
 			         </div>
 			          <h6>　</h6>
 			         </div>
+			         
 			        <!--账号密码登录-->
-			         <div id="password-code" style="display: none;" >
+			         <div id="password-code" style="display: block;" >
 			          <!--手机号-->
 		       	     <div class="pictruecheck" >
 			         <input id="phone2" type="text" autofocus="autofocus"  class="form-control" placeholder="请输入手机号" />
@@ -462,6 +466,8 @@
 			          <h6 style="text-align: left; color: #398439;">　</h6>
 			          </div> 
 			         </div>
+			      
+			         
 			         <!-- --> 
 			        <div class="form-group" style=" margin:15px 0px;">
 			         <input type="checkbox" class="" style="width: 18px;height: 18px;">
@@ -488,9 +494,13 @@
 		       	  </div>
 			     </div>
 		       </div>
-		   	  </div>		
+		   </div>		
 		   </div> 
 		</div>
+		
+		
+		
+		
   		<!--购物车详情模态块-->
   		 <!--模态框结构-->
 	  <div class="modal fade" id="myModal" data-backdrop="static">

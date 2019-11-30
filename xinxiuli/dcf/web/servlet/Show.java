@@ -37,7 +37,6 @@ public class Show extends HttpServlet{
 			  }else {
 				  sog=ds.show(Integer.parseInt(gid),"");
 			  }	
-			  System.out.println(gid);
 			 for(int i=0;i<sog.getLsize().size();i++) {
 				 if(sog.getGoods_id()==sog.getLsize().get(i).getGoods_id()&&
 					sog.getL().get(0).getColor_num()==sog.getLsize().get(i).getColor_num()	 

@@ -29,21 +29,22 @@ public class ShowMyAddrsServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Connection conn = DbHelp.getConnection();
 		Account account	=(Account)request.getSession().getAttribute("account");
-		String account_num = account.getAccount_num();
-		UsersZiLiaoDao uzd = new UsersZiLiaoDaoImpl();
-		List<Users> list = null;
-		if(account_num!=null){
-			try {
-				list = uzd.selectAllUsersByAccount_num(account_num, conn);
-//				System.out.println(list.get(1).getUsers_addr());
-				JSONArray ja = JSONArray.fromObject(list);
-				response.setCharacterEncoding("utf-8");
-				response.setHeader("Content-Type", "application/json;charset=utf-8");
-				PrintWriter out = response.getWriter();
-				out.print(ja.toString());
-				out.flush();
-			} catch (Exception e) {
-				e.printStackTrace();
+		if(account!=null) {
+			String account_num = account.getAccount_num();
+			UsersZiLiaoDao uzd = new UsersZiLiaoDaoImpl();
+			List<Users> list = null;
+			if(account_num!=null){
+				try {
+					list = uzd.selectAllUsersByAccount_num(account_num, conn);
+					JSONArray ja = JSONArray.fromObject(list);
+					response.setCharacterEncoding("utf-8");
+					response.setHeader("Content-Type", "application/json;charset=utf-8");
+					PrintWriter out = response.getWriter();
+					out.print(ja.toString());
+					out.flush();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		

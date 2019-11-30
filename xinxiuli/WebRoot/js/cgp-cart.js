@@ -231,6 +231,7 @@ function deleteGoods(obj){
 					`;
 			}
 			$(".goods-list-box").append(str);
+			location.href="/xinxiuli/qianduanyemian/mycart.jsp";
 		},
 	
 	});

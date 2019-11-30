@@ -177,10 +177,10 @@
 			<ul>
 			  <c:forEach items="${goods.getL()}" var="color" varStatus="i">      
 			      <c:if test="${i.count eq cid}">
-			         <a href="javascript:" data-id="${color.color_num}"><li><button class="btn btn-success">${color.color_name}</button></li></a>
+			         <a href="javascript:" data-id="${color.color_num}"><li><button class="btn btn-success" id="colo">${color.color_name}</button></li></a>
 			      </c:if>
 			      <c:if test="${i.count ne cid}">
-			        <a href="javascript:" data-id="${color.color_num}"><li><button class="btn ">${color.color_name}</button></li></a>
+			        <a href="javascript:" data-id="${color.color_num}"><li><button class="btn" id="colo">${color.color_name}</button></li></a>
 			      </c:if>						  
 			  </c:forEach>				
 			</ul>
@@ -513,10 +513,10 @@
 	    <div class="box">TOP</div>
 	    
 		<!--登录模态框-->
-		<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
+			    <!--登录模态框-->
+    	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
 		   <div class="modal-dialog  ">
 		   	<div class="modal-content">
-		   	  
 		   	   <div class="modal-header"> 
 		   	   	 <p><span class="close" data-dismiss="modal">&times;</span></p>
 		   	     <h3 class="text-center">登录新秀丽账号</h3>
@@ -527,7 +527,7 @@
 		           <div class="col-md-10 col-lg-offset-1 ">
 		           
 		            <!--验证码登录-->
-		           	 <div  id="security-code"  style="display: block;">
+		           	 <div  id="security-code"  style="display: none;">
 		       	     <!--手机号-->
 		       	     <div class="pictruecheck" >
 			         <input id="phone1" type="text" autofocus="autofocus" class="form-control" placeholder="请输入手机号" />
@@ -540,13 +540,12 @@
 			             <span class="input-group-btn">
 			             <button class="btn btn-default"  style="color: #666;" >发送验证码</button>
 			             </span>
-			           
 			         </div>
 			          <h6>　</h6>
 			         </div>
 			         
 			        <!--账号密码登录-->
-			         <div id="password-code" style="display: none;" >
+			         <div id="password-code" style="display: block;" >
 			          <!--手机号-->
 		       	     <div class="pictruecheck" >
 			         <input id="phone2" type="text" autofocus="autofocus"  class="form-control" placeholder="请输入手机号" />
@@ -585,14 +584,13 @@
 			           <span style="cursor: pointer;"> <img src="/xinxiuli/img/xxk/weibo.png" /> </span>
 			           </div>
 			         </div>
-			         
 		       	  </div>
 			     </div>
 		       </div>
 		   </div>		
 		   </div> 
 		</div>
-	
+		
 	</body>
 </html>
 <script src="/xinxiuli/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>

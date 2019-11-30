@@ -270,10 +270,10 @@
 	    </section>
 	    
 	    <!--登录模态框-->
-		<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
+			    <!--登录模态框-->
+    	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
 		   <div class="modal-dialog  ">
 		   	<div class="modal-content">
-		   	  
 		   	   <div class="modal-header"> 
 		   	   	 <p><span class="close" data-dismiss="modal">&times;</span></p>
 		   	     <h3 class="text-center">登录新秀丽账号</h3>
@@ -284,7 +284,7 @@
 		           <div class="col-md-10 col-lg-offset-1 ">
 		           
 		            <!--验证码登录-->
-		           	 <div  id="security-code"  style="display: block;">
+		           	 <div  id="security-code"  style="display: none;">
 		       	     <!--手机号-->
 		       	     <div class="pictruecheck" >
 			         <input id="phone1" type="text" autofocus="autofocus" class="form-control" placeholder="请输入手机号" />
@@ -297,13 +297,12 @@
 			             <span class="input-group-btn">
 			             <button class="btn btn-default"  style="color: #666;" >发送验证码</button>
 			             </span>
-			           
 			         </div>
 			          <h6>　</h6>
 			         </div>
 			         
 			        <!--账号密码登录-->
-			         <div id="password-code" style="display: none;" >
+			         <div id="password-code" style="display: block;" >
 			          <!--手机号-->
 		       	     <div class="pictruecheck" >
 			         <input id="phone2" type="text" autofocus="autofocus"  class="form-control" placeholder="请输入手机号" />
@@ -342,13 +341,13 @@
 			           <span style="cursor: pointer;"> <img src="/xinxiuli/img/xxk/weibo.png" /> </span>
 			           </div>
 			         </div>
-			         
 		       	  </div>
 			     </div>
 		       </div>
 		   </div>		
 		   </div> 
 		</div>
+		
 	</body>
 </html>
 <script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>

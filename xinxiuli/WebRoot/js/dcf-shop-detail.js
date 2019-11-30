@@ -11,7 +11,7 @@ $(".info-r .tellusers").click(function(){
 });
 $(".info-r .addcart").click(function(){
 	var gid=$(".info-l").attr("data-goodsid");
-	var cid=$(".info-r>ul>a>li>.btn-success").parent().parent().attr("data-id");
+	var cid=$("#colo").parent().parent().attr("data-id");
 	var sid=$(".info-r>p>.btn-primary").attr("data-sizeid");
 	$.ajax({
 		type:"POST",
