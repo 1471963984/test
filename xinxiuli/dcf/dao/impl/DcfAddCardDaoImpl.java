@@ -54,4 +54,10 @@ public class DcfAddCardDaoImpl implements DcfAddCardDao{
 		return flag;
 	}
 
+	@Override
+	public boolean updateCartById(String cart_num, String goods_id, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
