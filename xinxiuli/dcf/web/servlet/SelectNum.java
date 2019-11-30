@@ -21,18 +21,20 @@ public class SelectNum extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String gid=request.getParameter("gid");
-    	int goodsid=subNumber(gid);
+    	
     	String cid=request.getParameter("cid");
-    	int colorid=subNumber(cid);
+    	
     	String sid=request.getParameter("sid");
+    	System.out.println(gid+"======="+cid+"======="+sid);
+    	int goodsid=subNumber(gid);
+    	int colorid=subNumber(cid);
     	int sizeid=subNumber(sid);
     	Account acc=(Account)request.getSession().getAttribute("account");
     	
     	 DcfService ds=new DcfServiceImpl();
     	 int goodsnum=ds.selectNumber(goodsid, colorid, sizeid,acc.getAccount_num());
     	 PrintWriter out=response.getWriter();
-    	 out.print(goodsnum);
-    	
+    	 out.print(goodsnum); 	
     }
     public int subNumber(String s) {
     	int a=Integer.parseInt(s.substring(1,s.length()-1));

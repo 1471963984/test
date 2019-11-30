@@ -14,66 +14,9 @@
 			$('.number span').eq(n).css('background','black')
 		.siblings('span').css('background','#666');
 		})
-	})
+	});
 	
-	  //请求用户的购物车数据
-//	  function goodsList(page, callback){
-//	    var page = page ? page : 1;
-//	    //页面打开就可以看到商品
-//	    $.get('http://www.wjian.top/shop/api_goods.php',{
-//	      'pagesize':4,
-//	      'page':6,
-//	    }, function(result){
-//	      var result = JSON.parse(result);
-//	      //验证
-//	      if(result.code != 0){
-//	        console.log('数据请求失败');
-//	        return;
-//	      };
-//	      //调用
-//	      callback(result);
-//	    }); 
-//	  };
-//	  goodsList(3, function(result){
-//	    var goodsList = result.data;
-////	    console.log(goodsList)
-//	    //得到数据了之后，在这里操作数据
-//	    //组装DOM结构
-//	    for(var i = 0; i < goodsList.length; i++){
-//	      //拿到每一项  goodsList[i].goodsName
-//	      var str = `
-//	        <div class="goods-list-js">
-//            	<div class="list-box">
-//            		<div class="goods-message">
-//            			<input type="checkbox" class="checkbox" />
-//            			<span class="lazyload"><img data-toggle="modal" data-target="#myModal"src="${goodsList[i].goods_thumb}"/></span>
-//            			<div class="goods-about">
-//            				<a href="javascript:;" data-toggle="modal" data-target="#myModal">${goodsList[i].goods_desc}</a>
-//            				<div class="goods-brand">ACTAEON</div>
-//            				<div class="goods-spec">
-//                				<label>颜色：</label>
-//                				<p>月光白</p>
-//                				<label>尺寸：</label>
-//                				<p>均码</p>
-//                			</div>
-//                			<div class="goods-operation">
-//                				<img src="/xinxiuli/shop-imgs/collection-no.png" alt="移入收藏夹" />
-//                				<div class="goods-middle">|</div>
-//                				<img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品" data-toggle="modal" data-target="#myModal" />
-//                			</div>
-//            			</div>
-//            		</div>
-//            		<div class="sell-srice">${goodsList[i].price}</div>
-//            		<div class="goods-delete" title="删除商品"></div>
-//        		</div>
-//        	</div>
-//	      `;
-//	      //把每次组装好的添加进table
-//	      $('.goods-list-box').append(str);
-//	    };
-//	    //所有的业务逻辑都在这之后
-//	    clickAll();
-//	  });
+	
 	clickAll();
 	  //轮播图
 	  function lunboList(page, callback){
@@ -159,30 +102,7 @@
 	      //求总价
 	      sumAll();
 	    };
-//	    console.log(event.target);
-	    //点击删除
-	    if(event.target.className == 'goods-delete'){
-	      //要做商品减的业务
-	      console.log('点击了删除');
-	      //找到tr删除自己
-	      var tab = event.target.parentNode.parentNode.parentNode;
-	      var tr = event.target.parentNode.parentNode;
-	        tab.removeChild(tr);
-	      //$(event.target).html('哈另一个')
-	      //调用总价
-	      sumAll();
-	    };
-	    var allinput = $('.goods-list-js');
-	    //删除选中
-	    if(event.target.className == 'card-left-top-title'){
-	       for(var i=0;i<allinput.length;i++){	
-	       if($('.goods-message').children('input').getAttribute("data-price")=='active'){
-	       		console.log('a');
-	       }
-	      }
-	      //调用总价
-	      sumAll();
-	    };
+	     
 
 
 	    //点击继续购物跳转到首页
@@ -222,12 +142,96 @@
 		$('.goods-tuijian').css({width : liL * 250,});
 	}
 	
-	//轮播图详情淡入淡出
-	//默认全部隐藏
-//	$('.tuijian-item').children('.goods-name').hide();
-//	$('.tuijian-item').each(function(){
-//		$(this).mouseenter(function(){
-//			console.log(this);
-//			$(this).children('.goods-name').show();
-//		})
-//	})
+(function(){
+	var account_num = $(".mycart-sercher").attr("cart-number");
+	$.ajax({
+		
+		type:"POST",
+		url:"/xinxiuli/mycart",
+		data:"account_num="+account_num,
+		success:function(result){
+			
+			console.log(result);
+			var str = ``;
+			for(var i=0;i<result.length;i++){
+				str+=`
+					<div class="goods-list-js">
+					<div class="list-box">
+					<div class="goods-message">
+					<input type="checkbox" class="checkbox" />
+					<span class="lazyload"><img src="${result[i].goods_img}"/></span>
+					<div class="goods-about">
+					<a href="/xinxiuli/Show?gid=${result[i].goods_num}" >${result[i].goods_desc}</a>
+					<div class="goods-brand">${result[i].goods_name}</div>
+					<div class="goods-spec">
+					<label>颜色：</label>
+					<p>${result[i].goods_color}</p>
+					<label>尺寸：</label>
+					<p>${result[i].goods_size}</p>
+					</div>
+					<div class="goods-operation">
+					<img src="/xinxiuli/shop-imgs/collection-no.png" alt="移入收藏夹" />
+					<div class="goods-middle">|</div>
+					<img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品" data-toggle="modal" data-target="#myModal" />
+					</div>
+					</div>
+					</div>
+					<div class="sell-srice">${result[i].goods_price}.00</div>
+					<div class="goods-delete" title="删除商品" onclick="deleteGoods(this)" goodsid="${result[i].goods_num}"></div>
+					</div>
+					</div>
+				`;
+			}
+			$(".goods-list-box").append(str);
+		},
+	});
+	
+})();
+					
+function deleteGoods(obj){
+	var goods_id = obj.getAttribute("goodsid");
+	var account_num = $(".mycart-sercher").attr("cart-number");
+	var s = "{'goods_id':"+goods_id+",'account_num':"+account_num+"}";
+	
+	$.ajax({
+	
+		type:"POST",
+		url:"/xinxiuli/deleteGoods",
+		data:"s="+s,
+		success:function(result){
+			$(".goods-list-box").empty();
+			var str = ``;
+			for(var i=0;i<result.length;i++){
+				str+=`
+					<div class="goods-list-js">
+					<div class="list-box">
+					<div class="goods-message">
+					<input type="checkbox" class="checkbox" />
+					<span class="lazyload"><img src="${result[i].goods_img}"/></span>
+					<div class="goods-about">
+					<a href="/xinxiuli/Show?gid=${result[i].goods_num}" >${result[i].goods_desc}</a>
+					<div class="goods-brand">${result[i].goods_name}</div>
+					<div class="goods-spec">
+					<label>颜色：</label>
+					<p>${result[i].goods_color}</p>
+					<label>尺寸：</label>
+					<p>${result[i].goods_size}</p>
+					</div>
+					<div class="goods-operation">
+					<img src="/xinxiuli/shop-imgs/collection-no.png" alt="移入收藏夹" />
+					<div class="goods-middle">|</div>
+					<img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品" data-toggle="modal" data-target="#myModal" />
+					</div>
+					</div>
+					</div>
+					<div class="sell-srice">${result[i].goods_price}.00</div>
+					<div class="goods-delete" title="删除商品" onclick="deleteGoods(this)" goodsid="${result[i].goods_num}"></div>
+					</div>
+					</div>
+					`;
+			}
+			$(".goods-list-box").append(str);
+		},
+	
+	});
+};

@@ -31,7 +31,7 @@ function getUrlVal(property){
 				 var str = `
 					 <div class="col-md-3 thumbnail-div">
 						 <div class="thumbnail">
-							 <a href="/xinxiuli/Show?gid=${result[i].goods_num}" target="_blank"><img src="${result[i].goods_picture}"/></a>
+							 <a href="/xinxiuli/Show?gid=${result[i].goods_num}" target="_self"><img src="${result[i].goods_picture}"/></a>
 							 <caption>
 								 <p class="goods-name">${result[i].goods_name}</p>
 								 <p class="goods-desc">${result[i].goods_desc}</p>

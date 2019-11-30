@@ -103,7 +103,7 @@
 									</a>
 								</div>
 								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
-									<a href="/xinxiuli/mycart" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
+									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/package.png"/></a>
 									<div class="cart-number">0</div>
 								</div>
 							</div>
@@ -162,7 +162,7 @@
 										</a>
 									</div>
 									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
-										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
+										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
 										<div class="cart-number">0</div>
 									</div>
 								</div>
@@ -170,6 +170,7 @@
 						</div>
 					</div>
 				</div>
+			
 			</nav>
 		</header>
 	
@@ -188,33 +189,7 @@
 	                	商品信息
 	                </div>
 	                <div class="goods-list-box">
-            	<c:forEach items="${goodslist }" var="goodsList" varStatus="i" >
-	                	<div class="goods-list-js">
-            		<div class="list-box">
-	            		<div class="goods-message">
-	            			<input type="checkbox" class="checkbox" />
-	            			<span class="lazyload"><img src="${goodsList.goods_img}"/></span>
-	            			<div class="goods-about">
-	            				<a href="javascript:;" >${goodsList.goods_desc}</a>
-	            				<div class="goods-brand">${goodsList.goods_name}</div>
-	            				<div class="goods-spec">
-	                				<label>颜色：</label>
-	                				<p>${goodsList.goods_color}</p>
-	                				<label>尺寸：</label>
-	                				<p>${goodsList.goods_size}</p>
-	                			</div>
-	                			<div class="goods-operation">
-	                				<img src="/xinxiuli/shop-imgs/collection-no.png" alt="移入收藏夹" />
-	                				<div class="goods-middle">|</div>
-	                				<img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品" data-toggle="modal" data-target="#myModal" />
-	                			</div>
-	            			</div>
-	            		</div>
-	            		<div class="sell-srice">${goodsList.goods_price}0</div>
-	            		<div class="goods-delete" title="删除商品"></div>
-        			</div>
-        	</div>
-            	</c:forEach>
+            			<!-- 此处要渲染信息 -->	
 	                </div>
                 	<div class="goods-card">
                 		<div class="card-left">
@@ -578,7 +553,7 @@
 <script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/xxk-login.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/ljy-index.js" ></script>
-<script src="/xinxiuli/js/cgp-cart.js"></script>
+<script type="text/javascript" src="/xinxiuli/js/cgp-cart.js"></script>
 <script>
 	$('.info-l>ul>li').mouseenter(function(){
 	var url=$(this).children('img').attr("src");

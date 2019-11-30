@@ -15,7 +15,7 @@
 	  				<!--首页头部-->
 		<header>
 			<nav>
-				<!--普通导航栏-->
+								<!--普通导航栏-->
 				<div class="normal-index-header">
 					<div class="container">
 						<div class="content-left">
@@ -76,7 +76,7 @@
 									</a>
 								</div>
 								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
-									<a href="/xinxiuli/mycart" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
+									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/package.png"/></a>
 									<div class="cart-number">0</div>
 								</div>
 							</div>
@@ -135,7 +135,7 @@
 										</a>
 									</div>
 									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
-										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
+										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
 										<div class="cart-number">0</div>
 									</div>
 								</div>
@@ -171,7 +171,7 @@
 				 <span class="glyphicon glyphicon-star-empty"></span>
 			</p>
 			<h5>${goods.goods_desc}</h5>
-			<p>${goods.goods_price}<span>手机购买</span><span class="glyphicon glyphicon-th-large"></span></p>
+			<p>${goods.goods_price}0<span>手机购买</span><span class="glyphicon glyphicon-th-large"></span></p>
 			<hr/>
 			<p>颜色</p>
 			<ul>
@@ -207,11 +207,22 @@
 			
 			<h4>需要帮助？您可以 <a href="javascript:">联系在线客服</a> 或 致电：4008-870-566</h4>
 			<hr />
-			<h3><span class="glyphicon glyphicon-heart"></span>添加至收藏
+			<h3>
+	      <c:if test="${account ne null}"> 
+				<c:if test="${goods.isColl eq null}">
+				<span class="glyphicon glyphicon-heart-empty"></span><span class="text">添加至收藏</span>
+				</c:if>
+				<c:if test="${goods.isColl ne null}">
+				<span class="glyphicon glyphicon-heart"></span><span class="text">取消收藏</span>
+				</c:if>	
+	  	  </c:if>
+			<c:if test="${account eq null}">
+			  <span class="glyphicon glyphicon-heart-empty"></span><span class="noindex">添加至收藏</span>
+			</c:if>
 			    <p>分享：
 			    	<a href="javascript:"><img src="/xinxiuli/img/productdel/icon-01.png"/></a>
 			    	<a href="javascript:"><img src="/xinxiuli/img/productdel/icon-02.png"/></a>
-			    </p>
+			    </p>	
 			</h3>
 		</div>
 	</div>
@@ -294,25 +305,25 @@
 			</h2>
 			<hr />
 			<ul>
-				<a href="#"><li><img src="/xinxiuli/img/productdel/9.jpg"/>
+				<a href="/xinxiuli/Show?gid=16"><li><img src="/xinxiuli/img/productdel/9.jpg"/>
 				   <div class="subremcom-list animated fadeIn">
 				   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
 				   	 <button class="btn btn-info btn-sm">查看详情</button>
 				   </div>
 				</li></a>
-				<a href="#"><li><img src="/xinxiuli/img/productdel/10.jpg"/>
+				<a href="/xinxiuli/Show?gid=15"><li><img src="/xinxiuli/img/productdel/10.jpg"/>
 					<div class="subremcom-list animated fadeIn">
 				   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
 				   	 <button class="btn btn-info btn-sm">查看详情</button>
 				   </div>
 				</li></a>
-				<a href="#"><li><img src="/xinxiuli/img/productdel/11.jpg"/>
+				<a href="/xinxiuli/Show?gid=14"><li><img src="/xinxiuli/img/productdel/11.jpg"/>
 					<div class="subremcom-list animated fadeIn">
 				   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
 				   	 <button class="btn btn-info btn-sm">查看详情</button>
 				   </div>
 				</li></a>
-				<a href="#"><li><img src="/xinxiuli/img/productdel/12.jpg" />
+				<a href="/xinxiuli/Show?gid=13"><li><img src="/xinxiuli/img/productdel/12.jpg" />
 					<div class="subremcom-list animated fadeIn">
 				   	 <p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
 				   	 <button class="btn btn-info btn-sm">查看详情</button>
@@ -330,25 +341,25 @@
 			<hr />
 			<ul>
 				<li class="currnt">
-					<a href="#"><img src="/xinxiuli/img/productdel/13.jpg"/>
+					<a href="/xinxiuli/Show?gid=2"><img src="/xinxiuli/img/productdel/13.jpg"/>
 				   	   <div class="sublike-list animated fadeIn">
 				   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
 				   	 	<button class="btn btn-info btn-sm">查看详情</button>
 				   	   </div>
 					</a>
-					<a href="#"><img src="/xinxiuli/img/productdel/14.jpg"/>
+					<a href="/xinxiuli/Show?gid=3"><img src="/xinxiuli/img/productdel/14.jpg"/>
 				   	   <div class="sublike-list animated fadeIn">
 				   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
 				   	 	<button class="btn btn-info btn-sm">查看详情</button>
 				   	   </div>
 					</a>
-					<a href="#"><img src="/xinxiuli/img/productdel/15.jpg"/>
+					<a href="/xinxiuli/Show?gid=4"><img src="/xinxiuli/img/productdel/15.jpg"/>
 				   	   <div class="sublike-list animated fadeIn">
 				   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
 				   	 	<button class="btn btn-info btn-sm">查看详情</button>
 				   	   </div>
 					</a>
-					<a href="#"><img src="/xinxiuli/img/productdel/16.jpg"/>
+					<a href="/xinxiuli/Show?gid=5"><img src="/xinxiuli/img/productdel/16.jpg"/>
 				   	   <div class="sublike-list animated fadeIn">
 				   	 	<p>新秀丽明星同款拉杆箱 专柜经典贝壳箱坚韧轻盈登机箱万向轮行李箱包25英寸 V22</p>
 				   	 	<button class="btn btn-info btn-sm">查看详情</button>
@@ -356,25 +367,25 @@
 					</a>
 				</li>
 				<li>
-					<a href="#"><img src="/xinxiuli/img/productdel/17.jpg"/>
+					<a href="/xinxiuli/Show?gid=6"><img src="/xinxiuli/img/productdel/17.jpg"/>
 				   	   <div class="sublike-list animated fadeIn">
 				   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
 				   	 	<button class="btn btn-info btn-sm">查看详情</button>
 				   	   </div>
 					</a>
-					<a href="#"><img src="/xinxiuli/img/productdel/16.jpg"/>
+					<a href="/xinxiuli/Show?gid=7"><img src="/xinxiuli/img/productdel/16.jpg"/>
 				   	   <div class="sublike-list animated fadeIn">
 				   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
 				   	 	<button class="btn btn-info btn-sm">查看详情</button>
 				   	   </div>
 					</a>
-					<a href="#"><img src="/xinxiuli/img/productdel/15.jpg"/>
+					<a href="/xinxiuli/Show?gid=11"><img src="/xinxiuli/img/productdel/15.jpg"/>
 				   	   <div class="sublike-list animated fadeIn">
 				   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
 				   	 	<button class="btn btn-info btn-sm">查看详情</button>
 				   	   </div>
 					</a>
-					<a href="#"><img src="/xinxiuli/img/productdel/14.jpg"/>
+					<a href="/xinxiuli/Show?gid=12"><img src="/xinxiuli/img/productdel/14.jpg"/>
 				   	   <div class="sublike-list animated fadeIn">
 				   	 	<p>新秀丽新品拉杆箱 时尚外观铝质双拉杆旅行箱飞机轮登机箱20英寸可扩展大容量行李箱 GE6</p>
 				   	 	<button class="btn btn-info btn-sm">查看详情</button>

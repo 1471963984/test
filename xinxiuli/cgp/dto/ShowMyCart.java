@@ -8,7 +8,15 @@ public class ShowMyCart {
 	private String goods_size;
 	private double goods_price;
 	private String list_size;
+	private int goods_num;
 	
+	
+	public int getGoods_num() {
+		return goods_num;
+	}
+	public void setGoods_num(int goods_num) {
+		this.goods_num = goods_num;
+	}
 	public String getList_size() {
 		return list_size;
 	}

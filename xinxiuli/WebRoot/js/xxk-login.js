@@ -77,13 +77,13 @@ function getUrlVal(property){
     //登陆
   $('#loginbtn').click(function(){
   	 //验证码登陆
-  	if(!flag){
+  	if(flag){
 //	  phonevalue1	
   	
   	}
   	
   	//密码账号等陆
-    if(flag){
+    if(!flag){
 //   phonevalue2 
     console.log("12345");
     console.log(phonevalue2,pwdvalue);   

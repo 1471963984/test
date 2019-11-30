@@ -76,7 +76,7 @@
 									</a>
 								</div>
 								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
-									<a href="/xinxiuli/mycart" target="_blank"><img src="/xinxiuli/img/tools/package.png"/></a>
+									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/package.png"/></a>
 									<div class="cart-number">0</div>
 								</div>
 							</div>
@@ -135,7 +135,7 @@
 										</a>
 									</div>
 									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
-										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_blank"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
+										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
 										<div class="cart-number">0</div>
 									</div>
 								</div>
@@ -471,7 +471,7 @@
 		           <div class="col-md-10 col-lg-offset-1 ">
 		           
 		            <!--验证码登录-->
-		           	 <div  id="security-code"  style="display: block;">
+		           	 <div  id="security-code"  style="display: none;">
 		       	     <!--手机号-->
 		       	     <div class="pictruecheck" >
 			         <input id="phone1" type="text" autofocus="autofocus" class="form-control" placeholder="请输入手机号" />
@@ -489,7 +489,7 @@
 			         </div>
 			         
 			        <!--账号密码登录-->
-			         <div id="password-code" style="display: none;" >
+			         <div id="password-code" style="display: block;" >
 			          <!--手机号-->
 		       	     <div class="pictruecheck" >
 			         <input id="phone2" type="text" autofocus="autofocus"  class="form-control" placeholder="请输入手机号" />

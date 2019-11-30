@@ -3,10 +3,10 @@ package service;
 import java.sql.Connection;
 import java.util.List;
 
+import dto.ShowMyCart;
 import pojo.Cart;
-import pojo.Goods;
 
 public interface ShowCartService {
-	public List<Goods> selectAllMygoods(String account_num) throws Exception;
+	public List<ShowMyCart> selectAllMygoods(String account_num) throws Exception;
 
 }

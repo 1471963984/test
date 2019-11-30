@@ -5,10 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
-import dao.DcfAddCard;
+import dao.DcfAddCardDao;
 import pojo.Cart;
 
-public class DcfAddCardDaoImpl implements DcfAddCard{
+public class DcfAddCardDaoImpl implements DcfAddCardDao{
 
 	@Override
 	public boolean insertCart(Cart cart, Connection conn) throws Exception {

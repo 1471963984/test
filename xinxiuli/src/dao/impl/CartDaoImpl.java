@@ -86,4 +86,18 @@ public class CartDaoImpl implements CartDao{
 		return list;
 	}
 
+	@Override
+	public boolean updateCartById(String cart_num,String goods_id, Connection conn) throws Exception {
+		boolean flag = false;
+		String sql = "update cart set goods_id=? where cart_num=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, goods_id);
+		ps.setString(2, cart_num);
+		if(ps.executeUpdate()>0) {
+			flag = true;
+		}
+		return flag;
+	}
+
+
 }

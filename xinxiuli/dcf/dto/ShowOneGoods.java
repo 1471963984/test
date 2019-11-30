@@ -32,6 +32,8 @@ public class ShowOneGoods implements Serializable {
 	private String cid;
 	//保存颜色组图
 	private String[] colorphoto;
+//	判断该商品是否收藏
+	private String isColl;
 	
 	public int getGoods_num() {
 		return goods_num;
@@ -82,8 +84,6 @@ public class ShowOneGoods implements Serializable {
 		this.goods_size_num = goods_size_num;
 	}
 
-	
-	
 	public int getGoods_color_num() {
 		return goods_color_num;
 	}
@@ -134,5 +134,12 @@ public class ShowOneGoods implements Serializable {
 	public void setDetailphoto(String[] detailphoto) {
 		this.detailphoto = detailphoto;
 	}
+	public String getIsColl() {
+		return isColl;
+	}
+	public void setIsColl(String isColl) {
+		this.isColl = isColl;
+	}
+	
 		
 }

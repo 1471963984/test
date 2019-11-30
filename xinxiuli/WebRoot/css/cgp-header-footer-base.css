@@ -1,4 +1,7 @@
-
+			*{margin:0px;padding: 0px;}/*内外边距*/
+			a{text-decoration: none;}/*a标签的下划线*/
+			li{list-style: none;}
+			img{border: none;vertical-align: center;}
 			.container{
 				position: relative;
 			}
@@ -26,6 +29,10 @@
 				vertical-align: middle;
 				display: inline-block;
 			}
+			.normal-index-header .content-left a{
+				color:#999999;
+			}
+			
 			
 			/*普通头部logo展示样式*/
 			.normal-index-header .content-center{
@@ -156,7 +163,10 @@
 				line-height: 100px;
 				text-align: right;
 			}
-			
+			.normal-index-header .content-right .right-top a{
+				color:#999999;
+				text-decoration: none;
+			}
 			.normal-index-header .content-right .top-list{
 				display: inline-block;
 				height: 100px;

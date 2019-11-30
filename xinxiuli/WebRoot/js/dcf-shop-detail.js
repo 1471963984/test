@@ -7,7 +7,7 @@ $('.info-r>p button').click(function(){
 });
 //加入购物车模块
 $(".info-r .tellusers").click(function(){
-	alert("您好，请先登录再加入购物车");
+	alert("您好，请先登录");
 });
 $(".info-r .addcart").click(function(){
 	var gid=$(".info-l").attr("data-goodsid");
@@ -19,6 +19,7 @@ $(".info-r .addcart").click(function(){
 		data:{"gid":JSON.stringify(gid),"cid":JSON.stringify(cid),"sid":JSON.stringify(sid)},
 		success:function(result){
 			if(result!=null){
+				alert("恭喜您添加了一件商品");
 				var a=$(".cart-number").html();
 				a++;
 				$(".cart-number").html(a);
@@ -29,6 +30,37 @@ $(".info-r .addcart").click(function(){
 //立即选购
 $(".info-r .buygoods").click(function(){
 	location.href="";
+});
+//添加收藏
+$(".info-r>h3>.text").click(function(){
+	var text=$(".info-r>h3>.text").html();
+	if("添加至收藏"==text){
+		$.ajax({
+			type:"POST",
+			url:"/xinxiuli/MyCollection?gid="+$(".info-l").attr("data-goodsid"),
+			success:function(result){
+				if(result=='true'){
+					 $(".info-r>h3>.glyphicon").removeClass("glyphicon-heart-empty").addClass("glyphicon-heart");	
+					$(".info-r>h3>.text").html("取消收藏");	
+				}
+			}
+		});	
+	}
+	
+	if("取消收藏"==text){
+		$.ajax({
+			type:"POST",
+			url:"/xinxiuli/MyCollection?gid="+$(".info-l").attr("data-goodsid")+"&remove=remove",
+			success:function(result){
+				  $(".info-r>h3>.glyphicon").removeClass("glyphicon-heart").addClass("glyphicon-heart-empty");
+				  $(".info-r>h3>.text").html("添加至收藏");
+			}
+		});		
+	}			
+});
+//未登录点击收藏
+$(".info-r>h3>.noindex").click(function(){
+	alert("请先登录，再加入收藏");
 });
 
 //数量加减模块
@@ -63,6 +95,10 @@ $('#size>.three').click(function(){
 	});
 //放大镜业务逻辑
 (function(){
+	var imgsrc=$('.info-l>.big>img').attr("src");
+	$('.info-l>.big>.subinfo-show').css({
+        'background-image':'url('+imgsrc+')'
+    });
   //事件:鼠标移入到up再移动，再移出
   $('.big').mouseenter(function(event){
     //在移入里面移动,滑块跟随

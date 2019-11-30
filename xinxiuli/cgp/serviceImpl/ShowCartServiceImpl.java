@@ -9,23 +9,29 @@ import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import dao.AccountDao;
 import dao.CartDao;
 import dao.GoodsDao;
+import dao.Goods_colorDao;
+import dao.Goods_sizeDao;
 import dao.impl.AccountDaoImpl;
 import dao.impl.CartDaoImpl;
 import dao.impl.GoodsDaoImpl;
+import dao.impl.Goods_colorDaoImpl;
+import dao.impl.Goods_sizeDaoImpl;
 import db.DbHelp;
+import dto.ShowMyCart;
 import pojo.Account;
 import pojo.Cart;
 import pojo.Goods;
+import pojo.Goods_color;
+import pojo.Goods_size;
 import service.ShowCartService;
 
 public class ShowCartServiceImpl implements ShowCartService{
 
 	@Override
-	public List<Goods> selectAllMygoods(String account_num) throws Exception {
+	public List<ShowMyCart> selectAllMygoods(String account_num) throws Exception {
 		// TODO Auto-generated method stub
 		Connection conn=DbHelp.getConnection();
 		//通过账号获得cart-num
-		List<Goods> list = new ArrayList<Goods>();
 		AccountDao ad = new AccountDaoImpl();
 		Account account = ad.selectAccount(account_num, conn);
 		CartDao cd = new CartDaoImpl();
@@ -33,16 +39,30 @@ public class ShowCartServiceImpl implements ShowCartService{
 		Cart ct = cd.selectCart(account.getCart_num(), conn);
 		//通过购物车获取goods_num
 		String goods_num = ct.getGoods_id();
-		System.out.println(goods_num);
 		String[] str = goods_num.split(",");
-		System.out.println(str.length);
 		GoodsDao gd = new GoodsDaoImpl();
+		//准备存dto的集合
+		List<ShowMyCart> list = new ArrayList<ShowMyCart>();
+		//查询对应商品并封装成dto
+		Goods_colorDao cds = new Goods_colorDaoImpl();
+		Goods_sizeDao sd = new Goods_sizeDaoImpl();
 		for (int i = 0; i < str.length; i++) {
 			//通过goods_num找到唯一对应的商品
-			Goods goods = gd.selectGoods(Integer.parseInt(str[i]),conn);
-			list.add(goods);
+			Goods g = gd.selectGoods(Integer.parseInt(str[i]),conn);
+			ShowMyCart s = new ShowMyCart();
+			s.setGoods_img(g.getGoods_picture());
+			s.setGoods_desc(g.getGoods_desc());
+			s.setGoods_name(g.getGoods_name());
+			//颜色和尺寸还要查
+			Goods_color color = cds.selectGoods_colorOne(g.getGoods_id(),g.getGoods_color_num(), conn);
+			s.setGoods_color(color.getColor_name());
+			Goods_size size = sd.selectGoods_sizeOne(g.getGoods_id(), g.getGoods_color_num(), g.getGoods_size_num(), conn);
+			s.setGoods_size(size.getSize_name());
+			s.setGoods_price(g.getGoods_price());
+			s.setList_size(String.valueOf(list.size()));
+			s.setGoods_num(g.getGoods_num());
+			list.add(s);
 		}
-		
 		return list;
 	}
 

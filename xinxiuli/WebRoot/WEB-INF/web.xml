@@ -28,7 +28,16 @@
 	<servlet-mapping>
 	   <servlet-name>goodsShow</servlet-name>
 	   <url-pattern>/Show</url-pattern>
+	   
 	</servlet-mapping>
+	   <servlet>
+		   <servlet-name>addColl</servlet-name>
+		   <servlet-class>web.servlet.MyCollection</servlet-class>
+		</servlet>
+		<servlet-mapping>
+		   <servlet-name>addColl</servlet-name>
+		   <url-pattern>/MyCollection</url-pattern>
+		</servlet-mapping>
 	
 	
 
@@ -192,6 +201,17 @@
   <servlet-mapping>
     <servlet-name>DiviedGoods</servlet-name>
     <url-pattern>/diviedgoods</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet>
+    <servlet-name>UpdateCartGoods</servlet-name>
+    <servlet-class>web.servlet.UpdateCartGoods</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateCartGoods</servlet-name>
+    <url-pattern>/deleteGoods</url-pattern>
   </servlet-mapping>
 
   <filter>

@@ -625,3 +625,7 @@
 				display: block;
 				clear: both;
 			}
+			.thumbnail{
+				height:510px;
+				border: none;
+			}

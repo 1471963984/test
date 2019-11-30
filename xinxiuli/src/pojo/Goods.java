@@ -75,5 +75,13 @@ public class Goods implements Serializable{
 	}
 	public void setGoods_picture(String goods_picture) {
 		this.goods_picture = goods_picture;
+	}
+	@Override
+	public String toString() {
+		return "Goods [goods_num=" + goods_num + ", goods_id=" + goods_id + ", divied_num=" + divied_num
+				+ ", goods_desc=" + goods_desc + ", goods_price=" + goods_price + ", goods_name=" + goods_name
+				+ ", goods_star=" + goods_star + ", goods_color_num=" + goods_color_num + ", goods_size_num="
+				+ goods_size_num + ", goods_picture=" + goods_picture + "]";
 	}	
+	
 }
