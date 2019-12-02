@@ -278,6 +278,14 @@
        <servlet-name>Updatepersonzlservlets</servlet-name>
        <url-pattern>/Updatepersonzlservlet</url-pattern>
     </servlet-mapping>
+  <servlet>
+    <servlet-name>SelectAllGoods</servlet-name>
+    <servlet-class>web.servlet.SelectAllGoods</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectAllGoods</servlet-name>
+    <url-pattern>/selectall</url-pattern>
+  </servlet-mapping>
 
   <filter>
   	<filter-name>CharacterEncoding</filter-name>

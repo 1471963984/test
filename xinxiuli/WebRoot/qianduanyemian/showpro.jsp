@@ -144,10 +144,11 @@
 	    <!-- 首页头部 -->
 	          <section class="con-div">
          	<div class="container">
-	         	<div class="row">
+	         	<div class="row con-row">
 	         		<div class="row-left col-md-9">
 	         			<div class="divied-brandnav">
-	         				<span><a href="/xinxiuli/index.jsp">首页</a></span>　|　
+	         				<span><a href="/xinxiuli/index.jsp">首页</a></span>
+	         				<span>|</span>　
 	         				<span onclick="showAll()">新秀丽</span>
 	         			</div>
 	         		</div>
@@ -160,7 +161,7 @@
 	         	<hr/>
 	         	<div class="showCondition">
          			<div class="condition">
-         				<span>价格：</span>
+         				<span>价格</span>
          				<div class="condition-price">
          					<div class="unit">
          						<span>￥0-1500</span><input type="radio" name="price" id="price" value="1500" />
@@ -174,7 +175,7 @@
          				</div>
          			</div>
          			<div class="condition">
-         				<span>角色：</span>
+         				<span>角色</span>
          				<div class="condition-cols">
          					<div class="unit">
          						<span>儿　童</span><input type="radio" name="cols" id="price" value="儿童" />
@@ -188,7 +189,7 @@
          				</div>
          			</div>
      				<div class="condition">
-         				<span>热度：</span>
+         				<span>热度</span>
          				<div class="condition-pop">
          					<div class="unit">
          						<span>0-199</span><input type="radio" name="color" id="price" value="0,199" />
@@ -435,4 +436,14 @@
 	$(".condition>.caozuo>.cancle").click(function(){
 		$(".showCondition").hide();
 	});
+	function showAll(){
+		$.ajax({
+			type:"POST",
+			url:"/xinxiuli/selectall",
+			success:function(result){
+				console.log(result);
+			},
+		});
+		$('#goodsList').empty();
+	}
 </script>

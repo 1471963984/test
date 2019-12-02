@@ -588,6 +588,11 @@
 		    .footer-bottom .right a{
 		    	margin-right: 10px
 		    }
+		    .con-div .con-row{
+				background: #222222;
+				width: 1170px;
+				margin: 0 auto;
+			}
 		    .con-div .row-left{
 				display: inline-block;
 				height: 50px;
@@ -605,9 +610,11 @@
 			}
 			.divied-brandnav a{
 				font-size: 18px;
+				color: white;
 			}
 			.divied-brandnav span{
 				font-size: 18px;
+				color: white;
 			}
 			.condition-btn span{
 				background: #999999;
@@ -638,6 +645,9 @@
 				width: 50px;
 				display: inline-block;
 				margin-right: 100px;
+				color: white;
+				background: #222222;
+				text-align: center;
 			}
 			.showCondition>.condition .unit{
 				margin-right: 80px;
@@ -676,6 +686,8 @@
 				border-radius: 5px;
 				line-height: 30px;
 				margin-left: 10px;
+				background: #222222;
+				color: white;
 			}
 			.showCondition>.condition>.caozuo>.reset{
 				display: inline-block;

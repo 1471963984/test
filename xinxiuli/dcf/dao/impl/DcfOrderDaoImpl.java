@@ -21,18 +21,6 @@ public class DcfOrderDaoImpl implements DcfOrderDao{
 		return false;
 	}
 
-	@Override
-	public boolean deleteOrder(String order_num, Connection conn) throws Exception {
-
-		return false;
-	}
-
-	@Override
-	public Order selectOrder(String order_num, Connection conn) throws Exception {
-		return null;
-	}
-
-	@Override
 	public List<Order> selectAllOrder(Connection conn) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
@@ -53,15 +41,30 @@ public class DcfOrderDaoImpl implements DcfOrderDao{
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {
 			Order o = new Order();
-			o.setOrder_num(rs.getString("order_num"));
+			o.setOrder_num(rs.getInt("order_num"));
 			o.setOrder_time(rs.getString("order_time"));
 			o.setGoods_id(rs.getInt("goods_id"));
 			o.setOrder_status(rs.getInt("order_status"));
 			o.setAccount_num(rs.getString("account_num"));
-			o.setUsers_id(rs.getInt("users_id"));
+			o.setColor_num(rs.getInt("color_num"));
+			o.setSize_num(rs.getInt("size_num"));
 			list.add(o);
 		}
 		return list;
 	}
+
+	@Override
+	public boolean deleteOrder(int order_num, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Order selectOrder(int order_num, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

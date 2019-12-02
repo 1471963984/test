@@ -228,7 +228,30 @@ public class GoodsDaoImpl implements GoodsDao{
 			g.setGoods_picture(rs.getString("goods_picture"));
 			list.add(g);
 		}
-		return null;
+		return list;
+	}
+
+	@Override
+	public List<Goods> selectAllGoodsNo(Connection conn) throws Exception {
+		List<Goods> list = new ArrayList<Goods>();
+		String sql = "select * from goods group by goods_id";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()){
+			Goods g = new Goods();
+			g.setGoods_num(rs.getInt("goods_num"));
+			g.setGoods_id(rs.getInt("goods_id"));
+			g.setDivied_num(rs.getInt("divied_num"));
+			g.setGoods_desc(rs.getString("goods_desc"));
+			g.setGoods_price(rs.getDouble("goods_price"));
+			g.setGoods_name(rs.getString("goods_name"));
+			g.setGoods_star(rs.getInt("goods_star"));
+			g.setGoods_color_num(rs.getInt("goods_color_num"));
+			g.setGoods_size_num(rs.getInt("goods_size_num"));
+			g.setGoods_picture(rs.getString("goods_picture"));
+			list.add(g);
+		}
+		return list;
 	}
 
 }

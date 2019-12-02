@@ -4,16 +4,30 @@ import java.io.Serializable;
 
 public class Order implements Serializable {
 	private static final long serialVersionUID = -2135250234852410886L;
-	private String order_num;
+	private int order_num;
 	private int goods_id;
 	private int order_status;
 	private String account_num;
 	private int users_id;
 	private String order_time;
-	public String getOrder_num() {
+	public int getColor_num() {
+		return color_num;
+	}
+	public void setColor_num(int color_num) {
+		this.color_num = color_num;
+	}
+	public int getSize_num() {
+		return size_num;
+	}
+	public void setSize_num(int size_num) {
+		this.size_num = size_num;
+	}
+	private int color_num;
+	private int size_num;
+	public int getOrder_num() {
 		return order_num;
 	}
-	public void setOrder_num(String order_num) {
+	public void setOrder_num(int order_num) {
 		this.order_num = order_num;
 	}
 	public int getGoods_id() {
