@@ -108,7 +108,7 @@ load();
         	  for(var i=0;i<obj.length;i++){
         	$("#content").append("<tr><td>"+obj[i].usersid+"</td><td>"+obj[i].accountnum+"</td><td>"+obj[i].username[obj[i].index]+"</td><td>"+obj[i].usernick[obj[i].index]+"</td><td></td><td>"+obj[i].useremail[obj[i].index]+"</td><td>"+obj[i].userphone[obj[i].index]+"</td><td>"+obj[i].useraddr[obj[i].index]+"</td><td><button class='btn btn-primary btn-sm' data-toggle='modal' data-target='#myModal"+i+"'>查看详情</button> <button onclick='deleteUser("+obj[i].usersid+")' class='btn btn-danger btn-sm'>删除</button></td></tr>");
         	$("body").append("<div class='modal fade uinfo' id='myModal"+i+"' data-backdrop='static'><div class='modal-dialog modal-lg'><div class='modal-content'><div class='modal-header'><h3 class='modal-title'>用户所有地址信息：<span class='close' data-dismiss='modal'></span></h3></div><div class='modal-body'><ul class='uhead' style=' font-size:15px;font-weight: 600;'><li class='uindex'>编号</li><li class='uname'>用户名</li><li class='unik'>性别</li><li>Email</li><li>电话</li><li class='uaddr'>地址</li></ul></div></div</div></div>");
-	        	for(var j=0;j<obj[0].useraddr.length;j++){
+	        	for(var j=0;j<obj[i].useraddr.length;j++){
 	        		if(j==obj[i].index){
 	        			 $("#myModal"+i+" .modal-body").append("<ul><li class='uindex'>"+(j+1)+"(默认地址)</li><li class='uname'>"+obj[i].username[j]+"</li><li class='unik'>"+obj[i].usernick[j]+"</li><li>"+obj[i].useremail[j]+"</li><li>"+obj[i].userphone[j]+"</li><li class='uaddr'>"+obj[i].useraddr[j]+"</li></ul>");	
 	        		}else{
