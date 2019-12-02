@@ -13,19 +13,17 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<link rel="stylesheet" href="/xinxiuli/css/bootstrap.css" />
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageHeader.css" />
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageFooter.css" />
-	<link rel="stylesheet" href="/xinxiuli/css/personzl.css" />
+	<link rel="stylesheet" href="/xinxiuli/css/updatepersonzl.css" />
   </head>
   
   <body>
-  				<!--首页头部-->
+		<!--首页头部-->
 		<header class="mypage-header">
-			<nav>
-				<!--普通导航栏-->
+				<nav>
+								<!--普通导航栏-->
 				<div class="normal-index-header">
 					<div class="container">
 						<div class="content-left">
@@ -70,7 +68,7 @@
 								<input type="hidden" value="${accountmsg}" class="acceptmsg"></input>
 								<c:if test="${account ne null}">
 									<div class="top-list text-center loginafter">
-										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+										<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 									</div>
 								</c:if>
 								<c:if test="${account eq null}">
@@ -81,7 +79,7 @@
 								</c:if>
 								<!-- 登录后样式 -->
 								<div class="top-list">
-									<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
+									<a href="/xinxiuli/loginafter/mycolls.jsp">
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 									</a>
 								</div>
@@ -129,7 +127,7 @@
 								<div class="right-warp">
 									<c:if test="${account ne null}">
 										<div class="right-list text-center loginafter">
-											<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+											<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 										</div>
 									</c:if>
 									<c:if test="${account eq null}">
@@ -140,7 +138,7 @@
 										</div>
 									</c:if>
 									<div class="right-list coll">
-										<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
+										<a href="/xinxiuli/loginafter/mycolls.jsp">
 											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 										</a>
 									</div>
@@ -154,9 +152,8 @@
 					</div>
 				</div>
 			</nav>
+		
 		</header>
-	
-   		
 		<!--头部信息展示-->
 		<div id="info">
 				<!--中间部分-->
@@ -175,69 +172,56 @@
 				<div class="info-l">
 					<ul>
 						<li>账户首页</li>
-						<li class="active"><a href="/xinxiuli/qianduanyemian/personzl.jsp">个人资料</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/myaddrs.jsp">地址簿</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/myorders.jsp">我的订单</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/mycolls.jsp">我的收藏</a></li>
+						<li class="active"><a href="/xinxiuli/loginafter/personzl.jsp">个人资料</a></li>
+						<li><a href="/xinxiuli/loginafter/myaddrs.jsp">地址簿</a></li>
+						<li><a href="/xinxiuli/loginafter/myorders.jsp">我的订单</a></li>
+						<li><a href="/xinxiuli/loginafter/mycolls.jsp">我的收藏</a></li>
 						<li>客户服务</li>
 					</ul>
 				</div>
-				<div class="info_r">
+				<!-- 改动 -->
+				<div class="info_r" datachange="${account.account_num}">
 					<ul>
 						<li>
 							<div class="title-about">个人资料</div>
-							<div class="updatePass"><a href="updatepassword.jsp">修改密码</a></div>
 						</li>
 						<li>
-							<label class="list-lable">姓名</label>
-							<p class="list-about">17769336339</p>
+							<label class="list-lable">姓名*</label>
+							<input id="gainname"  type="text" placeholder="请输入姓名,字母数字中文0~8" value="${user.users_name}"/>
+							<span style="color:red;"></span>
 						</li>
 						<li>
-							<label class="list-lable">称谓</label>
-							<p class="list-about">17769336339</p>
+							<label class="list-lable">称谓*</label>
+                            <input id="gainnickname" type="text" placeholder="填写称谓 字母数字中文0~8长度"  value="${user.users_nickname}"/>
+					        <span style="color:red;"></span>
+                            <!--<span class="help-block"></span>-->
+						</li>
+						
+						<li>
+							<label class="list-lable">手机号*</label>
+							<input id="gainphone" type="text" placeholder="请输入手机号"  value="${user.users_phone}"/>
+							<span style="color:red;"></span>
 						</li>
 						<li>
-							<label class="list-lable">生日</label>
-							<p class="list-about">17769336339</p>
+							<label class="list-lable">电子邮箱*</label>
+							<input id="gainemil"  type="text" placeholder="请输入电子邮箱账号"  value="${user.users_email}"/>
+							<span style="color:red;"></span>
 						</li>
 						<li>
-							<label class="list-lable">手机号</label>
-							<p class="list-about">17769336339</p>
+							<label  class="list-lable">常住地址</label>
+							<input id="gainaddress" type="text" placeholder="请输入常住地址"  value="${user.users_addr}"/>
+							<span   style="color:red;"></span>
 						</li>
-						<li>
-							<label class="list-lable">电子邮箱</label>
-							<p class="list-about">17769336339</p>
-						</li>
-						<li>
-							<label class="list-lable">常住地址</label>
-							<p class="list-about">17769336339</p>
-						</li>
-						<li>
-							<label class="list-lable">学历</label>
-							<p class="list-about">17769336339</p>
-						</li>
-						<li>
-							<label class="list-lable">职业</label>
-							<p class="list-about">17769336339</p>
-						</li>
-						<li>
-							<label class="list-lable">薪酬</label>
-							<p class="list-about">17769336339</p>
-						</li>
-						<li>
-							<label class="list-lable">兴趣爱好</label>
-							<p class="list-about">17769336339</p>
-						</li>
-					<button class=""><a href="updatepersonzl.jsp">修改资料</a></button>
-				</ul>
-		            <!--在这里获取请求的数据-->
-		  
+					
+						
+						<button id="savechange" class="" type="button">保存修改</button>
+					</ul>
 				</div>
 			</div>
-
 		</div>
- 
- 		<!--首页尾部-->
+		
+			    
+	    <!--首页尾部-->
 	    <section>
     		<div class="footer">
     			<div class="container">
@@ -431,16 +415,21 @@
 		   </div> 
 		</div>
     	
-  </body>
+	</body>
 </html>
 <script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
-<script src="/xinxiuli/js/ljy-index.js"></script>
-<script src="/xinxiuli/js/xxk-login.js"></script>
+<script type="text/javascript" src="/xinxiuli/js/ljy-index.js"></script>
+<script src="/xinxiuli/js/xxk-updatepersonzl.js"></script>
 <script>
-	$('.info_r ul li').mouseenter(function(){
+	$('.info-l li').mouseenter(function(){
 		$(this).addClass("active").siblings().removeClass("active");
 	});
+		//先生女士选择框
+	$('.dropdown-menu li').click(function(){
+			var a = $(this).html();
+			$('.chengwei').val($(this).html());
+	})
 	$('.box').click(function(){
 		$('html').animate({'scrollTop':0},500);
 	});

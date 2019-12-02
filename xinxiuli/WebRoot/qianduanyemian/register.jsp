@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	 <h4>设置登录密码</h4>
 		  	 
 		  	 <div  class="pictruecheck">
-		     <input id="pwd1"   type="password"  class="form-control"  placeholder="6~8字符，数字大小写字母"/>
+		     <input id="pwd1"   type="password"  class="form-control"  placeholder="6~15字符，数字大小写字母"/>
 		      <span><img src="/xinxiuli/img/xxk/input-error.png" class="image-danger hidden"/></span>   
 		      <h6 style="text-align: left; color: #398439;">　</h6>
 		     </div>

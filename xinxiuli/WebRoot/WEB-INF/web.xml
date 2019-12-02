@@ -20,6 +20,16 @@
    			 Container
   		</res-auth>
 	</resource-ref>
+	<!-- 后台查询所有用户 -->
+	<servlet>
+	   <servlet-name>AllUsers</servlet-name>
+	   <servlet-class>web.servlet.AdminShowUsers</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>AllUsers</servlet-name>
+	   <url-pattern>/ShowAllUsers</url-pattern>
+	</servlet-mapping>
+<!-- 后台查询所有用户 -->
 
 	<servlet>
 	   <servlet-name>goodsShow</servlet-name>
@@ -139,6 +149,14 @@
 	   <servlet-name>jiaaddrs</servlet-name>
 	   <url-pattern>/jiaaddrs</url-pattern>
 	</servlet-mapping>
+	   <servlet>
+	   <servlet-name>updateAddres</servlet-name>
+	   <servlet-class>web.servlet.UpadateAddress</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>updateAddres</servlet-name>
+	   <url-pattern>/updateMyAddres</url-pattern>
+	</servlet-mapping>
 	
 	<!--展示收货地址-->
 	<servlet>
@@ -213,6 +231,53 @@
     <servlet-name>UpdateCartGoods</servlet-name>
     <url-pattern>/deleteGoods</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>FindGoodsCon</servlet-name>
+    <servlet-class>web.servlet.FindGoodsCon</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FindGoodsCon</servlet-name>
+    <url-pattern>/goodscon</url-pattern>
+  </servlet-mapping>
+  
+      <!--personzl-->
+    <servlet>
+    <servlet-name>personzls</servlet-name>
+    <servlet-class>web.xxk.servlet.Personzlservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    <servlet-name>personzls</servlet-name>
+    <url-pattern>/personzl</url-pattern>
+    </servlet-mapping>
+    
+    <!--check-->
+    <servlet>
+      <servlet-name>Updatepasswordchecks</servlet-name>
+      <servlet-class>web.xxk.servlet.Updatepasswordcheck</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>Updatepasswordchecks</servlet-name>
+      <url-pattern>/Updatepasswordcheck</url-pattern>
+    </servlet-mapping>
+    <!-- confirm -->
+    <servlet>
+      <servlet-name>Updatepasswordconfirms</servlet-name>
+      <servlet-class>web.xxk.servlet.Updatepasswordconfirm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>Updatepasswordconfirms</servlet-name>
+      <url-pattern>/Updatepasswordconfirm</url-pattern>
+    </servlet-mapping>
+    <!-- 信息修改 -->
+    <servlet>
+      <servlet-name>Updatepersonzlservlets</servlet-name>
+      <servlet-class>web.xxk.servlet.Updatepersonzlservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+       <servlet-name>Updatepersonzlservlets</servlet-name>
+       <url-pattern>/Updatepersonzlservlet</url-pattern>
+    </servlet-mapping>
 
   <filter>
   	<filter-name>CharacterEncoding</filter-name>
@@ -221,6 +286,14 @@
   <filter-mapping>
   	<filter-name>CharacterEncoding</filter-name>
   	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+  	<filter-name>SessionFilter</filter-name>
+  	<filter-class>web.filter.SessionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>SessionFilter</filter-name>
+  	<url-pattern>/loginafter/*</url-pattern>
   </filter-mapping>
   <listener>
      <listener-class>web.xxk.listener.SingletonSessionlistener</listener-class>

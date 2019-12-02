@@ -60,7 +60,7 @@
 								<input type="hidden" value="${accountmsg}" class="acceptmsg"></input>
 								<c:if test="${account ne null}">
 									<div class="top-list text-center loginafter">
-										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+										<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 									</div>
 								</c:if>
 								<c:if test="${account eq null}">
@@ -71,9 +71,7 @@
 								</c:if>
 								<!-- 登录后样式 -->
 								<div class="top-list">
-									<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
-										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
-									</a>
+										<img src="/xinxiuli/img/tools/icon-header-collection.png" onclick="checklogin()"/>
 								</div>
 								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
 									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/package.png"/></a>
@@ -119,7 +117,7 @@
 								<div class="right-warp">
 									<c:if test="${account ne null}">
 										<div class="right-list text-center loginafter">
-											<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+											<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 										</div>
 									</c:if>
 									<c:if test="${account eq null}">
@@ -130,9 +128,7 @@
 										</div>
 									</c:if>
 									<div class="right-list coll">
-										<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
-											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
-										</a>
+											<img src="/xinxiuli/img/tools/icon-header-collection.png"  onclick="checklogin()"/>
 									</div>
 									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
 										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
@@ -540,3 +536,13 @@
 <script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
 <script src="/xinxiuli/js/ljy-index.js"></script>
 <script src="/xinxiuli/js/xxk-login.js"></script>
+<script>
+	function checklogin(){
+		var account_num = $(".mycart-sercher").attr("cart-number");
+		if(account_num==""){
+		$('#login').modal('show');
+		}else if(account_num!=null&&account_num!="undefined"){
+			location.href="/xinxiuli/loginafter/mycolls.jsp";
+		}
+	}
+</script>

@@ -26,9 +26,11 @@ public class SercherCartInfo implements service.SercherCartInfo{
 			if(goods_id!=null) {
 				String[] s = goods_id.split(",");
 				for (int i = 0; i < s.length; i++) {
-					int goods_num = Integer.parseInt(s[i]);
-					Goods g = daos.selectGoods(goods_num, conn);
-					list.add(g);
+					if(!s[i].equals("")&&s[i]!=null) {
+						int goods_num = Integer.parseInt(s[i]);
+						Goods g = daos.selectGoods(goods_num, conn);
+						list.add(g);
+					}
 				}
 			}
 		} catch (Exception e) {

@@ -78,11 +78,14 @@ public class DcfServiceImpl implements DcfService{
 		if(!accnum.equals("")) {
 //			该商品是否被收藏
 			Account ac=ad.selectAccount(accnum, conn);
-			String[] goodsid=ac.getColl_goods().split(",");
-			for(int i=0;i<goodsid.length;i++) {
-				if(goodsid[i].equals(String.valueOf(goods.getGoods_id()))) {
-					sog.setIsColl("has");
-					break;
+			if(!ac.getColl_goods().equals("(NULL)")&&ac.getColl_goods()!=null) {
+				String[] goodsid=ac.getColl_goods().split(",");
+				for(int i=0;i<goodsid.length;i++) {
+					if(goodsid[i].equals(String.valueOf(goods.getGoods_id()))) {
+						System.out.println("该商品已存在");
+						sog.setIsColl("has");
+						break;
+					}
 				}
 			}
 		}
@@ -127,7 +130,11 @@ public class DcfServiceImpl implements DcfService{
 			  Account a=ad.selectAccount(accnum, conn);
 //			  先判断是否已经收藏了该商品
 			if(!accnum.equals("")) {
-				if(a.getColl_goods()!=null) {
+				if(a.getColl_goods()==null) {
+//					防止数据库得到的是空字符串	
+						a.setColl_goods("");
+						System.out.println("替换成功");
+					}
 				  String[] strs=a.getColl_goods().split(",");
 				  if(strs.length>0) {
 					  for(int i=0;i<strs.length;i++) {
@@ -141,7 +148,6 @@ public class DcfServiceImpl implements DcfService{
 				  String ss=a.getColl_goods()+goodsid+",";	
 				  bb=dad.addColl(accnum,ss, conn); 
 			  }
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

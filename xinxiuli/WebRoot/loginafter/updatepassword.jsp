@@ -16,14 +16,14 @@
 	<link rel="stylesheet" href="/xinxiuli/css/bootstrap.css" />
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageHeader.css" />
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageFooter.css" />
-	<link rel="stylesheet" href="/xinxiuli/css/updatepersonzl.css" />
+	<link rel="stylesheet" href="/xinxiuli/css/updatepassword.css" />
   </head>
   
   <body>
 		<!--首页头部-->
 		<header class="mypage-header">
-			<nav>
-				<!--普通导航栏-->
+				<nav>
+								<!--普通导航栏-->
 				<div class="normal-index-header">
 					<div class="container">
 						<div class="content-left">
@@ -68,18 +68,18 @@
 								<input type="hidden" value="${accountmsg}" class="acceptmsg"></input>
 								<c:if test="${account ne null}">
 									<div class="top-list text-center loginafter">
-										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+										<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 									</div>
 								</c:if>
 								<c:if test="${account eq null}">
 									<div class="top-list text-center loginbefore">
-										<a href="#" data-toggle="modal" data-target="#login">登录</a>|
+										<a id="againlogin" href="#" data-toggle="modal" data-target="#login">登录</a>|
 										<a href="/xinxiuli/qianduanyemian/register.jsp" target="_blank">注册</a>
 									</div>
 								</c:if>
 								<!-- 登录后样式 -->
 								<div class="top-list">
-									<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
+									<a href="/xinxiuli/loginafter/mycolls.jsp">
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 									</a>
 								</div>
@@ -127,7 +127,7 @@
 								<div class="right-warp">
 									<c:if test="${account ne null}">
 										<div class="right-list text-center loginafter">
-											<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+											<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 										</div>
 									</c:if>
 									<c:if test="${account eq null}">
@@ -138,7 +138,7 @@
 										</div>
 									</c:if>
 									<div class="right-list coll">
-										<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
+										<a href="/xinxiuli/loginafter/mycolls.jsp">
 											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 										</a>
 									</div>
@@ -152,7 +152,9 @@
 					</div>
 				</div>
 			</nav>
+		
 		</header>
+	  		
 		<!--头部信息展示-->
 		<div id="info">
 				<!--中间部分-->
@@ -171,77 +173,42 @@
 				<div class="info-l">
 					<ul>
 						<li>账户首页</li>
-						<li class="active"><a href="/xinxiuli/qianduanyemian/personzl.jsp">个人资料</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/myaddrs.jsp">地址簿</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/myorders.jsp">我的订单</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/mycolls.jsp">我的收藏</a></li>
+						<li class="active"><a href="/xinxiuli/loginafter/personzl.jsp">个人资料</a></li>
+						<li><a href="/xinxiuli/loginafter/myaddrs.jsp">地址簿</a></li>
+						<li><a href="/xinxiuli/loginafter/myorders.jsp">我的订单</a></li>
+						<li><a href="/xinxiuli/loginafter/mycolls.jsp">我的收藏</a></li>
 						<li>客户服务</li>
 					</ul>
 				</div>
-				<div class="info_r">
-				<form action="">
-					<ul>
+				<div class="info_r"  pwdaccount="${account.account_num}" >
+					<h3>修改密码</h3>
+					<ul class="info_r-list">
 						<li>
-							<div class="title-about">个人资料</div>
+							<label class="list-lable" >旧密码</label>
+							<input id="oldpassword" type="password" placeholder="输入旧密码" />
+							 <span style="color: red;">　</span>
+							<div class="tishi1" style="display:none;">请输入旧密码</div>
 						</li>
 						<li>
-							<label class="list-lable">姓名*</label>
-							<input type="text" placeholder="17769336339" />
+							<label  class="list-lable">新密码</label>
+							<input id="newpassword" type="password" placeholder="请输入新密码，至少6-15位且要有字符数字" />
+						    <span style="color: red;">　</span>
 						</li>
 						<li>
-							<label class="list-lable">称谓*</label>
-                            <div class="dropdown">
-					            <!--按钮-->
-					            <input type="text" class="sex chengwei" data-toggle="dropdown" placeholder="选择称谓" >
-					            </input>
-					            <!--项-->
-					            <ul class="dropdown-menu">
-					            	<li>先生</li>
-                                	<li>女士</li>
-					            </ul>
-					        </div>
-                            <!--<span class="help-block"></span>-->
+							<label class="list-lable">确认新密码</label>
+							<input id="newpasswordsecond" type="password" placeholder="请在次输入密码" />
+						     <span style="color: red;">　</span>
 						</li>
-						<li>
-							<label class="list-lable">生日*</label>
-							<input type="text" placeholder="17769336339" />
-						</li>
-						<li>
-							<label class="list-lable">手机号*</label>
-							<input  type="text" placeholder="17769336339" />
-						</li>
-						<li>
-							<label class="list-lable">电子邮箱*</label>
-							<input  type="text" placeholder="17769336339" />
-						</li>
-						<li>
-							<label class="list-lable">常住地址</label>
-							<input  type="text" placeholder="17769336339" />
-						</li>
-						<li>
-							<label class="list-lable">学历</label>
-							<input  type="text" placeholder="17769336339" />
-						</li>
-						<li>
-							<label class="list-lable">职业</label>
-							<input  type="text" placeholder="17769336339" />
-						</li>
-						<li>
-							<label class="list-lable">薪酬</label>
-							<input  type="text" placeholder="17769336339" />
-						</li>
-						<li>
-							<label class="list-lable">兴趣爱好</label>
-							<input  type="text" placeholder="17769336339" />
-						</li>
-						<button class="" type="button">保存修改</button>
+						
+						<button id="confirm" class="">确定</button>
+						
 					</ul>
-				</form>
+		            <!--在这里获取请求的数据-->
 				</div>
 			</div>
 		</div>
-		
-			    
+	
+	    
 	    <!--首页尾部-->
 	    <section>
     		<div class="footer">
@@ -441,15 +408,11 @@
 <script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/ljy-index.js"></script>
+<script type="text/javascript" src="/xinxiuli/js/xxk-updatepassword.js"></script>
 <script>
 	$('.info-l li').mouseenter(function(){
 		$(this).addClass("active").siblings().removeClass("active");
 	});
-		//先生女士选择框
-	$('.dropdown-menu li').click(function(){
-			var a = $(this).html();
-			$('.chengwei').val($(this).html());
-	})
 	$('.box').click(function(){
 		$('html').animate({'scrollTop':0},500);
 	});

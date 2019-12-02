@@ -1,11 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    
-    <title>地址簿</title>
+    <title>个人资料</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -15,17 +13,19 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<link rel="stylesheet" href="/xinxiuli/css/bootstrap.css" />
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageHeader.css" />
 	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageFooter.css" />
-	<link rel="stylesheet" href="/xinxiuli/css/addmyaddrs.css" />
+	<link rel="stylesheet" href="/xinxiuli/css/personzl.css" />
   </head>
   
   <body>
-		<!--首页头部-->
+  				<!--首页头部-->
 		<header class="mypage-header">
-			<nav>
-				<!--普通导航栏-->
+				<nav>
+								<!--普通导航栏-->
 				<div class="normal-index-header">
 					<div class="container">
 						<div class="content-left">
@@ -70,7 +70,7 @@
 								<input type="hidden" value="${accountmsg}" class="acceptmsg"></input>
 								<c:if test="${account ne null}">
 									<div class="top-list text-center loginafter">
-										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+										<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 									</div>
 								</c:if>
 								<c:if test="${account eq null}">
@@ -81,7 +81,7 @@
 								</c:if>
 								<!-- 登录后样式 -->
 								<div class="top-list">
-									<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
+									<a href="/xinxiuli/loginafter/mycolls.jsp">
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 									</a>
 								</div>
@@ -129,7 +129,7 @@
 								<div class="right-warp">
 									<c:if test="${account ne null}">
 										<div class="right-list text-center loginafter">
-											<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+											<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 										</div>
 									</c:if>
 									<c:if test="${account eq null}">
@@ -140,7 +140,7 @@
 										</div>
 									</c:if>
 									<div class="right-list coll">
-										<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
+										<a href="/xinxiuli/loginafter/mycolls.jsp">
 											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 										</a>
 									</div>
@@ -154,9 +154,10 @@
 					</div>
 				</div>
 			</nav>
+		
 		</header>
 	
-		
+   		
 		<!--头部信息展示-->
 		<div id="info">
 				<!--中间部分-->
@@ -167,82 +168,65 @@
 						<li class="icon">></li>
 						<li>我的账户</li>
 						<li class="icon">></li>
-						<li class="active">我的订单</li>
+						<li class="active">个人资料</li>
 				    </ul>
 				</div>
 			</div>
-			<div class="info-coll-content">
+			<div class="info-coll-content">	
 				<div class="info-l">
 					<ul>
 						<li>账户首页</li>
-						<li><a href="/xinxiuli/qianduanyemian/personzl.jsp">个人资料</a></li>
-						<li class="active"><a href="/xinxiuli/qianduanyemian/myaddrs.jsp">地址簿</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/myorders.jsp">我的订单</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/mycolls.jsp">我的收藏</a></li>
+						<li class="active"><a href="/xinxiuli/loginafter/personzl.jsp">个人资料</a></li>
+						<li><a href="/xinxiuli/loginafter/myaddrs.jsp">地址簿</a></li>
+						<li><a href="/xinxiuli/loginafter/myorders.jsp">我的订单</a></li>
+						<li><a href="/xinxiuli/loginafter/mycolls.jsp">我的收藏</a></li>
 						<li>客户服务</li>
 					</ul>
 				</div>
-				<div class="info_r">
-					<form action="" id="addmyaddrs">
-						<ul>
-							<li>
-								<div class="title-about">地址簿</div>
-							</li>
-							<li>
-								<label class="list-lable">*姓名</label>
-								<input type="text" placeholder="请输入姓名" class="name" />
-							</li>
-							<li>
-								<label class="list-lable">*称谓</label>
-	                            <div class="dropdown">
-						            <!--按钮-->
-						            <input class="sex chengwei" data-toggle="dropdown" placeholder="输入性别">
-						            </input>
-						            <!--项-->
-						            <ul class="dropdown-menu">
-						            	<li>先生</li>
-	                                	<li>女士</li>
-						            </ul>
-						        </div>
-	                            <!--<span class="help-block"></span>-->
-							</li>
-							<li>
-								<label class="list-lable">*所在地区</label>
-								<!-- <input class="addrs" type="text" placeholder="省份/直辖市-市-区/县" /> -->
-								<div id="city_4" class="addrs">
-									<select class="prov xuanxiang"></select> 
-									<select class="city xuanxiang" disabled="disabled"></select>
-									<select class="dist xuanxiang" disabled="disabled"></select>
-								</div>
-							</li>
-
-							<li>
-								<label class="list-lable">*详细地址</label>
-								<input class="xiangxiaddrs" type="text" placeholder="请输入详细地址" />
-							</li>
-							<li>
-								<label class="list-lable">*手机号</label>
-								<input class="phone" type="text" placeholder="请输入手机号" />
-							</li>
-							<li>
-								<label class="list-lable">E-mail</label>
-								<input class="e-mail" type="text" placeholder="请输入您的邮箱" />
-							</li>
-							<div class="addrs-check">
-								<input type="checkbox" name="defaultAddress"/>
-								<div class="check-about">设为默认配送地址</div>
-							</div>
-							<li class="buttongroup">
-								<button class="buttoncun" type="button" id="submitbut">保存该地址</button>
-								<button class="buttonqu btn btn-default btn-block">取消</button>
-							</li>
-						</ul>
-					</form>
+				<!--个人资料-->
+				<div class="info_r"  dataccount="${account.account_num}" >
+					<ul>
+						<li>
+							<div class="title-about">个人资料</div>
+							<div class="updatePass"  ><a href="updatepassword.jsp">修改密码</a></div>
+						</li>
+						<li>
+							<label class="list-lable">姓名</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						<li>
+							<label class="list-lable">称谓</label>
+							<p class="list-about">郝先生</p>
+						</li>
+						
+						<li>
+							<label class="list-lable">手机号</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						
+						<li>
+							<label class="list-lable">电子邮箱</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						
+						<li>
+							<label class="list-lable">常住地址</label>
+							<p class="list-about">17769336339</p>
+						</li>
+						
+						
+						
+						
+					<button class=""><a href="updatepersonzl.jsp">修改资料</a></button>
+				</ul>
+		            <!--在这里获取请求的数据-->
+		  
 				</div>
 			</div>
+
 		</div>
-	
-		<!--首页尾部-->
+ 
+ 		<!--首页尾部-->
 	    <section>
     		<div class="footer">
     			<div class="container">
@@ -357,7 +341,8 @@
 	    	<div class="box">TOP</div>
 	    </section>
 	    
-	    	    <!--登录模态框-->
+	    <!--登录模态框-->
+    		    <!--登录模态框-->
     	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
 		   <div class="modal-dialog  ">
 		   	<div class="modal-content">
@@ -434,45 +419,19 @@
 		   </div>		
 		   </div> 
 		</div>
-	    
-	</body>
+    	
+  </body>
 </html>
-<script src="/xinxiuli/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
-<script src="/xinxiuli/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>
+<script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
 <script src="/xinxiuli/js/ljy-index.js"></script>
 <script src="/xinxiuli/js/xxk-login.js"></script>
-<script src="/xinxiuli/js/jquery.cityselect.js"></script>
+<script type="text/javascript" src="/xinxiuli/js/xxk-personzl.js"></script>
 <script>
-	//先生女士选择框
-	$('.dropdown-menu li').click(function(){
-			var a = $(this).html();
-			$('.chengwei').val($(this).html());
-	})
-	//点击按钮提交
-    $("#submitbut").click(function(){
-    	var u = new Object();
-    	u.users_name = $('.name').val();
-    	u.users_nickname = $('.sex').val();
-    	u.users_addr = $('.prov').val()+"-"+$('.city').val()+"-"+$('.dist').val()+"  "+$('.xiangxiaddrs').val();
-		u.users_phone = $('.phone').val();
-    	u.users_email = $('.e-mail').val();
-    	var json = JSON.stringify(u);
-        $.ajax({
-			type:"post",
-			url:"/xinxiuli/jiaaddrs",
-			data:"user="+json,
-			success:function(result){
-				
-			}
-		});
-        
-    });
-    
-    $("#city_4").citySelect({
-		prov:"湖南", 
-		city:"长沙",
-		dist:"岳麓区",
-		nodata:"none"
+	$('.info_r ul li').mouseenter(function(){
+		$(this).addClass("active").siblings().removeClass("active");
 	});
-    
+	$('.box').click(function(){
+		$('html').animate({'scrollTop':0},500);
+	});
 </script>

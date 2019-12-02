@@ -42,7 +42,8 @@ function getUrlVal(property){
 					 </div>
 				 `;
 				 //每遍历一次就要去添加一次
-				 $('#goodsList').append(str); 
+				 $('#goodsList').append(str);
+				 getFocus(); 
 				 };
 		 }
 	        
@@ -55,7 +56,28 @@ function getUrlVal(property){
   
 })();
 
+function getFocus(){
+	$(".thumbnail-div").each(function(){
+		$(this).mouseenter(function(){
+			$(this).css("box-shadow","0px 0px 15px 1.5px #95B8E7");
+		});
+		$(this).mouseleave(function(){
+			$(this).css("box-shadow","none");
+		});
+	});
 
+};
+(function(){
+	
+	$.ajax({
+		type:"POST",
+		url:"/xinxiuli/goodscon",
+		success:function(){
+			
+		},
+	});
+	
+})();
 
 
 

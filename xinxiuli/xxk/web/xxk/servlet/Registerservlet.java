@@ -14,10 +14,14 @@ import Testutil.Myutil;
 import dao.Myxxk;
 import dao.imp.Myxxkimpl;
 import dao.impl.AccountDaoImpl;
+import dao.impl.CartDaoImpl;
+import dao.impl.UsersDaoImpl;
 import db.DbHelp;
 import dto.Returnmsg;
 import net.sf.json.JSONObject;
 import pojo.Account;
+import pojo.Cart;
+import pojo.Users;
 import util.GenericPrimaryKey;
 
 public class Registerservlet extends HttpServlet{
@@ -65,17 +69,37 @@ public class Registerservlet extends HttpServlet{
 		    	          out.write(ret1.toString()); 
 				          }
 				     //账号存不住
-				      if(!flag){  	 
+				      if(!flag){  
+				    	    //插入账号
+				    	    String cartnum=GenericPrimaryKey.getPrimaryKey();
 	    	        	    account.setAccount_num(phonevalue);
 	    	        	    account.setAccount_pass(pwd2value);
-	    	        	    account.setCart_num(GenericPrimaryKey.getPrimaryKey());
+	    	        	    account.setCart_num(cartnum);
 	    	        	    account.setUsers_ip(ip);
+	    	        	    account.setColl_goods("");
+	    	        	    account.setOrder_num("");
+	    	        	    
 	    	        //	    System.out.println(req.getRemoteAddr());
-	    	        	             
-	    	        	    acountdao.insertAccount(account, conn); 
-    	    	        	         conn.commit();
-	    	        	    //将注册信息存到session
-    	    	        	         
+	
+	    	        	  acountdao.insertAccount(account, conn); 
+
+                   //插入cart表
+    	    	         CartDaoImpl  Cartdao= new CartDaoImpl();   
+	    	        	             Cart cart=new  Cart();	    	        	             
+	    	        	             cart.setCart_num(cartnum);
+	    	        	             cart.setGoods_id("");
+	    	        	             cart.setGoods_count(0);
+	    	        	      Cartdao.insertCart(cart, conn);
+	    	        	    
+	    	        	         System.out.println("hap");
+    	    	        	 //将注册信息存到session
+	    	              UsersDaoImpl  userdao=new UsersDaoImpl();    
+	    	                     Users user=new Users();
+	    	                   user.setAccount_num(phonevalue); 
+	    	        	       user.setUsers_phone(phonevalue); 
+	    	        	      userdao.insertUsers(user, conn);
+	    	        	          conn.commit();
+	    	        	       
 	    	        	    req.getSession().setAttribute("account",account); 
 	    	        	    
 	    	        	    Returnmsg   msg0   =  new Returnmsg(0,"感谢您的注册");
@@ -99,7 +123,6 @@ public class Registerservlet extends HttpServlet{
 					}    
     	        	  
     	          }else { 
-    	        	  
     	        	//验证码错误
     	            Returnmsg msg2 = new Returnmsg(2,"验证码错误，请重新输入");
     	            JSONObject   ret2  =JSONObject.fromObject(msg2);          	    

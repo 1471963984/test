@@ -28,9 +28,11 @@ public class FindCollGoods implements service.FindCollGoods{
 				if(cool_goods!=null) {
 					String[] s = cool_goods.split(",");
 					for (int i = 0; i < s.length; i++) {
-						int goods_id = Integer.parseInt(s[i]);
-						Goods g = daos.selectGoodsById(goods_id, conn);
-						list.add(g);
+						if(s[i]!=""&&s[i]!=null) {
+							int goods_id = Integer.parseInt(s[i]);
+							Goods g = daos.selectGoodsById(goods_id, conn);
+							list.add(g);
+						}
 					}
 				}
 			}

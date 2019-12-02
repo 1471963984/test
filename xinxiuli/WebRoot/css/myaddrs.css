@@ -3,6 +3,7 @@
 	width: 100%;
 	background-color: #E6E6E6;
 	padding-top:30px;
+	padding-bottom: 30px;
 }
 #info>.info-addr-content{
 	width:1200px;
@@ -41,6 +42,7 @@
 	padding-top: 30px;
 	background-color: white;
 	float:left;
+	margin-bottom: 30px;
 }
 #info .info-l ul{
 	width: 250px;
@@ -69,7 +71,7 @@
 	width: 900px;
 	background-color: white;
 	margin-left:30px;
-	float: right;
+	float: left;
 	padding:40px 70px 60px;
 }
 .info_r .info_r-list{
@@ -255,7 +257,7 @@ form{
 	top: 20px;
 }
 .addrs-default{
-	width: 40px;
+	width: 80px;
 	height: 20px;
 	background: #222222;
 	color: white;
@@ -275,6 +277,7 @@ form{
 	position: absolute;
 	left: 600px;
 	top: 30px;
+	cursor:pointer;
 }
 .caozuo{
 	position: absolute;

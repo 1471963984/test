@@ -24,8 +24,8 @@
   <body data-spy="scroll">
 		<!--首页头部-->
 		<header class="mypage-header">
-			<nav>
-				<!--普通导航栏-->
+				<nav>
+								<!--普通导航栏-->
 				<div class="normal-index-header">
 					<div class="container">
 						<div class="content-left">
@@ -70,7 +70,7 @@
 								<input type="hidden" value="${accountmsg}" class="acceptmsg"></input>
 								<c:if test="${account ne null}">
 									<div class="top-list text-center loginafter">
-										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+										<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 									</div>
 								</c:if>
 								<c:if test="${account eq null}">
@@ -81,7 +81,7 @@
 								</c:if>
 								<!-- 登录后样式 -->
 								<div class="top-list">
-									<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
+									<a href="/xinxiuli/loginafter/mycolls.jsp">
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 									</a>
 								</div>
@@ -129,7 +129,7 @@
 								<div class="right-warp">
 									<c:if test="${account ne null}">
 										<div class="right-list text-center loginafter">
-											<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+											<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 										</div>
 									</c:if>
 									<c:if test="${account eq null}">
@@ -140,7 +140,7 @@
 										</div>
 									</c:if>
 									<div class="right-list coll">
-										<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
+										<a href="/xinxiuli/loginafter/mycolls.jsp">
 											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 										</a>
 									</div>
@@ -154,6 +154,7 @@
 					</div>
 				</div>
 			</nav>
+		
 		</header>
 	
 		<!--头部信息展示-->
@@ -173,10 +174,10 @@
 				<div class="info-l">
 					<ul>
 						<li>账户首页</li>
-						<li><a href="/xinxiuli/qianduanyemian/personzl.jsp">个人资料</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/myaddrs.jsp">地址簿</a></li>
-						<li class="active"><a href="/xinxiuli/qianduanyemian/myorders.jsp">我的订单</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/mycolls.jsp">我的收藏</a></li>
+						<li><a href="/xinxiuli/loginafter/personzl.jsp">个人资料</a></li>
+						<li><a href="/xinxiuli/loginafter/myaddrs.jsp">地址簿</a></li>
+						<li class="active"><a href="/xinxiuli/loginafter/myorders.jsp">我的订单</a></li>
+						<li><a href="/xinxiuli/loginafter/mycolls.jsp">我的收藏</a></li>
 						<li>客户服务</li>
 					</ul>
 				</div>

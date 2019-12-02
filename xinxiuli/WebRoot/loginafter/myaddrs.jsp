@@ -71,7 +71,7 @@
 								<input type="hidden" value="${accountmsg}" class="acceptmsg"></input>
 								<c:if test="${account ne null}">
 									<div class="top-list text-center loginafter">
-										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+										<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 									</div>
 								</c:if>
 								<c:if test="${account eq null}">
@@ -82,7 +82,7 @@
 								</c:if>
 								<!-- 登录后样式 -->
 								<div class="top-list">
-									<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
+									<a href="/xinxiuli/loginafter/mycolls.jsp">
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 									</a>
 								</div>
@@ -130,7 +130,7 @@
 								<div class="right-warp">
 									<c:if test="${account ne null}">
 										<div class="right-list text-center loginafter">
-											<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+											<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 										</div>
 									</c:if>
 									<c:if test="${account eq null}">
@@ -141,7 +141,7 @@
 										</div>
 									</c:if>
 									<div class="right-list coll">
-										<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
+										<a href="/xinxiuli/loginafter/mycolls.jsp">
 											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
 										</a>
 									</div>
@@ -177,56 +177,32 @@
 				<div class="info-l">
 					<ul>
 						<li>账户首页</li>
-						<li><a href="/xinxiuli/qianduanyemian/personzl.jsp">个人资料</a></li>
-						<li class="active"><a href="/xinxiuli/qianduanyemian/myaddrs.jsp">地址簿</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/myorders.jsp">我的订单</a></li>
-						<li><a href="/xinxiuli/qianduanyemian/mycolls.jsp">我的收藏</a></li>
+						<li><a href="/xinxiuli/loginafter/personzl.jsp">个人资料</a></li>
+						<li class="active"><a href="/xinxiuli/loginafter/myaddrs.jsp">地址簿</a></li>
+						<li><a href="/xinxiuli/loginafter/myorders.jsp">我的订单</a></li>
+						<li><a href="/xinxiuli/loginafter/mycolls.jsp">我的收藏</a></li>
 						<li>客户服务</li>
 					</ul>
 				</div>
 				<div class="info_r">
-					<form action="" id="addmyaddrs">
+					<div id="addmyaddrs">
 						<ul>
 							<li>
 								<div class="title-about">地址簿</div>
 								<button class="btn btn-block btn-default">
-									<a href="/xinxiuli/qianduanyemian/addmyaddrs.jsp" onclick="tianjiadizhi()" />
+									<a href="/xinxiuli/loginafter/addmyaddrs.jsp" onclick="tianjiadizhi()" />
 										<span class="btn-add">+</span>
 										&nbsp;&nbsp;添加收货地址
 									</a>
 								</button>
 							</li>
 						</ul>
-						<div class="addrs-list">
-					    	<div class="name ch-left">陈广平</div>
-					    	<div class="phone mbtel">手机号：17769336339</div>
-					    	<div class="chengwei ch-left">先生</div>
-					    	<div class="phone gdtel">固定电话：17769336339</div>
-					    	<div class="addrs-message">湖南省-长沙市-岳麓区&nbsp;&nbsp;延农六期三栋四单元</div>
-					    	<button class="addrs-default">默认</button>
-					    	<div class="caozuo">
-					    		<img class="addrs-edit" src="/xinxiuli/shop-imgs/address-edit.png"/>
-					    		<img class="goods-delete" title="删除商品" src="/xinxiuli/shop-imgs/delete.png"></img>
-					    	</div>
-				   		</div>
-				   		<div class="addrs-list">
-					    	<div class="name ch-left">陈广平</div>
-					    	<div class="phone mbtel">手机号：17769336339</div>
-					    	<div class="chengwei ch-left">先生</div>
-					    	<div class="phone gdtel">固定电话：17769336339</div>
-					    	<div class="addrs-message">湖南省-长沙市-岳麓区&nbsp;&nbsp;延农六期三栋四单元</div>
-					    	<div class="addrs-setdefault">设为默认</div>
-					    	<div class="caozuo">
-					    		<img class="addrs-edit" src="/xinxiuli/shop-imgs/address-edit.png"/>
-					    		<img class="goods-delete" title="删除商品" src="/xinxiuli/shop-imgs/delete.png"></img>
-					    	</div>
-				   		</div>
-					</form>
+					</div>
 				</div>
 			</div>	
 		</div>
 		
-			    <!--首页尾部-->
+		<!--首页尾部-->
 	    <section>
     		<div class="footer">
     			<div class="container">
@@ -426,42 +402,52 @@
 <script src="/xinxiuli/js/ljy-index.js"></script>
 <script src="/xinxiuli/js/xxk-login.js"></script>
 <script>
+//设置默认地址
+function insetAdd(){
+$(".addrs-setdefault").click(function(){
+	$(this).removeClass("addrs-setdefault addrs-default").addClass("addrs-default").html("默认地址").parent().siblings(".addrs-list").children("button").removeClass("addrs-default addrs-setdefault").addClass("addrs-setdefault").html("设为默认");
+	$.ajax({
+		type:"POST",
+		url:"/xinxiuli/updateMyAddres?index="+$(this).attr("data-index"),
+		success:function(result){
+		   alert(result);
+		   location.reload();
+		}
+	});
+});
+};
+
 	//称谓下拉菜单
 	$('.dropdown-menu li').click(function(){
 		var a = $(this).html();
 		$('.chengwei').val($(this).html());
-	})
-	function tianjiadizhi(){
-		
-	}
+	});
 	
-	(function(){
-		$.ajax({
-			type:"POST",
-			url:"/xinxiuli/showmyaddrs",
-			data:"",
-			success:function(result){
-				var str = ``;
-				console.log(result);
-				for (var i = 0; i < result.length; i++) {
-					console.log(result[i].users_name);
-	             	str+=`
-						<div class="addrs-list">
-						    	<div class="name ch-left">${result[i].account_num}</div>
-						    	<div class="phone mbtel">手机号：${result[i].users_phone}</div>
-						    	<div class="chengwei ch-left">${result[i].users_nickname}</div>
-						    	<div class="addrs-message">${result[i].users_adrr}</div>
-						    	<div class="addrs-setdefault">设为默认</div>
-						    	<div class="caozuo">
-						    		<img class="addrs-edit" src="/xinxiuli/shop-imgs/address-edit.png"/>
-						    		<img class="goods-delete" title="删除商品" src="/xinxiuli/shop-imgs/delete.png"></img>
-						    	</div>
-					   		</div>
-				    `;
+(function(){
+	$.ajax({
+		type:"POST",
+		url:"/xinxiuli/showmyaddrs",
+		success:function(result){
+			var pho=result[0];
+			var names=result[1];
+			var  nick=result[2];
+			var addrs=result[3];
+			var email=result[4];
+			var index=result[5];
+			for (var i =0; i<pho.length; i++) {
+				if(i==index){
+					if(i==0){
+						$("#addmyaddrs").append("<div class='addrs-list'><div class='caozuo'><img class='addrs-edit' src='/xinxiuli/shop-imgs/address-edit.png'/><img class='goods-delete' title='删除地址' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-default' data-index='"+i+"'>默认地址</button></div></div>");
+					}else{
+						$("#addmyaddrs .addrs-list:first").before("<div class='addrs-list'><div class='caozuo'><img class='addrs-edit' src='/xinxiuli/shop-imgs/address-edit.png'/><img class='goods-delete' title='删除地址' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-default' data-index='"+i+"'>默认地址</button></div></div>");
+					}		
+				}else{
+					$("#addmyaddrs").append("<div class='addrs-list'><div class='caozuo'><img class='addrs-edit' src='/xinxiuli/shop-imgs/address-edit.png'/><img class='goods-delete' title='删除地址' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-setdefault' data-index='"+i+"'>设为默认</button></div></div>");	
 				}
-				$('#addmyaddrs').append(str);
 			}
-		});
-	})();
-	
+			insetAdd();
+		}
+	});
+})();
+
 </script>

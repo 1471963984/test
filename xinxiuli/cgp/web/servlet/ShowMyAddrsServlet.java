@@ -18,6 +18,8 @@ import db.DbHelp;
 import net.sf.json.JSONArray;
 import pojo.Account;
 import pojo.Users;
+import service.ShowMyAddrsService;
+import serviceImpl.ShowMyAddrsServiceImpl;
 
 public class ShowMyAddrsServlet extends HttpServlet{
 	@Override
@@ -27,26 +29,19 @@ public class ShowMyAddrsServlet extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Connection conn = DbHelp.getConnection();
+		
 		Account account	=(Account)request.getSession().getAttribute("account");
 		if(account!=null) {
 			String account_num = account.getAccount_num();
-			UsersZiLiaoDao uzd = new UsersZiLiaoDaoImpl();
-			List<Users> list = null;
 			if(account_num!=null){
-				try {
-					list = uzd.selectAllUsersByAccount_num(account_num, conn);
-					JSONArray ja = JSONArray.fromObject(list);
-					response.setCharacterEncoding("utf-8");
-					response.setHeader("Content-Type", "application/json;charset=utf-8");
-					PrintWriter out = response.getWriter();
-					out.print(ja.toString());
-					out.flush();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
+			ShowMyAddrsService sas=new ShowMyAddrsServiceImpl();	
+			JSONArray ja = JSONArray.fromObject(sas.showAddres(account_num));
+			response.setCharacterEncoding("utf-8");
+			response.setHeader("Content-Type", "application/json;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.print(ja.toString());
+			out.flush();	
 		}
-		
+		}
 	}
 }

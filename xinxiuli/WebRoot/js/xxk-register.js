@@ -45,7 +45,7 @@ obj.src="imgCode?id="+new Date().getTime();
    
   // var pwdlenth;
    
-   if((st.test(str))&&(sm.test(str))&&(str.length>5&&str.length<9)){
+   if((st.test(str))&&(sm.test(str))&&(str.length>5&&str.length<16)){
 	   $(this).siblings('h6').html('　');
 	   $(this).siblings('span').children('img').removeClass('show').addClass('hidden'); 
    }else{

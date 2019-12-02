@@ -11,10 +11,10 @@
 		<link rel="stylesheet" href="/xinxiuli/css/xxk-login.css" />
 	</head>
 	<body>
-				<!--首页头部-->
+		<!--首页头部-->
 		<header>
 			<nav>
-								<!--普通导航栏-->
+				<!--普通导航栏-->
 				<div class="normal-index-header">
 					<div class="container">
 						<div class="content-left">
@@ -59,7 +59,7 @@
 								<input type="hidden" value="${accountmsg}" class="acceptmsg"></input>
 								<c:if test="${account ne null}">
 									<div class="top-list text-center loginafter">
-										<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+										<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 									</div>
 								</c:if>
 								<c:if test="${account eq null}">
@@ -70,9 +70,7 @@
 								</c:if>
 								<!-- 登录后样式 -->
 								<div class="top-list">
-									<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
-										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
-									</a>
+										<img src="/xinxiuli/img/tools/icon-header-collection.png" onclick="checklogin()" />
 								</div>
 								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
 									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/package.png"/></a>
@@ -118,7 +116,7 @@
 								<div class="right-warp">
 									<c:if test="${account ne null}">
 										<div class="right-list text-center loginafter">
-											<a href="/xinxiuli/qianduanyemian/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
+											<a href="/xinxiuli/loginafter/personzl.jsp"><img alt="" src="/xinxiuli/img/tools/people.png"><span>　欢迎，</span>${account.account_num}</a><a href="/xinxiuli/tuichu">　 退出</a>
 										</div>
 									</c:if>
 									<c:if test="${account eq null}">
@@ -129,9 +127,7 @@
 										</div>
 									</c:if>
 									<div class="right-list coll">
-										<a href="/xinxiuli/qianduanyemian/mycolls.jsp">
-											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
-										</a>
+											<img src="/xinxiuli/img/tools/icon-header-collection.png" onclick="checklogin()" />
 									</div>
 									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
 										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
@@ -144,6 +140,77 @@
 				</div>
 			</nav>
 		</header>
+	
+	    <!-- 首页头部 -->
+	          <section class="con-div">
+         	<div class="container">
+	         	<div class="row">
+	         		<div class="row-left col-md-9">
+	         			<div class="divied-brandnav">
+	         				<span><a href="/xinxiuli/index.jsp">首页</a></span>　|　
+	         				<span onclick="showAll()">新秀丽</span>
+	         			</div>
+	         		</div>
+	         		<div class="row-right col-md-3">
+	         			<div class="condition-btn">
+	         				<span class="condition-text">筛　选</span>
+	         			</div>
+	         		</div>
+	         	</div>
+	         	<hr/>
+	         	<div class="showCondition">
+         			<div class="condition">
+         				<span>价格：</span>
+         				<div class="condition-price">
+         					<div class="unit">
+         						<span>￥0-1500</span><input type="radio" name="price" id="price" value="1500" />
+         					</div>
+         					<div class="unit">
+         						<span>￥1500-4000</span><input type="radio" name="price" id="price" value="1500,4000" />
+         					</div>
+         					<div class="unit">
+         						<span>￥4000以上</span><input type="radio" name="price" id="price" value="4000" />
+         					</div>
+         				</div>
+         			</div>
+         			<div class="condition">
+         				<span>角色：</span>
+         				<div class="condition-cols">
+         					<div class="unit">
+         						<span>儿　童</span><input type="radio" name="cols" id="price" value="儿童" />
+         					</div>
+         					<div class="unit">
+         						<span>男　士</span><input type="radio" name="cols" id="price" value="男士" />
+         					</div>
+         					<div class="unit">
+         						<span>女　士</span><input type="radio" name="cols" id="price" value="女士" />
+         					</div>
+         				</div>
+         			</div>
+     				<div class="condition">
+         				<span>热度：</span>
+         				<div class="condition-pop">
+         					<div class="unit">
+         						<span>0-199</span><input type="radio" name="color" id="price" value="0,199" />
+         					</div>
+         					<div class="unit">
+         						<span>200-399</span><input type="radio" name="color" id="price" value="200,399" />
+         					</div>
+         					<div class="unit">
+         						<span>400以上</span><input type="radio" name="color" id="price" value="400" />
+         					</div>
+         				</div>
+         			</div>
+         			<div class="condition">
+         				<div class="caozuo">
+         					<div class="cancle">取　消</div>
+         					<div class="find">查　找</div>
+         					<div class="reset">重　置</div>
+         				</div>
+         			</div>
+	         	</div>
+         	</div>
+         </section>  
 	
 	    
 	    <!--商品展示区-->
@@ -257,7 +324,6 @@
 	 							<img src="/xinxiuli/img/tools/icon-ebs.png" style="width: 18px;height: 18px;"/>
 	 							<a href="#">浙公网安备 33020602000173号 浙ICP备16038745号-2</a>
  							</div>
- 							
  						</div>
  					</div>
  				</div>
@@ -270,7 +336,6 @@
 	    </section>
 	    
 	    <!--登录模态框-->
-			    <!--登录模态框-->
     	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
 		   <div class="modal-dialog  ">
 		   	<div class="modal-content">
@@ -355,3 +420,19 @@
 <script src="/xinxiuli/js/xxk-login.js"></script>
 <script type="text/javascript" src="/xinxiuli/js/ljy-showpro.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/ljy-index.js" ></script>
+<script>
+	function checklogin(){
+		var account_num = $(".mycart-sercher").attr("cart-number");
+		if(account_num==""){
+		$('#login').modal('show');
+		}else if(account_num!=null&&account_num!="undefined"){
+			location.href="/xinxiuli/loginafter/mycolls.jsp";
+		}
+	}
+	$(".condition-text").click(function(){
+		$(".showCondition").show();
+	});
+	$(".condition>.caozuo>.cancle").click(function(){
+		$(".showCondition").hide();
+	});
+</script>

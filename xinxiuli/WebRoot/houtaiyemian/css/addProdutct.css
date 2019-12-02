@@ -1,0 +1,22 @@
+/*表单块*/
+.body-content{
+	margin-left:20%;
+}
+
+
+
+#file{
+    width: 102px;
+    height: 42px;
+    position: relative;
+    left: -110px;
+    top:158px;
+    z-index: 2;
+    opacity: 0;
+}
+#image1{
+    float:left;
+    position: relative;
+    top: 158px;
+    z-index: 1;
+}

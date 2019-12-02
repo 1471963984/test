@@ -30,7 +30,7 @@ public class SingletonSessionlistener implements HttpSessionAttributeListener{
 	    	   oldsession.setAttribute("accountmsg","您的帐号已经在其他机器上登录");                                      
 	        }
 	       map.put(anew.getAccount_num(),event.getSession());
-	       System.out.println("你的账号上线"+"attributeAdd");         
+	      // System.out.println("你的账号上线"+"attributeAdd");         
 	     } 
 		
 	}

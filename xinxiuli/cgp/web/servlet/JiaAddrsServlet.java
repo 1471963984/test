@@ -45,7 +45,7 @@ public class JiaAddrsServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//获取连接，通过账号获得购物车商品字符串
-		Connection conn = DbHelp.getConnection();
+		
 		Account account	=(Account)request.getSession().getAttribute("account");
 		AddAddrsService ads = new AddAddrsServiceImpl();
 		//获取传过来的值,插入到数据库
@@ -57,15 +57,10 @@ public class JiaAddrsServlet extends HttpServlet{
 	    }
 		try {
 			//将添加的地址加入数据库
-			Users newuser = ads.addAddrs(account.getAccount_num(), user, conn);
-			request.setAttribute("User",newuser);
-			request.getRequestDispatcher("/xinliuli/qianduanyemian/myaddrs.jsp").forward(request, response);
-//========================================================
-//			JSONObject jobj = JSONObject.fromObject(newuser);
-//	        PrintWriter out = response.getWriter();
-//	        out.print(jobj.toString());//将数据传到前端
-	        
-		} catch (Exception e) {
+			boolean b=ads.addAddrs(account.getAccount_num(),user);
+			PrintWriter out=response.getWriter();
+			out.print(b);
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

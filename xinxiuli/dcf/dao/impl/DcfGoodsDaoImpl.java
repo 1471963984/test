@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.Map;
 
 import dao.DcfGoodsDao;
 import pojo.Goods;
@@ -59,6 +60,12 @@ public class DcfGoodsDaoImpl implements DcfGoodsDao{
 
 	@Override
 	public List<Goods> selectAllDiviedGoods(int divied_num, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Goods> selectAllGoodsByCondition(Map<String, String> map, Connection conn) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

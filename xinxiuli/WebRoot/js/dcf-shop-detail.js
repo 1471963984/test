@@ -12,7 +12,13 @@ $(".info-r .tellusers").click(function(){
 $(".info-r .addcart").click(function(){
 	var gid=$(".info-l").attr("data-goodsid");
 	var cid=$("#colo").parent().parent().attr("data-id");
+	
 	var sid=$(".info-r>p>.btn-primary").attr("data-sizeid");
+	
+	if(cid==undefined){
+		alert("请先选择颜色");
+		return;
+	}
 	$.ajax({
 		type:"POST",
 		url:"../SelectNum",

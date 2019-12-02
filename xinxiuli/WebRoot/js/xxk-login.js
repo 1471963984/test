@@ -52,7 +52,7 @@ function getUrlVal(property){
 	   var str =$(this).val(); 
 	   var sm=/[0-9]+/g;
 	   var  st=/[A-z]+/g;
-	   if(sm.test(str)&&st.test(str)&&(str.length>5&&str.length<9)){    
+	   if(sm.test(str)&&st.test(str)&&(str.length>5&&str.length<16)){    
 		    pwdvalue=str;
             $(this).siblings('h6').html('　');
             $(this).siblings('span').children('img').removeClass('show').addClass('hidden');
