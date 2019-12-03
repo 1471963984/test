@@ -29,8 +29,7 @@
 	   <servlet-name>AllUsers</servlet-name>
 	   <url-pattern>/ShowAllUsers</url-pattern>
 	</servlet-mapping>
-<!-- 后台查询所有用户 -->
-
+	<!-- 后台查询所有用户 -->
 	<servlet>
 	   <servlet-name>goodsShow</servlet-name>
 	   <servlet-class>web.servlet.Show</servlet-class>
@@ -110,7 +109,15 @@
 	   <servlet-name>UsersOrder</servlet-name>
 	   <url-pattern>/MyOrder</url-pattern>
 	</servlet-mapping>
-  
+	
+	<servlet>
+	   <servlet-name>delAddres</servlet-name>
+	   <servlet-class>web.servlet.DeleAddress</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>delAddres</servlet-name>
+	   <url-pattern>/deleteAddres</url-pattern>
+	</servlet-mapping>
 
   <servlet>
     <servlet-name>CollGoods</servlet-name>
@@ -167,6 +174,26 @@
 	   <servlet-name>myaddrs</servlet-name>
 	   <url-pattern>/showmyaddrs</url-pattern>
 	</servlet-mapping>		
+	
+	<!--结算-->
+	<servlet>
+	   <servlet-name>suanqian</servlet-name>
+	   <servlet-class>web.servlet.JieSuanServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>suanqian</servlet-name>
+	   <url-pattern>/jiesuan</url-pattern>
+	</servlet-mapping>
+	
+	<!--更新库存-->
+	<servlet>
+	   <servlet-name>gengxinkucun</servlet-name>
+	   <servlet-class>web.servlet.UpdateKucunServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>gengxinkucun</servlet-name>
+	   <url-pattern>/gaikucun</url-pattern>
+	</servlet-mapping>
 	
 
   <!--验证码-->	
@@ -286,6 +313,16 @@
     <servlet-name>SelectAllGoods</servlet-name>
     <url-pattern>/selectall</url-pattern>
   </servlet-mapping>
+  
+  <!-- admlogin -->
+    <servlet>
+      <servlet-name>Admloginservlets</servlet-name>
+      <servlet-class>web.xxk.houtai.servlert.Admloginservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>Admloginservlets</servlet-name>
+      <url-pattern>/Admloginservlet</url-pattern>
+    </servlet-mapping>
 
   <filter>
   	<filter-name>CharacterEncoding</filter-name>

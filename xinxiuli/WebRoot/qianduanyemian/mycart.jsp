@@ -206,7 +206,7 @@
                 				<label>总计</label>
                 				<p>¥ 0.00</p>
                 			</div>
-                			<button class="btn btn-block btn-primary" onclick="window.location.href = '/xinxiuli/qianduanyemian/jiesuan.jsp'">立即结算</button>
+                			<button class="btn btn-block btn-primary" onclick="jiesuan()">立即结算</button>
                 		</div>
                 	</div>
                 </div>

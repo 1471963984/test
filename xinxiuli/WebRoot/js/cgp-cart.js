@@ -162,6 +162,7 @@
 					<span class="lazyload"><img src="${result[i].goods_img}"/></span>
 					<div class="goods-about">
 					<a href="/xinxiuli/Show?gid=${result[i].goods_num}" >${result[i].goods_desc}</a>
+					<div class="goods_num" style="display:none" >${result[i].goods_num}</div>
 					<div class="goods-brand">${result[i].goods_name}</div>
 					<div class="goods-spec">
 					<label>颜色：</label>
@@ -170,7 +171,7 @@
 					<p>${result[i].goods_size}</p>
 					</div>
 					<div class="goods-operation">
-					<img src="/xinxiuli/shop-imgs/collection-no.png" alt="移入收藏夹" />
+					<span class="collGoods glyphicon glyphicon-heart-empty"  goodsid="${result[i].goods_id}">加入收藏</span>
 					<div class="goods-middle">|</div>
 					<a href="/xinxiuli/Show?gid=${result[i].goods_num}"><img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品"/></a>
 					</div>
@@ -183,6 +184,7 @@
 				`;
 			}
 			$(".goods-list-box").append(str);
+			collGoods();
 		},
 	});
 	
@@ -210,6 +212,7 @@ function deleteGoods(obj){
 					<span class="lazyload"><img src="${result[i].goods_img}"/></span>
 					<div class="goods-about">
 					<a href="/xinxiuli/Show?gid=${result[i].goods_num}" >${result[i].goods_desc}</a>
+					<div id="goods_num" style="display:none">${result[i].goods_num}</div>
 					<div class="goods-brand">${result[i].goods_name}</div>
 					<div class="goods-spec">
 					<label>颜色：</label>
@@ -218,7 +221,7 @@ function deleteGoods(obj){
 					<p>${result[i].goods_size}</p>
 					</div>
 					<div class="goods-operation">
-					<img src="/xinxiuli/shop-imgs/collection-no.png" alt="移入收藏夹" />
+					<span class="collGoods glyphicon glyphicon-heart-empty"  goodsid="${result[i].goods_id}"></span>
 					<div class="goods-middle">|</div>
 					<img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品" data-toggle="modal" data-target="#myModal" />
 					</div>
@@ -231,8 +234,60 @@ function deleteGoods(obj){
 					`;
 			}
 			$(".goods-list-box").append(str);
+			collGoods();
 			location.href="/xinxiuli/qianduanyemian/mycart.jsp";
 		},
 	
 	});
 };
+//商品结算
+function jiesuan(){
+	var str = "";
+	$('[data-price=active]').each(function(){
+		//console.log(this);
+		var goods_num = $(this).siblings(".goods-about").children('.goods_num').html()+",";
+		str=str+goods_num;
+//		alert(goods_num);
+	})
+	if(str!=""){
+		location.href="/xinxiuli/jiesuan?goods_num="+str;
+	}
+};
+
+function collGoods(){
+	$(".collGoods").click(function(){
+		alert();
+		var obj=$(this);
+		var goods_id = $(this).attr("goodsid");
+		
+		if(obj.html()=="加入收藏"){
+			$.ajax({
+				type:"POST",
+				url:"/xinxiuli/MyCollection",
+				data:"gid="+goods_id,
+				success:function(result){
+					if(result=="true"){
+						obj.removeClass("glyphicon-heart-empty").addClass("glyphicon-heart");
+						obj.html("取消收藏");
+					};
+				},
+			});
+		}
+		if(obj.html()=="取消收藏"){
+			$.ajax({
+				type:"POST",
+				url:"/xinxiuli/MyCollection",
+				data:"gid="+goods_id+"&&remove=remove",
+				success:function(result){
+					
+				obj.removeClass("glyphicon-heart").addClass("glyphicon-heart-empty");
+				obj.html("加入收藏");
+					
+				},
+			});
+		}
+		});
+	
+}
+
+

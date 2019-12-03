@@ -74,7 +74,6 @@ public class DcfServiceImpl implements DcfService{
 			sog.setDetail(detail);
 //	    存细节图
 			sog.setDetailphoto(detail.getDetails_picture().split(";"));
-//			System.out.println(accnum);
 		if(!accnum.equals("")) {
 //			该商品是否被收藏
 			Account ac=ad.selectAccount(accnum, conn);
@@ -82,7 +81,6 @@ public class DcfServiceImpl implements DcfService{
 				String[] goodsid=ac.getColl_goods().split(",");
 				for(int i=0;i<goodsid.length;i++) {
 					if(goodsid[i].equals(String.valueOf(goods.getGoods_id()))) {
-						System.out.println("该商品已存在");
 						sog.setIsColl("has");
 						break;
 					}

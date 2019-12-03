@@ -436,14 +436,5 @@
 	$(".condition>.caozuo>.cancle").click(function(){
 		$(".showCondition").hide();
 	});
-	function showAll(){
-		$.ajax({
-			type:"POST",
-			url:"/xinxiuli/selectall",
-			success:function(result){
-				console.log(result);
-			},
-		});
-		$('#goodsList').empty();
-	}
+	
 </script>

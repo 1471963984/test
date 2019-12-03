@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -52,7 +52,6 @@
 			<div class="method-name">普通快递</div>
 		</div>
 		<div class="info_r">
-			<form action="" id="addmyaddrs">
 				<ul>
 					<li>
 						<div class="title-about balance-lable">配送地址</div>
@@ -62,35 +61,44 @@
 						</button>
 					</li>
 				</ul>
+				<c:forEach  items="${myinfo.addrs}" var="u" >
 				<div class="addrs-list">
-					<input type="checkbox" id="choose-addrs" />
-			    	<div class="name ch-left">陈广平</div>
-			    	<div class="phone mbtel">17769336339</div>
-			    	<div class="addrs-message">湖南省-长沙市-岳麓区&nbsp;&nbsp;延农六期三栋四单元</div>
+					<input type="radio" name="addrs" data-choose="" class="choose-addrs" checked="" style="width: 20px;
+							height: 20px;
+							margin: 10px 0px 0px;
+							position: absolute;
+							left: 10px;" />
+			    	<div class="name ch-left">${u.name }</div>
+			    	<div class="phone mbtel">${u.tel }</div>
+			    	<div class="addrs-message">${u.dizhi }</div>
 			    	<input type="text" class="addrs-default" value="默认地址"/>
 			    	<div class="caozuo">
 			    		<img class="addrs-edit" src="/xinxiuli/shop-imgs/address-edit.png"/>
 			    		<img class="goods-delete" title="删除商品" src="/xinxiuli/shop-imgs/delete.png"></img>
 			    	</div>
 		   		</div>
-			</form>
+		   	</c:forEach>
 		</div>
 		<div class="balance-lable">商品运送清单</div>
 		<ul class="dingdan-shops">
+			<c:forEach  items="${myinfo.goods}" var="u" >
 			<li class="dingdan-goods">
-				<img class="goods-img"/>
+				<div class="goods_num" style="display:none" >${u.goods_num }</div>
+				<img class="goods-img" style="background-image: url(${u.goods_img });"/>
 				<div class="goods-about">
-       				<a href="javascript:;">Samsonite/新秀丽男手提包 简约立体轻奢多功能可容纳15.6英寸电脑公文包 AQ1</a>
-       				<div class="goods-brand">ACTAEON</div>
+       				<a href="javascript:;">${u.goods_desc }</a>
+       				<div class="goods-brand">${u.goods_name }</div>
        				<div class="goods-spec">
            				<label>颜色：</label>
-           				<p>月光白</p>
+           				<p>${u.goods_color }</p>
            				<label>尺寸：</label>
-           				<p>均码</p>
+           				<p>${u.goods_size }</p>
            			</div>
        			</div>
-       			<div class="sell-srice">￥2180.00</div>
+       			<div ></div>
+       			<div class="sell-srice">￥${u.goods_price }0</div>
 			</li>
+			</c:forEach>
 		</ul>
 		<div class="balance-lable">支付方式</div>
 		<div class="payment" data-dianji="active">
@@ -132,7 +140,7 @@
                 		<div class="card-right">
                 			<div class="message-list-subtotal">
                 				<label>小计</label>
-                				<p>¥ 0.00</p>
+                				<p>￥${zongjia }0</p>
                 			</div>
                 			<div class="message-list-youhui">
                 				<label>运费</label>
@@ -144,9 +152,9 @@
                 			</div>
                 			<div class="message-list-total">
                 				<label>总计</label>
-                				<p>¥ 0.00</p>
+                				<p>￥${zongjia }0</p>
                 			</div>
-                			<button class="btn btn-block btn-primary">提交订单</button>
+                			<button class="btn btn-block btn-primary"  onclick="gaikucun();">提交订单</button>
                 		</div>
                 	</div>
 			</div>
@@ -364,6 +372,7 @@
 <script>
 	//选择支付方式
 	$('.gougou').hide();
+	$('.payment[data-dianji=active]').children('.gougou').show();
 	$('.payment').click(function(){
 //		console.log($(this))
 		//点击给标记并去除其他标记
@@ -371,4 +380,29 @@
 		$(this).siblings('.payment').children('.gougou').hide();
 		$(this).children('.gougou').show();
 	})
+	
+		//更新库存
+	function gaikucun(){
+		alert('准备结算');
+		var dizhi = "";
+		$('[name="addrs"]').each(function(){
+			if($(this).attr('checked')=='checked'){
+				dizhi = $(this).siblings('.addrs-message').html();
+				alert(dizhi);
+			}
+		});
+		var str = "";
+		//alert($('.goods_num').length);
+		$('.goods_num').each(function(){
+			//console.log($(this));
+			var goods_num = $(this).html()+",";
+			str=str+goods_num;
+			//alert(goods_num);
+		})
+		if(str!=""){
+			
+			location.href="/xinxiuli/gaikucun?goods_num="+str;
+		}
+		
+	}
 </script>

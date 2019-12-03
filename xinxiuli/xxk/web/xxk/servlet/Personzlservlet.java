@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Testutil.Datahandle;
 import Testutil.Myutil;
 import dao.imp.Myxxkimpl;
 import dao.impl.UsersDaoImpl;
@@ -28,43 +29,18 @@ public class Personzlservlet extends HttpServlet{
       @Override
      public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	  //设置响应数据格式
-    	        resp.setHeader("Content-Type", "application/json,charset=utf-8");  
-                PrintWriter out =resp.getWriter();
-         	    resp.setCharacterEncoding("utf-8");
-         	    Connection  conn =DbHelp.getConnection(); 
-         	    //System.out.println("112233");
-                String getaccount =req.getParameter("personzl");
-               
-              //System.out.println(getaccount+"person");
-                
-                Myxxkimpl  dao =new Myxxkimpl();
-                          
-                try {
-                  if(getaccount!=null){
-                	 conn.setAutoCommit(false);
-				     Users users=dao.selectUsers(getaccount,conn);
-				     conn.commit();
-				  // System.out.println(users);
-				     JSONObject  obj =JSONObject.fromObject(users);
-                     out.write(obj.toString());  
-                     out.flush();
-                    
-                //   System.out.println("cheng");
-                      
-                   }
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					try {
-						conn.rollback();
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					  
-					e.printStackTrace();
-				}finally{
-					DbHelp.closeConnection(conn);
-				}
+    	  resp.setHeader("Content-Type", "application/json,charset=utf-8");  
+          PrintWriter out =resp.getWriter();
+   	    resp.setCharacterEncoding("utf-8");
+          String getaccount =req.getParameter("personzl");
+
+            if(getaccount!=null){
+	      	     Users user =Datahandle.dataloander(getaccount);
+	      	     req.getSession().setAttribute("user",user); 
+			     JSONObject  obj =JSONObject.fromObject(user);
+               out.write(obj.toString());  
+               out.flush();
+             }
                                          
        }
 }

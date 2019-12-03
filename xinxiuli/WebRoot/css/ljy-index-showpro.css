@@ -730,6 +730,9 @@
 				display: block;
 				clear: both;
 			}
+			.thumbnail-div{
+				margin-bottom: 5px;
+			}
 			.thumbnail-div:after{
 				content: '';
 				display: block;

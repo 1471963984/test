@@ -21,6 +21,7 @@ public class DcfOrderDaoImpl implements DcfOrderDao{
 		return false;
 	}
 
+	@Override
 	public List<Order> selectAllOrder(Connection conn) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
@@ -43,11 +44,16 @@ public class DcfOrderDaoImpl implements DcfOrderDao{
 			Order o = new Order();
 			o.setOrder_num(rs.getInt("order_num"));
 			o.setOrder_time(rs.getString("order_time"));
-			o.setGoods_id(rs.getInt("goods_id"));
+			o.setGoods_num(rs.getInt("goods_num"));
 			o.setOrder_status(rs.getInt("order_status"));
 			o.setAccount_num(rs.getString("account_num"));
-			o.setColor_num(rs.getInt("color_num"));
-			o.setSize_num(rs.getInt("size_num"));
+			o.setColor_name(rs.getString("color_name"));
+			o.setSize_name(rs.getString("size_name"));
+			o.setGoods_name(rs.getString("goods_name"));
+			o.setGoods_phone(rs.getString("goods_phone"));
+			o.setShouhuoren(rs.getString("shouhuoren"));
+			o.setGoods_price(rs.getString("goods_price"));
+			o.setOrder_addrs(rs.getString("order_addrs"));
 			list.add(o);
 		}
 		return list;
@@ -64,7 +70,5 @@ public class DcfOrderDaoImpl implements DcfOrderDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 }

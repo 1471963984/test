@@ -16,14 +16,31 @@ public class OrderDaoImpl implements OrderDao{
 	@Override
 	public boolean insertOrder(Order order, Connection conn) throws Exception {
 		boolean flag = false;
-		String sql = "insert into orders(order_num,order_time,goods_id,color_num,size_num,order_status,account_num,) values(null,?,?,?,?,?,?,?)";
+//		订单编号（order_num）                  int       10   非空  主键
+//		订单时间（order_time）                 varchar   20
+//		商品ID（goods_num）                    int       10     非空
+//		订单状态（order_status）               int       2      非空
+//		账号（account_num）                    varchar   11
+//		用户手机（goods_phone）                varchar   11
+//		商品颜色(color_name )                  varchar   10
+//		商品尺寸(size_name)                    varchar   10
+//		收货地址(order_addrs)                  varchar   200
+//		商品名字(goods_name)                   varchar   20
+//		收货人名(shouhuoren)                   varchar   20
+//		商品价格(goods_price)                  varchar   10 
+		String sql = "insert into orders(order_num,order_time,goods_num,color_name,size_name,order_status,account_num,order_addrs,goods_price,goods_name,goods_phone,shouhuoren) values(null,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, order.getOrder_time());
-		ps.setInt(2, order.getGoods_id());
-		ps.setInt(3, order.getColor_num());
-		ps.setInt(4, order.getSize_num());
+		ps.setInt(2, order.getGoods_num());
+		ps.setString(3, order.getColor_name());
+		ps.setString(4, order.getSize_name());
 		ps.setInt(5, order.getOrder_status());
 		ps.setString(6, order.getAccount_num());
+		ps.setString(7, order.getOrder_addrs());
+		ps.setString(8, order.getGoods_price());
+		ps.setString(9, order.getGoods_name());
+		ps.setString(10, order.getGoods_phone());
+		ps.setString(11, order.getShouhuoren());
 		if(ps.executeUpdate()>0) {
 			flag = true;
 		}
@@ -34,15 +51,20 @@ public class OrderDaoImpl implements OrderDao{
 	@Override
 	public boolean updateOrder(Order order, Connection conn) throws Exception {
 		boolean flag = false;
-		String sql = "update orders set order_time=?,goods_id=?,order_status=?,account_num=?,color_num=?,size_num=? where order_num=?";
+		String sql = "update orders set order_time=?,goods_num=?,order_status=?,account_num=?,color_name=?,size_name=?,order_addrs=?,goods_name=?,goods_phone=?,shouhuoren=?,goods_price=? where order_num=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, order.getOrder_time());
-		ps.setInt(2, order.getGoods_id());
+		ps.setInt(2, order.getGoods_num());
 		ps.setInt(3, order.getOrder_status());
 		ps.setString(4, order.getAccount_num());
-		ps.setInt(5, order.getColor_num());
-		ps.setInt(6, order.getSize_num());
-		ps.setInt(7, order.getOrder_num());
+		ps.setString(5, order.getColor_name());
+		ps.setString(6, order.getSize_name());
+		ps.setString(7, order.getOrder_addrs());
+		ps.setString(8, order.getGoods_name());
+		ps.setString(9, order.getGoods_phone());
+		ps.setString(10, order.getShouhuoren());
+		ps.setString(11, order.getGoods_price());
+		ps.setInt(12, order.getOrder_num());
 		if(ps.executeUpdate()>0) {
 			flag = true;
 		}
@@ -74,11 +96,16 @@ public class OrderDaoImpl implements OrderDao{
 			o = new Order();
 			o.setOrder_num(rs.getInt("order_num"));
 			o.setOrder_time(rs.getString("order_time"));
-			o.setGoods_id(rs.getInt("goods_id"));
+			o.setGoods_num(rs.getInt("goods_num"));
 			o.setOrder_status(rs.getInt("order_status"));
 			o.setAccount_num(rs.getString("account_num"));
-			o.setColor_num(rs.getInt("color_num"));
-			o.setSize_num(rs.getInt("size_num"));
+			o.setColor_name(rs.getString("color_name"));
+			o.setSize_name(rs.getString("size_name"));
+			o.setGoods_name(rs.getString("goods_name"));
+			o.setGoods_phone(rs.getString("goods_phone"));
+			o.setShouhuoren(rs.getString("shouhuoren"));
+			o.setGoods_price(rs.getString("goods_price"));
+			o.setOrder_addrs(rs.getString("order_addrs"));
 		}
 		
 		return o;
@@ -95,11 +122,16 @@ public class OrderDaoImpl implements OrderDao{
 			o = new Order();
 			o.setOrder_num(rs.getInt("order_num"));
 			o.setOrder_time(rs.getString("order_time"));
-			o.setGoods_id(rs.getInt("goods_id"));
+			o.setGoods_num(rs.getInt("goods_num"));
 			o.setOrder_status(rs.getInt("order_status"));
 			o.setAccount_num(rs.getString("account_num"));
-			o.setColor_num(rs.getInt("color_num"));
-			o.setSize_num(rs.getInt("size_num"));
+			o.setColor_name(rs.getString("color_name"));
+			o.setSize_name(rs.getString("size_name"));
+			o.setGoods_name(rs.getString("goods_name"));
+			o.setGoods_phone(rs.getString("goods_phone"));
+			o.setShouhuoren(rs.getString("shouhuoren"));
+			o.setGoods_price(rs.getString("goods_price"));
+			o.setOrder_addrs(rs.getString("order_addrs"));
 			list.add(o);
 		}
 		

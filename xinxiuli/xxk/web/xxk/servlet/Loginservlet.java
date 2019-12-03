@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Testutil.Datahandle;
 import Testutil.Myutil;
 import dao.Myxxk;
 import dao.imp.Myxxkimpl;
@@ -37,22 +38,13 @@ public class Loginservlet extends HttpServlet {
                   Myxxk dao=new  Myxxkimpl();       
                   Connection conn =DbHelp.getConnection();
                   boolean flag=false;
-                  
                   Account  account = null;
-                  
 		          String  rmsg = req.getParameter("rmsg");
-		          
-		          
-		          System.out.println(rmsg);
-		          
 		          JSONObject object=JSONObject.fromObject(rmsg);
 		          String   username   =object.getString("username");
 		          String   password   =object.getString("password");
-       		     
-       		      
 		          try {
 					   flag	=dao.selectaccount(username, conn);
-					   
 					  //查有没有这个账号 
 					 if(flag){
 					 Boolean flag1=dao.selectaccountinfo(username, password, conn);   
@@ -91,7 +83,10 @@ public class Loginservlet extends HttpServlet {
 						    	 
                              req.getSession().setAttribute("account",account);
  
-                             Users user =dao.selectUsers(username, conn);
+                         //  Users user =dao.selectUsers(username, conn);
+                             Users user =Datahandle.dataloander(username);
+                             
+                             req.getSession().setAttribute("user",user);
                              //增加
                              req.getSession().setAttribute("user",user);
 						     Returnmsg   msg0   =  new Returnmsg(0,"您登录成功");

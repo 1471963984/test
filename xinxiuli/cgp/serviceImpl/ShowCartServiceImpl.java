@@ -29,7 +29,6 @@ public class ShowCartServiceImpl implements ShowCartService{
 
 	@Override
 	public List<ShowMyCart> selectAllMygoods(String account_num) throws Exception {
-		// TODO Auto-generated method stub
 		Connection conn=DbHelp.getConnection();
 		//通过账号获得cart-num
 		AccountDao ad = new AccountDaoImpl();
@@ -53,13 +52,13 @@ public class ShowCartServiceImpl implements ShowCartService{
 			s.setGoods_img(g.getGoods_picture());
 			s.setGoods_desc(g.getGoods_desc());
 			s.setGoods_name(g.getGoods_name());
+			s.setGoods_id(g.getGoods_id());
 			//颜色和尺寸还要查
 			Goods_color color = cds.selectGoods_colorOne(g.getGoods_id(),g.getGoods_color_num(), conn);
 			s.setGoods_color(color.getColor_name());
 			Goods_size size = sd.selectGoods_sizeOne(g.getGoods_id(), g.getGoods_color_num(), g.getGoods_size_num(), conn);
 			s.setGoods_size(size.getSize_name());
 			s.setGoods_price(g.getGoods_price());
-			s.setList_size(String.valueOf(list.size()));
 			s.setGoods_num(g.getGoods_num());
 			list.add(s);
 		}

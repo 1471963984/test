@@ -9,8 +9,15 @@ public class ShowMyCart {
 	private double goods_price;
 	private String list_size;
 	private int goods_num;
+	private int goods_id;
 	
 	
+	public int getGoods_id() {
+		return goods_id;
+	}
+	public void setGoods_id(int goods_id) {
+		this.goods_id = goods_id;
+	}
 	public int getGoods_num() {
 		return goods_num;
 	}

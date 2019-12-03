@@ -437,17 +437,36 @@ $(".addrs-setdefault").click(function(){
 			for (var i =0; i<pho.length; i++) {
 				if(i==index){
 					if(i==0){
-						$("#addmyaddrs").append("<div class='addrs-list'><div class='caozuo'><img class='addrs-edit' src='/xinxiuli/shop-imgs/address-edit.png'/><img class='goods-delete' title='删除地址' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-default' data-index='"+i+"'>默认地址</button></div></div>");
+						$("#addmyaddrs").append("<div class='addrs-list'><div class='caozuo'><img class='addrs-edit' src='/xinxiuli/shop-imgs/address-edit.png'/><img class='goods-delete' title='删除地址' data-addrnum='"+i+"' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-default' data-index='"+i+"'>默认地址</button></div></div>");
 					}else{
-						$("#addmyaddrs .addrs-list:first").before("<div class='addrs-list'><div class='caozuo'><img class='addrs-edit' src='/xinxiuli/shop-imgs/address-edit.png'/><img class='goods-delete' title='删除地址' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-default' data-index='"+i+"'>默认地址</button></div></div>");
+						$("#addmyaddrs .addrs-list:first").before("<div class='addrs-list'><div class='caozuo'><img class='addrs-edit' src='/xinxiuli/shop-imgs/address-edit.png'/><img class='goods-delete' title='删除地址' data-addrnum='"+i+"' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-default' data-index='"+i+"'>默认地址</button></div></div>");
 					}		
 				}else{
-					$("#addmyaddrs").append("<div class='addrs-list'><div class='caozuo'><img class='addrs-edit' src='/xinxiuli/shop-imgs/address-edit.png'/><img class='goods-delete' title='删除地址' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-setdefault' data-index='"+i+"'>设为默认</button></div></div>");	
+					$("#addmyaddrs").append("<div class='addrs-list'><div class='caozuo'><img class='addrs-edit' src='/xinxiuli/shop-imgs/address-edit.png'/><img class='goods-delete' title='删除地址' data-addrnum='"+i+"' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-setdefault' data-index='"+i+"'>设为默认</button></div></div>");	
 				}
 			}
 			insetAdd();
+			deleaddr();
 		}
 	});
 })();
+  //点击删除按钮
+  function deleaddr(){
+	  $(".goods-delete").click(function(){
+		  if(confirm("您确定要删除该收获地址吗?")){
+			  var addrid=$(this).attr("data-addrnum");
+			  var obj=$(this);
+			  $.ajax({
+				  url:"/xinxiuli/deleteAddres?addrindex="+addrid,
+				  success:function(result){
+					  if(result=="true"){
+						  obj.parent().parent().remove(); 
+					  }
+				  }
+			  });
+		  }
+	  });
+  }
+  
 
 </script>
