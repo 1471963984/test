@@ -62,14 +62,20 @@ public class DiviedGoods extends HttpServlet {
 		String divied_id = request.getParameter("divied_id");
 		FindDiviedGoods service = new service.Impl.FindDiviedGoods();
 		List<Goods> list = new ArrayList<Goods>();
-		list = service.findDiviedGoods(Integer.valueOf(divied_id));
-		JSONArray ja = JSONArray.fromObject(list);
-		response.setCharacterEncoding("utf-8");
-		response.setHeader("Content-Type", "application/json;charset=utf-8");
-		PrintWriter out = response.getWriter();
-		out.print(URLDecoder.decode(ja.toString()));
-		out.flush();
-		out.close();
+		if(!"null".equals(divied_id)&&!"undefined".equals(divied_id)) {
+			list = service.findDiviedGoods(Integer.valueOf(divied_id));
+			if(list.size()!=0) {
+				JSONArray ja = JSONArray.fromObject(list);
+				response.setCharacterEncoding("utf-8");
+				response.setHeader("Content-Type", "application/json;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				out.print(URLDecoder.decode(ja.toString()));
+				out.flush();
+				out.close();
+			}else {
+				
+			}
+		}
 	}
 
 	/**

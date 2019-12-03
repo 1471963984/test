@@ -13,6 +13,8 @@ function getUrlVal(property){
 (function(){
   //分类ID
   var divied_id = getUrlVal('divied_id');
+  var showMessage = $(".showMessage").val();
+  console.log(showMessage);
   $.ajax({
 	  
 	type:"POST",
@@ -67,17 +69,6 @@ function getFocus(){
 	});
 
 };
-(function(){
-	
-	$.ajax({
-		type:"POST",
-		url:"/xinxiuli/goodscon",
-		success:function(){
-			
-		},
-	});
-	
-})();
 function showAll(){
 	$('#goodsList').empty();
 	$.ajax({

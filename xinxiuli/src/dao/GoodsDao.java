@@ -17,4 +17,5 @@ public interface GoodsDao {
 	public List<Goods> selectAllDiviedGoods(int divied_num,Connection conn) throws Exception;
 	public List<Goods> selectAllGoodsByCondition(Map<String,String> map,Connection conn) throws Exception;
 	public List<Goods> selectAllGoodsNo(Connection conn) throws Exception;
+	public List<Goods> selectGoodsByDesc(String desc,Connection conn) throws Exception;
 }

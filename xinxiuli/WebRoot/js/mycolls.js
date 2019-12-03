@@ -27,6 +27,9 @@
 })();
 					
 function deleteColls(obj){
+	
+	$('#myModal').modal('show');
+	
 	var goods_id = obj.getAttribute("goodsid");
 	var account_num = $(".mycart-sercher").attr("cart-number");
 	var s = "{'goods_id':"+goods_id+",'account_num':"+account_num+"}";

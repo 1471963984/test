@@ -76,4 +76,10 @@ public class DcfGoodsDaoImpl implements DcfGoodsDao{
 		return null;
 	}
 
+	@Override
+	public List<Goods> selectGoodsByDesc(String desc, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

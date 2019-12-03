@@ -2,9 +2,13 @@ package web.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,28 +45,44 @@ public class FindGoodsCon extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String,String> map = new HashMap<String, String>();
-//		String goods_desc = request.getParameter("goods_desc");
-//		String smin = request.getParameter("smin");
-//		String smax = request.getParameter("smax");
-//		String max = request.getParameter("max");
-//		String min = request.getParameter("min");
-		String goods_desc = "男士";
-		String smin = "10";
-		String smax = "1000";
-		String max = "4000";
-		String min = "0";
-		map.put("goods_desc", goods_desc);
-		map.put("smin", smin);
-		map.put("smax", smax);
-		map.put("min", min);
-		map.put("max", max);
+		String goods_desc = request.getParameter("goods_desc");
+		String pop = request.getParameter("pop");
+		String price = request.getParameter("price");
+		if(goods_desc!=null&&!"undefined".equals(goods_desc)) {
+			map.put("goods_desc", goods_desc);
+		}
+		if(pop!=null&&!"undefined".equals(pop)) {
+			String[] str = pop.split(",");
+			if("0".equals(str[0])&&!"0".equals(str[1])) {
+				map.put("smax", str[1]);
+			}else if("0".equals(str[1])&&!"0".equals(str[0])) {
+				map.put("smin", str[0]);
+			}else if(!"0".equals(str[0])&&!"0".equals(str[1])) {
+				map.put("smin", str[0]);
+				map.put("smax", str[1]);
+			}
+		}
+		if(price!=null&&!"undefined".equals(price)) {
+			String[] str = price.split(",");
+			if("0".equals(str[0])&&!"0".equals(str[1])) {
+				map.put("max", str[1]);
+			}else if("0".equals(str[1])&&!"0".equals(str[0])) {
+				map.put("min", str[0]);
+			}else if(!"0".equals(str[0])&&!"0".equals(str[1])) {
+				map.put("min", str[0]);
+				map.put("max", str[1]);
+			}
+		}
+		
 		FindGoodsCondition service = new service.Impl.FindGoodsCondition();
 		List<Goods> list = service.findGoodsCondition(map);
 		JSONArray ja = JSONArray.fromObject(list);
 		response.setCharacterEncoding("utf-8");
 		response.setHeader("Content-type", "application/json;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		System.out.println(ja.toString());
+		out.print(URLDecoder.decode(ja.toString()));
+		out.flush();
+		out.close();
 	}
 
 	/**

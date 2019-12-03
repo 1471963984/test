@@ -44,7 +44,6 @@ public class DcfOrderDaoImpl implements DcfOrderDao{
 			Order o = new Order();
 			o.setOrder_num(rs.getInt("order_num"));
 			o.setOrder_time(rs.getString("order_time"));
-			o.setGoods_num(rs.getInt("goods_num"));
 			o.setOrder_status(rs.getInt("order_status"));
 			o.setAccount_num(rs.getString("account_num"));
 			o.setColor_name(rs.getString("color_name"));

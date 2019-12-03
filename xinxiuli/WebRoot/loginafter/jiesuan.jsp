@@ -154,7 +154,7 @@
                 				<label>总计</label>
                 				<p>￥${zongjia }0</p>
                 			</div>
-                			<button class="btn btn-block btn-primary"  onclick="gaikucun();">提交订单</button>
+                			<button class="btn btn-block btn-primary" data-toggle="modal" data-target="#myModal" >提交订单</button>
                 		</div>
                 	</div>
 			</div>
@@ -362,7 +362,15 @@
 		   </div>		
 		   </div> 
 		</div>
-  
+		<!-- 购物车模态框 -->
+		<div class="modal fade" id="myModal" data-backdrop="static" >
+			<div style="left: 42%;top: 30%;width: 400px;height: 300px;background: white;position: absolute;">
+				<div class="quedinggoumai"style="font-size:30px;color:black;position:absolute;width:240px;height:120px;top:60px;left:20%" >是否确认付款？</div>
+				<button id="queding" class="btn" style="position:absolute;bottom:60px;left:20%;bacdground-color:#222222">确定</button>
+				<button class="btn " style="position:absolute;bottom:60px;right:20%" data-dismiss="modal">取消</button>
+			</div>
+			
+		</div>
 
 </body>
 </html>
@@ -381,28 +389,28 @@
 		$(this).children('.gougou').show();
 	})
 	
-		//更新库存
+$('#queding').click(function(){
+		gaikucun();
+	});
+	
+	//更新库存
 	function gaikucun(){
-		alert('准备结算');
-		var dizhi = "";
-		$('[name="addrs"]').each(function(){
-			if($(this).attr('checked')=='checked'){
-				dizhi = $(this).siblings('.addrs-message').html();
-				alert(dizhi);
+		//拿下标
+		var index = "";
+		$('.choose-addrs').each(function(){
+			if($(this).prop('checked')==true){
+				index = $(this).siblings('.index').html();
 			}
-		});
+		})
 		var str = "";
-		//alert($('.goods_num').length);
 		$('.goods_num').each(function(){
-			//console.log($(this));
 			var goods_num = $(this).html()+",";
 			str=str+goods_num;
-			//alert(goods_num);
 		})
-		if(str!=""){
-			
-			location.href="/xinxiuli/gaikucun?goods_num="+str;
+		if(str!=""&&index!=""){
+			location.href="/xinxiuli/gaikucun?goods_num="+str+"&index="+index;
+		}else{
+			alert('请选择您的收获地址或添加一个收获地址！')
 		}
-		
 	}
 </script>

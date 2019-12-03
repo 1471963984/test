@@ -25,23 +25,19 @@ public class MyOrder extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Account a=new Account();
-		//Account accnum=(Account)request.getSession().getAttribute("account");
-		String accnum="123";
+		Account accnum=(Account)request.getSession().getAttribute("account");
+		
 		String sta=request.getParameter("status");
 	    DcfOrdersService dcf=new DcfOrdersServiceImpl();
 		List<Order> list=new ArrayList<Order>();
-		PrintWriter out=response.getWriter();
-	    
+		PrintWriter out=response.getWriter();    
 		 if(sta==null) {
-		//	 list=dcf.selectAllUserOrders(accnum.getAccount_num(),-1);
-			 list=dcf.selectAllUserOrders(accnum,-1);
+			 list=dcf.selectAllUserOrders(accnum.getAccount_num(),-1);
 			 request.setAttribute("list",list);
-			 request.getRequestDispatcher("/xinxiuli/qianduanyemian/myorders.jsp").forward(request, response);
+			 request.getRequestDispatcher("/xinxiuli/loginafter/myorders.jsp").forward(request, response);
 			 return;
 		 }else {
-			// list=dcf.selectAllUserOrders(accnum.getAccount_num(), Integer.valueOf(sta));	 
-			 list=dcf.selectAllUserOrders(accnum, Integer.valueOf(sta));
+			 list=dcf.selectAllUserOrders(accnum.getAccount_num(), Integer.valueOf(sta));
 			 JSONArray arr=JSONArray.fromObject(list);
 	    	 out.print(arr.toString());
 	    	 return;

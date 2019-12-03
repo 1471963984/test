@@ -493,66 +493,6 @@
 		   </div>		
 		   </div> 
 		</div>
-		
-		
-		
-		
-  		<!--购物车详情模态块-->
-  		 <!--模态框结构-->
-	  <div class="modal fade" id="myModal" data-backdrop="static">
-	    <!--窗口层   大中小  默认为中-->
-	    <div class="modal-dialog modal-md">
-	      <!--内容层-->
-	      <div class="modal-content">
-	        <!--头部，身体，底部-->
-	        <div class="modal-header">
-	          <h3 class="modal-title"><span class="close" data-dismiss="modal">&times;</span></h3>
-	        </div>
-	        <div class="modal-body">
-	        	<div class="container" id="info">
-					<div class="info-l">
-						<img src="/xinxiuli/shop-imgs/motaibox/2.jpg"/>
-						<ul>
-							<span class="glyphicon glyphicon-chevron-left"></span>
-							<li><img src="/xinxiuli/shop-imgs/motaibox/3.jpg"/></li>
-							<li><img src="/xinxiuli/shop-imgs/motaibox/1.jpg"/></li>
-							<li><img src="/xinxiuli/shop-imgs/motaibox/4.jpg"/></li>
-							<li><img src="/xinxiuli/shop-imgs/motaibox/2.jpg"/></li>
-							<span class="glyphicon glyphicon-chevron-right"></span>
-						</ul>
-					</div>
-					<div class="info-r">
-						<h2>Samsonite/新秀丽明星同款 经典铝镁合金登机行李箱20英寸万向轮拉杆箱男女 DB3</h2>
-						<p>RAYDIEN <span class="glyphicon glyphicon-star-empty"></span>
-							 <span class="glyphicon glyphicon-star-empty"></span> 
-							 <span class="glyphicon glyphicon-star-empty"></span>
-							 <span class="glyphicon glyphicon-star-empty"></span>
-						</p>
-						<h5>明星同款 镁铝合金 赠送搭配箱套</h5>
-						<p>￥4980.00 <span>手机购买</span><span class="glyphicon glyphicon-th-large"></span></p>
-						<hr/>
-						<p>颜色</p>
-						<ul>
-							<a href="#"><li></li></a>
-							<a href="#" ><li></li></a>
-							<a href="#" class="active"><li></li></a>
-						</ul>
-						<p>尺寸 <button class="btn btn-group-sm btn-primary">20英寸</button><button class="btn btn-group-sm">23英寸</button></p>
-						<h6>数量<span class="reduce">-</span><span class="count">1</span><span class="add">+</span></h6>
-						<hr />
-						<a href="javascript:"><button class="btn btn-default">加入购物车</button></a>
-						<a href="javascript:"><button class="btn btn-default">立即选购</button></a>
-						<h4>需要帮助？您可以 <a href="javascript:">联系在线客服</a> 或 致电：4008-870-566</h4>
-						<hr />
-						<h3><span class="glyphicon glyphicon-heart"></span>添加至收藏
-						    <p>分享：
-						    	<a href="javascript:"><img src="/xinxiuli/shop-imgs/wechat.png"/></a>
-						    	<a href="javascript:"><img src="/xinxiuli/shop-imgs/weibo.png"/></a>
-						    </p>
-						</h3>
-					</div>
-				</div>
-			</div>
 	</body>
 </html>
 <script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>

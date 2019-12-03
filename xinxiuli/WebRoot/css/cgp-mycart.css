@@ -76,11 +76,11 @@
 		left: 5px;
 		z-index: 1;
 	}
-	.list-box .goods-message span{
+	.list-box .goods-message>span{
 		width: 105px;height: 140px;
 	}
 	
-	.list-box .goods-message span img{
+	.list-box .goods-message>span img{
 		width: 105px;height: 140px;
 		position: absolute;
 		left: 30px;
@@ -119,11 +119,12 @@
 		float: left;
 	}
 	.goods-operation{
-		width: 240px;height: 20px;
+		width: 240px;
+		height: 20px;
 		margin: 15px 0px 0px;
 	}
-	.goods-operation img{
-		width: 15px;height: 15px;
+	.goods-operation>span{
+		width: 70px;height: 15px;
 		float: left;
 	}
 	.goods-middle{

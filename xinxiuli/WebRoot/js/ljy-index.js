@@ -177,3 +177,11 @@ $('.tab-name').mouseenter(function(){
 	}
 })();
 
+$(".input-group span:first").click(function(){
+	var desc = $(".rm-search-input").val();
+	location.href="/xinxiuli/queryGoods?desc="+desc;
+});
+$(".input-warp .input-logo").click(function(){
+	var desc = $(".search-input").val();
+	location.href="/xinxiuli/queryGoods?desc="+desc;
+});

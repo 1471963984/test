@@ -191,32 +191,23 @@
 						<li data-status="4">已取消</li>
 						<li data-status="5">已退货</li>		
 					</ul>
+					<div class="info_r-head">
+					<ul>
+						<li>订单编号</li>
+						<li>商品名称</li>
+						<li>颜色</li>
+						<li>尺寸</li>
+						<li>数量</li>
+						<li>快递方式</li>
+						<li>操作</li>
+					</ul>			
+					</div>
 		            <!--在这里获取请求的数据-->
-		          <c:forEach items="${list}" var="l" varStatus="i">
-		            <ul class="myorders">
-		                <li class="myorders-head">
-		                  <span>订单编号："${list.order_num}"</span>
-		                  <c:if test="${list.order_status eq 1}">		                  
-		                    <span>订单状态：待发货</span>
-		                  </c:if>
-		                   <c:if test="${list.order_status eq 1}">
-		                    <span>订单状态：已发货</span>
-		                  </c:if>
-		                   <c:if test="${list.order_status eq 1}">
-		                    <span>订单状态：已取消</span>
-		                  </c:if>
-		                   <c:if test="${list.order_status eq 1}">
-		                    <span>订单状态：已退货</span>
-		                  </c:if>                 
-		                  <span>快递方式：普通快递</span>
-		                  <span>下单时间："${list.order_time}"</span>
-		                <li>
-		                <li class="myorders">
-		                   
-		                
-		                </li>   
-		            </ul>
-		           </c:forEach>
+		         
+		           <div class="">
+		           
+		           
+		           </div>
 				</div>
 			</div>
 		</div>
@@ -425,32 +416,64 @@
 //-->
 </script>
 <script>
+(function(){
+	$.ajax({
+		type:"POST",
+		url:"/xinxiuli/MyOrder?status=0",
+		success:function(result){
+			var obj=JSON.parse(result);
+			$(".info_r-list>.active>span").html("("+obj.length+")");
+			$(".info_r-head>.myoder").remove();
+			 for(var i=0;i<obj.length;i++){
+				  switch(obj[i].order_status){
+				  case 2:
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>提醒发货</button> <button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+					  break;
+				  case 3:
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>查看物流</button></ul>");  
+					  break;
+				  case 4:
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>查看更多</button>");  
+					  break;
+				  case 5:
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+					  break;
+			  }
+		}
+		}
+	});
+	})();
 	$('.info_r>.info_r-list>li').click(function(){
 		$(this).addClass("active").siblings().removeClass("active");
 		var sta=$(this).attr("data-status");
 		$.ajax({
 			type:"POST",
-			url:"../MyOrder?status="+sta,
+			url:"/xinxiuli/MyOrder?status="+sta,
 			success:function(result){
 				//$(this).parent().siblings().remove();
 				if(result!=null){
 					var obj=JSON.parse(result);
-					$(".info_r>.myorders").remove();
+					console.log(obj);
+					$(".info_r-head>.myoder").remove();
 				  for(var i=0;i<obj.length;i++){
-					str=`
-						<ul class="myorders">
-			                <li class="myorders-head">
-			                    <span>aaaa</span>
-			                    <span>bbb</span>
-			                    <span>ccc</span>
-			                <li>
-			               <li class="myorders">			                        
-			              </li>   
-			          </ul>		
-					`;  
-				  $(".info_r").append(str);
-				  }	
-				}
+					  var aa=obj[i].order_status;
+					  switch(obj[i].order_status){
+					  case 2:
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>提醒发货</button> <button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+						  break;
+					  case 3:
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>查看物流</button></ul>");  
+						  break;
+					  case 4:
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>查看更多</button>");  
+						  break;
+					  case 5:
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+						  break;
+				  }
+				  }
+				  }
+				
 			}
 		});	
 	});

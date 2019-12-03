@@ -1,32 +1,20 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>我的收藏</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<link rel="stylesheet" href="/xinxiuli/css/bootstrap.css" />
-	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageHeader.css"/>
-	<link rel="stylesheet" href="/xinxiuli/css/PersonAllPageFooter.css"/>
-	<link rel="stylesheet" href="/xinxiuli/css/mycolls.css" />
-  </head>
-  
-   <body>
-   
-   		<!--首页头部-->
-		<header class="mypage-header">
-				<nav>
-								<!--普通导航栏-->
+	<head>
+		<meta charset="UTF-8">
+		<title>产品展示</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<link rel="stylesheet" href="/xinxiuli/css/bootstrap.css" />
+		<link rel="stylesheet" href="/xinxiuli/css/ljy-index-showpro.css" />
+		<link rel="stylesheet" href="/xinxiuli/css/xxk-login.css" />
+	</head>
+	<body>
+		<!--首页头部-->
+		<header>
+			<nav>
+				<!--普通导航栏-->
 				<div class="normal-index-header">
 					<div class="container">
 						<div class="content-left">
@@ -82,9 +70,7 @@
 								</c:if>
 								<!-- 登录后样式 -->
 								<div class="top-list">
-									<a href="/xinxiuli/loginafter/mycolls.jsp">
-										<img src="/xinxiuli/img/tools/icon-header-collection.png" />
-									</a>
+										<img src="/xinxiuli/img/tools/icon-header-collection.png" onclick="checklogin()" />
 								</div>
 								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
 									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/package.png"/></a>
@@ -141,9 +127,7 @@
 										</div>
 									</c:if>
 									<div class="right-list coll">
-										<a href="/xinxiuli/loginafter/mycolls.jsp">
-											<img src="/xinxiuli/img/tools/icon-header-collection.png" />
-										</a>
+											<img src="/xinxiuli/img/tools/icon-header-collection.png" onclick="checklogin()" />
 									</div>
 									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
 										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
@@ -155,56 +139,33 @@
 					</div>
 				</div>
 			</nav>
-		
 		</header>
-		
-		<!-- 购物车模态框 -->
-		<div class="modal fade" id="myModal" data-backdrop="static" >
-			<div style="left: 42%;top: 30%;width: 400px;height: 300px;background: white;position: absolute;">
-				<div class="quedinggoumai"style="font-size:30px;color:red;position:absolute;width:240px;height:120px;top:60px;left:20%" >是否确认删除？</div>
-				<button id="queding" class="btn btn-success" style="position:absolute;bottom:60px;left:20%">确定<tton>
-				<button class="btn btn-danger" style="position:absolute;bottom:60px;right:20%" data-dismiss="modal">取消<tton>
-			</div>
-		</div>
-		
-	
-   		
-		<!--头部信息展示-->
-		<div id="info">
-				<!--中间部分-->
-			<div class="info-bg">
-				<div class="info-t">
-					<ul>
-						<li class="index">首页</li>
-						<li class="icon">></li>
-						<li>我的账户</li>
-						<li class="icon">></li>
-						<li class="active">我的收藏</li>
-				    </ul>
-				</div>
-			</div>
-			<div class="info-coll-content">	
-				<div class="info-l">
-					<ul>
-						<li>账户首页</li>
-						<li><a href="/xinxiuli/loginafter/personzl.jsp">个人资料</a></li>
-						<li><a href="/xinxiuli/loginafter/myaddrs.jsp">地址簿</a></li>
-						<li><a href="/xinxiuli/loginafter/myorders.jsp">我的订单</a></li>
-						<li class="active"><a href="/xinxiuli/loginafter/mycolls.jsp">我的收藏</a></li>
-						<li>客户服务</li>
-					</ul>
-				</div>
-				<div class="info_r">
-					<ul>
-						<div class="title-about">我的收藏</div>
-						
-					</ul>
-				</div>
-			
-
-			</div>
-		</div>
-		
+	    
+	    <!--商品展示区-->
+	    <section>
+	    	<div class="container">
+	    		<div class="row"  id="goodsList">
+	    		<!-- 隐藏表单域决定是否展示商品 -->
+	    		<input type="hidden" class="showMessage" value="${show}"></input>
+	    		 <c:if test="${goodsList ne null}">
+	    		 	<c:forEach items="${goodsList}" var="goods">
+	    		 		 <div class="col-md-3 thumbnail-div">
+							 <div class="thumbnail">
+								 <a href="/xinxiuli/Show?gid=${goods.goods_num}" target="_self"><img src="${goods.goods_picture}"/></a>
+								 <caption>
+									 <p class="goods-name">${goods.goods_name}</p>
+									 <p class="goods-desc">${goods.goods_desc}</p>
+									 <p>¥　${goods.goods_price}.00</p>
+									 <p><span class="glyphicon  glyphicon-star"></span>${goods.goods_star}</p>
+								</caption>
+							 </div>
+						 </div>
+	    		 	</c:forEach>
+	    		 </c:if>
+	    		</div>
+	    	</div>
+	    </section>
+	    
 	    <!--首页尾部-->
 	    <section>
     		<div class="footer">
@@ -308,7 +269,6 @@
 	 							<img src="/xinxiuli/img/tools/icon-ebs.png" style="width: 18px;height: 18px;"/>
 	 							<a href="#">浙公网安备 33020602000173号 浙ICP备16038745号-2</a>
  							</div>
- 							
  						</div>
  					</div>
  				</div>
@@ -321,7 +281,6 @@
 	    </section>
 	    
 	    <!--登录模态框-->
-    		    <!--登录模态框-->
     	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
 		   <div class="modal-dialog  ">
 		   	<div class="modal-content">
@@ -398,11 +357,46 @@
 		   </div>		
 		   </div> 
 		</div>
-    	
 		
-  </body>
+	</body>
 </html>
 <script type="text/javascript" src="/xinxiuli/js/jquery.min.js" ></script>
 <script type="text/javascript" src="/xinxiuli/js/bootstrap.js" ></script>
-<script type="text/javascript" src="/xinxiuli/js/ljy-index.js"></script>
-<script type="text/javascript" src="/xinxiuli/js/mycolls.js"></script>
+<script src="/xinxiuli/js/xxk-login.js"></script>
+<script type="text/javascript" src="/xinxiuli/js/ljy-index.js" ></script>
+<script>
+	function checklogin(){
+		var account_num = $(".mycart-sercher").attr("cart-number");
+		if(account_num==""){
+		$('#login').modal('show');
+		}else if(account_num!=null&&account_num!="undefined"){
+			location.href="/xinxiuli/loginafter/mycolls.jsp";
+		}
+	}
+	(function(){
+		var showMessage = $(".showMessage").val();
+		console.log(showMessage);
+		
+		if("yes"==showMessage){
+			var str1 = `
+				 <div class="col-md-12 blank content-center">
+				 <h1>商家正在努力上架中……</h1>
+				 </div>
+				 `;
+			 $('#goodsList').append(str1); 
+		}
+		getFocus();
+    })();
+	function getFocus(){
+	$(".thumbnail-div").each(function(){
+		$(this).mouseenter(function(){
+			$(this).css("box-shadow","0px 0px 15px 1.5px #95B8E7");
+		});
+		$(this).mouseleave(function(){
+			$(this).css("box-shadow","none");
+		});
+	});
+
+};
+	
+</script>

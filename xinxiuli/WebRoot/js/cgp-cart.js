@@ -194,9 +194,7 @@ function deleteGoods(obj){
 	var goods_id = obj.getAttribute("goodsid");
 	var account_num = $(".mycart-sercher").attr("cart-number");
 	var s = "{'goods_id':"+goods_id+",'account_num':"+account_num+"}";
-	
 	$.ajax({
-	
 		type:"POST",
 		url:"/xinxiuli/deleteGoods",
 		data:"s="+s,
@@ -241,6 +239,7 @@ function deleteGoods(obj){
 	});
 };
 //商品结算
+//商品结算
 function jiesuan(){
 	var str = "";
 	$('[data-price=active]').each(function(){
@@ -253,6 +252,7 @@ function jiesuan(){
 		location.href="/xinxiuli/jiesuan?goods_num="+str;
 	}
 };
+
 
 function collGoods(){
 	$(".collGoods").click(function(){

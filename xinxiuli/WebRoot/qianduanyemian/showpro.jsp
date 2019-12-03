@@ -164,13 +164,13 @@
          				<span>价格</span>
          				<div class="condition-price">
          					<div class="unit">
-         						<span>￥0-1500</span><input type="radio" name="price" id="price" value="1500" />
+         						<span>￥0-1500</span><input type="radio" name="price" value="0,1500" />
          					</div>
          					<div class="unit">
-         						<span>￥1500-4000</span><input type="radio" name="price" id="price" value="1500,4000" />
+         						<span>￥1500-4000</span><input type="radio" name="price" value="1500,4000" />
          					</div>
          					<div class="unit">
-         						<span>￥4000以上</span><input type="radio" name="price" id="price" value="4000" />
+         						<span>￥4000以上</span><input type="radio" name="price" value="4000,0" />
          					</div>
          				</div>
          			</div>
@@ -178,13 +178,13 @@
          				<span>角色</span>
          				<div class="condition-cols">
          					<div class="unit">
-         						<span>儿　童</span><input type="radio" name="cols" id="price" value="儿童" />
+         						<span>儿　童</span><input type="radio" name="cols"  value="儿童" />
          					</div>
          					<div class="unit">
-         						<span>男　士</span><input type="radio" name="cols" id="price" value="男士" />
+         						<span>男　士</span><input type="radio" name="cols" value="男士" />
          					</div>
          					<div class="unit">
-         						<span>女　士</span><input type="radio" name="cols" id="price" value="女士" />
+         						<span>女　士</span><input type="radio" name="cols" value="女士" />
          					</div>
          				</div>
          			</div>
@@ -192,13 +192,13 @@
          				<span>热度</span>
          				<div class="condition-pop">
          					<div class="unit">
-         						<span>0-199</span><input type="radio" name="color" id="price" value="0,199" />
+         						<span>0-199</span><input type="radio" name="color" value="0,199" />
          					</div>
          					<div class="unit">
-         						<span>200-399</span><input type="radio" name="color" id="price" value="200,399" />
+         						<span>200-399</span><input type="radio" name="color" value="200,399" />
          					</div>
          					<div class="unit">
-         						<span>400以上</span><input type="radio" name="color" id="price" value="400" />
+         						<span>400以上</span><input type="radio" name="color" value="400,0" />
          					</div>
          				</div>
          			</div>
@@ -218,6 +218,23 @@
 	    <section>
 	    	<div class="container">
 	    		<div class="row"  id="goodsList">
+	    		<!-- 隐藏表单域决定是否展示商品 -->
+	    		<input type="hidden" class="showMessage" value="${show}"></input>
+	    		 <c:if test="${goodsList ne null}">
+	    		 	<c:forEach items="${goodsList}" var="goods">
+	    		 		 <div class="col-md-3 thumbnail-div">
+							 <div class="thumbnail">
+								 <a href="/xinxiuli/Show?gid=${goods.goods_num}" target="_self"><img src="${goods.goods_picture}"/></a>
+								 <caption>
+									 <p class="goods-name">${goods.goods_name}</p>
+									 <p class="goods-desc">${goods.goods_desc}</p>
+									 <p>¥　${goods.goods_price}.00</p>
+									 <p><span class="glyphicon  glyphicon-star"></span>${goods.goods_star}</p>
+								</caption>
+							 </div>
+						 </div>
+	    		 	</c:forEach>
+	    		 </c:if>
 	    		</div>
 	    	</div>
 	    </section>
@@ -431,10 +448,70 @@
 		}
 	}
 	$(".condition-text").click(function(){
-		$(".showCondition").show();
+		$(".showCondition").fadeIn();
 	});
 	$(".condition>.caozuo>.cancle").click(function(){
-		$(".showCondition").hide();
+		$(".showCondition").fadeOut();
 	});
-	
+	$(".condition>.caozuo>.find").click(function(){
+		var pop;
+		var price;
+		var goods_desc;
+		$(".condition-price input").each(function(i){
+			if($(this).prop("checked")==true){
+			price = $(this).val();			
+			}
+		});
+		$(".condition-cols input").each(function(i){
+			if($(this).prop("checked")==true){
+			goods_desc = $(this).val();			
+			}
+		});
+		$(".condition-pop input").each(function(i){
+			if($(this).prop("checked")==true){
+			pop = $(this).val();			
+			}
+		});
+		$.ajax({
+			type:"POST",
+			url:"/xinxiuli/goodscon",
+			data:"price="+price+"&pop="+pop+"&goods_desc="+goods_desc,
+			success:function(result){
+				$('#goodsList').empty();
+				if(result.length==0){
+					var str1 = `
+						 <div class="col-md-12 blank content-center">
+						 <h1>商家正在努力上架中……</h1>
+						 </div>
+						 `;
+					 $('#goodsList').append(str1); 
+				}else{
+					for(var i = 0; i < result.length; i++){
+						 var str = "<div class='col-md-3 thumbnail-div'><div class='thumbnail'><a href='/xinxiuli/Show?gid="+result[i].goods_num+"' target='_self'><img src='"+result[i].goods_picture+"'/></a><caption><p class='goods-name'>"+result[i].goods_name+"</p><p class='goods-desc'>"+result[i].goods_desc+"</p><p>¥　"+result[i].goods_price+".00</p><p><span class='glyphicon  glyphicon-star'></span>"+result[i].goods_star+"</p></caption></div></div>";
+						 //每遍历一次就要去添加一次
+						 $('#goodsList').append(str);
+						 getFocus(); 
+					}
+				}
+			},
+		});
+		
+	});
+	$(".reset").click(function(){
+		$(".condition-price input").each(function(i){
+			if($(this).prop("checked")==true){
+				$(this).prop("checked",false);			
+			}
+		});
+		$(".condition-cols input").each(function(i){
+			if($(this).prop("checked")==true){
+				$(this).prop("checked",false);			
+			}
+		});
+		$(".condition-pop input").each(function(i){
+			if($(this).prop("checked")==true){
+				$(this).prop("checked",false);			
+			}
+		});
+	});
 </script>

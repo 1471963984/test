@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/pintuer.css">
     <link rel="stylesheet" href="css/admin.css">
-    <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
-    <script src="js/pintuer.js"></script>
-  
+ 
 </head>
 <style>
     #table{
@@ -21,6 +19,9 @@
         font-size: 12px;
         width: 100%;
     }
+   #table .describe{
+       font-weight:700;
+   }
     #table td{
     	line-height:60px;	
         text-overflow:ellipsis;
@@ -70,11 +71,11 @@
     <table class="table table-hover text-center" id="table">
         <thead>
         <tr>
-            <th width="7%">订单id</th>
+            <th width="4%">订单id</th>
             <th width="10%">用户名</th>
             <th width="8%">下单时间</th>
             <th width="6%">总价</th>
-            <th width="14%">收货地址</th>
+            <th width="17%">收货地址</th>
             <th width="7%">收货人</th>
             <th width="8%">手机号码</th>
             <th width="6%">订单状态</th>
@@ -103,66 +104,6 @@
         			<button class="btn btn-success btn-sm">查看详情</button>
         		</td>
         	</tr>
-			<!--<c:forEach items="${data}" var="o">
-				 <tr>
-				 	<td class="name" >
-						${o.orderid }
-					</td>
-					<td class="name" >
-						${o.username }
-					</td>
-	                <td class="name">
-						${o.downtime }
-					</td>
-	                <td class="model">
-	                	${o.sumprice }
-	                </td>
-	                <td class="model">
-	                	${o.orderAddress }
-	                </td>
-	                <td class="quantity">
-						${o.orderUsers }
-					</td>
-	                <td class="price" >
-	                	${o.orderpone }
-	                </td>
-	                <td class="total">
-						<c:if test="${o.state == 1 }">
-							待发货
-						</c:if>
-						
-						<c:if test="${o.state == 2 }">
-							待收货
-						</c:if>
-						
-						<c:if test="${o.state == 3 }">
-							已完结
-						</c:if>
-						<c:if test="${o.state == 4 }">
-							申请退款
-						</c:if>
-					</td>
-	                <td class="total" style="text-align: center">
-	                	<c:if test="${o.state == 1 }">
-							<a href="updateOrderState.do?orderid=${o.orderid }" class="botton blue">发货</a>
-							<a href="orderDetails.jsp"  class="botton blue">详情</a>
-						</c:if>				
-						<c:if test="${o.state == 2 }">
-							<a href="updateOrderState.do?orderid=${o.orderid }" class="botton blue">查看物流</a>
-							<a href="orderDetails.jsp"  class="botton blue">详情</a>
-						</c:if>
-						<c:if test="${o.state == 3}">
-							<a href="updateOrderState.do?orderid=${o.orderid }" class="botton blue">删除</a>
-							<a href="orderDetails.jsp"  class="botton blue">详情</a>
-						</c:if>
-						<c:if test="${o.state == 2 }">
-							<a href="updateOrderState.do?orderid=${o.orderid }" class="botton blue">同意</a>
-							<a href="orderDetails.jsp"  class="botton blue">拒绝</a>
-						</c:if>
-					</td>
-	           </tr>		
-			</c:forEach>-->
-
         </tbody>
     </table>
 </div>
@@ -215,3 +156,77 @@
 </div>
 </body>
 </html>
+<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+<script src="js/pintuer.js"></script>
+<script >
+   (function(){
+	   $.ajax({
+		  url:"/xinxiuli/showAllOrders",
+		  success:function(result){
+			  console.log(JSON.parse(result));
+			  var obj=JSON.parse(result);
+			  for(var i=0;i<obj.length;i++){                                        
+				  switch (obj[i].order_status){
+					case 2:
+					$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].shouhuoren+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>待发货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-success btn-md deliver' data-oldattr='2' data-newattr='3' data-accnum="+obj[i].account_num+">发货</button></td></tr>"); 
+						break;
+					case 3:
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].shouhuoren+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已发货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-md logisi'>查看物流</button></td></tr>") 
+						break;
+					case 4:
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].shouhuoren+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已取消</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-sm knowmore'>查看详情</button> <button class='btn btn-danger btn-sm delte'>删除</button></td></tr>") 
+						break;
+					case 5:
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].shouhuoren+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj.goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已退货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-sm'>查看详情</button> <button class='btn btn-danger btn-sm delte'>删除</button></td></tr>") 
+						break;
+					case 6:
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].shouhuoren+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj.goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>申请退货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-success btn-sm agree'>同意</button> <button class='btn btn-danger btn-sm refuse'>拒绝</button> <button class='btn btn-primary btn-sm refuse'>查看</button></td></tr>") 
+						break;
+				}
+			  }
+			  caozuo();
+		  }
+	   });   
+   })();
+   function caozuo(){
+	   $("#content>tr button").click(function(){
+		   var accnum=$(this).attr("data-accnum");
+		   var oldattr=$(this).attr("data-oldattr");
+		   var newattr=$(this).attr("data-newattr");
+		   var obj=$(this).parent();	
+		   switch (oldattr){
+		   	case "2":
+		   		$.ajax({
+		   			url:"/xinxiuli/updataOrdersStatus?sta="+newattr+"&accnum="+accnum,
+		   			success:function(result){
+		   			 alert(result);	
+		   			  obj.children().remove();
+		   			 obj.append("<button class='btn btn-primary btn-md deliver' data-oldattr='3' data-newattr='4'>查看物流</button>").siblings(".describe").html("已发货");
+		   			}
+		   		});	
+		       break;
+			case 3:
+				var obj=$(this).parent();
+				   $(this).parent().children().remove();
+				   obj.append("<button class='btn btn-primary btn-md deliver' data-oldattr='4' data-newattr='5'>查看详情</button>");
+				   
+		       break;
+			case 4:
+				var obj=$(this).parent();
+				   $(this).parent().children().remove();
+				   obj.append("<button class='btn btn-primary btn-md deliver' data-oldattr='3' data-newattr='4'>查看物流</button>").siblings(".describe").html("已发货");
+		       break;
+			case 5:
+				var obj=$(this).parent();
+				   $(this).parent().children().remove();
+				   obj.append("<button class='btn btn-primary btn-md deliver' data-oldattr='3' data-newattr='4'>查看物流</button>").siblings(".describe").html("已发货"); 
+		       break;
+			case 6:
+				var obj=$(this).parent();
+				  
+			   break;
+		   }
+	   });
+   }
+</script>
+  

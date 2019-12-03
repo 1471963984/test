@@ -323,6 +323,35 @@
       <servlet-name>Admloginservlets</servlet-name>
       <url-pattern>/Admloginservlet</url-pattern>
     </servlet-mapping>
+    
+    
+  <servlet>
+    <servlet-name>SercherGoodsByCon</servlet-name>
+    <servlet-class>web.servlet.SercherGoodsByCon</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SercherGoodsByCon</servlet-name>
+    <url-pattern>/queryGoods</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 后台查询所有订单 -->
+	<servlet>
+	   <servlet-name>AllOrders</servlet-name>
+	   <servlet-class>web.servlet.AdminShowOrders</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	   <servlet-name>AllOrders</servlet-name>
+	   <url-pattern>/showAllOrders</url-pattern>
+	</servlet-mapping>
+	  <!-- 后台发货 -->
+		  <servlet>
+		   <servlet-name>updataAdminOrdersStatus</servlet-name>
+		   <servlet-class>web.servlet.AdminDeliver</servlet-class>
+		</servlet>
+		<servlet-mapping>
+		   <servlet-name>updataAdminOrdersStatus</servlet-name>
+		   <url-pattern>/updataOrdersStatus</url-pattern>
+		</servlet-mapping>
 
   <filter>
   	<filter-name>CharacterEncoding</filter-name>

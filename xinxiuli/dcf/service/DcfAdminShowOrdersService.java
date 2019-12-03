@@ -1,5 +1,9 @@
 package service;
 
+import java.util.List;
+
+import pojo.Order;
+
 public interface DcfAdminShowOrdersService {
-    // public List<> showOrders();
+     public List<Order> showOrders();
 }
