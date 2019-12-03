@@ -61,13 +61,14 @@
 						</button>
 					</li>
 				</ul>
-				<c:forEach  items="${myinfo.addrs}" var="u" >
+				<c:forEach  items="${myinfo.addrs}" var="u" varStatus="i" >
 				<div class="addrs-list">
 					<input type="radio" name="addrs" data-choose="" class="choose-addrs" checked="" style="width: 20px;
 							height: 20px;
 							margin: 10px 0px 0px;
 							position: absolute;
 							left: 10px;" />
+					<div class="index" style="display:none">${i.index }</div>
 			    	<div class="name ch-left">${u.name }</div>
 			    	<div class="phone mbtel">${u.tel }</div>
 			    	<div class="addrs-message">${u.dizhi }</div>

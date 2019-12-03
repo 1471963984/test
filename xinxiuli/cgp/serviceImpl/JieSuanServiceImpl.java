@@ -27,10 +27,7 @@ public class JieSuanServiceImpl implements JieSuanService{
 	public List<Addrs> getMyAddrs(String account_num, Connection conn) {
 		//查用户信息dao
 		UsersZiLiaoDao uzd = new UsersZiLiaoDaoImpl();
-		//准备存用户信息的集合
-		List<Object> namelist = new ArrayList<Object>();
-		List<Object> tellist = new ArrayList<Object>();
-		List<Object> dizhilist = new ArrayList<Object>();
+		//准备存地址信息的集合
 		List<Addrs> aslist = new ArrayList<Addrs>();
 		Users user = null;
 		if(account_num!=null){
@@ -47,8 +44,14 @@ public class JieSuanServiceImpl implements JieSuanService{
 					//把地址和商品分别封装成dto
 					//地址
 					Addrs as = new Addrs();
+					String tel1 = tel[i];
+					System.out.println("截取之前"+tel1);
+					if(tel1.substring(0, 1).equals("#")){
+						tel1 = tel[i].substring(2);
+						System.out.println("截取之后"+tel1);
+					}
 					as.setName(name[i]);
-					as.setTel(tel[i]);
+					as.setTel(tel1);
 					as.setDizhi(dizhi[i]);
 					aslist.add(as);
 				}

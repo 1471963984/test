@@ -14,7 +14,6 @@ import pojo.Order;
  */
 public interface MyOrderDao extends OrderDao,AccountDao{
 	public boolean insertOrder(MyOrders order, Connection conn) throws Exception;
-	public boolean updateAccountOrder(String account_num, String order_num, Connection conn) throws Exception ;
 	public MyOrders selectOrderByAccount_num(String account_num, Connection conn) throws Exception;
 	
 }

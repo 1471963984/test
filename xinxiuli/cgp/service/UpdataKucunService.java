@@ -2,10 +2,13 @@ package service;
 
 import java.sql.Connection;
 
+import dto.Addrs;
+import dto.JieSuanShow;
+import dto.ShowMyCart;
 import pojo.MyOrders;
+import pojo.Users;
 
 public interface UpdataKucunService {
-	public boolean gaiKucun(String account_num,int goods_num);
-	public boolean updateMyCart();
-	public boolean updateAccountOrder(MyOrders o, String account_num,Connection conn);
+	public boolean gaiKucun(String account_num,int goods_num,String index);
+	public Addrs getAddrs(String account,String index,Connection conn);
 }

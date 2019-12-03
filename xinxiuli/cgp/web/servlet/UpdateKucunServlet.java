@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import db.DbHelp;
 import dto.CartGoods;
+import dto.JieSuanShow;
+import dto.ShowMyCart;
 import pojo.Account;
 import service.JieSuanService;
 import service.UpdataKucunService;
@@ -30,15 +32,19 @@ public class UpdateKucunServlet extends HttpServlet{
 		String account_num = account.getAccount_num();
 		//从结算拿到goods_num
 		String num = request.getParameter("goods_num");
-		System.out.println(num.toString());
+		//从结算拿到index
+		String index = request.getParameter("index");
+		//dto
+		JieSuanShow jss = new JieSuanShow();
+//		System.out.println(num.toString());
 		String[] str = num.split(",");
 		UpdataKucunService uks = new UpdataKucunServiceImpl();
+		
 //		uks.gaiKucun(account_num, goods_num, goods_num);
 		for (int i = 0; i < str.length; i++) {
-			uks.gaiKucun(account_num, Integer.parseInt(str[i]));
-//			uks.updateAccountOrder(o, account_num, conn);
+			uks.gaiKucun(account_num, Integer.parseInt(str[i]), index);
 		}
 		
-//		response.sendRedirect("index.jsp");
+		response.sendRedirect("index.jsp");
 	}
 }

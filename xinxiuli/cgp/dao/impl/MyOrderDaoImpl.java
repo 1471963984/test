@@ -93,17 +93,6 @@ public class MyOrderDaoImpl implements MyOrderDao{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	public boolean updateAccountOrder(String account_num, String order_num, Connection conn) throws Exception {
-		boolean flag = false;
-		String sql = "update account set order_num=? where account_num=?";
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1, order_num);
-		ps.setString(2, account_num);
-		if(ps.executeUpdate()>0) {
-			flag = true;
-		}
-		return flag;
-	}
 
 	@Override
 	public MyOrders selectOrderByAccount_num(String account_num, Connection conn) throws Exception {

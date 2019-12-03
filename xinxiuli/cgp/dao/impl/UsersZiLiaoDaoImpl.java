@@ -90,7 +90,7 @@ public class UsersZiLiaoDaoImpl implements UsersZiLiaoDao{
 			u = new Users();
 			u.setUsers_id(rs.getInt("users_id"));
 			u.setAccount_num(rs.getString("account_num"));
-			u.setUsers_name(rs.getString("users_name"));
+			u.setUsers_name(rs.getString("users_phone"));
 			u.setUsers_nickname(rs.getString("users_nickname"));
 			u.setUsers_addr(rs.getString("users_addr"));
 			u.setUsers_email(rs.getString("users_email"));

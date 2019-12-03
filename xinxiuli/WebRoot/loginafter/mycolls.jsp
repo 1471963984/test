@@ -162,8 +162,8 @@
 		<div class="modal fade" id="myModal" data-backdrop="static" >
 			<div style="left: 42%;top: 30%;width: 400px;height: 300px;background: white;position: absolute;">
 				<div class="quedinggoumai"style="font-size:30px;color:red;position:absolute;width:240px;height:120px;top:60px;left:20%" >是否确认删除？</div>
-				<button id="queding" class="btn btn-success" style="position:absolute;bottom:60px;left:20%">确定<tton>
-				<button class="btn btn-danger" style="position:absolute;bottom:60px;right:20%" data-dismiss="modal">取消<tton>
+				<button id="queding" class="btn btn-success" style="position:absolute;bottom:60px;left:20%;width:60px">确定<tton>
+				<button class="btn btn-danger" style="position:absolute;bottom:60px;right:20%;width:60px" data-dismiss="modal">取消<tton>
 			</div>
 		</div>
 		
@@ -321,7 +321,6 @@
 	    </section>
 	    
 	    <!--登录模态框-->
-    		    <!--登录模态框-->
     	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
 		   <div class="modal-dialog  ">
 		   	<div class="modal-content">
