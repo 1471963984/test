@@ -55,7 +55,7 @@
 				<ul>
 					<li>
 						<div class="title-about balance-lable">配送地址</div>
-						<button class="btn btn-block btn-default" onclick="window.location.href='/xinxiuli/qianduanyemian/addmyaddrs.jsp'">
+						<button class="btn btn-block btn-default" onclick="window.location.href='/xinxiuli/loginafter/addmyaddrs.jsp'">
 							<span class="btn-add">+</span>
 							&nbsp;&nbsp;新增地址
 						</button>
