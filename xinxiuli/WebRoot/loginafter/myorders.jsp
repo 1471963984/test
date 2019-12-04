@@ -86,7 +86,7 @@
 									</a>
 								</div>
 								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
-									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/package.png"/></a>
+									<a href="/xinxiuli/loginafter/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/package.png"/></a>
 									<div class="cart-number">0</div>
 								</div>
 							</div>
@@ -145,7 +145,7 @@
 										</a>
 									</div>
 									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
-										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
+										<a href="/xinxiuli/loginafter/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
 										<div class="cart-number">0</div>
 									</div>
 								</div>
@@ -170,8 +170,8 @@
 						<li class="active">我的订单</li>
 				    </ul>
 				</div>
-			</div>	
-			<div class="myoder-info-content">
+			</div>
+			<div class="myoder-info-content">	
 				<div class="info-l">
 					<ul>
 						<li>账户首页</li>
@@ -200,17 +200,22 @@
 						<li>尺寸</li>
 						<li>数量</li>
 						<li>快递方式</li>
-						<li>操作</li>
+						<li class='caozu'>操作</li>
 					</ul>			
 					</div>
 		            <!--在这里获取请求的数据-->
-		         
-		           <div class="">
-		           
-		           
-		           </div>
 				</div>
+		  </div>
+		  </div>
+		<!-- 物流模态框 -->
+		<div class='modal fade' id='myModal' data-backdrop='static' style="margin-top:200px;">
+			<div class='modal-dialog'>
+				<div class='modal-content'>
+					<div class='modal-header'><h3 class='modal-title'>快递信息：<span class="close glyphicon glyphicon-remove" data-dismiss="modal"></span></h3></div>
+					<div class='modal-body'><h2 style='margin-top:20px; text-align:center; margin-left:75px;'>正在等待快递揽件<span style="width:80px; display:inline-block; text-align:left; margin-left:5px;"><span></h2>
 			</div>
+		</div>
+		</div>
 		</div>
 
 	    <!--首页尾部-->
@@ -425,22 +430,27 @@
 			var obj=JSON.parse(result);
 			$(".info_r-list>.active>span").html("("+obj.length+")");
 			$(".info_r-head>.myoder").remove();
+			$(".info_r-head>h2").remove();
+			if(obj.length!=0){
 			 for(var i=0;i<obj.length;i++){
 				  switch(obj[i].order_status){
 				  case 2:
-					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>提醒发货</button> <button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm'>提醒发货</button> <button class='btn btn-sm btn-default'>申请退款</button></li></ul>");  
 					  break;
 				  case 3:
-					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>查看物流</button></ul>");  
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-sm' style='color:white; background-color:#222;' onclick='looklogist()' data-toggle='modal' data-target='#myModal'>查看物流</button></ul>");  
 					  break;
 				  case 4:
-					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>查看更多</button>");  
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>查看更多</button>");  
 					  break;
 				  case 5:
-					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
 					  break;
 			  }
 		}
+		}else{
+			$(".info_r").append("<h2 style='text-align:center;'>亲，暂无该类型订单</h2>");
+		 }
 		}
 	});
 	})();
@@ -456,27 +466,54 @@
 					var obj=JSON.parse(result);
 					console.log(obj);
 					$(".info_r-head>.myoder").remove();
+					$(".info_r>h2").remove();
+				if(obj.length!=0){
 				  for(var i=0;i<obj.length;i++){
 					  var aa=obj[i].order_status;
 					  switch(obj[i].order_status){
 					  case 2:
-						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>提醒发货</button> <button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm'>提醒发货</button> <button class='btn btn-default btn-sm'>申请退款</button></li></ul>");  
 						  break;
 					  case 3:
-						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>查看物流</button></ul>");  
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm' style='color:white; background-color:#222;' onclick='looklogist()' data-toggle='modal' data-target='#myModal'>查看物流</button></ul>");  
 						  break;
 					  case 4:
-						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>查看更多</button>");  
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>查看更多</button>");  
 						  break;
 					  case 5:
-						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+obj[i].order_num+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
 						  break;
 				  }
 				  }
+				  }else{
+					  $(".info_r").append("<h2 style='text-align:center; margin:30px 0px 30px;'>亲，暂无该类型订单</h2>"); 
+					  }			
 				  }
-				
 			}
 		});	
+	});
+	//查看物流
+	var timer;
+	function looklogist(){
+		var n=0;
+	  timer=setInterval(function(){	
+    		n++;
+    		switch (n){
+    		   case 1:
+  			     $("#myModal .modal-body span").html("。");
+  				break;
+    			case 2:
+    			  $("#myModal .modal-body span").html("。。");
+    				break;
+    			case 3:
+    			  $("#myModal .modal-body span").html("。。。");
+    			  n=0;
+    				break;
+    		}	
+    	},800);
+	}
+	$("#myModal .modal-header .close").click(function(){
+		clearInterval(timer);
 	});
 	$('.box').click(function(){
 		$('html').animate({'scrollTop':0},500);

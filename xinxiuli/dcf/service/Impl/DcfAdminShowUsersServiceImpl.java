@@ -21,12 +21,7 @@ public class DcfAdminShowUsersServiceImpl implements DcfAdminShowUsersService{
 		UsersDao ud=new UsersDaoImpl();
 		try {
 			l=ud.selectAllUsers(conn);
-			//int n=0;
-			for (Users users : l) {
-				//n++;
-				//if(n<5) {
-				//	continue;
-				//}				
+			for (Users users : l) {		
 				if(users.getUsers_name()!=null&&users.getUsers_addr()!=null) {
 					AdminAllUserInfo aai=new AdminAllUserInfo();
 					aai.setUsersid(users.getUsers_id());
@@ -48,7 +43,13 @@ public class DcfAdminShowUsersServiceImpl implements DcfAdminShowUsersService{
 					aai.setUserphone(newstrs);
 					aai.setIndex(index);
 					list.add(aai);			
-				}		
+				}else {
+					AdminAllUserInfo aai=new AdminAllUserInfo();
+					aai.setUsersid(users.getUsers_id());
+					aai.setAccountnum(users.getAccount_num());
+					
+					list.add(aai);	
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

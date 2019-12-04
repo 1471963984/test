@@ -42,7 +42,7 @@ import util.Acount_status;
 import web.servlet.MyOrder;
 
 public class UpdataKucunServiceImpl implements UpdataKucunService,Acount_status{
-	public boolean gaiKucun(String account_num,int goods_num,String index){
+	public boolean gaiKucun(String account_num,int goods_num,String index,String judge){
 		Connection conn = DbHelp.getConnection();
 		boolean flag = false;
 		AccountDao ad = new AccountDaoImpl();
@@ -58,14 +58,6 @@ public class UpdataKucunServiceImpl implements UpdataKucunService,Acount_status{
 			//通过商品找到对应的库存
 			Goods_size gs = ukd.selectGoods_sizeByAllInfo(g.getGoods_id(), g.getGoods_color_num(), g.getGoods_size_num(), conn);
 			
-			//库存减一并更新数据库
-			int xinkucun = gs.getGoods_remain()-1;
-//			System.out.println(xinkucun);
-			gs.setGoods_remain(xinkucun);
-			Goods_sizeDao gsd = new Goods_sizeDaoImpl();
-			flag = gsd.updateGoods_size(gs, conn);
-//			System.out.println(g.getGoods_num()+"的库存已减一");
-			
 			//地址信息
 			Addrs as = getAddrs(account_num,index,conn);
 			
@@ -79,7 +71,20 @@ public class UpdataKucunServiceImpl implements UpdataKucunService,Acount_status{
 			//生成一条订单
 			OrderDao od = new OrderDaoImpl();
 			Order o = new Order();
-			o.setOrder_status(Acount_status.DAIFAHUO);
+			if(judge.equals("t")){
+				//库存减一并更新数据库
+				int xinkucun = gs.getGoods_remain()-1;
+				gs.setGoods_remain(xinkucun);
+				Goods_sizeDao gsd = new Goods_sizeDaoImpl();
+				flag = gsd.updateGoods_size(gs, conn);
+				//订单状态
+				o.setOrder_status(Acount_status.DAIFAHUO);
+				//更新用户购物车
+				UpdateCartGoods ucg = new service.Impl.UpdateCartGoods();
+				ucg.updateCartGoods(account_num, goods_num);
+			}else{
+				o.setOrder_status(Acount_status.DAIFUKUAN);
+			}
 			o.setAccount_num(account_num);
 			Date s = new Date();
 			String time = String.valueOf(s.getYear()+1900)+"年"+String.valueOf(s.getMonth())+"月"+String.valueOf(s.getDay())+"日"+String.valueOf(s.getHours())+"时"+String.valueOf(s.getMinutes())+"分"+String.valueOf(s.getSeconds())+"秒";
@@ -89,7 +94,6 @@ public class UpdataKucunServiceImpl implements UpdataKucunService,Acount_status{
 			o.setGoods_price(String.valueOf(g.getGoods_price()));
 			o.setGoods_name(g.getGoods_name());
 			o.setGoods_num(goods_num);
-			System.out.println(as.getTel());
 			String tel = as.getTel();
 			if(as.getTel().substring(0, 1).equals("#")){
 				tel = as.getTel().substring(2);
@@ -98,11 +102,6 @@ public class UpdataKucunServiceImpl implements UpdataKucunService,Acount_status{
 			o.setShouhuoren(as.getName());
 			o.setOrder_addrs(as.getDizhi());
 			flag= od.insertOrder(o, conn);
-			
-			//更新用户购物车
-			UpdateCartGoods ucg = new service.Impl.UpdateCartGoods();
-			ucg.updateCartGoods(account_num, goods_num);
-			
 //			conn.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -111,6 +110,9 @@ public class UpdataKucunServiceImpl implements UpdataKucunService,Acount_status{
 //			} catch (SQLException e1) {
 //				e1.printStackTrace();
 //			}
+		}
+		finally {
+			DbHelp.closeConnection(conn);
 		}
 		return flag;
 	}

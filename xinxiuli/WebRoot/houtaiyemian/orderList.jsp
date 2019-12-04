@@ -64,9 +64,9 @@
     <div class="panel-head"><strong class="icon-reorder"> 商品列表</strong></div>
     <div class="padding border-bottom">
         <input type="text" id="byName" name="byName" class="input w50" style="width:200px" />&ensp;&ensp;&ensp;
-        <button type="button" class="button border-yellow" onclick="ByName()"><span></span>查找用户</button>
-        <button type="button" class="button border-yellow" onclick="loadOrderList(1)" style="float: right"><span></span>查看全部订单</button>
-        <button type="button" class="button border-yellow" onclick="loadUnSendOrder(1)" style="float: right"><span></span>查看未发货订单</button>
+        <button type="button" class="button border-yellow" onclick="queryUsers()"><span></span>查找用户</button>
+        <button type="button" class="button border-yellow" onclick="queryAll()" style="float: right"><span></span>查看全部订单</button>
+        <button type="button" class="button border-yellow" onclick="loadUnSendOrder()" style="float: right"><span></span>查看未发货订单</button>
     </div>
     <table class="table table-hover text-center" id="table">
         <thead>
@@ -159,35 +159,38 @@
 <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 <script src="js/pintuer.js"></script>
 <script >
-   (function(){
+queryAll();
+   function queryAll(){
 	   $.ajax({
 		  url:"/xinxiuli/showAllOrders",
 		  success:function(result){
+			  $("#content>tr").remove();
 			  console.log(JSON.parse(result));
 			  var obj=JSON.parse(result);
+			  console.log(obj);
 			  for(var i=0;i<obj.length;i++){                                        
 				  switch (obj[i].order_status){
 					case 2:
-					$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].shouhuoren+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>待发货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-success btn-md deliver' data-oldattr='2' data-newattr='3' data-accnum="+obj[i].account_num+">发货</button></td></tr>"); 
+					$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].account_num+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>待发货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-success btn-md deliver' data-oldattr='2' data-newattr='3' data-accnum="+obj[i].account_num+">发货</button></td></tr>"); 
 						break;
 					case 3:
-						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].shouhuoren+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已发货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-md logisi'>查看物流</button></td></tr>") 
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].account_num+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已发货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-md logisi'>查看物流</button></td></tr>") 
 						break;
 					case 4:
-						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].shouhuoren+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已取消</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-sm knowmore'>查看详情</button> <button class='btn btn-danger btn-sm delte'>删除</button></td></tr>") 
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].account_num+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已取消</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-sm knowmore'>查看详情</button> <button class='btn btn-danger btn-sm delte'>删除</button></td></tr>") 
 						break;
 					case 5:
-						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].shouhuoren+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj.goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已退货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-sm'>查看详情</button> <button class='btn btn-danger btn-sm delte'>删除</button></td></tr>") 
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].account_num+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj.goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已退货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-sm'>查看详情</button> <button class='btn btn-danger btn-sm delte'>删除</button></td></tr>") 
 						break;
 					case 6:
-						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].shouhuoren+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj.goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>申请退货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-success btn-sm agree'>同意</button> <button class='btn btn-danger btn-sm refuse'>拒绝</button> <button class='btn btn-primary btn-sm refuse'>查看</button></td></tr>") 
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].account_num+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj.goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>申请退货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-success btn-sm agree'>同意</button> <button class='btn btn-danger btn-sm refuse'>拒绝</button> <button class='btn btn-primary btn-sm refuse'>查看</button></td></tr>") 
 						break;
 				}
 			  }
 			  caozuo();
 		  }
 	   });   
-   })();
+   };
    function caozuo(){
 	   $("#content>tr button").click(function(){
 		   var accnum=$(this).attr("data-accnum");
@@ -228,5 +231,51 @@
 		   }
 	   });
    }
+   
+  function loadUnSendOrder(){
+	  $.ajax({
+		  url:"/xinxiuli/showAllOrders?sta=2",
+		  success:function(result){
+			  var obj=JSON.parse(result);
+			  $("#content>tr").remove();
+			  for(var i=0;i<obj.length;i++){
+				  $("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].account_num+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>待发货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-success btn-md deliver' data-oldattr='2' data-newattr='3' data-accnum="+obj[i].account_num+">发货</button></td></tr>");
+			  }
+			  caozuo();
+		  }
+  });
+  }
+  function queryUsers(){
+	 var accnum=$("#byName").val();
+	 if(!accnum=="")
+	  $.ajax({
+		  url:"/xinxiuli/AdminQueryOneUser?accnum="+accnum,
+		  success:function(result){
+			  var obj=JSON.parse(result);
+			  $("#content>tr").remove();
+			  for(var i=0;i<obj.length;i++){
+				  switch (obj[i].order_status){
+					case 2:
+					$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].account_num+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>待发货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-success btn-md deliver' data-oldattr='2' data-newattr='3' data-accnum="+obj[i].account_num+">发货</button></td></tr>"); 
+						break;
+					case 3:
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].account_num+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已发货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-md logisi'>查看物流</button></td></tr>") 
+						break;
+					case 4:
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].account_num+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj[i].goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已取消</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-sm knowmore'>查看详情</button> <button class='btn btn-danger btn-sm delte'>删除</button></td></tr>") 
+						break;
+					case 5:
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].account_num+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj.goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>已退货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-primary btn-sm'>查看详情</button> <button class='btn btn-danger btn-sm delte'>删除</button></td></tr>") 
+						break;
+					case 6:
+						$("#content").append("<tr><td>"+obj[i].order_num+"</td><td class='names'>"+obj[i].account_num+"</td><td class='home'>"+obj[i].order_time+"</td><td>"+obj.goods_price+"</td><td class='home'>"+obj[i].order_addrs+"</td><td class='namess'>"+obj[i].shouhuoren+"</td><td>"+obj[i].account_num+"</td><td class='describe'>申请退货</td><td>"+obj[i].goods_name+"</td><td>"+obj[i].color_name+"</td><td>"+obj[i].size_name+"</td><td><button class='btn btn-success btn-sm agree'>同意</button> <button class='btn btn-danger btn-sm refuse'>拒绝</button> <button class='btn btn-primary btn-sm refuse'>查看</button></td></tr>") 
+						break;
+				  }
+				  caozuo();
+			  } 
+		  }
+      });
+  }
+  
 </script>
   

@@ -63,7 +63,7 @@
 				</ul>
 				<c:forEach  items="${myinfo.addrs}" var="u" varStatus="i" >
 				<div class="addrs-list">
-					<input type="radio" name="addrs" data-choose="" class="choose-addrs" checked="" style="width: 20px;
+					<input type="radio" name="addrs" data-choose="" class="choose-addrs" style="width: 20px;
 							height: 20px;
 							margin: 10px 0px 0px;
 							position: absolute;
@@ -135,7 +135,7 @@
 			                        <img src="/xinxiuli/shop-imgs/weChat1.png" />
 			                        <img src="/xinxiuli/shop-imgs/bank.png" />
 			                    </div>
-			                    <a class="back-to-cart" href="/xinxiuli/qianduanyemian/mycart.jsp">返回购物车</a>
+			                    <a class="back-to-cart" href="/xinxiuli/loginafter/mycart.jsp">返回购物车</a>
 			                </div>
                 		</div>
                 		<div class="card-right">
@@ -155,7 +155,7 @@
                 				<label>总计</label>
                 				<p>￥${zongjia }0</p>
                 			</div>
-                			<button class="btn btn-block btn-primary" data-toggle="modal" data-target="#myModal" >提交订单</button>
+                			<button id="tijiao" class="btn btn-block btn-primary" >提交订单</button>
                 		</div>
                 	</div>
 			</div>
@@ -353,26 +353,18 @@
 			         
 		       	  </div>
 			     </div>
-		       
-		         
 		       </div>
-		    
-		    
-		    
-		    
 		   </div>		
 		   </div> 
 		</div>
 		<!-- 购物车模态框 -->
 		<div class="modal fade" id="myModal" data-backdrop="static" >
-			<div style="left: 42%;top: 30%;width: 400px;height: 300px;background: white;position: absolute;">
+			<div style="left: 50%;margin-left:-200px;top: 30%;width: 400px;height: 300px;background: white;position: absolute;">
 				<div class="quedinggoumai"style="font-size:30px;color:black;position:absolute;width:240px;height:120px;top:60px;left:20%" >是否确认付款？</div>
 				<button id="queding" class="btn" style="position:absolute;bottom:60px;left:20%;bacdground-color:#222222">确定</button>
-				<button class="btn " style="position:absolute;bottom:60px;right:20%" data-dismiss="modal">取消</button>
+				<button id="quxiao" class="btn " style="position:absolute;bottom:60px;right:20%" data-dismiss="modal">取消</button>
 			</div>
-			
 		</div>
-
 </body>
 </html>
 <script src="/xinxiuli/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
@@ -390,31 +382,6 @@
 		$(this).children('.gougou').show();
 	})
 	
-$('#queding').click(function(){
-		gaikucun();
-	});
-	
-	//更新库存
-	function gaikucun(){
-		//拿下标
-		var index = "";
-		$('.choose-addrs').each(function(){
-			if($(this).prop('checked')==true){
-				index = $(this).siblings('.index').html();
-			}
-		})
-		var str = "";
-		$('.goods_num').each(function(){
-			var goods_num = $(this).html()+",";
-			str=str+goods_num;
-		})
-		if(str!=""&&index!=""){
-			location.href="/xinxiuli/gaikucun?goods_num="+str+"&index="+index;
-		}else{
-			alert('请选择您的收获地址或添加一个收获地址！')
-		}
-	}
-	
 	//默认地址
 	$('.mbtel').each(function(i){
 		//alert($(this));
@@ -428,16 +395,19 @@ $('#queding').click(function(){
 		}
 	});
 	
+	var a = "a";
+	$('.choose-addrs').click(function(){
+		a = $(this).siblings('.index').html();
+	})
 	//提交订单
 	$('#tijiao').click(function(){
-		$('.choose-addrs').each(function(){
-			if($(this).prop('checked')==true){
-				$('#myModal').modal('show');
-			}else{
-				alert('请选择您的收获地址！');
-			}
-		})
+		if(a!="a"){
+			$('#myModal').modal('show');
+		}else{
+			alert('请选择或添加一个您的收获地址！');
+		}
 	})
+
 	var t = 't';
 	var f = 'f';
 	//点击确认付款

@@ -352,6 +352,27 @@
 		   <servlet-name>updataAdminOrdersStatus</servlet-name>
 		   <url-pattern>/updataOrdersStatus</url-pattern>
 		</servlet-mapping>
+		
+	<!-- productList -->
+    <servlet>
+      <servlet-name>Admproductlistservlets</servlet-name>
+      <servlet-class>web.xxk.houtai.servlert.Admproductlistservlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>Admproductlistservlets</servlet-name>
+      <url-pattern>/Admproductlistservlet</url-pattern>
+    </servlet-mapping> 
+    
+    <!-- 后台查询单个用户 -->
+		<servlet>
+		   <servlet-name>QueryOneUserOrder</servlet-name>
+		   <servlet-class>web.servlet.AdminOrderQueryUsers</servlet-class>
+		</servlet>
+		<servlet-mapping>
+		   <servlet-name>QueryOneUserOrder</servlet-name>
+		   <url-pattern>/AdminQueryOneUser</url-pattern>	   
+		</servlet-mapping>
+		
 
   <filter>
   	<filter-name>CharacterEncoding</filter-name>

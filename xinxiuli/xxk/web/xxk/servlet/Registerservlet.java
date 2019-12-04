@@ -83,8 +83,6 @@ public class Registerservlet extends HttpServlet{
 	    	        	             cart.setGoods_id("");
 	    	        	             cart.setGoods_count(0);
 	    	        	      Cartdao.insertCart(cart, conn);
-	    	        	    
-	    	        	         System.out.println("hap");
     	    	        	 //将注册信息存到session
 	    	              UsersDaoImpl  userdao=new UsersDaoImpl();    
 	    	                     Users user=new Users();

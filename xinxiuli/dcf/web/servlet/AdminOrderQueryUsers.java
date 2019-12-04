@@ -14,26 +14,21 @@ import pojo.Order;
 import service.DcfAdminShowOrdersService;
 import service.Impl.DcfAdminShowOrdersServiceImpl;
 
-public class AdminShowOrders extends HttpServlet{
+public class AdminOrderQueryUsers extends HttpServlet{
      @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	this.doPost(req, resp);
     }
      @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	 String sta=request.getParameter("sta");
-    	 DcfAdminShowOrdersService dasos=new DcfAdminShowOrdersServiceImpl();
-    	 
-    	 if(sta==null) {
-    		 List<Order> l=dasos.showOrders();
-        	 JSONArray jso=JSONArray.fromObject(l);
-        	 PrintWriter out=response.getWriter();
-	    	 out.print(jso.toString());
-    	 }else{
-    		 List<Order> l=dasos.AdminQueryUnshipped(Integer.valueOf(sta));
-        	 JSONArray jso=JSONArray.fromObject(l);
-        	 PrintWriter out=response.getWriter();
-	    	 out.print(jso.toString()); 
-    	 }
+    	String accnum=request.getParameter("accnum");
+    	System.out.println(accnum);
+    	if(accnum!=null) {
+    	  DcfAdminShowOrdersService oasos=new DcfAdminShowOrdersServiceImpl();
+    	  List<Order> l=oasos.AdminQueryOneUser(accnum);
+     	  JSONArray jso=JSONArray.fromObject(l);
+     	  PrintWriter out=response.getWriter();
+	      out.print(jso.toString());
+    	}
     }
 }

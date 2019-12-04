@@ -84,7 +84,7 @@
 									</a>
 								</div>
 								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
-									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/package.png"/></a>
+									<a href="/xinxiuli/loginafter/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/package.png"/></a>
 									<div class="cart-number">0</div>
 								</div>
 							</div>
@@ -143,7 +143,7 @@
 										</a>
 									</div>
 									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
-										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
+										<a href="/xinxiuli/loginafter/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
 										<div class="cart-number">0</div>
 									</div>
 								</div>
@@ -425,12 +425,12 @@
 	$('.info-l li').mouseenter(function(){
 		$(this).addClass("active").siblings().removeClass("active");
 	});
+	$('.box').click(function(){
+		$("html").animate({'scrollTop':0},500);
+	});
 		//先生女士选择框
 	$('.dropdown-menu li').click(function(){
 			var a = $(this).html();
 			$('.chengwei').val($(this).html());
 	})
-	$('.box').click(function(){
-		$('html').animate({'scrollTop':0},500);
-	});
 </script>

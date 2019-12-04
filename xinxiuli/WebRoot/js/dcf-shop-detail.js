@@ -14,6 +14,8 @@ $(".info-r .addcart").click(function(){
 	var cid=$("#colo").parent().parent().attr("data-id");
 	
 	var sid=$(".info-r>p>.btn-primary").attr("data-sizeid");
+	//数量
+	var num=$(".info-r>h6 .count").html();
 	
 	if(cid==undefined){
 		alert("请先选择颜色");
@@ -21,21 +23,35 @@ $(".info-r .addcart").click(function(){
 	}
 	$.ajax({
 		type:"POST",
-		url:"../SelectNum",
-		data:{"gid":JSON.stringify(gid),"cid":JSON.stringify(cid),"sid":JSON.stringify(sid)},
+		url:"/xinxiuli/SelectNum",
+		data:{"gid":JSON.stringify(gid),"cid":JSON.stringify(cid),"sid":JSON.stringify(sid),"num":JSON.stringify(num)},
 		success:function(result){
 			if(result!=null){
-				alert("恭喜您添加了一件商品");
-				var a=$(".cart-number").html();
-				a++;
-				$(".cart-number").html(a);
+				alert("恭喜您添加了"+num+"件商品");
+				var a=$(".cart-number").html();			
+					a=parseInt(a)+parseInt(num);
+					$(".cart-number").html(a);					
 			}
 		}
 	});	
 });
 //立即选购
 $(".info-r .buygoods").click(function(){
-	location.href="";
+	var gid=$(".info-l").attr("data-goodsid");
+	var cid=$("#colo").parent().parent().attr("data-id");
+	var sid=$(".info-r>p>.btn-primary").attr("data-sizeid");
+	//数量
+	var num=$(".info-r>h6 .count").html();
+	$.ajax({
+		type:"POST",
+		url:"/xinxiuli/SelectNum",
+		data:{"gid":JSON.stringify(gid),"cid":JSON.stringify(cid),"sid":JSON.stringify(sid),"num":JSON.stringify(num)},
+		success:function(result){
+			if(result!=null){
+		     location.href="/xinxiuli/jiesuan?goods_num="+result;
+			}
+		}
+	});		
 });
 //添加收藏
 $(".info-r>h3>.text").click(function(){

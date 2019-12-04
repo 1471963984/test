@@ -16,18 +16,6 @@ public class OrderDaoImpl implements OrderDao{
 	@Override
 	public boolean insertOrder(Order order, Connection conn) throws Exception {
 		boolean flag = false;
-//		订单编号（order_num）                  int       10   非空  主键
-//		订单时间（order_time）                 varchar   20
-//		商品ID（goods_num）                    int       10     非空
-//		订单状态（order_status）               int       2      非空
-//		账号（account_num）                    varchar   11
-//		用户手机（goods_phone）                varchar   11
-//		商品颜色(color_name )                  varchar   10
-//		商品尺寸(size_name)                    varchar   10
-//		收货地址(order_addrs)                  varchar   200
-//		商品名字(goods_name)                   varchar   20
-//		收货人名(shouhuoren)                   varchar   20
-//		商品价格(goods_price)                  varchar   10 
 		String sql = "insert into orders(order_num,order_time,goods_num,color_name,size_name,order_status,account_num,order_addrs,goods_price,goods_name,goods_phone,shouhuoren) values(null,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, order.getOrder_time());

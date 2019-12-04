@@ -45,11 +45,11 @@ public class JieSuanServiceImpl implements JieSuanService{
 					//地址
 					Addrs as = new Addrs();
 					String tel1 = tel[i];
-					System.out.println("截取之前"+tel1);
-					if(tel1.substring(0, 1).equals("#")){
-						tel1 = tel[i].substring(2);
-						System.out.println("截取之后"+tel1);
-					}
+//					System.out.println("截取之前"+tel1);
+//					if(tel1.substring(0, 1).equals("#")){
+//						tel1 = tel[i].substring(2);
+//						System.out.println("截取之后"+tel1);
+//					}
 					as.setName(name[i]);
 					as.setTel(tel1);
 					as.setDizhi(dizhi[i]);

@@ -32,8 +32,9 @@ public class UpdateKucunServlet extends HttpServlet{
 		String account_num = account.getAccount_num();
 		//从结算拿到goods_num
 		String num = request.getParameter("goods_num");
-		//从结算拿到index
+		//从结算拿到index,judge
 		String index = request.getParameter("index");
+		String judge = request.getParameter("judge");
 		//dto
 		JieSuanShow jss = new JieSuanShow();
 //		System.out.println(num.toString());
@@ -42,9 +43,8 @@ public class UpdateKucunServlet extends HttpServlet{
 		
 //		uks.gaiKucun(account_num, goods_num, goods_num);
 		for (int i = 0; i < str.length; i++) {
-			uks.gaiKucun(account_num, Integer.parseInt(str[i]), index);
+			uks.gaiKucun(account_num, Integer.parseInt(str[i]), index,judge);
 		}
-		
 		response.sendRedirect("index.jsp");
 	}
 }

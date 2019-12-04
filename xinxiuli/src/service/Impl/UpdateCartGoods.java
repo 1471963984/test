@@ -43,9 +43,11 @@ public class UpdateCartGoods implements service.UpdateCartGoods{
 				if(goods_num!=null) {
 					String[] s1 = goods_num.split(",");
 					for (int i = 0; i < s1.length; i++) {
-						int goods_ids = Integer.parseInt(s1[i]);
-						Goods g = daos.selectGoods(goods_ids, conn);
-						list.add(g);
+						if(!"".equals(s1[i])) {
+							int goods_ids = Integer.parseInt(s1[i]);
+							Goods g = daos.selectGoods(goods_ids, conn);
+							list.add(g);
+						}
 					}
 				}
 			}

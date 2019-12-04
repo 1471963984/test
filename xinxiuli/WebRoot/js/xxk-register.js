@@ -32,6 +32,7 @@ obj.src="imgCode?id="+new Date().getTime();
   	 }else{
   	 $(this).siblings('h6').html('*请输入正确的手机号码');
   	 $(this).siblings('span').children('img').removeClass('hidden').addClass('show'); 
+  	 phonevalue='';
   	 }
   	 
  });
@@ -48,11 +49,13 @@ obj.src="imgCode?id="+new Date().getTime();
    if((st.test(str))&&(sm.test(str))&&(str.length>5&&str.length<16)){
 	   $(this).siblings('h6').html('　');
 	   $(this).siblings('span').children('img').removeClass('show').addClass('hidden'); 
+	   pwd2value=str;
    }else{
 	   
     $(this).siblings('h6').html('*密码不符合条件');
   	$(this).siblings('span').children('img').removeClass('hidden').addClass('show');
-  	}
+  	pwd2value='';
+    }
  });
  
  

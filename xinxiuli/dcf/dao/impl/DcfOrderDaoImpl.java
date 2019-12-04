@@ -70,4 +70,54 @@ public class DcfOrderDaoImpl implements DcfOrderDao{
 		return null;
 	}
 
+	@Override
+	public List<Order> queryAdminUnshippedOrders(int status, Connection conn) throws Exception {
+		String sql = "select * from orders where order_status=? ";
+		List<Order> list=new ArrayList<Order>();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, status);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			Order o = new Order();
+			o.setOrder_num(rs.getInt("order_num"));
+			o.setOrder_time(rs.getString("order_time"));
+			o.setOrder_status(rs.getInt("order_status"));
+			o.setAccount_num(rs.getString("account_num"));
+			o.setColor_name(rs.getString("color_name"));
+			o.setSize_name(rs.getString("size_name"));
+			o.setGoods_name(rs.getString("goods_name"));
+			o.setGoods_phone(rs.getString("goods_phone"));
+			o.setShouhuoren(rs.getString("shouhuoren"));
+			o.setGoods_price(rs.getString("goods_price"));
+			o.setOrder_addrs(rs.getString("order_addrs"));
+			list.add(o);
+		}
+		return list;
+	}
+
+//	@Override
+//	public List<Order> AdminQueryOneUser(String accnum, Connection conn) throws Exception {
+//		String sql = "select * from orders where accout_num=? ";
+//		List<Order> list=new ArrayList<Order>();
+//		PreparedStatement ps = conn.prepareStatement(sql);
+//		ps.setInt(1, status);
+//		ResultSet rs = ps.executeQuery();
+//		while(rs.next()) {
+//			Order o = new Order();
+//			o.setOrder_num(rs.getInt("order_num"));
+//			o.setOrder_time(rs.getString("order_time"));
+//			o.setOrder_status(rs.getInt("order_status"));
+//			o.setAccount_num(rs.getString("account_num"));
+//			o.setColor_name(rs.getString("color_name"));
+//			o.setSize_name(rs.getString("size_name"));
+//			o.setGoods_name(rs.getString("goods_name"));
+//			o.setGoods_phone(rs.getString("goods_phone"));
+//			o.setShouhuoren(rs.getString("shouhuoren"));
+//			o.setGoods_price(rs.getString("goods_price"));
+//			o.setOrder_addrs(rs.getString("order_addrs"));
+//			list.add(o);
+//		}
+//		return list;
+//	}
+
 }

@@ -27,7 +27,7 @@
         <li><a href="usersList.jsp" target="right"><span class="icon-caret-right"></span>用户管理</a></li>
         <li><a href="orderList.jsp" target="right"><span class="icon-caret-right"></span>订单管理</a></li>
         <li><a href="adminAdvert.jsp" target="right"><span class="icon-caret-right"></span>广告管理</a></li>
-        <li><a href="productList.jsp" target="right"><span class="icon-caret-right"></span>产品管理</a></li>		
+        <li><a href="myproductList.jsp" target="right"><span class="icon-caret-right"></span>产品管理</a></li>		
     </ul>
 </div>
 <script type="text/javascript">

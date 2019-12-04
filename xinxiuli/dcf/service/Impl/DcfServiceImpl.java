@@ -77,8 +77,19 @@ public class DcfServiceImpl implements DcfService{
 		if(!accnum.equals("")) {
 //			该商品是否被收藏
 			Account ac=ad.selectAccount(accnum, conn);
-			if(!ac.getColl_goods().equals("(NULL)")&&ac.getColl_goods()!=null) {
+			String mycoll=ac.getColl_goods();
+			if(!"null".equals(mycoll)&&mycoll!=null) {
 				String[] goodsid=ac.getColl_goods().split(",");
+				for(int i=0;i<goodsid.length;i++) {
+					if(goodsid[i].equals(String.valueOf(goods.getGoods_id()))) {
+						sog.setIsColl("has");
+						break;
+					}
+				}
+			}else {
+				ac.setColl_goods("");
+				String old=ac.getColl_goods();
+				String[] goodsid=old.split(",");
 				for(int i=0;i<goodsid.length;i++) {
 					if(goodsid[i].equals(String.valueOf(goods.getGoods_id()))) {
 						sog.setIsColl("has");
@@ -96,7 +107,7 @@ public class DcfServiceImpl implements DcfService{
 	   return sog;
 	}
 //根据3个字段查询出goods主键
-	public int selectNumber(int gid, int cid, int sid,String account_num) {
+	public int selectNumber(int gid, int cid, int sid,String account_num,int num) {
 		 Connection conn=DbHelp.getConnection();
 		 DcfGoodsDao dgd=new DcfGoodsDaoImpl();
 		 PersonCartDao pcd=new PersonCartDaoImpl();
@@ -108,9 +119,23 @@ public class DcfServiceImpl implements DcfService{
 			conn.setAutoCommit(false);
             mid=dgd.selectNumber(gid, cid, sid, conn);
             String str=pcd.selectAllMyGoods(account_num, conn);
-            String st=str+String.valueOf(mid)+",";
-            Account accou=ad.selectAccount(account_num, conn);             
-            dac.addGoodsMyCard(accou.getCart_num(), st, conn);
+            StringBuffer sb=new StringBuffer();
+            if(str!=null) {
+	            sb.append(str);
+	            for(int i=0;i<num;i++) { 
+		           sb.append(String.valueOf(mid)+",");
+	            }
+	            Account accou=ad.selectAccount(account_num, conn);         
+	        	dac.addGoodsMyCard(accou.getCart_num(), sb.toString(), conn);
+            }else {
+            	 str="";
+                 sb.append(str);
+ 	            for(int i=0;i<num;i++) { 
+ 		           sb.append(String.valueOf(mid)+",");
+ 	            }
+ 	            Account accou=ad.selectAccount(account_num, conn);
+ 	        	dac.addGoodsMyCard(accou.getCart_num(), sb.toString(), conn);
+            }
 			conn.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

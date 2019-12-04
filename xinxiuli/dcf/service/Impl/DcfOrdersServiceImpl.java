@@ -21,6 +21,8 @@ public class DcfOrdersServiceImpl implements DcfOrdersService{
 			list=dfd.selectAllUserOrders(accountnum, status, conn);		
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			DbHelp.closeConnection(conn);
 		}
 		return list;
 	}

@@ -35,8 +35,6 @@ public class Updatepasswordconfirm  extends HttpServlet{
                                JSONObject objbean =JSONObject.fromObject(confirmmsg);
                                String account=objbean.getString("account");
                                String newpassword=objbean.getString("newpassword");
-                               System.out.println(account+"=="+newpassword);
-                                
                                Myxxkimpl dao =new Myxxkimpl();
                                
                                try {
@@ -47,7 +45,6 @@ public class Updatepasswordconfirm  extends HttpServlet{
 							      JSONObject  ret0=JSONObject.fromObject(msg0);
 							      out.write(ret0.toString());
 							      req.getSession().removeAttribute("account");
-							      System.out.println(flag);
 							    //修改失败
 							     }else{
 							    	 Returnmsg msg1=new Returnmsg(1,"修改失败");

@@ -15,7 +15,7 @@
 								<img src="${result[i].goods_picture}" /></a>
 								<div class="goods-name">${result[i].goods_desc}</div>
 								<div class="goods-desc">${result[i].goods_name}</div>
-								<div class="goods-price">${result[i].goods_price}.00</div>
+								<div class="goods-price">￥${result[i].goods_price}.00</div>
 								<div class="goods-delete" title="删除商品" goodsid="${result[i].goods_id}" onclick="deleteColls(this)"></div>
 							
 						</div>
@@ -48,7 +48,7 @@ function deleteColls(obj){
 									<img src="${result[i].goods_picture}" /></a>
 									<div class="goods-name">${result[i].goods_desc}</div>
 									<div class="goods-desc">${result[i].goods_name}</div>
-									<div class="goods-price">${result[i].goods_price}.00</div>
+									<div class="goods-price">￥${result[i].goods_price}.00</div>
 									<div class="goods-delete" title="删除商品" goodsid="${result[i].goods_id}" onclick="deleteColls(this)"></div>
 								
 							</div>

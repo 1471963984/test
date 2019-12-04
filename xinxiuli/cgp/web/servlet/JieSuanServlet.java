@@ -67,7 +67,7 @@ public class JieSuanServlet extends HttpServlet{
 		jss.setGoods(cglist);
 		request.setAttribute("myinfo",jss);
 		request.setAttribute("zongjia",zongjia);
-		System.out.println(zongjia);
+//		System.out.println(zongjia);
 		request.getRequestDispatcher("loginafter/jiesuan.jsp").forward(request, response);
 		
 	}

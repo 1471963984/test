@@ -73,7 +73,7 @@
 										<img src="/xinxiuli/img/tools/icon-header-collection.png" onclick="checklogin()" />
 								</div>
 								<div class="top-list top-right mycart mycart-sercher" cart-number="${account.account_num}">
-									<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/package.png"/></a>
+									<img src="/xinxiuli/img/tools/package.png" onclick="checklogins()" />
 									<div class="cart-number">0</div>
 								</div>
 							</div>
@@ -130,7 +130,7 @@
 											<img src="/xinxiuli/img/tools/icon-header-collection.png" onclick="checklogin()" />
 									</div>
 									<div class="right-list cart mycart-sercher" cart-number="${account.account_num}">
-										<a href="/xinxiuli/qianduanyemian/mycart.jsp" target="_self"><img src="/xinxiuli/img/tools/icon-white-shop-cart.png"/></a>
+										<img src="/xinxiuli/img/tools/package.png" onclick="checklogins()" />
 										<div class="cart-number">0</div>
 									</div>
 								</div>
@@ -371,6 +371,14 @@
 		$('#login').modal('show');
 		}else if(account_num!=null&&account_num!="undefined"){
 			location.href="/xinxiuli/loginafter/mycolls.jsp";
+		}
+	}
+	function checklogins(){
+		var account_num = $(".mycart-sercher").attr("cart-number");
+		if(account_num==""){
+		$('#login').modal('show');
+		}else if(account_num!=null&&account_num!="undefined"){
+			location.href="/xinxiuli/loginafter/mycart.jsp";
 		}
 	}
 	(function(){

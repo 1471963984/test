@@ -25,13 +25,15 @@ public class SelectNum extends HttpServlet{
     	String cid=request.getParameter("cid");
     	
     	String sid=request.getParameter("sid");
+    	//数量
+    	String num=request.getParameter("num");
     	int goodsid=subNumber(gid);
     	int colorid=subNumber(cid);
     	int sizeid=subNumber(sid);
+    	int nums=subNumber(num);
     	Account acc=(Account)request.getSession().getAttribute("account");
-    	
     	 DcfService ds=new DcfServiceImpl();
-    	 int goodsnum=ds.selectNumber(goodsid, colorid, sizeid,acc.getAccount_num());
+    	 int goodsnum=ds.selectNumber(goodsid, colorid, sizeid,acc.getAccount_num(),nums);
     	 PrintWriter out=response.getWriter();
     	 out.print(goodsnum); 	
     }
