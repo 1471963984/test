@@ -36,6 +36,7 @@ public class AccountOut extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.removeAttribute("account");
+		session.removeAttribute("user");
 		//request.getRequestDispatcher("/qianduanyemian/index.jsp").forward(request, response);
 		response.sendRedirect("/xinxiuli/index.jsp");
 	}

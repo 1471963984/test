@@ -99,7 +99,7 @@
 	font-size:16px;
 	margin:0px;
 	color:#666;
-	padding:0px 40px;
+	padding:0px 25px;
 	text-align:center;
 }
 
@@ -192,12 +192,12 @@ p{
 	display: inline-block;
 }
 .dropdown ul{
-	width: 400px;
+	width: 470px;
 	height: 80px;
 	padding: 6px 12px;
 }
 .dropdown ul li{
-	width: 376px;
+	width: 470px;
 	height: 30px;
 	margin: 0px;
 	padding: 6px 12px;

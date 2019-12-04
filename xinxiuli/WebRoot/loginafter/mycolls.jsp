@@ -161,9 +161,9 @@
 		<!-- 购物车模态框 -->
 		<div class="modal fade" id="myModal" data-backdrop="static" >
 			<div style="left: 42%;top: 30%;width: 400px;height: 300px;background: white;position: absolute;">
-				<div class="quedinggoumai"style="font-size:30px;color:red;position:absolute;width:240px;height:120px;top:60px;left:20%" >是否确认删除？</div>
-				<button id="queding" class="btn btn-success" style="position:absolute;bottom:60px;left:20%;width:60px">确定<tton>
-				<button class="btn btn-danger" style="position:absolute;bottom:60px;right:20%;width:60px" data-dismiss="modal">取消<tton>
+				<div class="quedinggoumai"style="font-size:30px;color:#222222;position:absolute;width:240px;height:120px;top:60px;left:20%" >是否确认删除？</div>
+				<button id="queding" class="btn btn-ss" style="position:absolute;bottom:60px;left:20%;width:60px;background-color:#222222">确定<tton>
+				<button class="btn btn-dr" style="position:absolute;bottom:60px;right:20%;width:60px" data-dismiss="modal">取消<tton>
 			</div>
 		</div>
 		

@@ -5,6 +5,7 @@
 		url:"/xinxiuli/collgoods",
 		data:"account_num="+account_num,
 		success:function(result){
+			console.log(result);
 			var str = ``;
 			for(var i = 0;i < result.length;i++){
 				str+=`
@@ -31,7 +32,7 @@ function deleteColls(obj){
 	var goods_id = obj.getAttribute("goodsid");
 	var account_num = $(".mycart-sercher").attr("cart-number");
 	var s = "{'goods_id':"+goods_id+",'account_num':"+account_num+"}";
-	$('.btn-success').click(function(){
+	$('.btn-ss').click(function(){
 		$.ajax({
 			type:"POST",
 			url:"/xinxiuli/updatecolls",
@@ -58,7 +59,7 @@ function deleteColls(obj){
 			},
 		});
 	});
-	$('.btn-danger').click(function(){
+	$('.btn-dr').click(function(){
 		$('#myModal').modal('hide');
 	});
 };

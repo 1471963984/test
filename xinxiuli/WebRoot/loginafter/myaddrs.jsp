@@ -169,7 +169,7 @@
 						<li class="icon">></li>
 						<li>我的账户</li>
 						<li class="icon">></li>
-						<li class="active">我的订单</li>
+						<li class="active">地址簿</li>
 				    </ul>
 				</div>
 			</div>
@@ -410,7 +410,6 @@ $(".addrs-setdefault").click(function(){
 		type:"POST",
 		url:"/xinxiuli/updateMyAddres?index="+$(this).attr("data-index"),
 		success:function(result){
-		   alert(result);
 		   location.reload();
 		}
 	});

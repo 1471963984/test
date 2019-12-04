@@ -414,4 +414,56 @@ $('#queding').click(function(){
 			alert('请选择您的收获地址或添加一个收获地址！')
 		}
 	}
+	
+	//默认地址
+	$('.mbtel').each(function(i){
+		//alert($(this));
+		var tel = $(this).html();
+		if(tel.slice(0,1)=="#"){
+			$(this).html(tel.slice(2));
+			$(this).siblings('.addrs-default').css({"background-color":"black","color":"white"});
+			$(this).siblings('choose-addrs').prop('checked','true');
+		}else{
+			$(this).siblings('.addrs-default').prop('value','设为默认');
+		}
+	});
+	
+	//提交订单
+	$('#tijiao').click(function(){
+		$('.choose-addrs').each(function(){
+			if($(this).prop('checked')==true){
+				$('#myModal').modal('show');
+			}else{
+				alert('请选择您的收获地址！');
+			}
+		})
+	})
+	var t = 't';
+	var f = 'f';
+	//点击确认付款
+	$('#queding').click(function(){
+		gaikucun(t);
+	});
+	//点击取消，订单状态设为待付款
+	$('#quxiao').click(function(){
+		gaikucun(f);
+	})
+	//更新库存
+	function gaikucun(judge){
+		//拿下标
+		var index = "";
+		$('.choose-addrs').each(function(){
+			if($(this).prop('checked')==true){
+				index = $(this).siblings('.index').html();
+			}
+		})
+		var str = "";
+		$('.goods_num').each(function(){
+			var goods_num = $(this).html()+",";
+			str=str+goods_num;
+		})
+		if(str!=""&&index!=""){
+			location.href="/xinxiuli/gaikucun?goods_num="+str+"&index="+index+"&judge="+judge;
+		}
+	}
 </script>

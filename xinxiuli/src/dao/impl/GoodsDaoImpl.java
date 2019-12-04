@@ -260,7 +260,6 @@ public class GoodsDaoImpl implements GoodsDao{
 		String sql = "select * from goods where goods_desc like ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, "%"+desc+"%");
-		System.out.println(desc);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()){
 			Goods g = new Goods();

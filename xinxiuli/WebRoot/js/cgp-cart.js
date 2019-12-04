@@ -107,7 +107,7 @@
 
 	    //点击继续购物跳转到首页
 	    if(event.target.className == 'card-bottom-bottom'){
-	    	window.location.href="index.html";
+	    	window.location.href="/xinxiuli/index.jsp";
 	    };
 	  });
 	};  
@@ -191,24 +191,26 @@
 })();
 					
 function deleteGoods(obj){
+	$('#myModal').modal('show');
 	var goods_id = obj.getAttribute("goodsid");
 	var account_num = $(".mycart-sercher").attr("cart-number");
 	var s = "{'goods_id':"+goods_id+",'account_num':"+account_num+"}";
-	$.ajax({
-		type:"POST",
-		url:"/xinxiuli/deleteGoods",
-		data:"s="+s,
-		success:function(result){
-			$(".goods-list-box").empty();
-			var str = ``;
-			for(var i=0;i<result.length;i++){
-				str+=`
-					<div class="goods-list-js">
-					<div class="list-box">
-					<div class="goods-message">
-					<input type="checkbox" class="checkbox" />
-					<span class="lazyload"><img src="${result[i].goods_img}"/></span>
-					<div class="goods-about">
+	$('.btn-ss').click(function(){
+		$.ajax({
+			type:"POST",
+			url:"/xinxiuli/deleteGoods",
+			data:"s="+s,
+			success:function(result){
+				$(".goods-list-box").empty();
+				var str = ``;
+				for(var i=0;i<result.length;i++){
+					str+=`
+						<div class="goods-list-js">
+						<div class="list-box">
+						<div class="goods-message">
+						<input type="checkbox" class="checkbox" />
+						<span class="lazyload"><img src="${result[i].goods_img}"/></span>
+						<div class="goods-about">
 					<a href="/xinxiuli/Show?gid=${result[i].goods_num}" >${result[i].goods_desc}</a>
 					<div id="goods_num" style="display:none">${result[i].goods_num}</div>
 					<div class="goods-brand">${result[i].goods_name}</div>
@@ -222,7 +224,7 @@ function deleteGoods(obj){
 					<span class="collGoods glyphicon glyphicon-heart-empty"  goodsid="${result[i].goods_id}"></span>
 					<div class="goods-middle">|</div>
 					<img src="/xinxiuli/shop-imgs/edit.png" alt="编辑商品" data-toggle="modal" data-target="#myModal" />
-					</div>
+						</div>
 					</div>
 					</div>
 					<div class="sell-srice">¥　${result[i].goods_price}.00</div>
@@ -230,12 +232,16 @@ function deleteGoods(obj){
 					</div>
 					</div>
 					`;
-			}
-			$(".goods-list-box").append(str);
-			collGoods();
-			location.href="/xinxiuli/qianduanyemian/mycart.jsp";
-		},
-	
+				}
+				$(".goods-list-box").append(str);
+				collGoods();
+				location.href="/xinxiuli/qianduanyemian/mycart.jsp";
+			},
+			
+		});
+		$('.btn-dr').click(function(){
+			$('#myModal').modal('hide');
+		});
 	});
 };
 //商品结算

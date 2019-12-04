@@ -43,6 +43,9 @@ function getUrlVal(property){
   	 }else{   
   	 $(this).siblings('h6').html('*请输入正确的手机号码');
   	 $(this).siblings('span').children('img').removeClass('hidden').addClass('show'); 
+  	
+  	phonevalue2 ='';
+
   	 }
   	 
  });
@@ -60,7 +63,9 @@ function getUrlVal(property){
         	   $(this).siblings('h6').html('*密码不正确,请重新输入');
         	   
         	   $(this).siblings('span').children('img').removeClass('hidden').addClass('show');
-            }
+           
+        	   pwdvalue='';
+	     }
 });
  
    //登录选择
@@ -87,7 +92,7 @@ function getUrlVal(property){
 //   phonevalue2 
     console.log("12345");
     console.log(phonevalue2,pwdvalue);   
-    if(phonevalue2==''||pwdvalue==''){
+    if(!(phonevalue2&&pwdvalue)){
       alert('密码或账号有误');
      return;     
      }

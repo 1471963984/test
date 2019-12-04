@@ -36,10 +36,19 @@ public class Updatepersonzlservlet extends HttpServlet{
           String   datauser =req.getParameter("datauser");
           JSONObject  obj =JSONObject.fromObject(datauser);         
           String  usersphone=obj.getString("users_phone");
+          if("".equals(usersphone)){usersphone="待完善";}
+          
           String  usersname=obj.getString("users_name");
+          if("".equals(usersname)){usersname="待完善";}
+          
           String  usersnickname=obj.getString("users_nickname");
+          if("".equals(usersnickname)){usersnickname="待完善";}
+          
           String  usersaddr=obj.getString("users_addr");
+          if("".equals(usersaddr)){usersaddr="待完善";}
+          
           String  usersemail=obj.getString("users_email"); 
+          if("".equals(usersemail)){usersemail="待完善";}
                try {
              	if(account!=null){  
                 conn.setAutoCommit(false);

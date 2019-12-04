@@ -33,7 +33,6 @@ public class AddAddrsServiceImpl implements AddAddrsService{
 		    	users.setUsers_phone(usersinfo.getUsers_phone()+u.getUsers_phone()+",");
 		    	users.setUsers_email(usersinfo.getUsers_email()+u.getUsers_email()+",");
 				flag =ud.addAddres(users, conn);
-				System.out.println(users.getAccount_num()+"添加地址成功");	
 			}
 		    }
 		} catch (Exception e) {

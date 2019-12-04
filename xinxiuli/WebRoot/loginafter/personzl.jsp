@@ -192,26 +192,26 @@
 						</li>
 						<li>
 							<label class="list-lable">姓名</label>
-							<p class="list-about">17769336339</p>
+							<p class="list-about"></p>
 						</li>
 						<li>
 							<label class="list-lable">称谓</label>
-							<p class="list-about">郝先生</p>
+							<p class="list-about"></p>
 						</li>
 						
 						<li>
 							<label class="list-lable">手机号</label>
-							<p class="list-about">17769336339</p>
+							<p class="list-about"></p>
 						</li>
 						
 						<li>
 							<label class="list-lable">电子邮箱</label>
-							<p class="list-about">17769336339</p>
+							<p class="list-about"></p>
 						</li>
 						
 						<li>
 							<label class="list-lable">常住地址</label>
-							<p class="list-about">17769336339</p>
+							<p class="list-about"></p>
 						</li>
 						
 						

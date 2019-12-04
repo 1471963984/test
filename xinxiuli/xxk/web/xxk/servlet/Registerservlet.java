@@ -41,10 +41,6 @@ public class Registerservlet extends HttpServlet{
     	            Account  account = new Account();
     	            AccountDaoImpl  acountdao =new AccountDaoImpl(); 	       
     	            Myxxk aaccount=new Myxxkimpl();
-    	            
-    	           
-                    
-    	            
     	            String  rmsg = req.getParameter("rmsg"); 
     	         
     	       //  System.out.println(rmsg);  
@@ -78,10 +74,7 @@ public class Registerservlet extends HttpServlet{
 	    	        	    account.setUsers_ip(ip);
 	    	        	    account.setColl_goods("");
 	    	        	    account.setOrder_num("");
-	    	        	    
-	    	        //	    System.out.println(req.getRemoteAddr());
-	
-	    	        	  acountdao.insertAccount(account, conn); 
+	    	        	    acountdao.insertAccount(account, conn); 
 
                    //插入cart表
     	    	         CartDaoImpl  Cartdao= new CartDaoImpl();   
@@ -96,9 +89,13 @@ public class Registerservlet extends HttpServlet{
 	    	              UsersDaoImpl  userdao=new UsersDaoImpl();    
 	    	                     Users user=new Users();
 	    	                   user.setAccount_num(phonevalue); 
-	    	        	       user.setUsers_phone(phonevalue); 
-	    	        	      userdao.insertUsers(user, conn);
-	    	        	          conn.commit();
+	    	        	       user.setUsers_phone(phonevalue+",");
+	    	        	       user.setUsers_addr("待完善,");
+	    	        	       user.setUsers_email("待完善,");
+	    	        	       user.setUsers_name("待完善,");
+	    	        	       user.setUsers_nickname("待完善,");
+	    	        	       userdao.insertUsers(user, conn);
+	    	        	       conn.commit();
 	    	        	       
 	    	        	    req.getSession().setAttribute("account",account); 
 	    	        	    

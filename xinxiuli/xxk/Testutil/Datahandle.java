@@ -22,10 +22,18 @@ public class Datahandle {
 	  String[] usersemail = list.get(4);
 	  user.setAccount_num(account);
 	  user.setUsers_phone(usersphone[0]);
-	  user.setUsers_name(usersname[0]);
-	  user.setUsers_nickname(usersnickname[0]);
-	  user.setUsers_addr(usersaddr[0]);
-	  user.setUsers_email(usersemail[0]);
+	  if(!"".equals(usersname[0])) {
+		  user.setUsers_name(usersname[0]);
+	  }
+	  if(!"".equals(usersnickname[0])) {
+		  user.setUsers_nickname(usersnickname[0]);
+	  }
+	  if(!"".equals(usersaddr[0])) {
+		  user.setUsers_addr(usersaddr[0]);
+	  }
+	  if(!"".equals(usersemail[0])) {
+		  user.setUsers_email(usersemail[0]);
+	  }
      }
 	  return user;  
    }  
