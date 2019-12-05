@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title>添加商品</title>
-    <link rel="stylesheet" href="css/pintuer.css">
-    <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet"  href="css/addProdutct.css" />
+    <link rel="stylesheet" href="/xinxiuli/houtaiyemian/css/pintuer.css">
+    <link rel="stylesheet" href="/xinxiuli/houtaiyemian/css/admin.css">
+    <link rel="stylesheet"  href="/xinxiuli/houtaiyemian/css/addProdutct.css" />
  
 </head>
 <style>
@@ -118,8 +118,8 @@
 </div>-->
 </body>
 </html>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="/xinxiuli/houtaiyemian/js/jquery.js"></script>
+    <script type="text/javascript" src="/xinxiuli/houtaiyemian/js/jquery-1.11.0.js"></script>
     <script src="js/pintuer.js"></script>
 <script>
 	//加载商品数据至下列输入框

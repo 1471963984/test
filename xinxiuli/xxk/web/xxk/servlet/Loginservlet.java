@@ -47,43 +47,15 @@ public class Loginservlet extends HttpServlet {
 					   flag	=dao.selectaccount(username, conn);
 					  //查有没有这个账号 
 					 if(flag){
-					 Boolean flag1=dao.selectaccountinfo(username, password, conn);   
+					//md5
+					 Boolean flag1=dao.selectaccountinfo(username, Myutil.Encryptin(password), conn);   
 					  //查密码是否正确
 					 if(flag1){
 						     account =dao.selectAccountwhole(username,conn); 
 						     if(account!=null){
-						    	 
-						        //记住密码 
-//                             if(check!=null&&"true".equals(check)){
-//                                 int expiry=60800;	 
-//				              Cookie  ccookname=new Cookie("username",username);             
-//						         ccookname.setMaxAge(expiry);
-//						         ccookname.setPath("/");
-//						         ccookname.setDomain("localhost");
-//						         resp.addCookie(ccookname);
-//						      Cookie  cookpass=new Cookie("password", password);
-//						        cookpass.setMaxAge(expiry);
-//						        cookpass.setPath("/");
-//						        cookpass.setDomain("localhost");
-//						        resp.addCookie(cookpass);
-//						        System.out.println("记住密码"); 
-//						        
-//                             }
-//                             
-//                             //不记住密码
-//                           if(check!=null&&"false".equals(check)){
-//                        	     int expiry=0;
-//                        	   Cookie  ccookname=new Cookie("username",username);             
-//						         ccookname.setMaxAge(expiry);
-//						       Cookie  cookpass=new Cookie("password", password);
-//						         cookpass.setMaxAge(expiry);
-//						         System.out.println("不记住密码");
-//                             }
-                             
-						    	 
+						    
                              req.getSession().setAttribute("account",account);
  
-                         //  Users user =dao.selectUsers(username, conn);
                              Users user =Datahandle.dataloander(username);
                              
                              req.getSession().setAttribute("user",user);

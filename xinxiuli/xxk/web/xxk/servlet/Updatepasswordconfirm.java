@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Testutil.Myutil;
 import dao.Myxxk;
 import dao.imp.Myxxkimpl;
 import db.DbHelp;
@@ -31,14 +32,15 @@ public class Updatepasswordconfirm  extends HttpServlet{
                                PrintWriter out=resp.getWriter();       
                                Connection conn =DbHelp.getConnection();
                                String   confirmmsg =req.getParameter("confirmmsg");
-                               //System.out.println(confirmmsg);
+                               
                                JSONObject objbean =JSONObject.fromObject(confirmmsg);
                                String account=objbean.getString("account");
                                String newpassword=objbean.getString("newpassword");
                                Myxxkimpl dao =new Myxxkimpl();
                                
                                try {
-							    boolean flag =dao.updateAccount(account,newpassword, conn);
+                            	   //md5
+							    boolean flag =dao.updateAccount(account,Myutil.Encryptin(newpassword), conn);
 							    //修改成功
 							    if(flag){
 							      Returnmsg msg0=new Returnmsg(0,"修改成功,请重新登录");
@@ -47,6 +49,7 @@ public class Updatepasswordconfirm  extends HttpServlet{
 							      req.getSession().removeAttribute("account");
 							    //修改失败
 							     }else{
+							    	 
 							    	 Returnmsg msg1=new Returnmsg(1,"修改失败");
 								     JSONObject  ret1=JSONObject.fromObject(msg1);
 								     out.write(ret1.toString());
@@ -64,6 +67,6 @@ public class Updatepasswordconfirm  extends HttpServlet{
 							   }finally {
 								   DbHelp.closeConnection(conn);
 							   }
-                        
-        }
+                         
+             }
 }

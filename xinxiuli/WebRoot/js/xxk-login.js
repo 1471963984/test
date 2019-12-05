@@ -7,6 +7,47 @@ function getUrlVal(property){
   if(result == null){return null};
   return result[2];
 };
+
+//写cookies
+function setCookie(name, value) {
+    var Days = 30;
+    var exp = new Date();
+    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+}
+
+//读取cookies 
+function getCookie(name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    if (arr = document.cookie.match(reg)) return unescape(arr[2]);
+    else return null;
+}
+
+//删除cookies 
+function delCookie(name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = getCookie(name);
+    if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+}
+
+ function  autologin(){
+	if(getCookie("username")!=null&&getCookie("password")!=null){
+		 var fflag=true; 
+		 $('#phone2').val(getCookie("username"));
+		 $('#pwd1').val(getCookie("password"));
+		 $('#phone2').focus(function(){
+		 if(fflag){ 
+		 $('#pwd1').focus();
+		  fflag=false;
+		 }
+		 
+         });
+		
+	}
+ }
+ 
+$(function(){autologin();});
 (function(){
 	 //验证码 登录手机号
 	var phonevalue1 ='';
@@ -19,7 +60,6 @@ function getUrlVal(property){
   	  console.log(str);
   	    var strflag=false;
   	    strflag = str.length==11?true:false; 
-  	 
   	 if(sm.test(str)&&(strflag)){
            phonevalue1=str;                       
   	   $(this).siblings('h6').html('　'); 
@@ -43,11 +83,9 @@ function getUrlVal(property){
   	 }else{   
   	 $(this).siblings('h6').html('*请输入正确的手机号码');
   	 $(this).siblings('span').children('img').removeClass('hidden').addClass('show'); 
-  	
-  	phonevalue2 ='';
-
+  	 //增加
+  	  phonevalue2 ='';
   	 }
-  	 
  });
  
    // 密码
@@ -61,16 +99,17 @@ function getUrlVal(property){
             $(this).siblings('span').children('img').removeClass('show').addClass('hidden');
 	     }else{
         	   $(this).siblings('h6').html('*密码不正确,请重新输入');
-        	   
-        	   $(this).siblings('span').children('img').removeClass('hidden').addClass('show');
-           
-        	   pwdvalue='';
-	     }
+        	   $(this).siblings('span').children('img').removeClass('hidden').addClass('show');   	
+          pwdvalue ='';
+	}
 });
- 
+		
+     
+
+
    //登录选择
-  $('#loginselect').click(function(){
-//              
+ $('#loginselect').click(function(){
+     //
      var secode = $('#security-code').css('display')=='none'?'block':'none';
      $('#security-code').css('display',secode);  
   	 var pacode =$('#password-code').css('display')=='none'?'block':'none';
@@ -78,26 +117,26 @@ function getUrlVal(property){
       flag = flag==false?true:false;
   });
  
+ $('#checkboxid').prop('checked',true);
   
     //登陆
   $('#loginbtn').click(function(){
+	  
+	 var checkboxid=$('#checkboxid').prop('checked');
+	  
   	 //验证码登陆
   	if(flag){
 //	  phonevalue1	
-  	
   	}
-  	
   	//密码账号等陆
     if(!flag){
-//   phonevalue2 
-    console.log("12345");
-    console.log(phonevalue2,pwdvalue);   
+    //改
     if(!(phonevalue2&&pwdvalue)){
       alert('密码或账号有误');
      return;     
      }
     var data={username:phonevalue2,password:pwdvalue}
-    console.log(data);
+    
     $.post('/xinxiuli/login',
     {rmsg:JSON.stringify(data)},
       function(re){
@@ -111,8 +150,20 @@ function getUrlVal(property){
            return; 
        }	
       if(re.code==0){
+    	  
+    	if(checkboxid){
+    	  setCookie("username",phonevalue2);
+    	  setCookie("password",pwdvalue);
+    	 
+    	}else{
+    		delCookie("username");
+    		delCookie("password");
+    	
+    	}  
+    	 
     	$('#login').modal('hide');  
     	location.href="/xinxiuli/index.jsp";
+    	
       }
       
       })

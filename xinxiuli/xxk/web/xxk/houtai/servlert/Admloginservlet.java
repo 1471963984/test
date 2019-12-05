@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.imp.Administratordaoimp;
+import pojo.Administrator;
 import serviceimp.Administractorserviceimp;
 
 public class Admloginservlet  extends  HttpServlet{
@@ -29,11 +30,14 @@ public class Admloginservlet  extends  HttpServlet{
     	   Administractorserviceimp  dao = new Administractorserviceimp(); 
     	   boolean flag=dao.admlogin(username, password);
     	   if(flag){
-    	     resp.sendRedirect("/xinxiuli/houtaiyemian/adminIndex.jsp");     
+    		   Administrator administrator = new Administrator();
+    		   administrator.setPassword(password);
+    		   administrator.setUsername(username);
+    		   req.getSession().setAttribute("administrator", administrator);
+    		   req.getRequestDispatcher("/houtaiyemian/index.jsp").forward(req, resp); 
     	   }else{
-    		  
     		   req.setAttribute("parammy","1"); 
-    		   req.getRequestDispatcher("/houtaiyemian/adminLogin.jsp").forward(req, resp);
+    		   req.getRequestDispatcher("/adminLogin.jsp").forward(req, resp);
     	   }
        
        }

@@ -58,6 +58,7 @@ function deleteColls(obj){
 				$(".info_r>ul").append(str);
 			},
 		});
+		$('#myModal').modal('hide');
 	});
 	$('.btn-dr').click(function(){
 		$('#myModal').modal('hide');

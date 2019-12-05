@@ -190,20 +190,21 @@
 							</li>
 							<li>
 								<label class="list-lable">*姓名</label>
-								<input type="text" placeholder="请输入姓名" class="name" />
+								<input id="gainname"  type="text" placeholder="请输入姓名,字母数字中文0~8" />
+								<span style="color:red;"></span>
 							</li>
 							<li>
 								<label class="list-lable">*称谓</label>
-	                            <div class="dropdown">
-						            <!--按钮-->
-						            <input class="sex chengwei" data-toggle="dropdown" placeholder="输入性别">
-						            </input>
-						            <!--项-->
+	                            <!--<div class="dropdown">
+						            按钮-->
+						            <input id="gainnickname" class="sex chengwei" data-toggle="dropdown" placeholder="请输入您的昵称"/>
+						            <span style="color:red;"></span>
+						            <!--项
 						            <ul class="dropdown-menu">
 						            	<li>先生</li>
 	                                	<li>女士</li>
 						            </ul>
-						        </div>
+						        </div>-->
 	                            <!--<span class="help-block"></span>-->
 							</li>
 							<li>
@@ -218,20 +219,19 @@
 
 							<li>
 								<label class="list-lable">*详细地址</label>
-								<input class="xiangxiaddrs" type="text" placeholder="请输入详细地址" />
+								<input id="gainaddress" class="xiangxiaddrs" type="text" placeholder="请输入详细地址" />
+								<span style="color:red;"></span>
 							</li>
 							<li>
 								<label class="list-lable">*手机号</label>
-								<input class="phone" type="text" placeholder="请输入手机号" />
+								<input id="gainphone" class="phone" type="text" placeholder="请输入手机号" />
+								<span style="color:red;"></span>
 							</li>
 							<li>
 								<label class="list-lable">E-mail</label>
-								<input class="e-mail" type="text" placeholder="请输入您的邮箱" />
+								<input id="gainemil" class="e-mail" type="text" placeholder="请输入您的邮箱" />
+								<span style="color:red;"></span>
 							</li>
-							<div class="addrs-check">
-								<input type="checkbox" name="defaultAddress"/>
-								<div class="check-about">设为默认配送地址</div>
-							</div>
 							<li class="buttongroup">
 								<button class="buttoncun" type="button" id="submitbut">保存该地址</button>
 								<button class="buttonqu btn btn-default btn-block">取消</button>
@@ -357,8 +357,8 @@
 	    	<div class="box">TOP</div>
 	    </section>
 	    
-	    	    <!--登录模态框-->
-    	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
+	    <!--登录模态框-->
+    	 	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
 		   <div class="modal-dialog  ">
 		   	<div class="modal-content">
 		   	   <div class="modal-header"> 
@@ -407,8 +407,8 @@
 			         
 			         <!-- --> 
 			        <div class="form-group" style=" margin:15px 0px;">
-			         <input type="checkbox" class="" style="width: 18px;height: 18px;">
-			          <span style="line-height: 20px;color: #666;"  >记住用户名</span>
+			         <input id="checkboxid" type="checkbox" class="" style="width: 18px;height: 18px;">
+			          <span style="line-height: 20px;color: #666;"  >记住密码</span>
 			          <span  style="float: right;color: #666; cursor: pointer;" >找回密码</span>
 			        </div>  
 			        <!--登录按钮-->
@@ -434,7 +434,6 @@
 		   </div>		
 		   </div> 
 		</div>
-	    
 	</body>
 </html>
 <script src="/xinxiuli/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
@@ -442,39 +441,17 @@
 <script src="/xinxiuli/js/ljy-index.js"></script>
 <script src="/xinxiuli/js/xxk-login.js"></script>
 <script src="/xinxiuli/js/jquery.cityselect.js"></script>
+<script type="text/javascript" src="/xinxiuli/js/addaddrs.js"></script>
 <script>
 	//先生女士选择框
 	$('.dropdown-menu li').click(function(){
 			var a = $(this).html();
 			$('.chengwei').val($(this).html());
 	})
-	//点击按钮提交
-    $("#submitbut").click(function(){
-    	var u = new Object();
-    	u.users_name = $('.name').val();
-    	u.users_nickname = $('.sex').val();
-    	u.users_addr = $('.prov').val()+"-"+$('.city').val()+"-"+$('.dist').val()+"  "+$('.xiangxiaddrs').val();
-		u.users_phone = $('.phone').val();
-    	u.users_email = $('.e-mail').val();
-    	var json = JSON.stringify(u);
-        $.ajax({
-			type:"post",
-			url:"/xinxiuli/jiaaddrs",
-			data:"user="+json,
-			success:function(result){
-				if(result=="true"){
-					alert("添加地址成功");
-					location.href="/xinxiuli/loginafter/myaddrs.jsp";
-				}	
-			}
-		});  
-    });
-    
     $("#city_4").citySelect({
 		prov:"湖南", 
 		city:"长沙",
 		dist:"岳麓区",
 		nodata:"none"
 	});
-    
 </script>

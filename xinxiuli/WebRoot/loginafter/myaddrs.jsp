@@ -317,8 +317,8 @@
 	    	<div class="box">TOP</div>
 	    </section>
 	    
-	    	    <!--登录模态框-->
-    	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
+	    <!--登录模态框-->
+    	 	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
 		   <div class="modal-dialog  ">
 		   	<div class="modal-content">
 		   	   <div class="modal-header"> 
@@ -367,8 +367,8 @@
 			         
 			         <!-- --> 
 			        <div class="form-group" style=" margin:15px 0px;">
-			         <input type="checkbox" class="" style="width: 18px;height: 18px;">
-			          <span style="line-height: 20px;color: #666;"  >记住用户名</span>
+			         <input id="checkboxid" type="checkbox" class="" style="width: 18px;height: 18px;">
+			          <span style="line-height: 20px;color: #666;"  >记住密码</span>
 			          <span  style="float: right;color: #666; cursor: pointer;" >找回密码</span>
 			        </div>  
 			        <!--登录按钮-->
@@ -394,7 +394,6 @@
 		   </div>		
 		   </div> 
 		</div>
-	    
 	</body>
 </html>
 <script src="/xinxiuli/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>

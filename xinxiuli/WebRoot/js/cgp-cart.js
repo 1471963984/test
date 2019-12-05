@@ -262,7 +262,6 @@ function jiesuan(){
 
 function collGoods(){
 	$(".collGoods").click(function(){
-		alert();
 		var obj=$(this);
 		var goods_id = $(this).attr("goodsid");
 		

@@ -372,6 +372,14 @@
 		   <servlet-name>QueryOneUserOrder</servlet-name>
 		   <url-pattern>/AdminQueryOneUser</url-pattern>	   
 		</servlet-mapping>
+<servlet>
+    <servlet-name>AdminOut</servlet-name>
+    <servlet-class>web.servlet.AdminOut</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>AdminOut</servlet-name>
+    <url-pattern>/adminOut</url-pattern>
+</servlet-mapping>
 		
 
   <filter>
@@ -390,7 +398,23 @@
   	<filter-name>SessionFilter</filter-name>
   	<url-pattern>/loginafter/*</url-pattern>
   </filter-mapping>
+  <filter>
+  	<filter-name>AdminLoginSessionFilter</filter-name>
+  	<filter-class>web.filter.AdminLoginSessionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>AdminLoginSessionFilter</filter-name>
+  	<url-pattern>/houtaiyemian/*</url-pattern>
+  </filter-mapping>
   <listener>
      <listener-class>web.xxk.listener.SingletonSessionlistener</listener-class>
   </listener> 
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/404error.jsp</location>
+  </error-page>
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/500error.jsp</location>
+  </error-page>
 </web-app>

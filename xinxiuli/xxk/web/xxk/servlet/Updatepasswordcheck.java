@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Testutil.Myutil;
 import dao.imp.Myxxkimpl;
 import db.DbHelp;
 import dto.Returnmsg;
@@ -30,7 +31,7 @@ public class Updatepasswordcheck  extends HttpServlet{
       	     Connection  conn =DbHelp.getConnection();
       	    
       	     String  databean =req.getParameter("databean");
-           //System.out.println(databean+"测试");
+           
       	     JSONObject  obj =JSONObject.fromObject(databean);
       	     String      account     =obj.getString("account");  
              String     password     =obj.getString("password");
@@ -39,8 +40,8 @@ public class Updatepasswordcheck  extends HttpServlet{
              Myxxkimpl  dao =new Myxxkimpl();
              try {
             	 if(account!=null&&password!=null){
-            	
-				 Boolean  flag=dao.selectaccountinfo(account,password, conn);
+            	//md5
+				 Boolean  flag=dao.selectaccountinfo(account,Myutil.Encryptin(password), conn);
 			     if(flag){
 			         Returnmsg  msg0=new Returnmsg(0,"*正确");
 			         JSONObject objmsg0=JSONObject.fromObject(msg0);

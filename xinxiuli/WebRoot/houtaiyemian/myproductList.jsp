@@ -8,6 +8,6 @@
 		<title></title>
 	</head>
 	<body>
-<jsp:forward page="/Admproductlistservlet"></jsp:forward>	
+<jsp:forward page="/xinxiuli/Admproductlistservlet"></jsp:forward>	
 	</body>
 </html>

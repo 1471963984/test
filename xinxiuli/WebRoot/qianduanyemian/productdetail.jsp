@@ -12,10 +12,10 @@
 		<link rel="stylesheet" href="/xinxiuli/css/xxk-login.css"/>
 	</head>
 	<body>
-	  				<!--首页头部-->
+	  	<!--首页头部-->
 		<header>
 			<nav>
-								<!--普通导航栏-->
+				<!--普通导航栏-->
 				<div class="normal-index-header">
 					<div class="container">
 						<div class="content-left">
@@ -142,7 +142,7 @@
 			</nav>
 		</header>
 		
-				<!--头部信息展示-->
+	<!--头部信息展示-->
 	<div class="container" id="info" data-goodsnum="${goods.goods_num}">
 	<div class="info-l" data-goodsid="${goods.goods_id}">
             <div class="big"><img src="${goods.colorphoto[1]}"/>
@@ -167,7 +167,7 @@
 				 <span class="glyphicon glyphicon-star-empty"></span>
 			</p>
 			<h5>${goods.goods_desc}</h5>
-			<p>${goods.goods_price}0<span>手机购买</span><span class="glyphicon glyphicon-th-large"></span></p>
+			<p>￥${goods.goods_price}0<span>手机购买</span><span class="glyphicon glyphicon-th-large"></span></p>
 			<hr/>
 			<p>颜色</p>
 			<ul>
@@ -509,8 +509,7 @@
 	    <div class="box">TOP</div>
 	    
 		<!--登录模态框-->
-			    <!--登录模态框-->
-    	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
+		 	<div class="modal fade " id="login" data-backdrop="static" style="margin-top: 15px;">
 		   <div class="modal-dialog  ">
 		   	<div class="modal-content">
 		   	   <div class="modal-header"> 
@@ -559,8 +558,8 @@
 			         
 			         <!-- --> 
 			        <div class="form-group" style=" margin:15px 0px;">
-			         <input type="checkbox" class="" style="width: 18px;height: 18px;">
-			          <span style="line-height: 20px;color: #666;"  >记住用户名</span>
+			         <input id="checkboxid" type="checkbox" class="" style="width: 18px;height: 18px;">
+			          <span style="line-height: 20px;color: #666;"  >记住密码</span>
 			          <span  style="float: right;color: #666; cursor: pointer;" >找回密码</span>
 			        </div>  
 			        <!--登录按钮-->
@@ -586,6 +585,7 @@
 		   </div>		
 		   </div> 
 		</div>
+	
 		
 	</body>
 </html>

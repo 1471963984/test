@@ -69,7 +69,8 @@ public class Registerservlet extends HttpServlet{
 				    	    //插入账号
 				    	    String cartnum=GenericPrimaryKey.getPrimaryKey();
 	    	        	    account.setAccount_num(phonevalue);
-	    	        	    account.setAccount_pass(pwd2value);
+	    	        	    //md5
+	    	        	    account.setAccount_pass(Myutil.Encryptin(pwd2value));
 	    	        	    account.setCart_num(cartnum);
 	    	        	    account.setUsers_ip(ip);
 	    	        	    account.setColl_goods("");

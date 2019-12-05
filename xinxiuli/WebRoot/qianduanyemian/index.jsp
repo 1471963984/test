@@ -503,8 +503,8 @@
 			         
 			         <!-- --> 
 			        <div class="form-group" style=" margin:15px 0px;">
-			         <input type="checkbox" class="" style="width: 18px;height: 18px;">
-			          <span style="line-height: 20px;color: #666;"  >记住用户名</span>
+			         <input id="checkboxid" type="checkbox" class="" style="width: 18px;height: 18px;">
+			          <span style="line-height: 20px;color: #666;"  >记住密码</span>
 			          <span  style="float: right;color: #666; cursor: pointer;" >找回密码</span>
 			        </div>  
 			        <!--登录按钮-->
