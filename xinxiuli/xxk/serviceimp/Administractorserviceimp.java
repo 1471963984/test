@@ -3,15 +3,18 @@ package serviceimp;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import dao.Administratordao;
 import dao.imp.Administratordaoimp;
 import db.DbHelp;
 import service.Administractorsevice;
+import service.Impl.FindDiviedGoods;
 
 public class Administractorserviceimp  implements Administractorsevice{
         
 	
-
+	private static final Logger log = Logger.getLogger(Administractorserviceimp.class);
 	@Override
 	public boolean admlogin(String username, String password ) {
 		// TODO Auto-generated method stub
@@ -28,11 +31,18 @@ public class Administractorserviceimp  implements Administractorsevice{
 				conn.rollback();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				log.error(e);
 			}
-			e.printStackTrace();
+			log.error(e);
 		}finally {
-		       DbHelp.closeConnection(conn);	
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);	
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+			}
 		}
 		       
 		return flag;

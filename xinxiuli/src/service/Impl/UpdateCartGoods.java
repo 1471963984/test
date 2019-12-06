@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dao.AccountDao;
 import dao.CartDao;
 import dao.GoodsDao;
@@ -17,7 +19,7 @@ import pojo.Cart;
 import pojo.Goods;
 
 public class UpdateCartGoods implements service.UpdateCartGoods{
-
+	private static final Logger log = Logger.getLogger(UpdateCartGoods.class);
 	@Override
 	public List<Goods> updateCartGoods(String account_num, int goods_id) {
 		CartDao dao = new CartDaoImpl();
@@ -61,7 +63,7 @@ public class UpdateCartGoods implements service.UpdateCartGoods{
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		} finally{
 			try {
 				if(conn!=null&&!conn.isClosed()) {
@@ -69,7 +71,7 @@ public class UpdateCartGoods implements service.UpdateCartGoods{
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return list;

@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.Random;
 
+import org.apache.log4j.Logger;
+
 import dao.AccountDao;
 import dao.CartDao;
 import dao.GoodsDao;
@@ -42,6 +44,7 @@ import util.Acount_status;
 import web.servlet.MyOrder;
 
 public class UpdataKucunServiceImpl implements UpdataKucunService,Acount_status{
+	private static final Logger log = Logger.getLogger(UpdataKucunServiceImpl.class);
 	public boolean gaiKucun(String account_num,int goods_num,String index,String judge){
 		Connection conn = DbHelp.getConnection();
 		boolean flag = false;
@@ -104,15 +107,18 @@ public class UpdataKucunServiceImpl implements UpdataKucunService,Acount_status{
 			flag= od.insertOrder(o, conn);
 //			conn.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
-//			try {
-//				conn.rollback();
-//			} catch (SQLException e1) {
-//				e1.printStackTrace();
-//			}
+			log.error(e);
+//			
 		}
 		finally {
-			DbHelp.closeConnection(conn);
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+			}
 		}
 		return flag;
 	}

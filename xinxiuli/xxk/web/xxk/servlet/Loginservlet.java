@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import Testutil.Datahandle;
 import Testutil.Myutil;
 import dao.Myxxk;
@@ -20,9 +22,10 @@ import dto.Returnmsg;
 import net.sf.json.JSONObject;
 import pojo.Account;
 import pojo.Users;
+import service.Impl.FindDiviedGoods;
 
 public class Loginservlet extends HttpServlet {
-        
+	private static final Logger log = Logger.getLogger(Loginservlet.class);  
 	   @Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -80,16 +83,23 @@ public class Loginservlet extends HttpServlet {
 					    }  
 					 } catch (Exception e){
 								// TODO Auto-generated catch block
-								e.printStackTrace();
+								log.error(e);
 								try {
 									conn.rollback();
 								} catch (SQLException e1) {
 									// TODO Auto-generated catch block
-									e1.printStackTrace();
+									log.error(e);
 								}
 						
 				}finally{
-					 DbHelp.closeConnection(conn);
+					try {
+						if(conn!=null&&!conn.isClosed()) {
+							DbHelp.closeConnection(conn);
+						}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						log.error(e);
+					}
 				}
 		       // System.out.println("0k"); 
 	  }  

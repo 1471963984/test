@@ -1,17 +1,21 @@
 package serviceImpl;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import dao.UsersZiLiaoDao;
 import dao.impl.UsersZiLiaoDaoImpl;
 import db.DbHelp;
 import pojo.Users;
 import service.ShowMyAddrsService;
+import service.Impl.FindDiviedGoods;
 
 public class ShowMyAddrsServiceImpl implements ShowMyAddrsService{
-
+	private static final Logger log = Logger.getLogger(ShowMyAddrsServiceImpl.class);
 	@Override
 	public List<String[]> showAddres(String accnum) {
 		Connection conn = DbHelp.getConnection();
@@ -40,9 +44,16 @@ public class ShowMyAddrsServiceImpl implements ShowMyAddrsService{
 			  l.add(index);
 		  }	
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}finally {
-			DbHelp.closeConnection(conn);
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+			}
 		}
 		return l;
 	}

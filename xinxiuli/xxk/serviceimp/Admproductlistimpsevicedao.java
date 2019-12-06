@@ -4,13 +4,16 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dao.imp.Admproductlistimp;
 import db.DbHelp;
 import dto.Admproductlist;
 import service.Admproductlistimpsevice;
+import service.Impl.FindDiviedGoods;
 
 public class Admproductlistimpsevicedao implements Admproductlistimpsevice{
-
+	private static final Logger log = Logger.getLogger(Admproductlistimpsevicedao.class);
 	@Override
 	public List<Admproductlist> selectadmlist(int pageNo, int pageSize) {
 		// TODO Auto-generated method stub
@@ -21,15 +24,22 @@ public class Admproductlistimpsevicedao implements Admproductlistimpsevice{
 			list= admdao.selectadm(pageNo, pageSize, conn);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 			try {
 				conn.rollback();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				log.error(e);
 			}
 		}finally {
-		 DbHelp.closeConnection(conn);	
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);	
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+			}
 		}
 		return list;
 	}
@@ -43,15 +53,22 @@ public class Admproductlistimpsevicedao implements Admproductlistimpsevice{
 				adm  =admdao.selectadmbyid(goods_num, conn);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 				try {
 					conn.rollback();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					log.error(e);
 				}
 			}finally {
-				DbHelp.closeConnection(conn);
+				try {
+					if(conn!=null&&!conn.isClosed()) {
+						DbHelp.closeConnection(conn);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					log.error(e);
+				}
 			}
 		return adm;
 	}
@@ -66,15 +83,22 @@ public class Admproductlistimpsevicedao implements Admproductlistimpsevice{
 			  count=admdao.selectMaxPageNo(pageSize, conn);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 			try {
 				conn.rollback();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				log.error(e);
 			}
 		}finally {
-		DbHelp.closeConnection(conn);
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+			}
 		}
 
         return count;

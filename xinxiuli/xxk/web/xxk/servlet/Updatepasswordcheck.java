@@ -3,19 +3,24 @@ package web.xxk.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import Testutil.Myutil;
 import dao.imp.Myxxkimpl;
 import db.DbHelp;
 import dto.Returnmsg;
 import net.sf.json.JSONObject;
+import service.Impl.FindDiviedGoods;
 
 public class Updatepasswordcheck  extends HttpServlet{
+	private static final Logger log = Logger.getLogger(Updatepasswordcheck.class);
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -56,9 +61,16 @@ public class Updatepasswordcheck  extends HttpServlet{
             	 }
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 			}finally{
-				DbHelp.closeConnection(conn);
+				try {
+					if(conn!=null&&!conn.isClosed()) {
+						DbHelp.closeConnection(conn);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					log.error(e);
+				}
 			}    
              
              

@@ -1,8 +1,11 @@
 package service.Impl;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import dao.UsersDao;
 import dao.impl.UsersDaoImpl;
@@ -12,7 +15,7 @@ import pojo.Users;
 import service.DcfAdminShowUsersService;
 
 public class DcfAdminShowUsersServiceImpl implements DcfAdminShowUsersService{
-
+	private static final Logger log = Logger.getLogger(DcfAdminShowUsersServiceImpl.class);
 	@Override
 	public List<AdminAllUserInfo> showUsers() {
 		Connection conn=DbHelp.getConnection();
@@ -52,9 +55,16 @@ public class DcfAdminShowUsersServiceImpl implements DcfAdminShowUsersService{
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}finally {
-			DbHelp.closeConnection(conn);
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+			}
 		}		
 		return list;
 	}

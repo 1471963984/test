@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import dao.GoodsDao;
 import dao.Goods_colorDao;
 import dao.Goods_sizeDao;
@@ -28,9 +30,11 @@ import pojo.Goods;
 import pojo.Goods_color;
 import pojo.Goods_size;
 import service.ShowCartService;
+import service.Impl.FindDiviedGoods;
 import serviceImpl.ShowCartServiceImpl;
 
 public class MyCartServlet extends HttpServlet{
+	private static final Logger log = Logger.getLogger(MyCartServlet.class);
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 this.doPost(req, resp);
@@ -53,7 +57,7 @@ public class MyCartServlet extends HttpServlet{
 	    		out.close();
 	    	} catch (Exception e) {
 	    		// TODO Auto-generated catch block
-	    		e.printStackTrace();
+	    		log.error(e);
 	    	}
 	    }
 	}

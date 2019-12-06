@@ -3,12 +3,15 @@ package service.Impl;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
 import dao.OrderDao;
 import dao.impl.OrderDaoImpl;
 import db.DbHelp;
 import service.BuyGoods;
 
 public class BuyGoodsImpl implements BuyGoods{
+	private static final Logger log = Logger.getLogger(BuyGoodsImpl.class);
 
 	@Override
 	public boolean buyGoods(int ordernum) {
@@ -19,7 +22,7 @@ public class BuyGoodsImpl implements BuyGoods{
 			flag = dao.updateOrder(ordernum, conn);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try {
 				if(conn!=null&&!conn.isClosed()) {
@@ -27,7 +30,7 @@ public class BuyGoodsImpl implements BuyGoods{
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return flag;

@@ -2,18 +2,20 @@ package serviceImpl;
 
 
 import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.apache.log4j.Logger;
 
 import dao.UsersDao;
 import dao.UsersZiLiaoDao;
 import dao.impl.UsersDaoImpl;
 import dao.impl.UsersZiLiaoDaoImpl;
 import db.DbHelp;
-import net.sf.json.JSONObject;
 import pojo.Users;
 import service.AddAddrsService;
 
 public class AddAddrsServiceImpl implements AddAddrsService{
-
+	private static final Logger log = Logger.getLogger(AddAddrsServiceImpl.class);
 	@Override
 	public boolean addAddrs(String account_num,Users u){
 		Connection conn=DbHelp.getConnection();
@@ -36,9 +38,16 @@ public class AddAddrsServiceImpl implements AddAddrsService{
 			}
 		    }
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}finally {
-			DbHelp.closeConnection(conn);
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+			}
 		}
 	    return flag;
 	}

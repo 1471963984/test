@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import dao.UsersZiLiaoDao;
 import dao.impl.UsersZiLiaoDaoImpl;
 import db.DbHelp;
@@ -23,9 +25,11 @@ import net.sf.json.JSONArray;
 import pojo.Account;
 import pojo.Users;
 import service.JieSuanService;
+import service.Impl.FindDiviedGoods;
 import serviceImpl.JieSuanServiceImpl;
 
 public class JieSuanServlet extends HttpServlet{
+	private static final Logger log = Logger.getLogger(JieSuanServlet.class);
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		this.doPost(req, resp);
@@ -55,7 +59,7 @@ public class JieSuanServlet extends HttpServlet{
 //					System.out.println(cg.getGoods_color());
 					cglist.add(cg);
 				} catch (Exception e1) {
-					e1.printStackTrace();
+					log.error(e1);
 				}
 			}
 		}

@@ -1,8 +1,11 @@
 package service.Impl;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import dao.AccountDao;
 import dao.DcfAddCardDao;
@@ -32,6 +35,7 @@ import pojo.Goods_size;
 import service.DcfService;
 
 public class DcfServiceImpl implements DcfService{
+	private static final Logger log = Logger.getLogger(DcfServiceImpl.class);
 	@Override
 	public ShowOneGoods show(int goodsnum,String accnum) {
 		 Connection conn=DbHelp.getConnection();
@@ -100,9 +104,16 @@ public class DcfServiceImpl implements DcfService{
 		}
 			conn.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}finally {
-			DbHelp.closeConnection(conn);
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+			}
 		}
 	   return sog;
 	}
@@ -138,9 +149,16 @@ public class DcfServiceImpl implements DcfService{
             }
 			conn.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}finally {
-			DbHelp.closeConnection(conn);
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+			}
 		}
 	   return mid;
 	}
@@ -156,7 +174,6 @@ public class DcfServiceImpl implements DcfService{
 				if(a.getColl_goods()==null) {
 //					防止数据库得到的是空字符串	
 						a.setColl_goods("");
-						System.out.println("替换成功");
 					}
 				  String[] strs=a.getColl_goods().split(",");
 				  if(strs.length>0) {
@@ -172,9 +189,16 @@ public class DcfServiceImpl implements DcfService{
 				  bb=dad.addColl(accnum,ss, conn); 
 			  }
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}finally {
-			DbHelp.closeConnection(conn);
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+			}
 		}
 	   return bb;
 	}
@@ -197,9 +221,16 @@ public class DcfServiceImpl implements DcfService{
 	    }
 	    bb=dad.addColl(accnum, collgoods,conn);
 	  }catch (Exception e) {
-		e.printStackTrace();	
+		log.error(e);
 	  }finally {
-		DbHelp.closeConnection(conn);
+		  try {
+			if(conn!=null&&!conn.isClosed()) {
+				  DbHelp.closeConnection(conn);
+			  }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			log.error(e);
+		}
 	  }  
 		return bb;		
 	}

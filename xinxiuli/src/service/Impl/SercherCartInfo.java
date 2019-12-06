@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dao.AccountDao;
 import dao.GoodsDao;
 import dao.impl.AccountDaoImpl;
@@ -13,7 +15,7 @@ import db.DbHelp;
 import pojo.Goods;
 
 public class SercherCartInfo implements service.SercherCartInfo{
-
+	private static final Logger log = Logger.getLogger(SercherCartInfo.class);
 	@Override
 	public List<Goods> sercherCartInfo(String account_num){
 		Connection conn = DbHelp.getConnection();
@@ -35,7 +37,7 @@ public class SercherCartInfo implements service.SercherCartInfo{
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.error(e);
 		} finally{
 			try {
 				if(conn!=null&&!conn.isClosed()) {
@@ -43,7 +45,7 @@ public class SercherCartInfo implements service.SercherCartInfo{
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return list;

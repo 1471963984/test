@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dao.GoodsDao;
 import dao.Goods_colorDao;
 import dao.Goods_sizeDao;
@@ -20,9 +22,10 @@ import pojo.Goods_color;
 import pojo.Goods_size;
 import pojo.Users;
 import service.JieSuanService;
+import service.Impl.FindDiviedGoods;
 
 public class JieSuanServiceImpl implements JieSuanService{
-
+	private static final Logger log = Logger.getLogger(JieSuanServiceImpl.class);
 	@Override
 	public List<Addrs> getMyAddrs(String account_num, Connection conn) {
 		//查用户信息dao
@@ -46,11 +49,6 @@ public class JieSuanServiceImpl implements JieSuanService{
 						//地址
 						Addrs as = new Addrs();
 						String tel1 = tel[i];
-//					System.out.println("截取之前"+tel1);
-//					if(tel1.substring(0, 1).equals("#")){
-//						tel1 = tel[i].substring(2);
-//						System.out.println("截取之后"+tel1);
-//					}
 						as.setName(name[i]);
 						as.setTel(tel1);
 						as.setDizhi(dizhi[i]);
@@ -58,7 +56,7 @@ public class JieSuanServiceImpl implements JieSuanService{
 					}
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return aslist;

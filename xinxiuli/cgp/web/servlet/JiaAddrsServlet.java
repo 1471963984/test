@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import dao.GoodsDao;
 import dao.Goods_colorDao;
 import dao.Goods_sizeDao;
@@ -32,9 +34,11 @@ import pojo.Goods_color;
 import pojo.Goods_size;
 import pojo.Users;
 import service.AddAddrsService;
+import service.Impl.FindDiviedGoods;
 import serviceImpl.AddAddrsServiceImpl;
 
 public class JiaAddrsServlet extends HttpServlet{
+	private static final Logger log = Logger.getLogger(JiaAddrsServlet.class);
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -61,7 +65,7 @@ public class JiaAddrsServlet extends HttpServlet{
 			PrintWriter out=response.getWriter();
 			out.print(b);
 		}catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}
 		
 	}

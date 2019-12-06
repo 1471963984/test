@@ -1,6 +1,9 @@
 package service.Impl;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+
+import org.apache.log4j.Logger;
 
 import dao.UsersZiLiaoDao;
 import dao.impl.UsersZiLiaoDaoImpl;
@@ -9,7 +12,7 @@ import pojo.Users;
 import service.DcfSAddAddresService;
 
 public class DcfAddAddresServiceImpl implements DcfSAddAddresService{
-
+	private static final Logger log = Logger.getLogger(DcfAddAddresServiceImpl.class);
 	@Override
 	public boolean deleAddres(String accnum,int index) {
 	   Connection conn=DbHelp.getConnection();
@@ -56,9 +59,16 @@ public class DcfAddAddresServiceImpl implements DcfSAddAddresService{
 			  b=uzd.addAddres(uu, conn);	   
 		   }
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error(e);
 		}finally {
-			DbHelp.closeConnection(conn);
+			try {
+				if(conn!=null&&!conn.isClosed()) {
+					DbHelp.closeConnection(conn);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+			}
 		}
 		return b;
 	}
