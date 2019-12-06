@@ -58,15 +58,19 @@ public class ShowMyAddrsServiceImpl implements ShowMyAddrsService{
 		  String str=u.getUsers_phone();
 		  if(u!=null) {
 			  String[] upho=u.getUsers_phone().split(",");
+			  StringBuffer sb=new StringBuffer();
 			  for(int i=0;i<upho.length;i++) {
 				  if("##".equals(upho[i].substring(0,2))) {
-					  str=str.replace(upho[i],upho[i].substring(2));
-				  }
+					  sb.append(upho[i].substring(2)+",");
+					 continue;
+				  }			
 				  if(i==index) {
-					  str=str.replace(upho[i],"##"+upho[i]);
+					  sb.append("##"+upho[i]+",");
+					  continue;
 				  }
+				  sb.append(upho[i]+","); 
 			  }
-			  u.setUsers_phone(str);
+			  u.setUsers_phone(sb.toString());
 			  flag=uzd.addAddres(u, conn);
 		  }	
 		} catch (Exception e) {

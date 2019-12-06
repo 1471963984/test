@@ -401,13 +401,14 @@
 <script>
 //设置默认地址
 function insetAdd(){
-$(".addrs-setdefault").click(function(){
-	$(this).removeClass("addrs-setdefault addrs-default").addClass("addrs-default").html("默认地址").parent().siblings(".addrs-list").children("button").removeClass("addrs-default addrs-setdefault").addClass("addrs-setdefault").html("设为默认");
+$(".addrs-list button").click(function(){
+	$(this).removeClass("addrs-setdefault").addClass("addrs-default").html("默认地址").parent().siblings(".addrs-list").children("button").removeClass("addrs-default addrs-setdefault").addClass("addrs-setdefault").html("设为默认");
 	$.ajax({
 		type:"POST",
 		url:"/xinxiuli/updateMyAddres?index="+$(this).attr("data-index"),
 		success:function(result){
-		   location.reload();
+          alert("默认地址修改成功");
+		 //  location.reload();
 		}
 	});
 });
