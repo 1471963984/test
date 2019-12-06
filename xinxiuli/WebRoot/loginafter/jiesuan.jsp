@@ -62,22 +62,24 @@
 					</li>
 				</ul>
 				<c:forEach  items="${myinfo.addrs}" var="u" varStatus="i" >
-				<div class="addrs-list">
-					<input type="radio" name="addrs" data-choose="" class="choose-addrs" style="width: 20px;
-							height: 20px;
-							margin: 10px 0px 0px;
-							position: absolute;
-							left: 10px;" />
-					<div class="index" style="display:none">${i.index }</div>
-			    	<div class="name ch-left">${u.name }</div>
-			    	<div class="phone mbtel">${u.tel }</div>
-			    	<div class="addrs-message">${u.dizhi }</div>
-			    	<input type="text" class="addrs-default" value="默认地址"/>
-			    	<div class="caozuo">
-			    		<img class="addrs-edit" src="/xinxiuli/shop-imgs/address-edit.png"/>
-			    		<img class="goods-delete" title="删除商品" src="/xinxiuli/shop-imgs/delete.png"></img>
-			    	</div>
-		   		</div>
+				<c:if test="${u.dizhi ne '待完善'}">
+					<div class="addrs-list">
+						<input type="radio" name="addrs" data-choose="" class="choose-addrs" style="width: 20px;
+								height: 20px;
+								margin: 10px 0px 0px;
+								position: absolute;
+								left: 10px;" />
+						<div class="index" style="display:none">${i.index }</div>
+				    	<div class="name ch-left">${u.name }</div>
+				    	<div class="phone mbtel">${u.tel }</div>
+				    	<div class="addrs-message">${u.dizhi }</div>
+				    	<input type="text" class="addrs-default" value="默认地址"/>
+				    	<!--  <div class="caozuo">
+				    		<img class="addrs-edit" src="/xinxiuli/shop-imgs/address-edit.png"/>
+				    		<img class="goods-delete" title="删除商品" src="/xinxiuli/shop-imgs/delete.png"></img>
+				    	</div>-->
+			   		</div>
+		   		</c:if>
 		   	</c:forEach>
 		</div>
 		<div class="balance-lable">商品运送清单</div>

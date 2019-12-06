@@ -432,17 +432,20 @@
 			if(obj.length!=0){
 			 for(var i=0;i<obj.length;i++){
 				  switch(obj[i].order_status){
+				  case 1:
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm orderit' ordernum='"+obj[i].order_num+"' onclick='buyIt()'>立即付款</button></li></ul>");  	
+					  break;
 				  case 2:
-					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm'>提醒发货</button> <button class='btn btn-sm btn-default'>申请退款</button></li></ul>");  
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm'>提醒发货</button> <button class='btn btn-sm btn-default'>申请退款</button></li></ul>");  
 					  break;
 				  case 3:
-					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-sm' style='color:white; background-color:#222;' onclick='looklogist()' data-toggle='modal' data-target='#myModal'>查看物流</button></ul>");  
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-sm' style='color:white; background-color:#222;' onclick='looklogist()' data-toggle='modal' data-target='#myModal'>查看物流</button></ul>");  
 					  break;
 				  case 4:
-					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>查看更多</button>");  
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>查看更多</button>");  
 					  break;
 				  case 5:
-					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
 					  break;
 			  }
 		}
@@ -462,24 +465,26 @@
 				//$(this).parent().siblings().remove();
 				if(result!=null){
 					var obj=JSON.parse(result);
-					console.log(obj);
 					$(".info_r-head>.myoder").remove();
 					$(".info_r>h2").remove();
 				if(obj.length!=0){
 				  for(var i=0;i<obj.length;i++){
 					  var aa=obj[i].order_status;
 					  switch(obj[i].order_status){
+					  case 1:
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm orderit' ordernum='"+obj[i].order_num+"' onclick='buyIt()'>立即付款</button></li></ul>");  
+					  	  break;
 					  case 2:
-						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm'>提醒发货</button> <button class='btn btn-default btn-sm'>申请退款</button></li></ul>");  
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm'>提醒发货</button> <button class='btn btn-default btn-sm'>申请退款</button></li></ul>");  
 						  break;
 					  case 3:
-						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm' style='color:white; background-color:#222;' onclick='looklogist()' data-toggle='modal' data-target='#myModal'>查看物流</button></ul>");  
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm' style='color:white; background-color:#222;' onclick='looklogist()' data-toggle='modal' data-target='#myModal'>查看物流</button></ul>");  
 						  break;
 					  case 4:
-						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>查看更多</button>");  
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>查看更多</button>");  
 						  break;
 					  case 5:
-						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
 						  break;
 				  }
 				  }
@@ -516,4 +521,8 @@
 	$('.box').click(function(){
 		$('html').animate({'scrollTop':0},500);
 	});
+    function buyIt(){
+    	alert("123");
+    }
+    
 </script>

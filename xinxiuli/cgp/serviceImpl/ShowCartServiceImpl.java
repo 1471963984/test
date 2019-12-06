@@ -50,17 +50,19 @@ public class ShowCartServiceImpl implements ShowCartService{
 			if(!"".equals(str[i])) {
 				Goods g = gd.selectGoods(Integer.parseInt(str[i]),conn);
 				ShowMyCart s = new ShowMyCart();
-				s.setGoods_img(g.getGoods_picture());
-				s.setGoods_desc(g.getGoods_desc());
-				s.setGoods_name(g.getGoods_name());
-				s.setGoods_id(g.getGoods_id());
-				//颜色和尺寸还要查
-				Goods_color color = cds.selectGoods_colorOne(g.getGoods_id(),g.getGoods_color_num(), conn);
-				s.setGoods_color(color.getColor_name());
-				Goods_size size = sd.selectGoods_sizeOne(g.getGoods_id(), g.getGoods_color_num(), g.getGoods_size_num(), conn);
-				s.setGoods_size(size.getSize_name());
-				s.setGoods_price(g.getGoods_price());
-				s.setGoods_num(g.getGoods_num());
+				if(g!=null) {
+					s.setGoods_img(g.getGoods_picture());
+					s.setGoods_desc(g.getGoods_desc());
+					s.setGoods_name(g.getGoods_name());
+					s.setGoods_id(g.getGoods_id());
+					//颜色和尺寸还要查
+					Goods_color color = cds.selectGoods_colorOne(g.getGoods_id(),g.getGoods_color_num(), conn);
+					s.setGoods_color(color.getColor_name());
+					Goods_size size = sd.selectGoods_sizeOne(g.getGoods_id(), g.getGoods_color_num(), g.getGoods_size_num(), conn);
+					s.setGoods_size(size.getSize_name());
+					s.setGoods_price(g.getGoods_price());
+					s.setGoods_num(g.getGoods_num());
+				}
 				list.add(s);
 			}
 		}

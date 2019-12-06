@@ -92,8 +92,8 @@
 </body>
 </html>
 
-<script type="text/javascript" src="/xinxiuli/houtaiyemian/js/jquery-1.11.0.js"></script>
-<script type="text/javascript" src="/xinxiuli/houtaiyemian/js/bootstrap.js"></script>
+<script type="text/javascript" src="/xinxiuli/js/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="/xinxiuli/js/bootstrap.js"></script>
 <script src="/xinxiuli/houtaiyemian/js/pintuer.js"></script>
 <script>
 load();

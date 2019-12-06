@@ -149,7 +149,7 @@
 .name{
 	position: absolute;
 	top: 14px;
-	left: 44px;
+	left: 84px;
 }
 /*.chengwei{
 	position: absolute;
@@ -163,7 +163,7 @@
 }
 .mbtel{
 	position: absolute;
-	left: 160px;
+	left: 260px;
 	top: 13px;
 }
 .addrs-message{
@@ -173,7 +173,7 @@
 	font-size: 12px;
 	padding: 0px 10px;
 	position: absolute;
-	left: 314px;
+	left: 454px;
 	top: 12px;
 }
 .addrs-default{
@@ -186,7 +186,7 @@
 	font-size: 12px;
 	padding:0px 10px;
 	position: absolute;
-	left: 694px;
+	right: 10px;
 	top: 8px;
 	cursor:pointer;
 }

@@ -239,12 +239,7 @@ form{
 .mbtel{
 	position: absolute;
 	left: 100px;
-	top: 20px;
-}
-.gdtel{
-	position: absolute;
-	left: 100px;
-	top: 40px;
+	top: 30px;
 }
 .addrs-message{
 	width: 290px;

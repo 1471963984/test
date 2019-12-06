@@ -34,26 +34,28 @@ public class JieSuanServiceImpl implements JieSuanService{
 			try {
 				//通过账号获取用户信息
 				user = uzd.selectUsersByAccount_num(account_num, conn);
-				//拆分用户信息
-				String[] name = user.getUsers_name().split(",");
-				String[] tel = user.getUsers_phone().split(",");
-				String[] dizhi = user.getUsers_addr().split(",");
-				int len = name.length;
-				//把地址封装成Addrs
-				for (int i = 0; i < len; i++) {
-					//把地址和商品分别封装成dto
-					//地址
-					Addrs as = new Addrs();
-					String tel1 = tel[i];
+				if(user!=null) {
+					//拆分用户信息
+					String[] name = user.getUsers_name().split(",");
+					String[] tel = user.getUsers_phone().split(",");
+					String[] dizhi = user.getUsers_addr().split(",");
+					int len = name.length;
+					//把地址封装成Addrs
+					for (int i = 0; i < len; i++) {
+						//把地址和商品分别封装成dto
+						//地址
+						Addrs as = new Addrs();
+						String tel1 = tel[i];
 //					System.out.println("截取之前"+tel1);
 //					if(tel1.substring(0, 1).equals("#")){
 //						tel1 = tel[i].substring(2);
 //						System.out.println("截取之后"+tel1);
 //					}
-					as.setName(name[i]);
-					as.setTel(tel1);
-					as.setDizhi(dizhi[i]);
-					aslist.add(as);
+						as.setName(name[i]);
+						as.setTel(tel1);
+						as.setDizhi(dizhi[i]);
+						aslist.add(as);
+					}
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -73,16 +75,18 @@ public class JieSuanServiceImpl implements JieSuanService{
 		if(account_num!=null){
 			Goods g = gd.selectGoods(goods_num,conn);
 			cg = new CartGoods();
-			cg.setGoods_img(g.getGoods_picture());
-			cg.setGoods_desc(g.getGoods_desc());
-			cg.setGoods_name(g.getGoods_name());
-			//颜色和尺寸还要查
-			Goods_color color = cds.selectGoods_colorOne(g.getGoods_id(),g.getGoods_color_num(), conn);
-			cg.setGoods_color(color.getColor_name());
-			Goods_size size = sd.selectGoods_sizeOne(g.getGoods_id(), g.getGoods_color_num(), g.getGoods_size_num(), conn);
-			cg.setGoods_size(size.getSize_name());
-			cg.setGoods_price(g.getGoods_price());
-			cg.setGoods_num(g.getGoods_num());
+			if(g!=null) {
+				cg.setGoods_img(g.getGoods_picture());
+				cg.setGoods_desc(g.getGoods_desc());
+				cg.setGoods_name(g.getGoods_name());
+				//颜色和尺寸还要查
+				Goods_color color = cds.selectGoods_colorOne(g.getGoods_id(),g.getGoods_color_num(), conn);
+				cg.setGoods_color(color.getColor_name());
+				Goods_size size = sd.selectGoods_sizeOne(g.getGoods_id(), g.getGoods_color_num(), g.getGoods_size_num(), conn);
+				cg.setGoods_size(size.getSize_name());
+				cg.setGoods_price(g.getGoods_price());
+				cg.setGoods_num(g.getGoods_num());
+			}
 		}
 		return cg;
 	}

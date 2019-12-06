@@ -120,10 +120,9 @@
 })();
 
 //点击按钮提交
-$("#submitbut").click(function(){
+$('#submitbut').click(function(){
 	var u = new Object();
 	u.users_name = $('.name').val();
-	alert($('.name').val());
 	u.users_nickname = $('.sex').val();
 	if($('.dist').val()==null){
 		var a="";
@@ -134,12 +133,17 @@ $("#submitbut").click(function(){
 	u.users_phone = $('.phone').val();
 	u.users_email = $('.e-mail').val();
 	var json = JSON.stringify(u);
-	var panduan = false;
+	var panduan = "";
 	for (var i = 0; i < panduanlist.length; i++) {
-		if(panduanlist[i]!=2){
+		if(panduanlist[i]==2){
+			panduan=false;
+			break;
+		}else if(panduanlist[i]==1){
 			panduan=true;
 		}
 	}
+
+	console.log(panduan);
 	if(panduan==true){
 	    $.ajax({
 			type:"post",

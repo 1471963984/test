@@ -190,7 +190,7 @@
 							</li>
 							<li>
 								<label class="list-lable">*姓名</label>
-								<input id="gainname"  type="text" placeholder="请输入姓名,字母数字中文0~8" />
+								<input id="gainname" class="name" type="text" placeholder="请输入姓名,字母数字中文0~8" />
 								<span style="color:red;"></span>
 							</li>
 							<li>
