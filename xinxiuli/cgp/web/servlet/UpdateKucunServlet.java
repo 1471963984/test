@@ -45,6 +45,6 @@ public class UpdateKucunServlet extends HttpServlet{
 		for (int i = 0; i < str.length; i++) {
 			uks.gaiKucun(account_num, Integer.parseInt(str[i]), index,judge);
 		}
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("/xinxiuli/loginafter/myorders.jsp");
 	}
 }

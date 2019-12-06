@@ -33,7 +33,6 @@ public class AdminLoginSessionFilter implements javax.servlet.Filter{
 		}else {
 			request.getRequestDispatcher("/adminLogin.jsp").forward(request, response);
 		}
-		
 	}
 
 	@Override

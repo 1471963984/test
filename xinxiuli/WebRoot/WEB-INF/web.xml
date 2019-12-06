@@ -380,6 +380,14 @@
     <servlet-name>AdminOut</servlet-name>
     <url-pattern>/adminOut</url-pattern>
 </servlet-mapping>
+<servlet>
+    <servlet-name>BuyGoodsChangeStatus</servlet-name>
+    <servlet-class>web.servlet.BuyGoodsChangeStatus</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BuyGoodsChangeStatus</servlet-name>
+    <url-pattern>/buyGoods</url-pattern>
+  </servlet-mapping>
 		
 
   <filter>

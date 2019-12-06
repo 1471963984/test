@@ -52,4 +52,10 @@ public class DcfAdminUpdataStatusDaoImpl implements DcfAdminUpdataStatusDao{
 		}
 		return flag;
 	}
+
+	@Override
+	public boolean updateOrder(int order_num, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

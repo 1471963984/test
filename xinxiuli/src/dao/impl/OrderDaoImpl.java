@@ -126,4 +126,17 @@ public class OrderDaoImpl implements OrderDao{
 		return list;
 	}
 
+	@Override
+	public boolean updateOrder(int order_num, Connection conn) throws Exception {
+		boolean flag = false;
+		String sql = "update orders set order_status=? where order_num=?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, 2);
+		ps.setInt(2, order_num);
+		if(ps.executeUpdate()>0) {
+			flag = true;
+		}
+		return flag;
+	}
+
 }

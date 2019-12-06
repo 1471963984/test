@@ -95,6 +95,12 @@ public class DcfOrderDaoImpl implements DcfOrderDao{
 		return list;
 	}
 
+	@Override
+	public boolean updateOrder(int order_num, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 //	@Override
 //	public List<Order> AdminQueryOneUser(String accnum, Connection conn) throws Exception {
 //		String sql = "select * from orders where accout_num=? ";

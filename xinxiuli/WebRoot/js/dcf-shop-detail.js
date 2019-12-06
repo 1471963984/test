@@ -27,7 +27,8 @@ $(".info-r .addcart").click(function(){
 		data:{"gid":JSON.stringify(gid),"cid":JSON.stringify(cid),"sid":JSON.stringify(sid),"num":JSON.stringify(num)},
 		success:function(result){
 			if(result!=null){
-				alert("恭喜您添加了"+num+"件商品");
+				$("#addGoods").modal("show");
+				$(".modal-body h2").html("恭喜您添加了"+num+"件商品");
 				var a=$(".cart-number").html();			
 					a=parseInt(a)+parseInt(num);
 					$(".cart-number").html(a);					

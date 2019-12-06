@@ -127,7 +127,7 @@
 	  var sum = 0;
 	  //拿到所的   active
 	  $('[data-price="active"]').each(function(){
-	    sum += parseInt($(this).parent().siblings('.sell-srice').html());
+	    sum += parseInt($(this).parent().siblings('.sell-srice').html().slice(1));
 	  });
 //	  console.log(sum);
 	  //设置总价
@@ -177,7 +177,7 @@
 					</div>
 					</div>
 					</div>
-					<div class="sell-srice">${result[i].goods_price}.00</div>
+					<div class="sell-srice">￥${result[i].goods_price}.00</div>
 					<div class="goods-delete" title="删除商品" onclick="deleteGoods(this)" goodsid="${result[i].goods_num}"></div>
 					</div>
 					</div>
@@ -235,7 +235,7 @@ function deleteGoods(obj){
 				}
 				$(".goods-list-box").append(str);
 				collGoods();
-				location.href="/xinxiuli/qianduanyemian/mycart.jsp";
+				location.href="/xinxiuli/loginafter/mycart.jsp";
 			},
 			
 		});

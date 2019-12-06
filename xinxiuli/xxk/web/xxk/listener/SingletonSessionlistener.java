@@ -18,10 +18,9 @@ public class SingletonSessionlistener implements HttpSessionAttributeListener{
 	 	// TODO Auto-generated method stub
 	      String  name =event.getName();
 	     if("account".equals(name)){
-	        Account anew=(Account) event.getValue();       	  
+	        Account anew=(Account) event.getValue(); 
 	       if(map.get(anew.getAccount_num())!=null){
-	    	   
-	       HttpSession oldsession=map.get(anew.getAccount_num());
+	           HttpSession oldsession=map.get(anew.getAccount_num());
 	       
 	           map.remove(anew.getAccount_num());
 	            
@@ -37,7 +36,7 @@ public class SingletonSessionlistener implements HttpSessionAttributeListener{
 	@Override
 	public void attributeRemoved(HttpSessionBindingEvent event) {
 		// TODO Auto-generated method stub
-		 String  name =event.getName();
+		 String name =event.getName();
 		 if("account".equals(name)){
 		 Account  a  =(Account)event.getValue();            	         
 		     map.remove(a.getAccount_num());  
@@ -50,7 +49,7 @@ public class SingletonSessionlistener implements HttpSessionAttributeListener{
           String   name= event.getName();  
         // 没有注销的情况下，用另一个帐号登录
           if("account".equals(name)){
-           // 移除老的         	  
+           // 移除老的    
             Account a=(Account)event.getValue();
             map.remove(a.getAccount_num());
             

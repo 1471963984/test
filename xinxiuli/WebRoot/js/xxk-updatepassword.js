@@ -65,7 +65,7 @@
    //确认
   $("#confirm").click(function(){
 	if(!flag){
-    alert("旧密码密码错误"); 
+    alert("旧密码密码错误");
     return;
 	}
    if(!flagnewpass){

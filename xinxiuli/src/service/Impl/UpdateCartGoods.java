@@ -33,12 +33,20 @@ public class UpdateCartGoods implements service.UpdateCartGoods{
 			String goods_num = c.getGoods_id(); 
 			String good_id = String.valueOf(goods_id);
 			String[] s = goods_num.split(",");
+			String str = "";
+			ok:
 			for (int i = 0; i < s.length; i++) {
 				if(good_id.equals(s[i])) {
-					goods_num = goods_num.replace(good_id+",", "");
+					for (int j = 0; j < s.length; j++) {
+						if(j==i){
+							continue;
+						}
+						str = str + s[j]+",";
+					}
+					break ok ;
 				}
 			}
-			flag = dao.updateCartById(cart_num, goods_num, conn);
+			flag = dao.updateCartById(cart_num, str, conn);
 			if(flag==true) {
 				if(goods_num!=null) {
 					String[] s1 = goods_num.split(",");

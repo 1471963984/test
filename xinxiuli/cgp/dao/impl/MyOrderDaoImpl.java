@@ -127,5 +127,13 @@ public class MyOrderDaoImpl implements MyOrderDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	@Override
+	public boolean updateOrder(int order_num, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

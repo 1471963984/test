@@ -176,12 +176,10 @@
 			<div class="info-addr-content">
 				<div class="info-l">
 					<ul>
-						<li>账户首页</li>
 						<li><a href="/xinxiuli/loginafter/personzl.jsp">个人资料</a></li>
 						<li class="active"><a href="/xinxiuli/loginafter/myaddrs.jsp">地址簿</a></li>
 						<li><a href="/xinxiuli/loginafter/myorders.jsp">我的订单</a></li>
 						<li><a href="/xinxiuli/loginafter/mycolls.jsp">我的收藏</a></li>
-						<li>客户服务</li>
 					</ul>
 				</div>
 				<div class="info_r">

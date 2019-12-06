@@ -586,6 +586,14 @@
 		   </div> 
 		</div>
 	
+	<!-- 物流模态框 -->
+		<div class='modal fade' id='addGoods' style="margin-top:200px;">
+			<div class='modal-dialog'>
+				<div class='modal-content'>
+					<div class='modal-body'><h2 style='margin-top:20px; text-align:center;'></h2></div>
+				</div>
+			</div>
+		</div>
 		
 	</body>
 </html>

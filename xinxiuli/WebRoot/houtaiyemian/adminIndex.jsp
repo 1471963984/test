@@ -26,8 +26,7 @@
     <ul style="display:block">
         <li><a href="/xinxiuli/houtaiyemian/usersList.jsp" target="right"><span class="icon-caret-right"></span>用户管理</a></li>
         <li><a href="/xinxiuli/houtaiyemian/orderList.jsp" target="right"><span class="icon-caret-right"></span>订单管理</a></li>
-        <li><a href="/xinxiuli/houtaiyemian/adminAdvert.jsp" target="right"><span class="icon-caret-right"></span>广告管理</a></li>
-        <li><a href="/xinxiuli/houtaiyemian/myproductList.jsp" target="right"><span class="icon-caret-right"></span>产品管理</a></li>		
+        <li><a href="/xinxiuli/Admproductlistservlet" target="right"><span class="icon-caret-right"></span>产品管理</a></li>		
     </ul>
 </div>
 <script type="text/javascript">

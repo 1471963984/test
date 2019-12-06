@@ -174,12 +174,10 @@
 			<div class="myoder-info-content">	
 				<div class="info-l">
 					<ul>
-						<li>账户首页</li>
 						<li><a href="/xinxiuli/loginafter/personzl.jsp">个人资料</a></li>
 						<li><a href="/xinxiuli/loginafter/myaddrs.jsp">地址簿</a></li>
 						<li class="active"><a href="/xinxiuli/loginafter/myorders.jsp">我的订单</a></li>
 						<li><a href="/xinxiuli/loginafter/mycolls.jsp">我的收藏</a></li>
-						<li>客户服务</li>
 					</ul>
 				</div>
 				<div class="info_r">
@@ -216,6 +214,24 @@
 			</div>
 		</div>
 		</div>
+		</div>
+		
+		<!-- 物流模态框 -->
+		<div class='modal fade' id='warningIt' style="margin-top:200px;">
+			<div class='modal-dialog'>
+				<div class='modal-content'>
+					<div class='modal-body'><h2 style='margin-top:20px; text-align:center; margin-left:75px;'>已提醒<span style="width:80px; display:inline-block; text-align:left; margin-left:5px;"><span></h2></div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 物流模态框 -->
+		<div class='modal fade' id='rebackIt' style="margin-top:200px;">
+			<div class='modal-dialog'>
+				<div class='modal-content'>
+					<div class='modal-body'><h2 style='margin-top:20px; text-align:center; margin-left:75px;'>申请成功，正在等待商家处理<span style="width:80px; display:inline-block; text-align:left; margin-left:5px;"><span></h2></div>
+				</div>
+			</div>
 		</div>
 
 	    <!--首页尾部-->
@@ -433,10 +449,10 @@
 			 for(var i=0;i<obj.length;i++){
 				  switch(obj[i].order_status){
 				  case 1:
-					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm orderit' ordernum='"+obj[i].order_num+"' onclick='buyIt()'>立即付款</button></li></ul>");  	
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm orderit' ordernum='"+obj[i].order_num+"' onclick='buyIt(this)'>立即付款</button></li></ul>");  	
 					  break;
 				  case 2:
-					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm'>提醒发货</button> <button class='btn btn-sm btn-default'>申请退款</button></li></ul>");  
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm' onclick='warningIt(this)'>提醒发货</button> <button class='btn btn-sm btn-default' onclick='rebackIt(this)'>申请退款</button></li></ul>");  
 					  break;
 				  case 3:
 					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-sm' style='color:white; background-color:#222;' onclick='looklogist()' data-toggle='modal' data-target='#myModal'>查看物流</button></ul>");  
@@ -445,7 +461,7 @@
 					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>查看更多</button>");  
 					  break;
 				  case 5:
-					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+					  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm' onclick='warningIt(this)'>提醒发货</button><button class='btn btn-danger btn-sm' onclick='rebackIt(this)'>申请退款</button></li></ul>");  
 					  break;
 			  }
 		}
@@ -472,10 +488,10 @@
 					  var aa=obj[i].order_status;
 					  switch(obj[i].order_status){
 					  case 1:
-						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm orderit' ordernum='"+obj[i].order_num+"' onclick='buyIt()'>立即付款</button></li></ul>");  
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm orderit' ordernum='"+obj[i].order_num+"' onclick='buyIt(this)'>立即付款</button></li></ul>");  
 					  	  break;
 					  case 2:
-						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm'>提醒发货</button> <button class='btn btn-default btn-sm'>申请退款</button></li></ul>");  
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-default btn-sm' onclick='warningIt(this)'>提醒发货</button> <button class='btn btn-default btn-sm' onclick='rebackIt(this)'>申请退款</button></li></ul>");  
 						  break;
 					  case 3:
 						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm' style='color:white; background-color:#222;' onclick='looklogist()' data-toggle='modal' data-target='#myModal'>查看物流</button></ul>");  
@@ -484,7 +500,7 @@
 						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>查看更多</button>");  
 						  break;
 					  case 5:
-						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm'>提醒发货</button><button class='btn btn-danger btn-sm'>申请退款</button></li></ul>");  
+						  $(".info_r-head").append("<ul class='myoder'><li class='myoder-head' ordernum='"+obj[i].order_num+"'>"+(i+1)+"</li><li>"+obj[i].goods_name+"</li><li>"+obj[i].color_name+"</li><li>"+obj[i].size_name+"</li><li>1</li><li>普通快递</li><li class='caozu'><button class='btn btn-primary btn-sm' onclick='warningIt(this)'>提醒发货</button><button class='btn btn-danger btn-sm' onclick='rebackIt(this)'>申请退款</button></li></ul>");  
 						  break;
 				  }
 				  }
@@ -521,8 +537,25 @@
 	$('.box').click(function(){
 		$('html').animate({'scrollTop':0},500);
 	});
-    function buyIt(){
-    	alert("123");
+    function buyIt(obj){
+    	var ordernum = obj.getAttribute("ordernum");
+    	$.ajax({
+    		type:"POST",
+    		url:"/xinxiuli/buyGoods",
+    		data:"ordernum="+ordernum,
+    		success:function(result){
+    			alert(result);
+    			if("true"==(result)){
+    				location.reload();
+    			};
+    		},
+    	});
+    }
+    function warningIt(obj){
+    	$("#warningIt").modal("show");
+    }
+    function rebackIt(obj){
+    	$("#rebackIt").modal("show");
     }
     
 </script>

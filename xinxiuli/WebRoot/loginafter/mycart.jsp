@@ -198,7 +198,7 @@
                 	<div class="goods-card">
                 		<div class="card-left">
                 			<input type="checkbox" class="cartcheckbox" />
-                			<div class="card-left-top-title">移除选中商品</div>
+                			<div class="card-left-top-title">选中所有商品</div>
                 			<div class="card-bottom-bottom">继续购物</div>
                 		</div>
                 		<div class="card-right">
