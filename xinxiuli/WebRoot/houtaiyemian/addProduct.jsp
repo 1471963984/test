@@ -64,58 +64,7 @@
         </tbody>
     </table>
 </div>
-<!--<div class="panel admin-panel margin-top" id="add">
-    <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 修改内容</strong></div>
-    <div class="body-content">
-        <form method="post" class="form-x" action="updateProduct.do" enctype="multipart/form-data">
-            <input type="hidden" name="productId" id="productId"/>
-            <div class="form-group">
-                <div class="label">
-                    <label>图片</label>
-                </div>
-                <div class="field">
-                    <input id="productImg" type="file" class="input w50" value="" name="file" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>产品名</label>
-                </div>
-                <div class="field">
-                    <input id="productName" type="text" class="input w50" value="" name="productName" data-validate="required:请输入标题" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>单价</label>
-                </div>
-                <div class="field">
-                    <input id="productPrice" type="text" class="input w50" name="productPrice" value=""  />
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>描述：</label>
-                </div>
-                <div class="field">
-                    <textarea id="productDescribe" type="text" class="input" name="productDescribe" style="height:120px;" value=""></textarea>
-                    <div class="tips"></div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="label">
-                    <label></label>
-                </div>
-                <div class="field">
-                    <button class="button bg-main icon-check-square-o" type="submit" onclick="updateProduct()"> 确认修改</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>-->
+
 </body>
 </html>
     <script type="text/javascript" src="/xinxiuli/houtaiyemian/js/jquery.js"></script>

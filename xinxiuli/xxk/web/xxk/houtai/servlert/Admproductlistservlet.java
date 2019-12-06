@@ -23,23 +23,13 @@ public class Admproductlistservlet extends HttpServlet{
     	// TODO Auto-generated method stub
     	Admproductlistimpsevicedao dao=new Admproductlistimpsevicedao();
     	int pagesize=10;
-  //     String  size = req.getParameter("pagsize");
-  //      if(size==null){
-  //     	size="10";
-  //     }
-  //	pagesize = Integer.parseInt(size);
-        
-//  	if(pagesize<1){
-//   pagesize=10;	
-// 	}
-    	
+	
     	int maxpageno=dao.selectMaxPageNo(pagesize);
         int pageno=1;
         String no=req.getParameter("pageno");
         if(no==null||"0".equals(no)){
            no="1";        	
         }
-        System.out.println(no);
         pageno=Integer.parseInt(no);
         if(pageno>maxpageno){
           pageno=maxpageno;     	

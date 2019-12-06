@@ -151,7 +151,7 @@
 	    			<a href="javascript:;" class="prev"></a>
 		    		<ul class="bigbanner-play">
 		    			<li>
-		    				<a>
+		    				<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=1">
 		    					<img src="/xinxiuli/img/bannerlunbo/-banner.jpg"/>
 		    				</a>
 		    				<div class="banner-text text-center">
@@ -159,11 +159,11 @@
 		    					<p>年度盛宴 限时狂欢</p>
 		    				</div>
 		    				<div class="banner-content-more text-center">
-				    			<a href="#">立即选购</a>
+				    			<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=1">立即选购</a>
 				    		</div>
 		    			</li>
 		    			<li>
-		    				<a>
+		    				<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=2">
 		    					<img src="/xinxiuli/img/bannerlunbo/0905-banner.jpg"/>
 		    				</a>
 		    				<div class="banner-text text-center">
@@ -171,11 +171,11 @@
 		    					<p>帅气通勤 时尚质感</p>
 		    				</div>
 		    				<div class="banner-content-more text-center">
-				    			<a href="#">立即选购</a>
+				    			<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=2">立即选购</a>
 				    		</div>
 		    			</li>
 		    			<li>
-		    				<a>
+		    				<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=3">
 		    					<img src="/xinxiuli/img/bannerlunbo/1920-720.jpg"/>
 		    				</a>
 		    				<div class="banner-text text-center">
@@ -183,11 +183,11 @@
 		    					<p>个性化定制铭牌</p>
 		    				</div>
 		    				<div class="banner-content-more text-center">
-				    			<a href="#">立即选购</a>
+				    			<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=3">立即选购</a>
 				    		</div>
 		    			</li>
 		    			<li>
-		    				<a>
+		    				<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=4">
 		    					<img src="/xinxiuli/img/bannerlunbo/banner1920-720.jpg"/>
 		    				</a>
 		    				<div class="banner-text text-center">
@@ -195,11 +195,11 @@
 		    					<p>专为应对各种旅途而生</p>
 		    				</div>
 		    				<div class="banner-content-more text-center">
-				    			<a href="#">立即选购</a>
+				    			<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=4">立即选购</a>
 				    		</div>
 		    			</li>
 		    			<li>
-		    				<a>
+		    				<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=5">
 		    					<img src="/xinxiuli/img/bannerlunbo/-banner.jpg"/>
 		    				</a>
 		    				<div class="banner-text text-center">
@@ -207,7 +207,7 @@
 		    					<p>年度盛宴 限时狂欢</p>
 		    				</div>
 		    				<div class="banner-content-more text-center">
-				    			<a href="#">立即选购</a>
+				    			<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=5">立即选购</a>
 				    		</div>
 		    			</li>
 		    		</ul>
@@ -216,18 +216,22 @@
 	    	<!--下面大幅广告块-->
 	    	<div class="container banner-items">
 	    		<div class="banner-item item1">
-	    			<img src="/xinxiuli/img/dbbanner/banner-cf5-.jpg"/>
+	    			<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=6">
+	    				<img src="/xinxiuli/img/dbbanner/banner-cf5-.jpg"/>
+	    			</a>
 	    			<div class="banner-text text-center">
 	    				<p class="p-title">买即得小熊颈枕</p>
 	    				<p class="p-info">活动时间：2019.10.24-10.31</p>
 	    				<div class="text-btn">
-	    					<a>了解更多></a>
-	    					<a>点击购买></a>
+	    					<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=6">了解更多></a>
+	    					<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=6">点击购买></a>
 	    				</div>
 	    			</div>
 	    		</div>
 	    		<div class="banner-item item2">
-	    			<img src="/xinxiuli/img/dbbanner/-pc.jpg"/>
+	    			<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=7">
+	    				<img src="/xinxiuli/img/dbbanner/-pc.jpg"/>
+	    			</a>
 	    			<div class="banner-text text-center">
 	    				<p class="p-title">装满世界，享受人生</p>
 	    				<p class="p-info">乐“享”世界，共享自由
@@ -235,13 +239,15 @@
 	    				   旅行，由我负重
 	    				</p>
 	    				<div class="text-btn">
-	    					<a>了解更多></a>
-	    					<a>点击购买></a>
+	    					<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=7">了解更多></a>
+	    					<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=7">点击购买></a>
 	    				</div>
 	    			</div>
 	    		</div>
 	    		<div class="banner-item item3">
-	    			<img src="/xinxiuli/img/dbbanner/-1920-731-.jpg"/>
+	    			<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=8">
+	    				<img src="/xinxiuli/img/dbbanner/-1920-731-.jpg"/>
+	    			</a>
 	    			<div class="banner-text text-center">
 	    				<p class="p-title">Disney x 新秀丽</p>
 	    				<p class="p-info">高颜值大容量
@@ -249,13 +255,15 @@
 						       复刻童年回忆
 	    				</p>
 	    				<div class="text-btn">
-	    					<a>了解更多></a>
-	    					<a>点击购买></a>
+	    					<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=8">了解更多></a>
+	    					<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=8">点击购买></a>
 	    				</div>
 	    			</div>
 	    		</div>
 	    		<div class="banner-item item4">
-	    			<img src="/xinxiuli/img/dbbanner/1920-720-.jpg"/>
+	    			<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=9">
+	    				<img src="/xinxiuli/img/dbbanner/1920-720-.jpg"/>
+	    			</a>
 	    			<div class="banner-text text-center">
 	    				<p class="p-title">缓震科技</p>
 	    				<p class="p-info">创新与科技融于设计
@@ -263,13 +271,15 @@
 						       细致入微优化旅行者的出行体验
 	    				</p>
 	    				<div class="text-btn">
-	    					<a>了解更多></a>
-	    					<a>点击购买></a>
+	    					<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=9">了解更多></a>
+	    					<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=9">点击购买></a>
 	    				</div>
 	    			</div>
 	    		</div>
 	    		<div class="banner-item item5">
-	    			<img src="/xinxiuli/img/dbbanner/-.jpg"/>
+	    			<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=10">
+	    				<img src="/xinxiuli/img/dbbanner/-.jpg"/>
+	    			</a>
 	    			<div class="banner-text text-center">
 	    				<p class="p-title">POLYGON</p>
 	    				<p class="p-info">版型新颖 几何设计
@@ -277,35 +287,35 @@
 						       嵌入式TSA线缆密码锁
 	    				</p>
 	    				<div class="text-btn">
-	    					<a>了解更多></a>
-	    					<a>点击购买></a>
+	    					<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=10">了解更多></a>
+	    					<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=10">点击购买></a>
 	    				</div>
 	    			</div>
 	    		</div>
 	    		<div class="devide-banner text-center">
 	    			<div class="d-ban-1">
-	    				<a href="#">
+	    				<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=11">
 	    					<img src="/xinxiuli/img/bqbanner/-15C-pc.jpg"/>
 	    				</a>
 	    				<p>拉杆箱</p>
 	    				<p><a href="#">立即选购</a></p>
 	    			</div>
 	    			<div class="d-ban-1">
-	    				<a href="#">
+	    				<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=12">
 	    					<img src="/xinxiuli/img/bqbanner/-GG100-pc.jpg"/>
 	    				</a>
 	    				<p>双肩包</p>
 	    				<p><a href="#">立即选购</a></p>
 	    			</div>
 	    			<div class="d-ban-1">
-	    				<a href="#">
+	    				<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=13">
 	    					<img src="/xinxiuli/img/bqbanner/- (1).jpg"/>
 	    				</a>
 	    				<p>儿童</p>
 	    				<p><a href="#">立即选购</a></p>
 	    			</div>
 	    			<div class="d-ban-1">
-	    				<a href="#">
+	    				<a href="/xinxiuli/qianduanyemian/showpro.jsp?divied_id=1">
 	    					<img src="/xinxiuli/img/bqbanner/- (2).jpg"/>
 	    				</a>
 	    				<p>配饰</p>

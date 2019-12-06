@@ -433,11 +433,7 @@ $(".addrs-setdefault").click(function(){
 			for (var i =0; i<pho.length; i++) {
 			  if(addrs[i]!="待完善"&&pho[i]!="待完善"&&nick[i]!="待完善"&&names[i]!="待完善"&&email[i]!="待完善"){
 				if(i==index){
-					if(i==1){
-						$("#addmyaddrs").append("<div class='addrs-list'><div class='caozuo'><img class='goods-delete' title='删除地址' data-addrnum='"+i+"' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-default' data-index='"+i+"'>默认地址</button></div></div>");
-					}else{
-						$("#addmyaddrs .addrs-list:first").before("<div class='addrs-list'><div class='caozuo'><img class='goods-delete' title='删除地址' data-addrnum='"+i+"' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-default' data-index='"+i+"'>默认地址</button></div></div>");
-					}		
+					$("#addmyaddrs").append("<div class='addrs-list'><div class='caozuo'><img class='goods-delete' title='删除地址' data-addrnum='"+i+"' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-default' data-index='"+i+"'>默认地址</button></div></div>");
 				}else{
 					$("#addmyaddrs").append("<div class='addrs-list'><div class='caozuo'><img class='goods-delete' title='删除地址' data-addrnum='"+i+"' src='/xinxiuli/shop-imgs/delete.png'></img></div><div class='name ch-left'><p>"+names[i]+"</p></div><div class='phone mbtel'>手机号："+pho[i]+"</div><div class='chengwei ch-left'>"+nick[i]+"</div><div class='addrs-message'>"+addrs[i]+"</div><button class='addrs-setdefault' data-index='"+i+"'>设为默认</button></div></div>");	
 				}

@@ -47,7 +47,7 @@
       <button type="button" class="button border-yellow"><span class="icon-plus-square-o"></span> 添加商品</button>
        <a class="button bg-green" href="/xinxiuli/Admproductlistservlet?pageno=1&pagesize=${pagesize}">首页</a>
        <a class="button bg-green" href="/xinxiuli/Admproductlistservlet?pageno=${pageno-1}&pagesize=${pagesize}">上一页</a>
-       <a class="button bg-green" href="/xinxiuli/Admproductlistservlet?pageno=${pageno+1}&pagesize=${pagesize}">下一夜</a> 
+       <a class="button bg-green" href="/xinxiuli/Admproductlistservlet?pageno=${pageno+1}&pagesize=${pagesize}">下一页</a> 
        <a class="button bg-green" href="/xinxiuli/Admproductlistservlet?pageno=${maxpageno}&pagesize=${pagesize}">尾页</a> 
        <span class="button" style="border: none;background-color: white;">当前页 ${pageno} </span> <span class="button" style="border: none;background-color: white;">最大页 ${maxpageno}</span>
     </div>
@@ -74,7 +74,7 @@
             <td> ${adm.goods_remain}</td> 
             <td> ${adm.color_name}</td>
             <td> ${adm.size_name}</td>
-            <td><a class="button bg-green" href="#">上架</a><a class="button bg-green" href="#">下架</a><a class="button bg-yellow" href="#">删除</a>
+            <td><a class="button bg-yellow" href="#">删除</a>
             <button class="button bg-green" onclick="">修改</button></td>   
            </tr>  
          </c:forEach>

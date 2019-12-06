@@ -194,7 +194,7 @@
 				</div>
 				<div class="info_r">
 					<ul>
-						<div class="title-about">我的收藏</div>
+						
 						
 					</ul>
 				</div>
